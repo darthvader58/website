@@ -23,11 +23,11 @@ export default function Footer() {
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
-            target="_blank"
+            target="app/components/Final_Resume_Shash.pdf"
             href="app/components/Final_Resume_Shash.pdf"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
+            <p className="ml-2 h-7">Resume</p>
           </a>
         </li>
         <li>
