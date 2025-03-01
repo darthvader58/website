@@ -22,9 +22,9 @@ export default function Footer() {
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
+            rel="app/components/Final_Resume_Shash.pdf"
             target="app/components/Final_Resume_Shash.pdf"
-            href="app/components/Final_Resume_Shash.pdf"
+            href="Resume.pdf"
           >
             <ArrowIcon />
             <p className="ml-2 h-7">Resume</p>
@@ -38,7 +38,7 @@ export default function Footer() {
             href="https://github.com/darthvader58"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
+            <p className="ml-2 h-7">Github</p>
           </a>
         </li>
         <li>
@@ -53,9 +53,6 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
     </footer>
   )
 }
