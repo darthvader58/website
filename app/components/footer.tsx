@@ -22,8 +22,8 @@ export default function Footer() {
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="app/components/Final_Resume_Shash.pdf"
-            target="app/components/Final_Resume_Shash.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
             href="Resume.pdf"
           >
             <ArrowIcon />
