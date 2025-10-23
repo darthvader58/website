@@ -1,4 +1,6 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 ::selection {
   background-color: #47a3f3;
@@ -141,7 +143,7 @@ input[type='email'] {
 table {
   display: block;
   max-width: fit-content;
-  overflow-x: auto;
+  overflow-x:auto;
   white-space: nowrap;
 }
 
