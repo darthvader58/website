@@ -23,22 +23,11 @@ export default function Footer() {
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
-            target="app/components/Resume/Final_Resume_Shashwat_Raj_ML.pdf"
-            href="app/components/Resume/Final_Resume_Shashwat_Raj_ML.pdf"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">Resume</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/darthvader58"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">Github</p>
+            <p className="ml-2 h-7">github</p>
           </a>
         </li>
         <li>
@@ -49,7 +38,29 @@ export default function Footer() {
             href="https://linkedin.com/in/raj-shashwat"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">LinkedIn</p>
+            <p className="ml-2 h-7">linkedin</p>
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://behance.net/shashwatraj1"
+          >
+            <ArrowIcon />
+            <p className="ml-2 h-7">behance</p>
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://devpost.com/darthvader58"
+          >
+            <ArrowIcon />
+            <p className="ml-2 h-7">devpost</p>
           </a>
         </li>
       </ul>

@@ -6,20 +6,19 @@ import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
-import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL('https://shashwatraj.com'),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Shashwat Raj | Computer Systems Engineering & Mathematics',
+    template: '%s | Shashwat Raj',
   },
-  description: 'This is my portfolio.',
+  description: 'Portfolio of Shashwat Raj - Computer Systems Engineering and Mathematics student at Arizona State University. Machine Learning Researcher, Software Developer, and Robotics Enthusiast.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
-    url: baseUrl,
-    siteName: 'My Portfolio',
+    title: 'Shashwat Raj | Computer Systems Engineering & Mathematics',
+    description: 'Portfolio of Shashwat Raj - Computer Systems Engineering and Mathematics student at Arizona State University.',
+    url: 'https://shashwatraj.com',
+    siteName: 'Shashwat Raj Portfolio',
     locale: 'en_US',
     type: 'website',
   },
