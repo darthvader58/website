@@ -20,7 +20,8 @@ export const metadata: Metadata = {
     url: 'https://shashwatraj.com',
     siteName: 'Shashwat Raj Portfolio',
     locale: 'en_US',
-    type: 'website',
+    type: 'website'
+    },
   },
   robots: {
     index: true,

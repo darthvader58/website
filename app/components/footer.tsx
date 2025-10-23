@@ -41,6 +41,17 @@ export default function Footer() {
             <p className="ml-2 h-7">linkedin</p>
           </a>
         </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="../coffee/page"
+          >
+            <ArrowIcon />
+            <p className="ml-2 h-7">Contact</p>
+          </a>
+        </li>
       </ul>
       <br></br>
       <div className="footer-bottom">
