@@ -14,6 +14,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: 'pip --race',
+    description: 'A real-time Formula 1 race strategy system combining pit stop probability prediction and optimal pit window timing to deliver a live frontend dashboard for real-time race strategy buildup with lowest possible latency.',
+    technologies: ['React.js', 'Python', 'Rust', 'Redis', 'Docker', 'Express.js', 'ONNX Runtime'],
+    github: 'https://github.com/darthvader58/pip_--race',
+    link: 'https://pip-race.vercel.app',
+    period: 'October 2025'
+  },
+
+  {
     name: 'Tansen',
     description: 'A web app where musicians instantly get lessons and notes for any music piece and any known instrument through music transcription & AI suggestions via Onsets & Frames, Demucs and Basic Pitch, trained over 20000+ MP3 & MIDI files.',
     technologies: ['Flutter', 'FastAPI', 'PyTorch', 'Huggingface', 'Tensorflow', 'Transformers'],
@@ -23,7 +32,8 @@ const projects: Project[] = [
   {
     name: 'Kavvy',
     description: 'An online platform that connects writers to traditional publishers. Curated a data consisting of 626 publishing houses in the US and 17942 published authors to find trends that can best fit a budding writer match the suitable publishing house.',
-    technologies: ['spaCy', 'Python', 'OpenAI Web Search', 'PyTorch', 'Next.js'],
+    technologies: ['spaCy', 'Python', 'OpenAI Web Search', 'PyTorch', 'React Typescript'],
+    link: 'https://kavvy.vercel.app',
     period: 'Present',
   },
   {
@@ -63,7 +73,6 @@ const projects: Project[] = [
     name: 'Coconut CubeSat',
     description: 'Part of the team developing a Cubesat for NASA CSLI Launch 2024, establishing communication network between LoRa devices for greater coverage, range and penetration without current orbital store-and-forward methods.',
     technologies: ['Linux', 'KiCad', 'CUDA', 'ROS', 'Gazebo', 'GPU'],
-    github: 'https://github.com/darthvader58/whatrobe',
     period: 'June 2023',
   },
   {
