@@ -21,7 +21,9 @@ export const metadata: Metadata = {
     siteName: 'Shashwat Raj Portfolio',
     locale: 'en_US',
     type: 'website'
-    },
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
   robots: {
     index: true,
