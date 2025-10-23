@@ -64,6 +64,10 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+      <br></br>
+      <div className="footer-bottom">
+        <p>Made with &lt;3 by Shashwat Raj</p>
+      </div>
     </footer>
   )
 }
