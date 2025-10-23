@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+const cx = (...classes: (string | false | null | undefined)[]) => classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
   children,
