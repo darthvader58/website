@@ -17,6 +17,9 @@ const navItems = {
   '/blog': {
     name: 'Blogs',
   },
+  '/gcsp': {
+    name: 'GCSP',
+  },
   '/resume': {
     name: 'Resume',
   },
