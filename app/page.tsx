@@ -5,7 +5,7 @@ export default function Page() {
         Hello There! I'm Shashwat Raj.
       </h1>
       <p className="mb-4">
-        I am a sophomore at <span className="font-medium">Arizona State University</span>, pursuing a dual major in <span className="font-medium">Computer Systems Engineering</span> and <span className="font-medium">Mathematics</span> with a GPA of 3.78/4.0.
+        I am a junior at <span className="font-medium">Arizona State University</span>, pursuing a double major in <span className="font-medium">Computer Systems Engineering</span> and <span className="font-medium">Mathematics</span> with a GPA of 3.78/4.0.
       </p>
       <p className="mb-4">
         I'm passionate about robotics, machine learning, and software development. Currently, I'm working as a Machine Learning Developer and Researcher at the Collective Design (CoDe) lab at ASU, where I'm developing Reinforcement Learning techniques to optimize Earth science missions for autonomous priority observations in space.
