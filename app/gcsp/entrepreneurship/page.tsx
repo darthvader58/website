@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'Entrepreneurship - GCSP',
@@ -33,6 +34,23 @@ export default function Entrepreneurship() {
           I took FSE 301 in Spring 2025 under Prof. Brent Sebold. As part of FSE 301, I learnt how to scale a 
           startup and create a value proposition of the product/service. The course teaches us about how to grow 
           startups and prepare pitches that convince users to pay for the product/service.
+        </p>
+      </div>
+
+      {/* Image Gallery */}
+      <div className="mb-8">
+        <h3 className="font-semibold text-lg mb-4">Tansen Demo & Presentation</h3>
+        <div className="relative w-full rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 mb-2">
+          <Image
+            src="/images/gcsp/entrepreneurship/presentation.png"
+            alt="Tansen Startup Presentation and Demo"
+            width={1200}
+            height={800}
+            className="w-full h-auto"
+          />
+        </div>
+        <p className="text-xs text-neutral-600 dark:text-neutral-400 text-center italic mb-6">
+          Tansen presentation showcasing AI-powered music transcription technology and business model
         </p>
       </div>
 
@@ -125,6 +143,72 @@ export default function Entrepreneurship() {
           <li>B2B partnerships with music schools and instructors</li>
           <li>API access for music education platforms</li>
         </ul>
+      </div>
+
+      {/* Reflective Writeup */}
+      <div className="mb-8 p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950 rounded-lg border-l-4 border-purple-500">
+        <h3 className="font-semibold text-lg mb-4 text-purple-900 dark:text-purple-100">
+          Connection to "Joy of Living" & Personal Impact
+        </h3>
+        
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-semibold text-md mb-2 text-purple-800 dark:text-purple-200">
+              GCSP Theme Relevance
+            </h4>
+            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              Tansen directly embodies the "Joy of Living" theme by making music—one of humanity's most universal 
+              sources of joy—more accessible to everyone. Music has the power to bring people together, provide 
+              emotional release, and offer a creative outlet that enriches daily life. However, learning an 
+              instrument can be frustrating and expensive, often requiring private lessons and sheet music that 
+              many people cannot afford. By using AI to instantly transcribe any song to any instrument and key, 
+              Tansen democratizes music education, allowing anyone with a smartphone to learn their favorite songs 
+              at their own pace. Whether someone wants to play guitar at campfires, piano for personal relaxation, 
+              or any other instrument to express themselves creatively, Tansen removes barriers and makes the joy 
+              of making music accessible to all. This aligns perfectly with creating opportunities for people to 
+              pursue hobbies and passions that enhance their quality of life and bring daily happiness.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-md mb-2 text-purple-800 dark:text-purple-200">
+              Professional Development
+            </h4>
+            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              Developing Tansen through FSE 301 has given me comprehensive experience in the startup journey—from 
+              ideation to product development to business strategy. I learned to identify market opportunities, 
+              define target customers, and create value propositions that resonate with users. Building the 
+              technical product required integrating multiple AI models (Onsets & Frames, Demucs, Basic Pitch) and 
+              creating a full-stack application with Flutter and FastAPI, which deepened my skills in audio 
+              processing, deep learning, and mobile development. Perhaps most importantly, I learned how to pitch 
+              a technical product to both technical and non-technical audiences, translating complex AI capabilities 
+              into clear user benefits. The course taught me about unit economics, customer acquisition strategies, 
+              and scaling challenges—knowledge that's invaluable whether I pursue entrepreneurship or work at a 
+              tech company. This experience has prepared me to launch products, understand business models, and 
+              think about technology through the lens of real user needs and market viability.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-md mb-2 text-purple-800 dark:text-purple-200">
+              Personal Growth
+            </h4>
+            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              As someone passionate about both music and technology, creating Tansen has been uniquely fulfilling—it 
+              combines my technical skills with my love for music in a way that could genuinely help people. Working 
+              on this project has taught me that the most meaningful innovations often come from addressing problems 
+              you personally understand. I've experienced the frustration of wanting to learn songs but finding 
+              transcriptions unavailable or inaccurate, and building a solution to this problem has been deeply 
+              satisfying. The entrepreneurship process has also taught me resilience and adaptability—from dealing 
+              with model performance issues to refining the business model based on feedback. Most importantly, this 
+              experience has shown me that I can take an idea from concept to working prototype to viable business 
+              plan. It has given me the confidence to pursue my own ventures and the understanding that entrepreneurship 
+              isn't just about having ideas, but about execution, persistence, and genuinely understanding your users' 
+              needs. This project has reinforced that I want to build products that enhance people's lives and bring 
+              them joy, whether through my own startups or innovative work within established companies.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="mb-8 p-6 border-2 border-purple-500 rounded-lg">

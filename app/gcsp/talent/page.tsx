@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'Talent - GCSP',
@@ -35,6 +36,26 @@ export default function Talent() {
           Dynamic Targeting is an extensively researched concept used by satellites to point the instruments in 
           the optimal direction to get the maximum scientific yield.
         </p>
+      </div>
+
+      {/* Image Gallery */}
+      <div className="mb-8">
+        <h3 className="font-semibold text-lg mb-4">Research Poster & Presentation</h3>
+        <div className="grid grid-cols-1 gap-4">
+          <div className="relative w-full h-auto rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800">
+            <Image
+              src="/images/gcsp/talent/research-poster.png"
+              alt="FURI Research Poster - Optimizing Earth Science Observations"
+              width={1200}
+              height={800}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 text-center italic">
+            Research poster presented at FURI Symposium showcasing methodology and results
+          </p>
+        </div>
       </div>
 
       <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
@@ -112,6 +133,64 @@ export default function Talent() {
           This research also made me competent in industrial skills like Python, handling big data servers like 
           OpenDAP, and heavy mathematical concepts behind deep reinforcement learning.
         </p>
+      </div>
+
+      {/* Reflective Writeup */}
+      <div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 rounded-lg border-l-4 border-blue-500">
+        <h3 className="font-semibold text-lg mb-4 text-blue-900 dark:text-blue-100">
+          Connection to "Joy of Living" & Personal Impact
+        </h3>
+        
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-semibold text-md mb-2 text-blue-800 dark:text-blue-200">
+              GCSP Theme Relevance
+            </h4>
+            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              This research directly contributes to the "Joy of Living" theme by improving the quality and 
+              accuracy of Earth observation data. Better satellite targeting means more effective disaster 
+              preparedness and response, saving lives during hurricanes, floods, and severe storms. Enhanced 
+              meteorological predictions help farmers optimize crop yields, coastal communities prepare for 
+              weather events, and cities better manage resources. By making satellite systems smarter and more 
+              autonomous, we enable better decision-making that protects communities and improves daily life 
+              for millions of people worldwide.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-md mb-2 text-blue-800 dark:text-blue-200">
+              Professional Development
+            </h4>
+            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              This research experience has been transformative for my career trajectory in aerospace engineering 
+              and machine learning. Working with cutting-edge reinforcement learning techniques and NASA datasets 
+              has given me hands-on experience with technologies used by leading space agencies and tech companies. 
+              I've developed proficiency in Python, PyTorch, handling large-scale environmental data through 
+              OpenDAP servers, and implementing complex deep learning architectures. The experience of presenting 
+              at the FURI Symposium has improved my scientific communication skills, while regular meetings with 
+              Dr. Grogan have taught me how to approach research methodically and think critically about results. 
+              These skills are directly applicable to careers in autonomous systems, satellite engineering, and 
+              AI research.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-md mb-2 text-blue-800 dark:text-blue-200">
+              Personal Growth
+            </h4>
+            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              Beyond technical skills, this research has deepened my appreciation for how engineering can address 
+              real-world challenges. Working through setbacks—like the class imbalance issues and low precision 
+              scores—has taught me resilience and the importance of iterative problem-solving. I've learned that 
+              research is not just about achieving perfect results, but about understanding why things work or 
+              don't work, and persistently refining approaches. This experience has reinforced my passion for using 
+              technology to make a tangible positive impact on society, particularly in environmental monitoring 
+              and climate science. It has also shown me the joy that comes from contributing to something larger 
+              than myself—work that will benefit communities around the world through better disaster preparedness 
+              and resource management.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
