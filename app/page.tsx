@@ -2,7 +2,7 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Hello There! I'm Shashwat Raj.
+      <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-7 h-7 mr-2"/> Hello There! I'm Shashwat Raj.
       </h1>
       <p className="mb-4">
         I am a junior at <span className="font-medium">Arizona State University</span>, pursuing a double major in <span className="font-medium">Computer Systems Engineering</span> and <span className="font-medium">Mathematics</span> with a GPA of 3.78/4.0.
