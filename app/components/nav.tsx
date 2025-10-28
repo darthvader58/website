@@ -14,9 +14,9 @@ const navItems = {
   '/projects': {
     name: 'Projects',
   },
-  '/blog': {
+  /*'/blog': {
     name: 'Blogs',
-  },
+  },*/
   '/gcsp': {
     name: 'GCSP',
   },
