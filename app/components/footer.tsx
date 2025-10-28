@@ -44,9 +44,9 @@ export default function Footer() {
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="../coffee/page"
+            /*rel="noopener noreferrer"
+            target="_blank"*/
+            href="../coffee"
           >
             <ArrowIcon />
             <p className="ml-2 h-7">Contact</p>
