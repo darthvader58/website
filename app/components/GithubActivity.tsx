@@ -164,7 +164,7 @@ export default function GitHubActivity() {
       <div className="space-y-3">
         <h3 className="text-sm font-semibold text-slate-100">Top Languages</h3>
         <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 space-y-2">
-          {languages.slice(0, 6).map((lang) => (
+          {languages.slice(0, 8).map((lang) => (
             <div key={lang.name}>
               <div className="flex justify-between text-xs mb-1">
                 <span className="text-slate-300">{lang.name}</span>
@@ -184,15 +184,27 @@ export default function GitHubActivity() {
         </div>
       </div>
 
-      {/* Contribution Graph - Scrollable with Dark Mode */}
+      {/* Contribution Graph - Scrollable */}
       <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-slate-100">Contributions</h3>
-        <div className="rounded-lg border border-slate-800 bg-[#0d1117] p-3 overflow-x-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+        <h3 className="text-sm font-semibold text-slate-100">Contributions 2025</h3>
+        <div 
+          className="rounded-lg border border-slate-800 bg-slate-900 p-3 overflow-x-auto"
+          ref={(el) => {
+            if (el) {
+              // Scroll to show the most recent contributions (right side)
+              el.scrollLeft = el.scrollWidth - el.clientWidth
+            }
+          }}
+        >
           <div className="min-w-[900px]">
             <img 
-              src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&bg_color=0d1117&color=39d353&line=39d353&point=ffffff&area=true&hide_border=true&custom_title=GitHub%20Contributions&height=150`}
+              src={`https://ghchart.rshah.org/${username}`}
               alt="GitHub Contribution Chart"
               className="w-full"
+              style={{ 
+                filter: 'invert(1) hue-rotate(180deg)',
+                mixBlendMode: 'screen'
+              }}
               loading="lazy"
             />
           </div>
