@@ -12,6 +12,11 @@ import GitHubActivity from './components/GithubActivity'
 export const metadata: Metadata = {
   title: 'Shashwat Raj - Portfolio',
   description: 'Computer Science & Engineering student at Arizona State University. Passionate about embedded systems, robotics, and full-stack development.',
+  icons: {
+    icon: '/assets/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: 'Shashwat Raj - Portfolio',
     description: 'Computer Science & Engineering student at Arizona State University',
@@ -49,7 +54,6 @@ export default function RootLayout({
             {/* Sidebar - Right Side (35%) */}
             <aside className="lg:w-96 lg:sticky lg:top-12 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
               <div className="rounded-lg border border-slate-800 bg-slate-950/50 p-6">
-                <h2 className="text-sm font-semibold text-slate-100 mb-4">Recent Activity</h2>
                 <GitHubActivity />
               </div>
             </aside>
