@@ -189,30 +189,6 @@ export default function GitHubActivity() {
         </div>
       </div>
 
-      {/* Language Stats - Custom */}
-      <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-slate-100">Top Languages</h3>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 space-y-2">
-          {languages.slice(0, 8).map((lang) => (
-            <div key={lang.name}>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-slate-300">{lang.name}</span>
-                <span className="text-slate-400">{lang.percentage}%</span>
-              </div>
-              <div className="w-full bg-slate-800 rounded-full h-1.5">
-                <div 
-                  className="h-1.5 rounded-full transition-all duration-500"
-                  style={{ 
-                    width: `${lang.percentage}%`,
-                    backgroundColor: lang.color
-                  }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Contribution Graph - Scrollable */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
@@ -240,6 +216,30 @@ export default function GitHubActivity() {
               loading="lazy"
             />
           </div>
+        </div>
+      </div>
+
+      {/* Language Stats - Custom */}
+      <div className="space-y-3">
+        <h3 className="text-sm font-semibold text-slate-100">Top Languages</h3>
+        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 space-y-2">
+          {languages.slice(0, 8).map((lang) => (
+            <div key={lang.name}>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-slate-300">{lang.name}</span>
+                <span className="text-slate-400">{lang.percentage}%</span>
+              </div>
+              <div className="w-full bg-slate-800 rounded-full h-1.5">
+                <div 
+                  className="h-1.5 rounded-full transition-all duration-500"
+                  style={{ 
+                    width: `${lang.percentage}%`,
+                    backgroundColor: lang.color
+                  }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
