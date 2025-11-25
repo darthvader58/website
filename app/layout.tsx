@@ -40,7 +40,7 @@ export default function RootLayout({
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
       <body className="antialiased text-slate-100">
         <CircuitBackground />
-        <div className="mx-auto max-w-[80%] px-8 lg:px-10">
+        <div className="mx-auto max-w-[90%] px-4 lg:px-5">
           <div className="flex flex-col lg:flex-row gap-6 py-12">
             {/* Main Content - Left Side */}
             <main className="flex-1 min-w-0">
