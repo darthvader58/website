@@ -57,6 +57,14 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "Makeathon",
+      description: "Arduino-based autonomous maze solver robot for competition.",
+      technologies: ["Arduino", "C++", "Sensors"],
+      github: "https://github.com/darthvader58/makeathon",
+      link: "https://makeathon.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "OpenCV", "Satellite Data"],
@@ -157,12 +165,6 @@ export default function ProjectsPage() {
     },
 
     // Hardware and embedded projects
-    {
-      title: "Makeathon",
-      description: "Arduino-based autonomous maze solver robot for competition.",
-      technologies: ["Arduino", "C++", "Sensors"],
-      github: "https://github.com/darthvader58/makeathon"
-    },
     {
       title: "Embedded Robotics",
       description: "FRDM-KL46Z autonomous robot with PID control and I2C sensor integration.",

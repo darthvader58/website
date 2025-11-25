@@ -40,17 +40,17 @@ export default function RootLayout({
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
       <body className="antialiased text-slate-100">
         <CircuitBackground />
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 py-12">
-            {/* Main Content - Left Side (70%) */}
-            <main className="flex-1 lg:max-w-3xl">
+        <div className="mx-auto max-w-[80%] px-8 lg:px-10">
+          <div className="flex flex-col lg:flex-row gap-6 py-12">
+            {/* Main Content - Left Side */}
+            <main className="flex-1 min-w-0">
               <Navbar />
               {children}
               <Footer />
             </main>
 
             {/* Sidebar - Right Side */}
-            <aside className="lg:sticky lg:top-12 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto" style={{ width: '326px' }}>
+            <aside className="lg:sticky lg:top-12 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:w-[340px] flex-shrink-0">
               <div className="rounded-lg border border-slate-800 bg-slate-950/50 p-6">
                 <GitHubActivity />
               </div>
