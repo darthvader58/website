@@ -38,7 +38,7 @@ export default function ProjectsPage() {
       description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
       technologies: ["C", "Algorithms"],
       github: "https://github.com/darthvader58/linkedin-queens-puzzle-solution",
-      customPreview: "queens-crown"
+      previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
       title: "WoofCare Website",
