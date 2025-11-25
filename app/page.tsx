@@ -1,24 +1,46 @@
-export default function Page() {
+const ArrowIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="currentColor" />
+  </svg>
+);
+
+export default function HomePage() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-      <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-7 h-7 mr-2"/> Hello There! I'm Shashwat Raj.
+    <section className="fade">
+      <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+        <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-12 h-12 mr-2"/> Hello, I'm Shashwat Raj
       </h1>
-      <p className="mb-4">
-        I am a junior at <span className="font-medium">Arizona State University</span>, pursuing a double major in <span className="font-medium">Computer Systems Engineering</span> and <span className="font-medium">Mathematics</span> with a GPA of 3.78/4.0.
-      </p>
-      <p className="mb-4">
-        I'm passionate about robotics, machine learning, and software development. Currently, I'm working as a Machine Learning Developer and Researcher at the Collective Design (CoDe) lab at ASU, where I'm developing Reinforcement Learning techniques to optimize Earth science missions for autonomous priority observations in space.
-      </p>
-      <p className="mb-4">
-        I'm also the Founder & CEO of <span className="font-medium">WoofCare Solutions</span>, a mobile app connecting dog lovers and care services to improve the lives of stray dogs in India. This project is funded by EPICS (Engineering Projects In Community Service) at ASU and partners with over 60+ NGOs.
-      </p>
-      <p className="mb-4">
-        When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <span className="font-medium">"Write It Out"</span>.
-      </p>
-      <div className="my-8">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Dean's List: Fall '23, Spring '24, Spring '25 • NAmU Scholarship: $13,500/yr • Go-Global Scholarship: $3,000
+      
+      <div className="prose prose-invert max-w-none">
+        <p className="text-slate-300 text-lg leading-relaxed mb-6">
+          I'm a junior at Arizona State University majoring in Computer Systems Engineering and Math, with a passion for building innovative solutions at the intersection of hardware and software. 
+        </p>
+
+        <p className="text-slate-400 leading-relaxed mb-6">
+          I'm passionate about robotics, machine learning, and software development. Currently, I'm working as a Machine Learning Developer and Researcher at the Collective Design (CoDe) lab at ASU, where I'm developing Reinforcement Learning techniques to optimize Earth science missions for autonomous priority observations in space. </p>
+        <p className="text-slate-400 leading-relaxed mb-6">I'm also the Founder & CEO of <span className="font-medium">WoofCare Solutions</span>, a mobile app connecting dog lovers and care services to improve the lives of stray dogs in India. This project is funded by EPICS (Engineering Projects In Community Service) at ASU and partners with over 60+ NGOs.</p>
+        <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://github.com/darthvader58"><ArrowIcon /><span className="ml-2">"Write It Out"</span></a></p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+          <div className="border border-slate-800 rounded-lg p-6 bg-slate-950/30">
+            <h3 className="text-lg font-semibold text-purple-400 mb-2">Education</h3>
+            <p className="text-slate-300 font-medium">Arizona State University</p>
+            <p className="text-slate-400 text-sm">BSE Computer Science & Engineering</p>
+            <p className="text-slate-400 text-sm">BS Mathematics</p>
+            <p className="text-slate-500 text-sm">GPA: 3.78/4.0</p>
+          </div>
+
+          <div className="border border-slate-800 rounded-lg p-6 bg-slate-950/30">
+            <h3 className="text-lg font-semibold text-purple-400 mb-2">Interests</h3>
+            <p className="text-slate-400 text-sm">AI, Machine Learning and GPU Programming</p>
+            <p className="text-slate-400 text-sm">Full-Stack Development</p>
+            <p className="text-slate-400 text-sm">Embedded Systems, IoT & Robotics</p>
+            <p className="text-slate-400 text-sm">Operating Systems</p>
+          </div>
+        </div>
+
+        <p className="text-slate-400 leading-relaxed">
+          Beyond academics, I'm passionate about creating educational technology and contributing to open-source projects. I've developed platforms like Metal Lab, an advanced physics simulation environment, and WoofCare, a social network connecting dog owners with shelters and veterinarians across India.
         </p>
       </div>
     </section>

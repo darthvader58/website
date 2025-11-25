@@ -1,10 +1,21 @@
-export const baseUrl = 'https://shashwatraj.com'
+import { MetadataRoute } from 'next'
 
-export default async function sitemap() {
-  let routes = ['', '/experience', '/projects', '/resume', '/coffee'].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+export default function sitemap(): MetadataRoute.Sitemap {
+  const routes = [
+    '',
+    '/experience',
+    '/projects',
+    '/resume',
+    '/coffee',
+    '/gcsp',
+    '/gcsp/talent',
+    '/gcsp/service',
+    '/gcsp/entrepreneurship',
+    '/gcsp/multicultural',
+  ]
+
+  return routes.map((route) => ({
+    url: `https://shashwatraj.com${route}`,
+    lastModified: new Date().toISOString(),
   }))
-
-  return [...routes]
 }

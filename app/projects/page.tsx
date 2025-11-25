@@ -1,139 +1,203 @@
-export const metadata = {
-  title: 'Projects',
-  description: 'My technical projects and side work.',
-}
+import ProjectCard from '../components/ProjectCard'
 
-interface Project {
-  name: string
-  description: string
-  technologies: string[]
-  github?: string
-  link?: string
-  period?: string
-}
+export default function ProjectsPage() {
+  const projects = [
+    {
+      title: "pip --race",
+      description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
+      technologies: ["React", "Python", "Rust", "Redis", "Docker", "ONNX"],
+      github: "https://github.com/darthvader58/pip--race",
+      link: "https://pip-race.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Kavvy",
+      description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
+      technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
+      github: "https://github.com/darthvader58/kavvy",
+      link: "https://kavvy.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "WoofCare Website",
+      description: "Marketing and information website for WoofCare platform with modern design and animations.",
+      technologies: ["Astro", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/darthvader58/WoofCare-Website",
+      link: "https://woofcare-solutions.org",
+      hasLivePreview: true
+    },
+    {
+      title: "Personal Website",
+      description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/darthvader58/personal-website",
+      link: "https://shashwatraj.com",
+      hasLivePreview: true
+    },
+    {
+      title: "KnockScript",
+      description: "Esoteric programming language interpreter with unique syntax and semantics.",
+      technologies: ["Ruby", "Compiler Design"],
+      github: "https://github.com/darthvader58/knockscript",
+      link: "https://knockscript.up.railway.app",
+      hasLivePreview: true
+    },
+    {
+      title: "BrainDevils",
+      description: "FMS skills assessment web application for sports training.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/darthvader58/braindevils",
+      link: "https://braindevils.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Tansen",
+      description: "AI music transcription system converting audio to musical notation using deep learning models.",
+      technologies: ["Flutter", "FastAPI", "PyTorch", "Huggingface", "Tensorflow"],
+      github: "https://github.com/darthvader58/Tansen"
+    },
+    {
+      title: "WoofCare",
+      description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
+      technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
+      github: "https://github.com/darthvader58/WoofCare",
+      previewImage: "/images/WoofCarePreview.png"
+    },
+    {
+      title: "RL Priority Observations",
+      description: "Reinforcement learning for satellite observation scheduling. Optimizing coverage and priority using ML.",
+      technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "Jupyter"],
+      github: "https://github.com/darthvader58/rl-priority-observations"
+    },
+    {
+      title: "Metal Lab",
+      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
+      technologies: ["Next.js", "React", "Three.js", "WebGPU", "TypeScript"],
+      github: "https://github.com/darthvader58/metal-lab",
+      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
+    },
+    {
+      title: "Whatrobe",
+      description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
+      technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
+      github: "https://github.com/darthvader58/whatrobe"
+    },
+    {
+      title: "Garud",
+      description: "Crop disease classification using deep learning. Achieved 89.23% accuracy on agricultural dataset.",
+      technologies: ["Keras", "Tensorflow", "Python", "OpenCV"],
+      github: "https://github.com/darthvader58/Garud"
+    },
+    {
+      title: "GameOfLife",
+      description: "Conway's Game of Life implementation on toroidal plane with iOS native interface.",
+      technologies: ["Swift", "iOS", "SwiftUI"],
+      github: "https://github.com/darthvader58/GameOfLife"
+    },
+    {
+      title: "N-Body Simulator",
+      description: "Gravitational physics simulation with multiple body interactions and visualization.",
+      technologies: ["Swift", "Metal", "Physics"],
+      github: "https://github.com/darthvader58/N-Body-Simulator"
+    },
+    {
+      title: "kcavo",
+      description: "Kubernetes cost analyzer and optimizer for cloud infrastructure management.",
+      technologies: ["Go", "Kubernetes", "kubectl"],
+      github: "https://github.com/darthvader58/kcavo"
+    },
 
-const projects: Project[] = [
-  {
-    name: 'pip --race',
-    description: 'A real-time Formula 1 race strategy system combining pit stop probability prediction and optimal pit window timing to deliver a live frontend dashboard for real-time race strategy buildup with lowest possible latency.',
-    technologies: ['React.js', 'Python', 'Rust', 'Redis', 'Docker', 'Express.js', 'ONNX Runtime'],
-    github: 'https://github.com/darthvader58/pip_--race',
-    link: 'https://pip-race.vercel.app',
-    period: 'October 2025'
-  },
+    {
+      title: "LinkedIn Queens Puzzle",
+      description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
+      technologies: ["C", "Algorithms"],
+      github: "https://github.com/darthvader58/linkedin-queens-puzzle-solution",
+      customPreview: "queens-crown"
+    },
+    {
+      title: "Lua Interpreter",
+      description: "Lua programming language interpreter written in Go.",
+      technologies: ["Go", "Compiler Design"],
+      github: "https://github.com/darthvader58/lua-interpreter-go"
+    },
+    {
+      title: "Quant Challenge 2025",
+      description: "Quantitative finance modeling and algorithmic trading strategies.",
+      technologies: ["Python", "Jupyter", "Pandas", "NumPy"],
+      github: "https://github.com/darthvader58/quant-challenge-2025"
+    },
+    {
+      title: "ML Practice",
+      description: "Machine learning implementations and experiments with various algorithms.",
+      technologies: ["Python", "Jupyter", "Scikit-learn"],
+      github: "https://github.com/darthvader58/ml-practice"
+    },
+    {
+      title: "Anagnor",
+      description: "Landslide detection system using computer vision and satellite imagery analysis.",
+      technologies: ["Python", "OpenCV", "Satellite Data"],
+      github: "https://github.com/darthvader58/Anagnor",
+      previewImage: "images/Anagnor.png"
+    },
+    {
+      title: "Peer-Faculty Interaction",
+      description: "Educational platform for student-faculty communication built for CSE 360 project.",
+      technologies: ["Java", "JavaFX", "SQLite"],
+      github: "https://github.com/darthvader58/CSE-360-Team-Project"
+    },
+    {
+      title: "Resume",
+      description: "LaTeX source files for professional resume with multiple versions.",
+      technologies: ["LaTeX", "TeX"],
+      github: "https://github.com/darthvader58/Resume"
+    },
 
-  {
-    name: 'Tansen',
-    description: 'A web app where musicians instantly get lessons and notes for any music piece and any known instrument through music transcription & AI suggestions via Onsets & Frames, Demucs and Basic Pitch, trained over 20000+ MP3 & MIDI files.',
-    technologies: ['Flutter', 'FastAPI', 'PyTorch', 'Huggingface', 'Tensorflow', 'Transformers'],
-    github: 'https://github.com/darthvader58/tansen',
-    period: 'Present',
-  },
-  {
-    name: 'Kavvy',
-    description: 'An online platform that connects writers to traditional publishers. Curated a data consisting of 626 publishing houses in the US and 17942 published authors to find trends that can best fit a budding writer match the suitable publishing house.',
-    technologies: ['spaCy', 'Python', 'OpenAI Web Search', 'PyTorch', 'React Typescript'],
-    link: 'https://kavvy.vercel.app',
-    period: 'Present',
-  },
-  {
-    name: 'Formath',
-    description: 'A web app that analyzes step-by-step math solutions from uploaded images, identifies errors, and provides feedback. Integrates Mathpix for LaTex conversion, WolframAlpha for analysis, and Imgur API for OCR, ChatGPT for feedback.',
-    technologies: ['React.js', 'Node.js', 'Express.js', 'Figma', 'CockroachDB', 'AWS'],
-    link: 'https://devpost.com/software/formath',
-    period: 'October 2023',
-  },
-  {
-    name: 'Whatrobe',
-    description: 'A web app that gives outfit recommendations and try-ons for your entire wardrobe using Ximilar Fashion Tagging model and Anthropic for generating trending fashion suggestions based on occasions.',
-    technologies: ['Next.js', 'MongoDB', 'Anthropic', 'REST', 'OpenCV'],
-    github: 'https://github.com/darthvader58/whatrobe',
-    period: 'November 2023',
-  },
-  {
-    name: 'Embedded Robotics',
-    description: 'Used the FRDM-KL46Z NXP microprocessor board with C to control a robot, to move in a figure-eight pattern, follow a line, avoid obstacles, and navigate through a colored maze, after configuring GPIO registors, interrupts, encoders and utilizing components\' datasheets, PID tuning and I2C communication.',
-    technologies: ['Low-level C', 'Embedded Systems', 'Microprocessor Systems'],
-    period: 'Present',
-  },
-  {
-    name: 'FPGA Alarm Clock and Audio Recorder',
-    description: 'Developed a real-time alarm clock using Intel Quartus Lite and deployed the program to the Intel DE10-Lite FPGA board. Also developed an audio recorder that records and plays back up to eight seconds of audio in SystemVerilog in the Nexys A7-100 FPGA board via Xilinx Vivado.',
-    technologies: ['Verilog', 'SystemVerilog', 'Modelsim', 'Vivado', 'Quartus Prime'],
-    period: 'Present',
-  },
-  {
-    name: 'Crop Disease Classifier',
-    description: 'A CNN based model built using Keras and Tensorflow for crop disease detection from a UAS. The 2D-CNN model uses 4 hidden layers using ReLu activation function with the output layer using Softmax function, achieving 89.23% accuracy.',
-    technologies: ['Keras', 'Tensorflow', 'Matplotlib', 'Numpy', 'OpenCV'],
-    github: 'https://github.com/darthvader58/garud',
-    period: 'March 2021',
-  },
-  {
-    name: 'Coconut CubeSat',
-    description: 'Part of the team developing a Cubesat for NASA CSLI Launch 2024, establishing communication network between LoRa devices for greater coverage, range and penetration without current orbital store-and-forward methods.',
-    technologies: ['Linux', 'KiCad', 'CUDA', 'ROS', 'Gazebo', 'GPU'],
-    period: 'June 2023',
-  },
-  {
-    name: 'Micromouse',
-    description: 'Built an autonomous wall-maze and line-maze solving robot using Teensy, TB6612FNG motor driver, Polulu QTR, HCSR04 Ultrasonic Sensors, N20 motors and Power Distribution Circuit, connected via Bluetooth to a mobile app to calibrate PID values and switch between manual-to-autonomous drive as well as line-maze to wall-maze settings.',
-    technologies: ['Embedded C', 'MIT App Inventor', 'Dijkstra', 'PID tuning'],
-    period: 'August 2019',
-  },
-]
+    {
+      title: "Makeathon",
+      description: "Arduino-based autonomous maze solver robot for competition.",
+      technologies: ["Arduino", "C++", "Sensors"],
+      github: "https://github.com/darthvader58/makeathon"
+    },
+    {
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      link: "https://devpost.com/software/formath"
+    },
+    {
+      title: "Embedded Robotics",
+      description: "FRDM-KL46Z autonomous robot with PID control and I2C sensor integration.",
+      technologies: ["C", "Embedded Systems", "PID Control", "I2C"]
+    },
+    {
+      title: "FPGA Projects",
+      description: "Alarm clock and audio recorder implementations on FPGA hardware.",
+      technologies: ["Verilog", "SystemVerilog", "Vivado", "Quartus Prime"]
+    },
+    {
+      title: "Coconut CubeSat",
+      description: "CubeSat satellite project for NASA CSLI Launch 2024. Flight software development.",
+      technologies: ["Linux", "KiCad", "CUDA", "ROS", "Gazebo"]
+    },
+    {
+      title: "Micromouse",
+      description: "Autonomous maze-solving robot using Dijkstra's algorithm and PID control.",
+      technologies: ["Embedded C", "MIT App Inventor", "Dijkstra", "PID"]
+    }
+  ]
 
-export default function Projects() {
   return (
-    <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Projects</h1>
-      <div className="space-y-6">
+    <section className="fade">
+      <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+        Projects
+      </h1>
+      <p className="text-slate-400 text-lg mb-12">
+        A collection of my personal projects, open-source contributions, and academic work spanning web development, machine learning, embedded systems, and robotics.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
-          <div key={index} className="border-b border-neutral-200 dark:border-neutral-800 pb-6">
-            <div className="flex items-start justify-between mb-2">
-              <div>
-                <h2 className="font-semibold text-lg tracking-tight">{project.name}</h2>
-                {project.period && (
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{project.period}</p>
-                )}
-              </div>
-              <div className="flex space-x-2">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-                  >
-                    github →
-                  </a>
-                )}
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-                  >
-                    view →
-                  </a>
-                )}
-              </div>
-            </div>
-            <p className="text-neutral-700 dark:text-neutral-300 mb-3 text-sm leading-relaxed">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech, i) => (
-                <span
-                  key={i}
-                  className="text-xs px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-700 dark:text-neutral-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+          <ProjectCard key={index} {...project} />
         ))}
       </div>
     </section>

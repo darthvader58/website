@@ -1,72 +1,74 @@
-export const metadata = {
-    title: 'Resume',
-    description: 'Download my resume.',
-  }
-  
-  export default function Resume() {
-    const resumes = [
-      {
-        name: 'ML/AI Engineering',
-        description: 'Highlights machine learning, AI, and research experience',
-        file: '/Final_Resume_Shashwat_Raj_ML.pdf',
-      },
-      {
-        name: 'Software Development/Engineering',
-        description: 'Emphasizes full-stack development and software engineering',
-        file: '/Final_Resume_Shashwat_Raj_Dev.pdf',
-      },
-      {
-        name: 'Hardware Engineering/Verification',
-        description: 'Focuses on embedded systems, robotics, and hardware projects',
-        file: '/Final_Resume_Shashwat_Raj_Hardware.pdf',
-      },
-    ]
-  
-    return (
-      <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Resume</h1>
-        <p className="mb-8 text-neutral-700 dark:text-neutral-300">
-          Download my resume in different formats, each tailored to highlight specific skill sets and experiences.
-        </p>
-        <div className="space-y-4">
-          {resumes.map((resume, index) => (
+export default function ResumePage() {
+  const resumes = [
+    {
+      title: "Machine Learning / AI Focus",
+      description: "Highlights research experience, ML projects, and deep learning expertise.",
+      filename: "Final_Resume_Shashwat_Raj_ML.pdf",
+      color: "from-blue-900/40 to-purple-900/40"
+    },
+    {
+      title: "Software Development Focus",
+      description: "Emphasizes full-stack development, web applications, and software engineering skills.",
+      filename: "Final_Resume_Shashwat_Raj_Dev.pdf",
+      color: "from-green-900/40 to-emerald-900/40"
+    },
+    {
+      title: "Hardware / Embedded Systems Focus",
+      description: "Showcases embedded systems, robotics, and hardware projects.",
+      filename: "Final_Resume_Shashwat_Raj_Hardware.pdf",
+      color: "from-orange-900/40 to-red-900/40"
+    }
+  ]
+
+  return (
+    <section className="fade">
+      <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+        Resume
+      </h1>
+      <p className="text-slate-400 text-lg mb-12">
+        Download my resume tailored for different roles and focus areas.
+      </p>
+
+      <div className="grid gap-6">
+        {resumes.map((resume, index) => (
+          <div key={index} className={`border border-slate-800 rounded-lg p-8 bg-gradient-to-br ${resume.color} hover:border-purple-700/50 transition-all duration-300`}>
+            <h3 className="text-2xl font-semibold text-slate-100 mb-3">{resume.title}</h3>
+            <p className="text-slate-300 mb-6">{resume.description}</p>
             <a
-              key={index}
-              href={resume.file}
+              href={`/${resume.filename}`}
               download
-              className="block p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
             >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h2 className="font-semibold text-lg tracking-tight mb-1">{resume.name}</h2>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{resume.description}</p>
-                </div>
-                <svg
-                  className="w-5 h-5 text-neutral-600 dark:text-neutral-400 flex-shrink-0 mt-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-              </div>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download PDF
             </a>
-          ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-12 border border-slate-800 rounded-lg p-6 bg-slate-950/30">
+        <h3 className="text-xl font-semibold text-slate-100 mb-4">Skills Overview</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="text-purple-400 font-medium mb-2">Programming Languages</h4>
+            <p className="text-slate-400 text-sm">Python, C, C++, Java, JavaScript, TypeScript, Swift, Rust, Go, Ruby</p>
+          </div>
+          <div>
+            <h4 className="text-purple-400 font-medium mb-2">Frameworks & Libraries</h4>
+            <p className="text-slate-400 text-sm">React, Next.js, Flutter, PyTorch, TensorFlow, FastAPI, Node.js</p>
+          </div>
+          <div>
+            <h4 className="text-purple-400 font-medium mb-2">Tools & Platforms</h4>
+            <p className="text-slate-400 text-sm">Git, Docker, Firebase, AWS, Vercel, MongoDB, PostgreSQL</p>
+          </div>
+          <div>
+            <h4 className="text-purple-400 font-medium mb-2">Embedded Systems</h4>
+            <p className="text-slate-400 text-sm">Arduino, FRDM-KL46Z, I2C, PID Control, Verilog, FPGA</p>
+          </div>
         </div>
-        <div className="mt-12 p-4 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
-          <h3 className="font-semibold mb-2">Quick Overview</h3>
-          <ul className="space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
-            <li>• <span className="font-medium">Education:</span> B.S.E. Computer Systems Engineering + B.S. Mathematics (Dual Major)</li>
-            <li>• <span className="font-medium">University:</span> Arizona State University (GPA: 3.78/4.0)</li>
-            <li>• <span className="font-medium">Expected Graduation:</span> 2027</li>
-            <li>• <span className="font-medium">Key Skills:</span> Machine Learning, Systems Design, Full-Stack Development, Embedded Systems, Robotics</li>
-          </ul>
-        </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
+}

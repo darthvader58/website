@@ -1,16 +1,57 @@
 import { ImageResponse } from 'next/og'
 
-export function GET(request: Request) {
-  let url = new URL(request.url)
-  let title = url.searchParams.get('title') || 'Shashwat Raj'
+export const runtime = 'edge'
 
+export async function GET() {
   return new ImageResponse(
     (
-      <div tw="flex flex-col w-full h-full items-center justify-center bg-white">
-        <div tw="flex flex-col md:flex-row w-full py-12 px-4 md:items-center justify-between p-8">
-          <h2 tw="flex flex-col text-4xl font-bold tracking-tight text-left">
-            {title}
-          </h2>
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#000',
+          backgroundImage: 'radial-gradient(circle at 25px 25px, #1f2937 2%, transparent 0%), radial-gradient(circle at 75px 75px, #1f2937 2%, transparent 0%)',
+          backgroundSize: '100px 100px',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <h1
+            style={{
+              fontSize: '72px',
+              fontWeight: 'bold',
+              color: '#e2e8f0',
+              marginBottom: '20px',
+            }}
+          >
+            Shashwat Raj
+          </h1>
+          <p
+            style={{
+              fontSize: '32px',
+              color: '#94a3b8',
+            }}
+          >
+            Computer Science & Engineering
+          </p>
+          <p
+            style={{
+              fontSize: '24px',
+              color: '#a855f7',
+              marginTop: '10px',
+            }}
+          >
+            Arizona State University
+          </p>
         </div>
       </div>
     ),
