@@ -17,6 +17,8 @@ interface ProjectCardProps {
 export default function ProjectCard({ title, description, technologies, github, link, hasLivePreview, customPreview, previewImage }: ProjectCardProps) {
   const href = hasLivePreview ? link : github || '#'
   const [showIframe, setShowIframe] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [showReadMore, setShowReadMore] = useState(false)
   
   // Only try to load iframe for vercel.app domains
   useEffect(() => {
@@ -24,6 +26,11 @@ export default function ProjectCard({ title, description, technologies, github, 
       setShowIframe(link.includes('vercel.app'))
     }
   }, [hasLivePreview, link])
+  
+  // Check if description is longer than 2 lines (roughly 100 characters)
+  useEffect(() => {
+    setShowReadMore(description.length > 100)
+  }, [description])
   
   // Render custom preview for specific projects
   const renderCustomPreview = () => {
@@ -151,11 +158,24 @@ export default function ProjectCard({ title, description, technologies, github, 
           {title}
         </h3>
         
-        <p className="text-sm text-slate-400 mb-4 line-clamp-2">
-          {description}
-        </p>
+        <div className="mb-4">
+          <p className={`text-sm text-slate-400 ${!isExpanded && showReadMore ? 'line-clamp-2' : ''}`}>
+            {description}
+          </p>
+          {showReadMore && (
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                setIsExpanded(!isExpanded)
+              }}
+              className="text-xs text-purple-400 hover:text-purple-300 mt-1 transition-colors"
+            >
+              {isExpanded ? 'Read less' : 'Read more'}
+            </button>
+          )}
+        </div>
         
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-auto">
           {technologies.slice(0, 5).map((tech, i) => (
             <span key={i} className="text-xs px-2 py-1 rounded bg-purple-950/50 text-purple-300 border border-purple-900/50">
               {tech}

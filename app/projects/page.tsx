@@ -89,10 +89,10 @@ export default function ProjectsPage() {
       github: "https://github.com/darthvader58/Tansen"
     },
     {
-      title: "RL Priority Observations",
-      description: "Reinforcement learning for satellite observation scheduling. Optimizing coverage and priority using ML.",
+      title: "Research at CoDe Lab",
+      description: "Optimizing Earth Science Observations: Developing Reinforcement Learning Techniques for Autonomously Determining Priority Observations in a Dynamic Environment",
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "Jupyter"],
-      github: "https://github.com/darthvader58/rl-priority-observations"
+      github: "https://github.com/darthvader58/Code-Lab_RL_PriorityObs"
     },
     {
       title: "Whatrobe",

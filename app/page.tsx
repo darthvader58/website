@@ -11,7 +11,7 @@ export default function HomePage() {
         <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-12 h-12 mr-2"/> Hello, I'm Shashwat Raj
       </h1>
       
-      <div className="relative mb-8 inline-block w-full max-w-sm group">
+      <div className="relative mb-8 inline-block w-50% max-w-sm group">
         {/* Book pages behind - stacked and slightly offset */}
         <div className="absolute left-1 top-1 w-full h-full bg-slate-700/30 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-2" style={{ transform: 'translateX(-3px)' }}></div>
         <div className="absolute left-0.5 top-0.5 w-full h-full bg-slate-600/20 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-1" style={{ transform: 'translateX(-1.5px)' }}></div>
