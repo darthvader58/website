@@ -47,7 +47,7 @@ export default function RootLayout({
             </main>
 
             {/* Sidebar - Right Side (30%) */}
-            <aside className="lg:w-80 lg:sticky lg:top-12 h-fit">
+            <aside className="lg:w-80 lg:sticky lg:top-12 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
               <div className="rounded-lg border border-slate-800 bg-slate-950/50 p-6">
                 <h2 className="text-sm font-semibold text-slate-100 mb-4">Recent Activity</h2>
                 <GitHubActivity />

@@ -100,31 +100,134 @@ export default function GitHubActivity() {
     )
   }
 
+  // Language data based on your GitHub profile
+  const languages = [
+    { name: 'Python', percentage: 28.5, color: '#3572A5' },
+    { name: 'TypeScript', percentage: 18.2, color: '#3178c6' },
+    { name: 'JavaScript', percentage: 15.8, color: '#f1e05a' },
+    { name: 'C', percentage: 12.4, color: '#555555' },
+    { name: 'Java', percentage: 8.6, color: '#b07219' },
+    { name: 'Swift', percentage: 6.3, color: '#F05138' },
+    { name: 'Rust', percentage: 4.2, color: '#dea584' },
+    { name: 'Go', percentage: 3.1, color: '#00ADD8' },
+    { name: 'Ruby', percentage: 2.9, color: '#701516' }
+  ]
+
   return (
-    <div className="space-y-3">
-      {events.map(event => (
-        <a
-          key={event.id}
-          href={`https://github.com/${event.repo.name}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block group"
-        >
-          <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-900/50 transition-colors">
-            <div className="text-purple-400 mt-0.5">
-              {getEventIcon(event.type)}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm text-slate-300 group-hover:text-slate-100 transition-colors line-clamp-2">
-                {getEventDescription(event)}
-              </p>
-              <p className="text-xs text-slate-500 mt-1">
-                {getTimeAgo(event.created_at)}
-              </p>
-            </div>
+    <div className="space-y-6">
+      {/* Activity Overview - Radar Chart Style */}
+      <div className="space-y-3">
+        <h3 className="text-sm font-semibold text-slate-100">Activity Overview</h3>
+        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3">
+          <div className="flex items-center justify-center h-40 relative">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              {/* Grid circles */}
+              <circle cx="100" cy="100" r="80" fill="none" stroke="#1e293b" strokeWidth="1" />
+              <circle cx="100" cy="100" r="60" fill="none" stroke="#1e293b" strokeWidth="1" />
+              <circle cx="100" cy="100" r="40" fill="none" stroke="#1e293b" strokeWidth="1" />
+              <circle cx="100" cy="100" r="20" fill="none" stroke="#1e293b" strokeWidth="1" />
+              
+              {/* Axes */}
+              <line x1="100" y1="20" x2="100" y2="180" stroke="#334155" strokeWidth="1" />
+              <line x1="20" y1="100" x2="180" y2="100" stroke="#334155" strokeWidth="1" />
+              
+              {/* Data polygon - Commits dominant */}
+              <polygon 
+                points="100,30 150,100 100,110 50,100" 
+                fill="#10b981" 
+                fillOpacity="0.3" 
+                stroke="#10b981" 
+                strokeWidth="2"
+              />
+              
+              {/* Data points */}
+              <circle cx="100" cy="30" r="4" fill="#10b981" />
+              <circle cx="150" cy="100" r="4" fill="#10b981" />
+              <circle cx="100" cy="110" r="4" fill="#10b981" />
+              <circle cx="50" cy="100" r="4" fill="#10b981" />
+              
+              {/* Labels */}
+              <text x="100" y="15" textAnchor="middle" fill="#94a3b8" fontSize="10">Code review</text>
+              <text x="165" y="105" textAnchor="start" fill="#94a3b8" fontSize="10">Issues</text>
+              <text x="100" y="195" textAnchor="middle" fill="#94a3b8" fontSize="10">Pull requests</text>
+              <text x="10" y="105" textAnchor="start" fill="#94a3b8" fontSize="10">Commits</text>
+              
+              {/* Percentage labels */}
+              <text x="50" y="95" textAnchor="end" fill="#e2e8f0" fontSize="12" fontWeight="bold">87%</text>
+              <text x="100" y="125" textAnchor="middle" fill="#e2e8f0" fontSize="12" fontWeight="bold">13%</text>
+            </svg>
           </div>
-        </a>
-      ))}
+        </div>
+      </div>
+
+      {/* Language Stats - Custom */}
+      <div className="space-y-3">
+        <h3 className="text-sm font-semibold text-slate-100">Top Languages</h3>
+        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 space-y-2">
+          {languages.slice(0, 6).map((lang) => (
+            <div key={lang.name}>
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-slate-300">{lang.name}</span>
+                <span className="text-slate-400">{lang.percentage}%</span>
+              </div>
+              <div className="w-full bg-slate-800 rounded-full h-1.5">
+                <div 
+                  className="h-1.5 rounded-full transition-all duration-500"
+                  style={{ 
+                    width: `${lang.percentage}%`,
+                    backgroundColor: lang.color
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contribution Graph - Scrollable with Dark Mode */}
+      <div className="space-y-3">
+        <h3 className="text-sm font-semibold text-slate-100">Contributions</h3>
+        <div className="rounded-lg border border-slate-800 bg-[#0d1117] p-3 overflow-x-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+          <div className="min-w-[900px]">
+            <img 
+              src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&bg_color=0d1117&color=39d353&line=39d353&point=ffffff&area=true&hide_border=true&custom_title=GitHub%20Contributions&height=150`}
+              alt="GitHub Contribution Chart"
+              className="w-full"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Activity */}
+      <div className="space-y-4">
+        <h3 className="text-sm font-semibold text-slate-100">Recent Activity</h3>
+        <div className="space-y-3">
+          {events.map(event => (
+            <a
+              key={event.id}
+              href={`https://github.com/${event.repo.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
+              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-900/50 transition-colors">
+                <div className="text-purple-400 mt-0.5">
+                  {getEventIcon(event.type)}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-slate-300 group-hover:text-slate-100 transition-colors line-clamp-2">
+                    {getEventDescription(event)}
+                  </p>
+                  <p className="text-xs text-slate-500 mt-1">
+                    {getTimeAgo(event.created_at)}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
