@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import PhotoGallery from './components/PhotoGallery';
 
 const ArrowIcon = () => (
@@ -7,11 +10,41 @@ const ArrowIcon = () => (
 );
 
 export default function HomePage() {
+  const [showGreeting, setShowGreeting] = useState(false);
+
+  useEffect(() => {
+    // Show greeting after a brief delay
+    const showTimer = setTimeout(() => {
+      setShowGreeting(true);
+    }, 500);
+
+    // Hide greeting after 2.5 seconds
+    const hideTimer = setTimeout(() => {
+      setShowGreeting(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
   return (
     <section className="fade">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
-        <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-12 h-12 mr-2"/> Hello, I'm Shashwat Raj
+      <h1 className="mb-2 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+        <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-12 h-12 mr-2"/> Hey, I'm Shashwat Raj
       </h1>
+      
+      {/* Animated greeting */}
+      <div 
+        className={`mb-6 text-xl text-purple-400 font-medium transition-all duration-700 ${
+          showGreeting 
+            ? 'opacity-100 translate-x-0' 
+            : 'opacity-0 translate-x-8'
+        }`}
+      >
+        How's your day going?
+      </div>
       
       <div className="relative mb-8 inline-block w-full group" style={{ maxWidth: '215px' }}>
         {/* Book pages behind - stacked and slightly offset */}
