@@ -64,3 +64,11 @@ body {
 .fade {
   animation: fadeIn 0.5s ease-in-out;
 }
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-fadeInSlow {
+  animation: fadeIn 1.5s ease-in-out;
+}
