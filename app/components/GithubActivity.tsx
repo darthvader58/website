@@ -215,7 +215,10 @@ export default function GitHubActivity() {
 
       {/* Contribution Graph - Scrollable */}
       <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-slate-100">Contributions 2025</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-slate-100">Contributions</h3>
+          <span className="text-xs text-slate-500">Last 365 days</span>
+        </div>
         <div 
           className="rounded-lg border border-slate-800 bg-slate-900 p-3 overflow-x-auto"
           ref={(el) => {
