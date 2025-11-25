@@ -14,8 +14,6 @@ export const metadata: Metadata = {
   description: 'Computer Science & Engineering student at Arizona State University. Passionate about embedded systems, robotics, and full-stack development.',
   icons: {
     icon: '/assets/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
   },
   openGraph: {
     title: 'Shashwat Raj - Portfolio',
