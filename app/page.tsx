@@ -19,8 +19,7 @@ export default function HomePage() {
         <p className="text-slate-400 leading-relaxed mb-6">
           I'm passionate about robotics, machine learning, and software development. Currently, I'm working as a Machine Learning Developer and Researcher at the Collective Design (CoDe) lab at ASU, where I'm developing Reinforcement Learning techniques to optimize Earth science missions for autonomous priority observations in space. </p>
         <p className="text-slate-400 leading-relaxed mb-6">I'm also the Founder & CEO of <span className="font-medium">WoofCare Solutions</span>, a mobile app connecting dog lovers and care services to improve the lives of stray dogs in India. This project is funded by EPICS (Engineering Projects In Community Service) at ASU and partners with over 60+ NGOs.</p>
-        <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://github.com/darthvader58"><ArrowIcon /><span className="ml-2">"Write It Out"</span></a></p>
-
+      
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
           <div className="border border-slate-800 rounded-lg p-6 bg-slate-950/30">
             <h3 className="text-lg font-semibold text-purple-400 mb-2">Education</h3>
@@ -39,9 +38,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        <p className="text-slate-400 leading-relaxed">
-          Beyond academics, I'm passionate about creating educational technology and contributing to open-source projects. I've developed platforms like Metal Lab, an advanced physics simulation environment, and WoofCare, a social network connecting dog owners with shelters and veterinarians across India.
-        </p>
+        <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://github.com/darthvader58"><ArrowIcon /><span className="ml-2">"Write It Out"</span></a></p>
+
       </div>
     </section>
   )

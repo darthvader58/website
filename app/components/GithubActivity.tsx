@@ -22,7 +22,36 @@ export default function GitHubActivity() {
     fetch(`https://api.github.com/users/${username}/events/public`)
       .then(res => res.json())
       .then(data => {
-        setEvents(data.slice(0, 10))
+        // Group events by repo and type, aggregating commits within 24 hours
+        const groupedEvents: { [key: string]: GitHubEvent & { totalCommits?: number } } = {}
+        
+        data.forEach((event: GitHubEvent) => {
+          const key = `${event.repo.name}-${event.type}`
+          
+          if (!groupedEvents[key]) {
+            groupedEvents[key] = { ...event }
+            if (event.type === 'PushEvent') {
+              groupedEvents[key].totalCommits = event.payload?.size || event.payload?.commits?.length || 1
+            }
+          } else {
+            // If same repo and type, check if within 24 hours
+            const existingTime = new Date(groupedEvents[key].created_at).getTime()
+            const currentTime = new Date(event.created_at).getTime()
+            const timeDiff = Math.abs(existingTime - currentTime)
+            
+            if (timeDiff <= 24 * 60 * 60 * 1000 && event.type === 'PushEvent') {
+              // Aggregate commits
+              const commits = event.payload?.size || event.payload?.commits?.length || 1
+              groupedEvents[key].totalCommits = (groupedEvents[key].totalCommits || 0) + commits
+              // Keep the most recent timestamp
+              if (currentTime > existingTime) {
+                groupedEvents[key].created_at = event.created_at
+              }
+            }
+          }
+        })
+        
+        setEvents(Object.values(groupedEvents).slice(0, 10))
         setLoading(false)
       })
       .catch(() => setLoading(false))
@@ -57,11 +86,11 @@ export default function GitHubActivity() {
     }
   }
 
-  const getEventDescription = (event: GitHubEvent) => {
+  const getEventDescription = (event: GitHubEvent & { totalCommits?: number }) => {
     const repoName = event.repo.name.split('/')[1]
     switch (event.type) {
       case 'PushEvent':
-        const commits = event.payload.commits?.length || 0
+        const commits = event.totalCommits || event.payload?.size || event.payload?.commits?.length || 1
         return `Pushed ${commits} commit${commits !== 1 ? 's' : ''} to ${repoName}`
       case 'CreateEvent':
         return `Created ${event.payload.ref_type} in ${repoName}`

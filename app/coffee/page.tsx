@@ -56,30 +56,62 @@ export default function CoffeePage() {
 
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         <div className="border border-purple-900/30 rounded-lg p-6 bg-purple-950/20 hover:border-purple-700/50 transition-all duration-300">
-          <h3 className="text-xl font-semibold text-purple-300 mb-3">Email</h3>
-          <a href="mailto:rajayshashwat@gmail.com" className="text-slate-300 hover:text-purple-400 transition-colors block mb-2">
+          <h3 className="text-xl font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Email
+          </h3>
+          <a href="mailto:rajayshashwat@gmail.com" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2 mb-2">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+            </svg>
             rajayshashwat@gmail.com
           </a>
-          <a href="mailto:shash.raj@asu.edu" className="text-slate-300 hover:text-purple-400 transition-colors block">
+          <a href="mailto:shash.raj@asu.edu" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+            </svg>
             shash.raj@asu.edu
           </a>
         </div>
 
         <div className="border border-purple-900/30 rounded-lg p-6 bg-purple-950/20 hover:border-purple-700/50 transition-all duration-300">
-          <h3 className="text-xl font-semibold text-purple-300 mb-3">Social</h3>
-          <a href="https://github.com/darthvader58" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors block mb-2">
-            GitHub: @darthvader58
+          <h3 className="text-xl font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+              <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+            </svg>
+            Social
+          </h3>
+          <a href="https://github.com/darthvader58" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2 mb-2">
+            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            @darthvader58
           </a>
-          <a href="https://linkedin.com/in/raj-shashwat" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors block">
-            LinkedIn: /in/raj-shashwat
+          <a href="https://linkedin.com/in/raj-shashwat" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2 mb-2">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            /in/raj-shashwat
+          </a>
+          <a href="https://instagram.com/shash._me" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @shash._me
           </a>
         </div>
       </div>
 
       <div className="border border-slate-800 rounded-lg p-6 bg-slate-950/30">
-        <h3 className="text-xl font-semibold text-slate-100 mb-3">Location</h3>
+        <h3 className="text-xl font-semibold text-slate-100 mb-3 flex items-center gap-2">
+          Location
+        </h3>
         <p className="text-slate-400">
-          Tempe, Arizona • Arizona State University • Open for opportunities and collaborations
+          🌵 Tempe, Arizona • 🎓 Arizona State University • 💼 Open for opportunities and collaborations
         </p>
       </div>
     </section>
