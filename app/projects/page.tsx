@@ -2,13 +2,20 @@ import ProjectCard from '../components/ProjectCard'
 
 export default function ProjectsPage() {
   const projects = [
+    // Top projects with custom previews
     {
-      title: "pip --race",
-      description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
-      technologies: ["React", "Python", "Rust", "Redis", "Docker", "ONNX"],
-      github: "https://github.com/darthvader58/pip--race",
-      link: "https://pip-race.vercel.app",
-      hasLivePreview: true
+      title: "WoofCare",
+      description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
+      technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
+      github: "https://github.com/darthvader58/WoofCare",
+      previewImage: "/images/WoofCarePreview.png"
+    },
+    {
+      title: "Metal Lab",
+      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
+      technologies: ["Next.js", "React", "Three.js", "WebGPU", "TypeScript"],
+      github: "https://github.com/darthvader58/metal-lab",
+      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
     {
       title: "Kavvy",
@@ -16,22 +23,6 @@ export default function ProjectsPage() {
       technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
       github: "https://github.com/darthvader58/kavvy",
       link: "https://kavvy.vercel.app",
-      hasLivePreview: true
-    },
-    {
-      title: "WoofCare Website",
-      description: "Marketing and information website for WoofCare platform with modern design and animations.",
-      technologies: ["Astro", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/darthvader58/WoofCare-Website",
-      link: "https://woofcare-solutions.org",
-      hasLivePreview: true
-    },
-    {
-      title: "Personal Website",
-      description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/darthvader58/personal-website",
-      link: "https://shashwatraj.com",
       hasLivePreview: true
     },
     {
@@ -43,6 +34,45 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "LinkedIn Queens Puzzle",
+      description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
+      technologies: ["C", "Algorithms"],
+      github: "https://github.com/darthvader58/linkedin-queens-puzzle-solution",
+      customPreview: "queens-crown"
+    },
+    {
+      title: "WoofCare Website",
+      description: "Marketing and information website for WoofCare platform with modern design and animations.",
+      technologies: ["Astro", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/darthvader58/WoofCare-Website",
+      link: "https://woofcare-website.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Portfolio",
+      description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/darthvader58/personal-website",
+      link: "https://shashwatraj.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Anagnor",
+      description: "Landslide detection system using computer vision and satellite imagery analysis.",
+      technologies: ["Python", "OpenCV", "Satellite Data"],
+      github: "https://github.com/darthvader58/Anagnor",
+      previewImage: "/images/Anagnor.png"
+    },
+    // Other projects with live previews
+    {
+      title: "pip --race",
+      description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
+      technologies: ["React", "Python", "Rust", "Redis", "Docker", "ONNX"],
+      github: "https://github.com/darthvader58/pip--race",
+      link: "https://pip-race.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "BrainDevils",
       description: "FMS skills assessment web application for sports training.",
       technologies: ["HTML", "CSS", "JavaScript"],
@@ -50,6 +80,8 @@ export default function ProjectsPage() {
       link: "https://braindevils.vercel.app",
       hasLivePreview: true
     },
+    
+    // Software projects without previews
     {
       title: "Tansen",
       description: "AI music transcription system converting audio to musical notation using deep learning models.",
@@ -57,24 +89,10 @@ export default function ProjectsPage() {
       github: "https://github.com/darthvader58/Tansen"
     },
     {
-      title: "WoofCare",
-      description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
-      technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
-      github: "https://github.com/darthvader58/WoofCare",
-      previewImage: "/images/WoofCarePreview.png"
-    },
-    {
       title: "RL Priority Observations",
       description: "Reinforcement learning for satellite observation scheduling. Optimizing coverage and priority using ML.",
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "Jupyter"],
       github: "https://github.com/darthvader58/rl-priority-observations"
-    },
-    {
-      title: "Metal Lab",
-      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
-      technologies: ["Next.js", "React", "Three.js", "WebGPU", "TypeScript"],
-      github: "https://github.com/darthvader58/metal-lab",
-      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
     {
       title: "Whatrobe",
@@ -106,14 +124,6 @@ export default function ProjectsPage() {
       technologies: ["Go", "Kubernetes", "kubectl"],
       github: "https://github.com/darthvader58/kcavo"
     },
-
-    {
-      title: "LinkedIn Queens Puzzle",
-      description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
-      technologies: ["C", "Algorithms"],
-      github: "https://github.com/darthvader58/linkedin-queens-puzzle-solution",
-      customPreview: "queens-crown"
-    },
     {
       title: "Lua Interpreter",
       description: "Lua programming language interpreter written in Go.",
@@ -133,11 +143,11 @@ export default function ProjectsPage() {
       github: "https://github.com/darthvader58/ml-practice"
     },
     {
-      title: "Anagnor",
-      description: "Landslide detection system using computer vision and satellite imagery analysis.",
-      technologies: ["Python", "OpenCV", "Satellite Data"],
-      github: "https://github.com/darthvader58/Anagnor",
-      previewImage: "images/Anagnor.png"
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      github: "https://github.com/darthvader58/biryani",
+      link: "https://devpost.com/software/formath"
     },
     {
       title: "Peer-Faculty Interaction",
@@ -145,24 +155,13 @@ export default function ProjectsPage() {
       technologies: ["Java", "JavaFX", "SQLite"],
       github: "https://github.com/darthvader58/CSE-360-Team-Project"
     },
-    {
-      title: "Resume",
-      description: "LaTeX source files for professional resume with multiple versions.",
-      technologies: ["LaTeX", "TeX"],
-      github: "https://github.com/darthvader58/Resume"
-    },
 
+    // Hardware and embedded projects
     {
       title: "Makeathon",
       description: "Arduino-based autonomous maze solver robot for competition.",
       technologies: ["Arduino", "C++", "Sensors"],
       github: "https://github.com/darthvader58/makeathon"
-    },
-    {
-      title: "Formath",
-      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      link: "https://devpost.com/software/formath"
     },
     {
       title: "Embedded Robotics",
