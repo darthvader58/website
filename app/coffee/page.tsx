@@ -43,7 +43,7 @@ export default function CoffeePage() {
               Support my work and projects. Every coffee helps fuel late-night coding sessions and new ideas.
             </p>
             <a
-              href="https://buymeacoffee.com/shashwatraj"
+              href="https://venmo.com/u/shash58"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-500 hover:to-amber-500 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-amber-900/50"
