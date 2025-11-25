@@ -1,3 +1,5 @@
+import PhotoGallery from './components/PhotoGallery';
+
 const ArrowIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z" fill="currentColor" />
@@ -58,8 +60,11 @@ export default function HomePage() {
         </div>
 
         <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://github.com/darthvader58"><ArrowIcon /><span className="ml-2">"Write It Out"</span></a></p>
-
+        <p className="text-slate-400 leading-relaxed mb-8">I love travelling!</p>
       </div>
+
+      {/* Dynamic Photo Gallery */}
+      <PhotoGallery />
     </section>
   )
 }
