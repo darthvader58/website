@@ -49,7 +49,7 @@ export default function PhotoGallery() {
                 style={{ 
                   animationFillMode: 'forwards', 
                   animationDelay: `${index * 0.1}s`,
-                  height: '350px',
+                  height: '225px',
                   width: 'auto',
                   objectFit: 'cover'
                 }}
