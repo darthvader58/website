@@ -97,6 +97,87 @@ html.light .hover\:bg-slate-800:hover {
   background-color: #e2e8f0 !important;
 }
 
+/* Light mode prose text */
+html.light .prose {
+  color: #1e293b !important;
+}
+
+html.light .prose p {
+  color: #334155 !important;
+}
+
+html.light .prose h3 {
+  color: #0f172a !important;
+}
+
+html.light .prose a {
+  color: #7c3aed !important;
+}
+
+html.light .prose a:hover {
+  color: #a855f7 !important;
+}
+
+/* Light mode specific overrides for better readability */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4 {
+  color: #0f172a !important;
+}
+
+html.light p {
+  color: #334155 !important;
+}
+
+html.light a {
+  color: #7c3aed !important;
+}
+
+/* Light mode card backgrounds */
+html.light [class*="bg-slate-950"] {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Light mode for specific text colors */
+html.light .text-purple-400 {
+  color: #7c3aed !important;
+}
+
+html.light .text-purple-300 {
+  color: #7c3aed !important;
+}
+
+/* Light mode for technology/skill badges */
+html.light .bg-purple-950\/50 {
+  background-color: #ede9fe !important;
+  border-color: #a78bfa !important;
+}
+
+html.light .border-purple-900\/50 {
+  border-color: #a78bfa !important;
+}
+
+html.light .bg-purple-900\/30 {
+  background-color: #f3f0ff !important;
+}
+
+html.light .border-purple-800\/30 {
+  border-color: #c4b5fd !important;
+}
+
+/* Ensure badge text is visible in light mode */
+html.light span.text-purple-300 {
+  color: #7c3aed !important;
+  font-weight: 500;
+}
+
+/* Light mode hover states for cards */
+html.light .hover\:border-purple-700\/50:hover {
+  border-color: #a78bfa !important;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

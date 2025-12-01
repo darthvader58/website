@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTheme } from './ThemeProvider'
 
 interface GitHubEvent {
   id: string
@@ -17,6 +18,14 @@ export default function GitHubActivity() {
   const [events, setEvents] = useState<GitHubEvent[]>([])
   const [loading, setLoading] = useState(true)
   const username = 'darthvader58'
+  
+  let theme = 'dark'
+  try {
+    const themeContext = useTheme()
+    theme = themeContext.theme
+  } catch (e) {
+    // ThemeProvider not available yet
+  }
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}/events/public`)
@@ -211,7 +220,10 @@ export default function GitHubActivity() {
               src={`https://ghchart.rshah.org/${username}`}
               alt="GitHub Contribution Chart"
               className="w-full"
-              style={{ 
+              style={theme === 'light' ? { 
+                filter: 'brightness(0.9) contrast(1.1)',
+                mixBlendMode: 'normal'
+              } : { 
                 filter: 'invert(1) hue-rotate(180deg)',
                 mixBlendMode: 'screen'
               }}
