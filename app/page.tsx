@@ -37,7 +37,7 @@ export default function HomePage() {
       
       {/* Animated greeting */}
       <div 
-        className={`mb-6 text-xl text-purple-400 font-medium transition-all duration-700 ${
+        className={`mb-6 text-xl text-purple-400 font-medium transition-all duration-1500 ${
           showGreeting 
             ? 'opacity-100 translate-x-0' 
             : 'opacity-0 translate-x-8'
