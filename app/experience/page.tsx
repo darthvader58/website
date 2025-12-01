@@ -49,7 +49,7 @@ export default function ExperiencePage() {
       technologies: ["Python", "Web Development", "Project Management"]
     },
     {
-      title: "Software Developer",
+      title: "Software Developer Intern",
       company: "IIRIS",
       period: "June 2022 - August 2022",
       location: "India",

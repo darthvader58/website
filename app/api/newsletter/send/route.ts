@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { generateNewsletterEmail } from '@/app/lib/email-templates';
 
-// HTML email template
+// Legacy function - now uses imported template
 function generateEmailHTML(title: string, content: string, postUrl?: string) {
+  return generateNewsletterEmail(title, content, postUrl);
+}
+
+// Keep old function for backwards compatibility
+function _generateEmailHTML_old(title: string, content: string, postUrl?: string) {
   return `
 <!DOCTYPE html>
 <html>
@@ -86,10 +92,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // For Vercel deployment: Newsletter sending is disabled
-    // To enable, add database integration (MongoDB, PostgreSQL, Supabase, etc.)
-    // Or use SUBSCRIBERS_EMAILS environment variable with comma-separated emails
-    
     return NextResponse.json({
       success: false,
       error: 'Newsletter sending requires database integration',
