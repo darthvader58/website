@@ -21,6 +21,10 @@ export async function POST(request: Request) {
 
     // Send welcome email
     try {
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error('RESEND_API_KEY is not configured');
+      }
+      
       const resend = new Resend(process.env.RESEND_API_KEY);
       const result = await resend.emails.send({
         from: 'Shashwat Raj <onboarding@resend.dev>',
@@ -81,15 +85,25 @@ export async function POST(request: Request) {
 </html>
         `,
       });
-    } catch (emailError) {
+      
+      console.log('Welcome email sent successfully:', result);
+      
+      return NextResponse.json({
+        success: true,
+        message: 'Successfully subscribed to newsletter!',
+        emailSent: true,
+        emailId: result.data?.id
+      });
+    } catch (emailError: any) {
       console.error('Failed to send welcome email:', emailError);
-      // Don't fail the subscription if email fails
+      
+      return NextResponse.json({
+        success: false,
+        message: 'Failed to send welcome email',
+        error: emailError.message,
+        emailSent: false
+      }, { status: 500 });
     }
-
-    return NextResponse.json({
-      success: true,
-      message: 'Successfully subscribed to newsletter!'
-    });
 
   } catch (error) {
     console.error('Newsletter subscription error:', error);
