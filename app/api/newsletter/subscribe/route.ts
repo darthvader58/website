@@ -23,21 +23,31 @@ export async function POST(request: Request) {
 
     // Check if already subscribed
     const existing = await sql`
-      SELECT email FROM subscribers WHERE email = ${email.toLowerCase()}
+      SELECT email, active FROM subscribers WHERE email = ${email.toLowerCase()}
     `;
 
     if (existing.rows.length > 0) {
-      return NextResponse.json(
-        { error: 'This email is already subscribed' },
-        { status: 400 }
-      );
+      // If inactive, reactivate the subscription
+      if (!existing.rows[0].active) {
+        await sql`
+          UPDATE subscribers 
+          SET active = true, subscribed_at = CURRENT_TIMESTAMP
+          WHERE email = ${email.toLowerCase()}
+        `;
+      } else {
+        // Already active
+        return NextResponse.json(
+          { error: 'This email is already subscribed' },
+          { status: 400 }
+        );
+      }
+    } else {
+      // Add new subscriber to database
+      await sql`
+        INSERT INTO subscribers (email, confirmed, active)
+        VALUES (${email.toLowerCase()}, true, true)
+      `;
     }
-
-    // Add to database
-    await sql`
-      INSERT INTO subscribers (email, confirmed, active)
-      VALUES (${email.toLowerCase()}, true, true)
-    `;
 
 
     // Send welcome email

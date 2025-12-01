@@ -19,7 +19,7 @@ export function generateWelcomeEmail(): string {
           <tr>
             <td style="padding: 0 0 32px 0; border-bottom: 1px solid #e5e5e5;">
               <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px;">
-                Shash
+                Your Shash is Back!
               </h1>
               <p style="margin: 8px 0 0 0; font-size: 15px; color: #666666; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                 Build, Explore, Discuss and Have Fun!
@@ -43,7 +43,7 @@ export function generateWelcomeEmail(): string {
               </p>
               
               <p style="margin: 0 0 20px 0; font-size: 18px; line-height: 1.6; color: #1a1a1a;">
-                I write about things I'm working on, lessons I've learned, ideas I'm exploring, and my take on what's trending in the world. Can't promise no spam or banter, but definitely some genuine insights along the way. At the end of each blog, you'll also find some amazing opportunities that might catch your attention, such as internship opportunities, fellowship applications and hackathons/competitions.
+                I write about things I'm working on, lessons I've learned, ideas I'm exploring, and my take on what's trending in the world. Can't promise no spam or banter, but definitely some genuine insights along the way. At the end of each blog, you'll also find some amazing opportunities that might catch your attention, such as internship opportunities, fellowship applications and hackathons/competitions. Dw, you'll also get some underrated book, show and movie recommendations too. 
               </p>
               
               <p style="margin: 0 0 32px 0; font-size: 18px; line-height: 1.6; color: #1a1a1a;">
