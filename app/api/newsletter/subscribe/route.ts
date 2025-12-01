@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { sql } from '@vercel/postgres';
 import { generateWelcomeEmail } from '@/app/lib/email-templates';
 
 // Email validation
@@ -19,6 +20,25 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    // Check if already subscribed
+    const existing = await sql`
+      SELECT email FROM subscribers WHERE email = ${email.toLowerCase()}
+    `;
+
+    if (existing.rows.length > 0) {
+      return NextResponse.json(
+        { error: 'This email is already subscribed' },
+        { status: 400 }
+      );
+    }
+
+    // Add to database
+    await sql`
+      INSERT INTO subscribers (email, confirmed, active)
+      VALUES (${email.toLowerCase()}, true, true)
+    `;
+
 
     // Send welcome email
     try {

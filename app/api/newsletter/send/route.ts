@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { sql } from '@vercel/postgres';
 import { generateNewsletterEmail } from '@/app/lib/email-templates';
 
 // Legacy function - now uses imported template
@@ -92,12 +93,51 @@ export async function POST(request: Request) {
       );
     }
 
+    // Get all active subscribers from database
+    const result = await sql`
+      SELECT email FROM subscribers WHERE active = true
+    `;
+
+    const subscribers = result.rows;
+
+    if (subscribers.length === 0) {
+      return NextResponse.json(
+        { error: 'No active subscribers found' },
+        { status: 400 }
+      );
+    }
+
+    // Generate email HTML
+    const emailHTML = generateEmailHTML(title, content, postUrl);
+
+    // Send emails using Resend
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const emailResults = [];
+    const errors = [];
+
+    for (const subscriber of subscribers) {
+      try {
+        const emailResult = await resend.emails.send({
+          from: 'Shashwat Raj <newsletter@shashwatraj.com>',
+          to: subscriber.email,
+          subject: title,
+          html: emailHTML,
+        });
+        emailResults.push({ email: subscriber.email, success: true, id: emailResult.data?.id });
+      } catch (error: any) {
+        console.error(`Failed to send to ${subscriber.email}:`, error);
+        errors.push({ email: subscriber.email, error: error.message });
+      }
+    }
+
     return NextResponse.json({
-      success: false,
-      error: 'Newsletter sending requires database integration',
-      message: 'File system storage doesn\'t work on Vercel serverless functions. Please integrate a database to store subscribers.',
-      note: 'Welcome emails still work when users subscribe!'
-    }, { status: 501 });
+      success: true,
+      message: `Newsletter sent to ${emailResults.length} of ${subscribers.length} subscribers`,
+      subscriberCount: subscribers.length,
+      sent: emailResults.length,
+      failed: errors.length,
+      errors: errors.length > 0 ? errors : undefined
+    });
 
   } catch (error) {
     console.error('Newsletter send error:', error);
