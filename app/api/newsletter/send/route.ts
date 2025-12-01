@@ -1,19 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import fs from 'fs';
-import path from 'path';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const SUBSCRIBERS_FILE = path.join(process.cwd(), 'data', 'subscribers.json');
-
-// Read subscribers
-function getSubscribers() {
-  if (!fs.existsSync(SUBSCRIBERS_FILE)) {
-    return { subscribers: [] };
-  }
-  const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8');
-  return JSON.parse(data);
-}
 
 // HTML email template
 function generateEmailHTML(title: string, content: string, postUrl?: string) {
@@ -82,7 +70,7 @@ export async function POST(request: Request) {
   try {
     const { title, content, postUrl, apiKey } = await request.json();
 
-    // Simple API key protection (set this in your environment variables)
+    // Simple API key protection
     const ADMIN_API_KEY = process.env.NEWSLETTER_API_KEY || 'your-secret-key';
     
     if (apiKey !== ADMIN_API_KEY) {
@@ -100,47 +88,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // Get subscribers
-    const data = getSubscribers();
-    const confirmedSubscribers = data.subscribers.filter((sub: any) => sub.confirmed || true); // For now, send to all
-
-    if (confirmedSubscribers.length === 0) {
-      return NextResponse.json(
-        { error: 'No subscribers found' },
-        { status: 400 }
-      );
-    }
-
-    // Generate email HTML
-    const emailHTML = generateEmailHTML(title, content, postUrl);
-
-    // Send emails using Resend
-    const emailResults = [];
-    const errors = [];
-
-    for (const subscriber of confirmedSubscribers) {
-      try {
-        const result = await resend.emails.send({
-          from: 'Shashwat Raj <newsletter@shashwatraj.com>', // Change this to your verified domain
-          to: subscriber.email,
-          subject: title,
-          html: emailHTML,
-        });
-        emailResults.push({ email: subscriber.email, success: true, id: result.data?.id });
-      } catch (error: any) {
-        console.error(`Failed to send to ${subscriber.email}:`, error);
-        errors.push({ email: subscriber.email, error: error.message });
-      }
-    }
-
+    // For Vercel deployment: Newsletter sending is disabled
+    // To enable, add database integration (MongoDB, PostgreSQL, Supabase, etc.)
+    // Or use SUBSCRIBERS_EMAILS environment variable with comma-separated emails
+    
     return NextResponse.json({
-      success: true,
-      message: `Newsletter sent to ${emailResults.length} of ${confirmedSubscribers.length} subscribers`,
-      subscriberCount: confirmedSubscribers.length,
-      sent: emailResults.length,
-      failed: errors.length,
-      errors: errors.length > 0 ? errors : undefined
-    });
+      success: false,
+      error: 'Newsletter sending requires database integration',
+      message: 'File system storage doesn\'t work on Vercel serverless functions. Please integrate a database to store subscribers.',
+      note: 'Welcome emails still work when users subscribe!'
+    }, { status: 501 });
 
   } catch (error) {
     console.error('Newsletter send error:', error);

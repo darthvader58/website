@@ -1,34 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import fs from 'fs';
-import path from 'path';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const SUBSCRIBERS_FILE = path.join(process.cwd(), 'data', 'subscribers.json');
-
-// Ensure data directory exists
-function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), 'data');
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-  if (!fs.existsSync(SUBSCRIBERS_FILE)) {
-    fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify({ subscribers: [] }, null, 2));
-  }
-}
-
-// Read subscribers
-function getSubscribers() {
-  ensureDataDir();
-  const data = fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8');
-  return JSON.parse(data);
-}
-
-// Save subscribers
-function saveSubscribers(data: any) {
-  ensureDataDir();
-  fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(data, null, 2));
-}
 
 // Email validation
 function isValidEmail(email: string): boolean {
@@ -47,32 +20,6 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-
-    // Get current subscribers
-    const data = getSubscribers();
-    
-    // Check if already subscribed
-    const existingSubscriber = data.subscribers.find(
-      (sub: any) => sub.email.toLowerCase() === email.toLowerCase()
-    );
-
-    if (existingSubscriber) {
-      return NextResponse.json(
-        { error: 'This email is already subscribed' },
-        { status: 400 }
-      );
-    }
-
-    // Add new subscriber
-    const newSubscriber = {
-      email: email.toLowerCase(),
-      subscribedAt: new Date().toISOString(),
-      confirmed: false,
-      id: Date.now().toString()
-    };
-
-    data.subscribers.push(newSubscriber);
-    saveSubscribers(data);
 
     // Send welcome email
     try {
