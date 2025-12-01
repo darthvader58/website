@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { useTheme } from './ThemeProvider'
 
 interface CircuitTrace {
   x: number
@@ -22,6 +23,14 @@ export default function CircuitBackground() {
   const mouseRef = useRef({ x: 0, y: 0 })
   const tracesRef = useRef<CircuitTrace[]>([])
   const padsRef = useRef<CircuitPad[]>([])
+  
+  let theme = 'dark'
+  try {
+    const themeContext = useTheme()
+    theme = themeContext.theme
+  } catch (e) {
+    // ThemeProvider not available yet
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -134,7 +143,8 @@ export default function CircuitBackground() {
     }
 
     const drawCircuit = () => {
-      ctx.fillStyle = '#000000'
+      const isLight = theme === 'light'
+      ctx.fillStyle = isLight ? '#f8fafc' : '#000000'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       const mouse = mouseRef.current
@@ -142,9 +152,15 @@ export default function CircuitBackground() {
 
       // Draw cursor glow effect
       const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 120)
-      gradient.addColorStop(0, 'rgba(139, 92, 246, 0.15)')
-      gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.05)')
-      gradient.addColorStop(1, 'rgba(139, 92, 246, 0)')
+      if (isLight) {
+        gradient.addColorStop(0, 'rgba(139, 92, 246, 0.08)')
+        gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.03)')
+        gradient.addColorStop(1, 'rgba(139, 92, 246, 0)')
+      } else {
+        gradient.addColorStop(0, 'rgba(139, 92, 246, 0.15)')
+        gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.05)')
+        gradient.addColorStop(1, 'rgba(139, 92, 246, 0)')
+      }
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -157,18 +173,18 @@ export default function CircuitBackground() {
           intensity = Math.pow(intensity, 1.2)
         }
 
-        const baseR = 20
-        const baseG = 18
-        const baseB = 35
+        const baseR = isLight ? 200 : 20
+        const baseG = isLight ? 195 : 18
+        const baseB = isLight ? 210 : 35
 
-        const brightR = 160
-        const brightG = 120
-        const brightB = 220
+        const brightR = isLight ? 120 : 160
+        const brightG = isLight ? 80 : 120
+        const brightB = isLight ? 180 : 220
 
         const r = Math.round(baseR + (brightR - baseR) * intensity)
         const g = Math.round(baseG + (brightG - baseG) * intensity)
         const b = Math.round(baseB + (brightB - baseB) * intensity)
-        const alpha = (0.25 + intensity * 0.75) * 0.45
+        const alpha = (0.25 + intensity * 0.75) * (isLight ? 0.35 : 0.45)
 
         if (intensity > 0.4) {
           ctx.shadowBlur = 8 * intensity
@@ -192,18 +208,19 @@ export default function CircuitBackground() {
           intensity = Math.pow(intensity, 1.2)
         }
 
-        const baseR = 25
-        const baseG = 22
-        const baseB = 40
+        const isLight = theme === 'light'
+        const baseR = isLight ? 205 : 25
+        const baseG = isLight ? 200 : 22
+        const baseB = isLight ? 215 : 40
 
-        const brightR = 170
-        const brightG = 130
-        const brightB = 230
+        const brightR = isLight ? 130 : 170
+        const brightG = isLight ? 90 : 130
+        const brightB = isLight ? 190 : 230
 
         const r = Math.round(baseR + (brightR - baseR) * intensity)
         const g = Math.round(baseG + (brightG - baseG) * intensity)
         const b = Math.round(baseB + (brightB - baseB) * intensity)
-        const alpha = (0.3 + intensity * 0.7) * 0.45
+        const alpha = (0.3 + intensity * 0.7) * (isLight ? 0.35 : 0.45)
 
         if (intensity > 0.4) {
           ctx.shadowBlur = 6 * intensity
@@ -252,13 +269,13 @@ export default function CircuitBackground() {
       window.removeEventListener('mousemove', handleMouseMove)
       cancelAnimationFrame(animationId)
     }
-  }, [])
+  }, [theme])
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
-      style={{ background: '#000000' }}
+      style={{ background: theme === 'light' ? '#f8fafc' : '#000000' }}
     />
   )
 }

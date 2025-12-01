@@ -8,6 +8,7 @@ import { Navbar } from './components/nav'
 import Footer from './components/footer'
 import CircuitBackground from './components/CircuitBackground'
 import GitHubActivity from './components/GithubActivity'
+import { ThemeProvider } from './components/ThemeProvider'
 
 export const metadata: Metadata = {
   title: 'Shashwat Raj - Portfolio',
@@ -39,26 +40,28 @@ export default function RootLayout({
   return (
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
       <body className="antialiased text-slate-100">
-        <CircuitBackground />
-        <div className="mx-auto max-w-[90%] px-4 lg:px-5">
-          <div className="flex flex-col lg:flex-row gap-6 py-12">
-            {/* Main Content - Left Side */}
-            <main className="flex-1 min-w-0">
-              <Navbar />
-              {children}
-              <Footer />
-            </main>
+        <ThemeProvider>
+          <CircuitBackground />
+          <div className="mx-auto max-w-[90%] px-4 lg:px-5">
+            <div className="flex flex-col lg:flex-row gap-6 py-12">
+              {/* Main Content - Left Side */}
+              <main className="flex-1 min-w-0">
+                <Navbar />
+                {children}
+                <Footer />
+              </main>
 
-            {/* Sidebar - Right Side */}
-            <aside className="lg:sticky lg:top-12 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:w-[340px] flex-shrink-0">
-              <div className="rounded-lg border border-slate-800 bg-slate-950/50 p-6">
-                <GitHubActivity />
-              </div>
-            </aside>
+              {/* Sidebar - Right Side */}
+              <aside className="lg:sticky lg:top-12 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:w-[340px] flex-shrink-0">
+                <div className="rounded-lg border border-slate-800 dark:border-slate-800 light:border-slate-200 bg-slate-950/50 dark:bg-slate-950/50 light:bg-white/80 p-6">
+                  <GitHubActivity />
+                </div>
+              </aside>
+            </div>
           </div>
-        </div>
-        <Analytics />
-        <SpeedInsights />
+          <Analytics />
+          <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   )
