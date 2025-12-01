@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       
       const resend = new Resend(process.env.RESEND_API_KEY);
       const result = await resend.emails.send({
-        from: 'Shashwat Raj <onboarding@resend.dev>',
+        from: 'Shashwat Raj <newsletter@shashwatraj.com>',
         to: email.toLowerCase(),
         subject: 'Welcome to Shashwat Raj\'s Newsletter!',
         html: `
