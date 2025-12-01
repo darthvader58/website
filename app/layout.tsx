@@ -11,7 +11,7 @@ import GitHubActivity from './components/GithubActivity'
 import { ThemeProvider } from './components/ThemeProvider'
 
 export const metadata: Metadata = {
-  title: 'Shashwat Raj - Portfolio',
+  title: 'Shash is me',
   description: 'Computer Science & Engineering student at Arizona State University. Passionate about embedded systems, robotics, and full-stack development.',
   icons: {
     icon: '/assets/favicon.ico',
