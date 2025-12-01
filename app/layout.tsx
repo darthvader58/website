@@ -12,13 +12,13 @@ import { ThemeProvider } from './components/ThemeProvider'
 
 export const metadata: Metadata = {
   title: 'Shash is me',
-  description: 'Computer Science & Engineering student at Arizona State University. Passionate about embedded systems, robotics, and full-stack development.',
+  description: 'Computer Engineering & Math student at Arizona State University. Passionate about embedded systems, robotics, and full-stack development.',
   icons: {
     icon: '/assets/favicon.ico',
   },
   openGraph: {
     title: 'Shash is me',
-    description: 'Computer Science & Engineering student at Arizona State University',
+    description: 'Computer Engineering & Math student at Arizona State University',
     url: 'https://shashwatraj.com',
     siteName: 'Shashwat Raj',
     locale: 'en_US',
