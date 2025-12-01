@@ -184,17 +184,17 @@ export default function GitHubActivity() {
               <circle cx="100" cy="140" r="4" fill="#10b981" />
               <circle cx="30" cy="100" r="4" fill="#10b981" />
               
-              {/* Labels */}
-              <text x="100" y="15" textAnchor="middle" fill="#94a3b8" fontSize="10">Code review</text>
-              <text x="165" y="105" textAnchor="start" fill="#94a3b8" fontSize="10">Issues</text>
-              <text x="100" y="195" textAnchor="middle" fill="#94a3b8" fontSize="10">Pull requests</text>
-              <text x="10" y="105" textAnchor="start" fill="#94a3b8" fontSize="10">Commits</text>
+              {/* Labels - positioned outside the chart */}
+              <text x="100" y="12" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="500">Code review</text>
+              <text x="188" y="103" textAnchor="start" fill="#94a3b8" fontSize="9" fontWeight="500">Issues</text>
+              <text x="100" y="198" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="500">Pull requests</text>
+              <text x="12" y="95" textAnchor="end" fill="#94a3b8" fontSize="9" fontWeight="500">Commits</text>
               
-              {/* Percentage labels */}
-              <text x="100" y="85" textAnchor="middle" fill="#e2e8f0" fontSize="11" fontWeight="bold">12%</text>
-              <text x="125" y="95" textAnchor="start" fill="#e2e8f0" fontSize="11" fontWeight="bold">25%</text>
-              <text x="100" y="155" textAnchor="middle" fill="#e2e8f0" fontSize="11" fontWeight="bold">18%</text>
-              <text x="25" y="95" textAnchor="end" fill="#e2e8f0" fontSize="11" fontWeight="bold">87%</text>
+              {/* Percentage labels - positioned near data points */}
+              <text x="100" y="82" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">12%</text>
+              <text x="128" y="103" textAnchor="start" fill="#e2e8f0" fontSize="10" fontWeight="bold">25%</text>
+              <text x="100" y="152" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">18%</text>
+              <text x="22" y="110" textAnchor="end" fill="#e2e8f0" fontSize="10" fontWeight="bold">87%</text>
             </svg>
           </div>
         </div>
