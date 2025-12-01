@@ -64,7 +64,7 @@ export default function BlogPage() {
             <h2 className="text-2xl font-bold text-slate-100">Subscribe to Newsletter</h2>
           </div>
           <p className="text-slate-300 mb-6">
-            Get the latest posts delivered right to your inbox. No spam, unsubscribe anytime.
+            Get the latest posts delivered right to your inbox. Unsubscribe anytime.
           </p>
           <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
             <input
