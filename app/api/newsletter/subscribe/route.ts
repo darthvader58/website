@@ -22,8 +22,8 @@ export async function POST(request: Request) {
     // Send welcome email
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
-        from: 'Shashwat Raj <newsletter@shashwatraj.com>', // Change this to your verified domain
+      const result = await resend.emails.send({
+        from: 'Shashwat Raj <onboarding@resend.dev>',
         to: email.toLowerCase(),
         subject: 'Welcome to Shashwat Raj\'s Newsletter!',
         html: `
