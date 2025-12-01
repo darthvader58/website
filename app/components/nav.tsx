@@ -9,6 +9,7 @@ const navItems = {
   '/': { name: 'Home' },
   '/experience': { name: 'Experience' },
   '/projects': { name: 'Projects' },
+  '/blog': { name: 'Blog' },
   /*'/gcsp': { name: 'GCSP' },*/
   '/resume': { name: 'Resume' },
 }
