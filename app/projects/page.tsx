@@ -7,14 +7,14 @@ export default function ProjectsPage() {
       title: "WoofCare",
       description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
       technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
-      github: "https://github.com/darthvader58/WoofCare",
+      github: "https://github.com/Woofcare/WoofCare",
       previewImage: "/images/WoofCarePreview.png"
     },
     {
       title: "Metal Lab",
       description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
       technologies: ["Next.js", "React", "Three.js", "WebGPU", "TypeScript"],
-      github: "https://github.com/darthvader58/metal-lab",
+      github: "https://github.com/arpan404/metal_lab",
       previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
     {
@@ -37,14 +37,14 @@ export default function ProjectsPage() {
       title: "LinkedIn Queens Puzzle",
       description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
       technologies: ["C", "Algorithms"],
-      github: "https://github.com/darthvader58/linkedin-queens-puzzle-solution",
+      github: "https://github.com/darthvader58/linkedin_queens_solution",
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
       title: "WoofCare Website",
       description: "Marketing and information website for WoofCare platform with modern design and animations.",
       technologies: ["Astro", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/darthvader58/WoofCare-Website",
+      github: "https://github.com/darthvader58/woofCare-website",
       link: "https://woofcare-website.vercel.app",
       hasLivePreview: true
     },
@@ -52,7 +52,7 @@ export default function ProjectsPage() {
       title: "Portfolio",
       description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/darthvader58/personal-website",
+      github: "https://github.com/darthvader58/website",
       link: "https://shashwatraj.vercel.app",
       hasLivePreview: true
     },
@@ -60,7 +60,7 @@ export default function ProjectsPage() {
       title: "Makeathon",
       description: "Arduino-based autonomous maze solver robot for competition.",
       technologies: ["Arduino", "C++", "Sensors"],
-      github: "https://github.com/darthvader58/makeathon",
+      github: "https://github.com/cabbageAdi/makeathon",
       link: "https://makeathon.vercel.app",
       hasLivePreview: true
     },
@@ -100,7 +100,8 @@ export default function ProjectsPage() {
       title: "Research at CoDe Lab",
       description: "Optimizing Earth Science Observations: Developing Reinforcement Learning Techniques for Autonomously Determining Priority Observations in a Dynamic Environment",
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "Jupyter"],
-      github: "https://github.com/darthvader58/Code-Lab_RL_PriorityObs"
+      github: "https://github.com/darthvader58/Code-Lab_RL_PriorityObs",
+      previewImage: "/images/research.png"
     },
     {
       title: "Whatrobe",
@@ -112,7 +113,7 @@ export default function ProjectsPage() {
       title: "Garud",
       description: "Crop disease classification using deep learning. Achieved 89.23% accuracy on agricultural dataset.",
       technologies: ["Keras", "Tensorflow", "Python", "OpenCV"],
-      github: "https://github.com/darthvader58/Garud"
+      github: "https://github.com/darthvader58/garud"
     },
     {
       title: "GameOfLife",
@@ -124,7 +125,7 @@ export default function ProjectsPage() {
       title: "N-Body Simulator",
       description: "Gravitational physics simulation with multiple body interactions and visualization.",
       technologies: ["Swift", "Metal", "Physics"],
-      github: "https://github.com/darthvader58/N-Body-Simulator"
+      github: "https://github.com/darthvader58/NBodySimulator"
     },
     {
       title: "kcavo",
@@ -136,19 +137,19 @@ export default function ProjectsPage() {
       title: "Lua Interpreter",
       description: "Lua programming language interpreter written in Go.",
       technologies: ["Go", "Compiler Design"],
-      github: "https://github.com/darthvader58/lua-interpreter-go"
+      github: "https://github.com/darthvader58/lua-interpreter"
     },
     {
       title: "Quant Challenge 2025",
       description: "Quantitative finance modeling and algorithmic trading strategies.",
       technologies: ["Python", "Jupyter", "Pandas", "NumPy"],
-      github: "https://github.com/darthvader58/quant-challenge-2025"
+      github: "https://github.com/darthvader58/qc2025"
     },
     {
       title: "ML Practice",
       description: "Machine learning implementations and experiments with various algorithms.",
       technologies: ["Python", "Jupyter", "Scikit-learn"],
-      github: "https://github.com/darthvader58/ml-practice"
+      github: "https://github.com/darthvader58/ML_practice"
     },
     {
       title: "Formath",
@@ -161,7 +162,13 @@ export default function ProjectsPage() {
       title: "Peer-Faculty Interaction",
       description: "Educational platform for student-faculty communication built for CSE 360 project.",
       technologies: ["Java", "JavaFX", "SQLite"],
-      github: "https://github.com/darthvader58/CSE-360-Team-Project"
+      github: "https://github.com/darthvader58/Peer-Faculty-Interaction-EdTech"
+    },
+    {
+      title: "Terrader",
+      description: "Terrader is a web based game in the form of a crypto-trading simulator that functions with respect to a carbon footprint, carbon score and strategic gameplay; and has other interesting side-features to increase awareness among the players on how a fruitful and trending practice has an unnoticed contribution to climate change.",
+      technologies: ["React", "Python", "OpenAI GPT"],
+      github: "https://github.com/theVedanta/terrader"
     },
 
     // Hardware and embedded projects
@@ -178,12 +185,14 @@ export default function ProjectsPage() {
     {
       title: "Coconut CubeSat",
       description: "CubeSat satellite project for NASA CSLI Launch 2024. Flight software development.",
-      technologies: ["Linux", "KiCad", "CUDA", "ROS", "Gazebo"]
+      technologies: ["Linux", "KiCad", "CUDA", "ROS", "Gazebo"],
+      previewImage: "https://www.bluecanyontech.com/wp-content/uploads/spacecraft-model-12u.png"
     },
     {
       title: "Micromouse",
       description: "Autonomous maze-solving robot using Dijkstra's algorithm and PID control.",
-      technologies: ["Embedded C", "MIT App Inventor", "Dijkstra", "PID"]
+      technologies: ["Embedded C", "MIT App Inventor", "Dijkstra", "PID"],
+      previewImage: "/images/micromouse.png"
     }
   ]
 
