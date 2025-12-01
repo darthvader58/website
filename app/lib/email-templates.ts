@@ -19,7 +19,7 @@ export function generateWelcomeEmail(): string {
           <tr>
             <td style="padding: 0 0 32px 0; border-bottom: 1px solid #e5e5e5;">
               <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px;">
-                Shashwat Raj
+                Shash
               </h1>
               <p style="margin: 8px 0 0 0; font-size: 15px; color: #666666; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                 Build, Explore, Discuss and Have Fun!
@@ -52,7 +52,7 @@ export function generateWelcomeEmail(): string {
               
               <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #1a1a1a;">
                 Thanks for reading,<br>
-                <strong style="font-weight: 600;">Shashwat</strong>
+                <strong style="font-weight: 600;">Shash</strong>
               </p>
             </td>
           </tr>
@@ -65,8 +65,11 @@ export function generateWelcomeEmail(): string {
                 <a href="https://github.com/darthvader58" style="color: #999999; text-decoration: none;">GitHub</a> · 
                 <a href="https://shashwatraj.com/blog" style="color: #999999; text-decoration: none;">Blog</a>
               </p>
-              <p style="margin: 0; font-size: 13px; color: #cccccc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                You're receiving this because you subscribed to Shashwat Raj's newsletter.
+              <p style="margin: 0 0 8px 0; font-size: 13px; color: #cccccc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                You're receiving this because you subscribed to Shash's newsletter.
+              </p>
+              <p style="margin: 0; font-size: 13px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <a href="https://shashwatraj.com/unsubscribe" style="color: #999999; text-decoration: underline;">Unsubscribe</a>
               </p>
             </td>
           </tr>
@@ -160,8 +163,11 @@ export function generateNewsletterEmail(title: string, content: string, postUrl?
                 <a href="https://github.com/darthvader58" style="color: #999999; text-decoration: none;">GitHub</a> · 
                 <a href="https://shashwatraj.com/blog" style="color: #999999; text-decoration: none;">Blog</a>
               </p>
-              <p style="margin: 0; font-size: 13px; color: #cccccc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              <p style="margin: 0 0 8px 0; font-size: 13px; color: #cccccc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                 You're receiving this because you subscribed to Shashwat Raj's newsletter.
+              </p>
+              <p style="margin: 0; font-size: 13px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <a href="https://shashwatraj.com/unsubscribe" style="color: #999999; text-decoration: underline;">Unsubscribe</a>
               </p>
             </td>
           </tr>
