@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     icon: '/assets/favicon.ico',
   },
   openGraph: {
-    title: 'Shashwat Raj - Portfolio',
+    title: 'Shash is me',
     description: 'Computer Science & Engineering student at Arizona State University',
     url: 'https://shashwatraj.com',
     siteName: 'Shashwat Raj',
