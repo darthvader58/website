@@ -27,7 +27,7 @@ function _generateEmailHTML_old(title: string, content: string, postUrl?: string
           <tr>
             <td style="background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%); padding: 30px; text-align: center;">
               <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: bold;">Shashwat Raj</h1>
-              <p style="margin: 10px 0 0 0; color: #e9d5ff; font-size: 14px;">Tech Blog Newsletter</p>
+              <p style="margin: 10px 0 0 0; color: #e9d5ff; font-size: 14px;">Blog Newsletter</p>
             </td>
           </tr>
           

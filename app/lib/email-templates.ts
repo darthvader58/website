@@ -22,7 +22,7 @@ export function generateWelcomeEmail(): string {
                 Shashwat Raj
               </h1>
               <p style="margin: 8px 0 0 0; font-size: 15px; color: #666666; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                Tech, ML & Development
+                Build, Explore, Discuss and Have Fun!
               </p>
             </td>
           </tr>
@@ -39,11 +39,11 @@ export function generateWelcomeEmail(): string {
               </p>
               
               <p style="margin: 0 0 20px 0; font-size: 18px; line-height: 1.6; color: #1a1a1a;">
-                I'm excited to have you here. You'll get emails from me when I publish new posts about technology, machine learning, and software development.
+                I'm excited to have you here. These blogs are going to be my public rant, discussion and observations about new things happening in the world. 
               </p>
               
               <p style="margin: 0 0 20px 0; font-size: 18px; line-height: 1.6; color: #1a1a1a;">
-                I write about things I'm working on, lessons I've learned, and ideas I'm exploring. No spam, no fluff—just genuine insights from my journey in tech.
+                I write about things I'm working on, lessons I've learned, ideas I'm exploring, and my take on what's trending in the world. Can't promise no spam or banter, but definitely some genuine insights along the way. At the end of each blog, you'll also find some amazing opportunities that might catch your attention, such as internship opportunities, fellowship applications and hackathons/competitions.
               </p>
               
               <p style="margin: 0 0 32px 0; font-size: 18px; line-height: 1.6; color: #1a1a1a;">
@@ -102,7 +102,7 @@ export function generateNewsletterEmail(title: string, content: string, postUrl?
                 Shashwat Raj
               </h1>
               <p style="margin: 8px 0 0 0; font-size: 15px; color: #666666; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-                Tech, ML & Development
+                Build, Explore, Discuss and Have Fun!
               </p>
             </td>
           </tr>
