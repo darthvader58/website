@@ -13,7 +13,7 @@ export default function ProjectsPage() {
     {
       title: "Metal Lab",
       description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
-      technologies: ["Next.js", "React", "Three.js", "WebGPU", "TypeScript"],
+      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
       github: "https://github.com/arpan404/metal_lab",
       previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
     {
       title: "KnockScript",
       description: "Esoteric programming language interpreter with unique syntax and semantics.",
-      technologies: ["Ruby", "Compiler Design"],
+      technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
       github: "https://github.com/darthvader58/knockscript",
       link: "https://knockscript.up.railway.app",
       hasLivePreview: true
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
     {
       title: "LinkedIn Queens Puzzle",
       description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
-      technologies: ["C", "Algorithms"],
+      technologies: ["C/C++", "Algorithms"],
       github: "https://github.com/darthvader58/linkedin_queens_solution",
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
     {
       title: "Portfolio",
       description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      technologies: ["Next.js", "Tailwind CSS", "PostGreSQL", "Vercel", "Resend"],
       github: "https://github.com/darthvader58/website",
       link: "https://shashwatraj.vercel.app",
       hasLivePreview: true
@@ -59,7 +59,7 @@ export default function ProjectsPage() {
     {
       title: "Makeathon",
       description: "Arduino-based autonomous maze solver robot for competition.",
-      technologies: ["Arduino", "C++", "Sensors"],
+      technologies: ["Arduino", "C++", "Compiler Design"],
       github: "https://github.com/cabbageAdi/makeathon",
       link: "https://makeathon.vercel.app",
       hasLivePreview: true
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
     {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
-      technologies: ["Python", "OpenCV", "Satellite Data"],
+      technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
       github: "https://github.com/darthvader58/Anagnor",
       previewImage: "/images/Anagnor.png"
     },
@@ -75,7 +75,7 @@ export default function ProjectsPage() {
     {
       title: "pip --race",
       description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
-      technologies: ["React", "Python", "Rust", "Redis", "Docker", "ONNX"],
+      technologies: ["Express", "React", "Python", "Rust", "Redis", "Docker", "ONNX"],
       github: "https://github.com/darthvader58/pip--race",
       link: "https://pip-race.vercel.app",
       hasLivePreview: true
@@ -93,13 +93,13 @@ export default function ProjectsPage() {
     {
       title: "Tansen",
       description: "AI music transcription system converting audio to musical notation using deep learning models.",
-      technologies: ["Flutter", "FastAPI", "PyTorch", "Huggingface", "Tensorflow"],
+      technologies: ["Flutter", "FastAPI", "PyTorch", "Huggingface", "Firebase"],
       github: "https://github.com/darthvader58/Tansen"
     },
     {
       title: "Research at CoDe Lab",
       description: "Optimizing Earth Science Observations: Developing Reinforcement Learning Techniques for Autonomously Determining Priority Observations in a Dynamic Environment",
-      technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "Jupyter"],
+      technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL", "Celestrak", "NASA G5NR", "WMO Oscar"],
       github: "https://github.com/darthvader58/Code-Lab_RL_PriorityObs",
       previewImage: "/images/research.png"
     },
@@ -118,13 +118,13 @@ export default function ProjectsPage() {
     {
       title: "GameOfLife",
       description: "Conway's Game of Life implementation on toroidal plane with iOS native interface.",
-      technologies: ["Swift", "iOS", "SwiftUI"],
+      technologies: ["Swift", "Metal", "SwiftUI"],
       github: "https://github.com/darthvader58/GameOfLife"
     },
     {
       title: "N-Body Simulator",
       description: "Gravitational physics simulation with multiple body interactions and visualization.",
-      technologies: ["Swift", "Metal", "Physics"],
+      technologies: ["Swift", "Metal", "Physics", "Three.js"],
       github: "https://github.com/darthvader58/NBodySimulator"
     },
     {
@@ -142,13 +142,13 @@ export default function ProjectsPage() {
     {
       title: "Quant Challenge 2025",
       description: "Quantitative finance modeling and algorithmic trading strategies.",
-      technologies: ["Python", "Jupyter", "Pandas", "NumPy"],
+      technologies: ["Python", "PyTorch", "Pandas", "NumPy", "Scikit-Learn"],
       github: "https://github.com/darthvader58/qc2025"
     },
     {
       title: "ML Practice",
       description: "Machine learning implementations and experiments with various algorithms.",
-      technologies: ["Python", "Jupyter", "Scikit-learn"],
+      technologies: ["Python", "PyTorch", "Scikit-learn", "TFLearn", "Keras"],
       github: "https://github.com/darthvader58/ML_practice"
     },
     {

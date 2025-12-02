@@ -14,7 +14,7 @@ export default function ExperiencePage() {
       period: "January 2025 - Present",
       location: "Arizona State University",
       description: "Working on reinforcement learning approaches for optimizing satellite observation priorities. Developing ML models using PyTorch and GeoPandas for spatial-temporal analysis.",
-      technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL"]
+      technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL", "Celestrak", "NASA G5NR", "WMO Oscar"]
     },
     {
       title: "Product Development Manager",
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
       period: "September 2024 - December 2024",
       location: "Remote",
       description: "Developed mentorship platform features and improved user experience. Worked on full-stack development with modern web technologies.",
-      technologies: ["React", "Node.js", "TypeScript", "PostgreSQL"]
+      technologies: ["Next.js", "Supabase"]
     },
     {
       title: "Applied AI and Cryptography Intern",
@@ -38,7 +38,7 @@ export default function ExperiencePage() {
       period: "January 2022 - May 2023",
       location: "India",
       description: "Designed and programmed autonomous robots for competition. Worked on embedded systems programming and sensor integration.",
-      technologies: ["Arduino", "C++", "Embedded C", "Sensors"]
+      technologies: ["Fusion 360", "CNC Machining", "Circuit Designing", "Physics"]
     },
     {
       title: "Electrical Subsystems Engineer",
@@ -46,7 +46,7 @@ export default function ExperiencePage() {
       period: "August 2021 - December 2022",
       location: "India",
       description: "Led a team in developing technical solutions for school events and competitions. Managed project timelines and team coordination.",
-      technologies: ["Python", "Web Development", "Project Management"]
+      technologies: ["ROS", "Python", "Embedded Systems", "Allegro Orcad", "OpenCV"]
     },
     {
       title: "Software Developer Intern",
@@ -54,7 +54,7 @@ export default function ExperiencePage() {
       period: "June 2022 - August 2022",
       location: "India",
       description: "Participated in research projects focused on computer vision and machine learning applications.",
-      technologies: ["Python", "OpenCV", "TensorFlow"]
+      technologies: ["Python", "MySQL", "Pandas"]
     }
   ]
 

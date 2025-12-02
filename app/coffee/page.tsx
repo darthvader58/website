@@ -108,10 +108,10 @@ export default function CoffeePage() {
 
       <div className="border border-slate-800 rounded-lg p-6 bg-slate-950/30">
         <h3 className="text-xl font-semibold text-slate-100 mb-3 flex items-center gap-2">
-          Location
+          See Ya!
         </h3>
         <p className="text-slate-400">
-          🌵 Tempe, Arizona • 🎓 Arizona State University • 💼 Open for opportunities and collaborations
+          📍 Tempe, Arizona • 💼 Open for work opportunities and collaborations
         </p>
       </div>
     </section>
