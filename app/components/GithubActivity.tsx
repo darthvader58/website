@@ -31,36 +31,33 @@ export default function GitHubActivity() {
     fetch(`https://api.github.com/users/${username}/events/public`)
       .then(res => res.json())
       .then(data => {
-        // Group events by repo and type, aggregating commits within 24 hours
-        const groupedEvents: { [key: string]: GitHubEvent & { totalCommits?: number } } = {}
+        // Group consecutive push events to the same repo
+        const groupedEvents: (GitHubEvent & { totalCommits?: number })[] = []
         
         data.forEach((event: GitHubEvent) => {
-          const key = `${event.repo.name}-${event.type}`
+          const lastEvent = groupedEvents[groupedEvents.length - 1]
           
-          if (!groupedEvents[key]) {
-            groupedEvents[key] = { ...event }
-            if (event.type === 'PushEvent') {
-              groupedEvents[key].totalCommits = event.payload?.size || event.payload?.commits?.length || 1
-            }
+          // If this is a push event to the same repo as the last event, merge them
+          if (
+            lastEvent &&
+            event.type === 'PushEvent' &&
+            lastEvent.type === 'PushEvent' &&
+            event.repo.name === lastEvent.repo.name
+          ) {
+            const commits = event.payload?.size || event.payload?.commits?.length || 1
+            lastEvent.totalCommits = (lastEvent.totalCommits || 0) + commits
           } else {
-            // If same repo and type, check if within 24 hours
-            const existingTime = new Date(groupedEvents[key].created_at).getTime()
-            const currentTime = new Date(event.created_at).getTime()
-            const timeDiff = Math.abs(existingTime - currentTime)
-            
-            if (timeDiff <= 24 * 60 * 60 * 1000 && event.type === 'PushEvent') {
-              // Aggregate commits
-              const commits = event.payload?.size || event.payload?.commits?.length || 1
-              groupedEvents[key].totalCommits = (groupedEvents[key].totalCommits || 0) + commits
-              // Keep the most recent timestamp
-              if (currentTime > existingTime) {
-                groupedEvents[key].created_at = event.created_at
-              }
-            }
+            // Add as new event
+            groupedEvents.push({
+              ...event,
+              totalCommits: event.type === 'PushEvent'
+                ? event.payload?.size || event.payload?.commits?.length || 1
+                : undefined
+            })
           }
         })
         
-        setEvents(Object.values(groupedEvents).slice(0, 10))
+        setEvents(groupedEvents.slice(0, 10))
         setLoading(false)
       })
       .catch(() => setLoading(false))
@@ -261,7 +258,7 @@ export default function GitHubActivity() {
       <div className="space-y-4">
         <h3 className="text-sm font-semibold text-slate-100">Recent Activity</h3>
         <div className="space-y-3">
-          {events.map(event => (
+          {events.slice(0, 5).map(event => (
             <a
               key={event.id}
               href={`https://github.com/${event.repo.name}`}
