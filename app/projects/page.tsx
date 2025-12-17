@@ -11,6 +11,13 @@ export default function ProjectsPage() {
       previewImage: "/images/WoofCarePreview.png"
     },
     {
+      title: "Whatrobe",
+      description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
+      technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
+      github: "https://github.com/darthvader58/whatrobe",
+      previewImage: "https://mywhatrobe.vercel.app"
+    },
+    {
       title: "Metal Lab",
       description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
       technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
@@ -102,12 +109,6 @@ export default function ProjectsPage() {
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL", "Celestrak", "NASA G5NR", "WMO Oscar"],
       github: "https://github.com/darthvader58/Code-Lab_RL_PriorityObs",
       previewImage: "/images/research.png"
-    },
-    {
-      title: "Whatrobe",
-      description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
-      technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
-      github: "https://github.com/darthvader58/whatrobe"
     },
     {
       title: "Garud",
