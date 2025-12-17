@@ -6,7 +6,7 @@ export default function ExperiencePage() {
       period: "August 2024 - Present",
       location: "Arizona State University",
       description: "Developing a mobile app using Flutter + Firebase + a Python backend, connecting dog lovers & dog care services to improve lives of stray dogs in India. Project funded by EPICS (Engineering Projects In Community Service) at ASU. Integrated Google’s Admob & Apps API to facilitate seamless location-based services & crowdfunds, partnering with over 60+ local and large NGOs in Pune, India including Voice of Stray Dogs (VOSD) and Dogs Friendly Pune.",
-      technologies: ["Flutter", "Firebase", "Python", "Google Maps API"]
+      technologies: ["Flutter", "Firebase", "Python", "Google Maps", "Google AdMob"]
     },
     {
       title: "Machine Learning Researcher and Developer",
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
       period: "September 2024 - December 2024",
       location: "Remote",
       description: "Managed/Led a team of 5 developers developing a full-stack online platform for college admission counseling startup, to automate features like scholarship finder and personal story-building. Increased UX Research success by 150%.",
-      technologies: ["Next.js", "Supabase"]
+      technologies: ["Next.js", "Supabase", "LLM"]
     },
     {
       title: "Applied AI and Cryptography Intern",
@@ -30,7 +30,7 @@ export default function ExperiencePage() {
       period: "June 2023 - August 2023",
       location: "India",
       description: "Worked under Dr. Shantanu and Dr. Girish in the ML & Cryptography Lab on a distinguisher model using ensemble learning, involving RNN, LSTM and Encoder-based Transformer model-architecture to classify random text and encrypted text in AES in CBC mode, achieving 74% precision.",
-      technologies: ["Python", "MATLAB", "Signal Processing"]
+      technologies: ["Python", "spaCy", "PyTorch", "RNN", "Transformers", "LSTMs"]
     },
     {
       title: "Team Member",
