@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
       technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
       github: "https://github.com/darthvader58/whatrobe",
-      previewImage: "https://mywhatrobe.vercel.app",
+      link: "https://mywhatrobe.vercel.app",
       hasLivePreview: true
     },
     {
