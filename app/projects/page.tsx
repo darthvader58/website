@@ -81,6 +81,14 @@ export default function ProjectsPage() {
     },
     // Other projects with live previews
     {
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      github: "https://github.com/darthvader58/biryani",
+      link: "https://formath.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "pip --race",
       description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
       technologies: ["Express", "React", "Python", "Rust", "Redis", "Docker", "ONNX"],
@@ -152,13 +160,6 @@ export default function ProjectsPage() {
       description: "Machine learning implementations and experiments with various algorithms.",
       technologies: ["Python", "PyTorch", "Scikit-learn", "TFLearn", "Keras"],
       github: "https://github.com/darthvader58/ML_practice"
-    },
-    {
-      title: "Formath",
-      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      github: "https://github.com/darthvader58/biryani",
-      link: "https://devpost.com/software/formath"
     },
     {
       title: "Peer-Faculty Interaction",
