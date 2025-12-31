@@ -2,7 +2,7 @@ export default function ExperiencePage() {
   const experiences = [
     {
       title: "Founder and CEO",
-      company: "WoofCare - EPICS Project",
+      company: "WoofCare Solutions Pvt. Ltd.",
       period: "August 2024 - Present",
       location: "Arizona State University",
       description: "Developing a mobile app using Flutter + Firebase + a Python backend, connecting dog lovers & dog care services to improve lives of stray dogs in India. Project funded by EPICS (Engineering Projects In Community Service) at ASU. Integrated Google’s Admob & Apps API to facilitate seamless location-based services & crowdfunds, partnering with over 60+ local and large NGOs in Pune, India including Voice of Stray Dogs (VOSD) and Dogs Friendly Pune.",
@@ -10,7 +10,7 @@ export default function ExperiencePage() {
     },
     {
       title: "Machine Learning Researcher and Developer",
-      company: "CoDe Lab - Satellite Observation",
+      company: "Collective Design Lab (CoDe) @ ASU",
       period: "January 2025 - Present",
       location: "Arizona State University",
       description: "Developing Reinforcement Learning techniques to optimize Earth science missions to autonomously determine priority observations in space, under the mentorship of Dr. Paul Grogan of SCAI Faculty at ASU. Co-authoring a review paper discussing relation between OSSEs & Mission Engineering. Trained DQN and QRDQN models using Pytorch, GeoPandas, TAT-C, Seaborn on NASA’s Geos5 dataset, achieving 67% precision and 87% recall resp. Receiving total $4600 through FURI and GCSP Research funding.",
@@ -26,7 +26,7 @@ export default function ExperiencePage() {
     },
     {
       title: "Applied AI and Cryptography Intern",
-      company: "SAG DRDO",
+      company: "Scientific Analysis Group (SAG), DRDO",
       period: "June 2023 - August 2023",
       location: "India",
       description: "Worked under Dr. Shantanu and Dr. Girish in the ML & Cryptography Lab on a distinguisher model using ensemble learning, involving RNN, LSTM and Encoder-based Transformer model-architecture to classify random text and encrypted text in AES in CBC mode, achieving 74% precision.",
@@ -42,7 +42,7 @@ export default function ExperiencePage() {
     },
     {
       title: "Electrical Subsystems Engineer",
-      company: "Team Inferno",
+      company: "Team Inferno, Delhi Technological University (DTU)",
       period: "August 2021 - December 2022",
       location: "India",
       description: "Developed custom PCBs on Allegro for incorporating embedded systems on-board the prototype Mars Rover for University Rover Challenge (URC). Programmed perception and navigation systems using ROS, OpenGL and SLAM on Python, along with various other system simulations on Gazebo.",
@@ -50,7 +50,7 @@ export default function ExperiencePage() {
     },
     {
       title: "Software Developer Intern",
-      company: "IIRIS",
+      company: "IIRIS Consultancy Pvt. Ltd.",
       period: "June 2022 - August 2022",
       location: "India",
       description: "Maintained customer/client databases for more than 100 clients using Python and PostgreSQL. Automated Meetings Scheduler and Emailing System for Marketing Leads for 20+ distinct Services.",
