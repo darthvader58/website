@@ -154,7 +154,7 @@ export default function ProjectCard({ title, description, technologies, github, 
           )}
         </div>
         
-        <h3 className="text-lg font-semibold text-slate-100 group-hover:text-purple-400 transition-colors mb-2">
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors mb-2">
           {title}
         </h3>
         
@@ -168,7 +168,7 @@ export default function ProjectCard({ title, description, technologies, github, 
                 e.preventDefault()
                 setIsExpanded(!isExpanded)
               }}
-              className="text-xs text-purple-400 hover:text-purple-300 mt-1 transition-colors"
+              className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 mt-1 transition-colors"
             >
               {isExpanded ? 'Read less' : 'Read more'}
             </button>
