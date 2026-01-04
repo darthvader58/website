@@ -43,19 +43,20 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "BrainDevils",
+      description: "FMS skills assessment web application for sports training.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/darthvader58/braindevils",
+      link: "https://braindevils.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "Kavvy",
       description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
       technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
       github: "https://github.com/darthvader58/kavvy",
       link: "https://kavvy.vercel.app",
       hasLivePreview: true
-    },
-    {
-      title: "LinkedIn Queens Puzzle",
-      description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
-      technologies: ["C/C++", "Algorithms"],
-      github: "https://github.com/darthvader58/linkedin_queens_solution",
-      previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
       title: "WoofCare Website",
@@ -82,6 +83,13 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "LinkedIn Queens Puzzle",
+      description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
+      technologies: ["C/C++", "Algorithms"],
+      github: "https://github.com/darthvader58/linkedin_queens_solution",
+      previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
+    },
+    {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
@@ -95,14 +103,6 @@ export default function ProjectsPage() {
       technologies: ["Express", "React", "Python", "Rust", "Redis", "Docker", "ONNX"],
       github: "https://github.com/darthvader58/pip--race",
       link: "https://pip-race.vercel.app",
-      hasLivePreview: true
-    },
-    {
-      title: "BrainDevils",
-      description: "FMS skills assessment web application for sports training.",
-      technologies: ["HTML", "CSS", "JavaScript"],
-      github: "https://github.com/darthvader58/braindevils",
-      link: "https://braindevils.vercel.app",
       hasLivePreview: true
     },
     
