@@ -19,6 +19,14 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      github: "https://github.com/darthvader58/biryani",
+      link: "https://formath.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "Metal Lab",
       description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
       technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
@@ -26,19 +34,20 @@ export default function ProjectsPage() {
       previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
     {
-      title: "Kavvy",
-      description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
-      technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
-      github: "https://github.com/darthvader58/kavvy",
-      link: "https://kavvy.vercel.app",
-      hasLivePreview: true
-    },
-    {
       title: "KnockScript",
       description: "Esoteric programming language interpreter with unique syntax and semantics.",
       technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
       github: "https://github.com/darthvader58/knockscript",
       link: "https://knockscript.up.railway.app",
+      previewImage: "/images/knockscript.png",
+      hasLivePreview: true
+    },
+    {
+      title: "Kavvy",
+      description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
+      technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
+      github: "https://github.com/darthvader58/kavvy",
+      link: "https://kavvy.vercel.app",
       hasLivePreview: true
     },
     {
@@ -80,14 +89,6 @@ export default function ProjectsPage() {
       previewImage: "/images/Anagnor.png"
     },
     // Other projects with live previews
-    {
-      title: "Formath",
-      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      github: "https://github.com/darthvader58/biryani",
-      link: "https://formath.vercel.app",
-      hasLivePreview: true
-    },
     {
       title: "pip --race",
       description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
