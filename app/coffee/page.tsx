@@ -40,7 +40,7 @@ export default function CoffeePage() {
               Buy Me a Coffee
             </h2>
             <p className="text-amber-200/80 mb-6">
-              Support my work and projects. Every coffee helps fuel late-night coding sessions and new ideas.
+              Support my work and projects. Every coffee helps fuel late-night coding sessions and new ideas. Bonus points if you get me a Hot blonde vanilla latte, with an extra two pumps of vanilla and caramel + whipped cream from Starbucks.
             </p>
             <a
               href="https://venmo.com/u/shash58"
@@ -111,7 +111,7 @@ export default function CoffeePage() {
           See Ya!
         </h3>
         <p className="text-slate-400">
-          📍 Tempe, Arizona • 💼 Open for work opportunities and collaborations
+          At Tempe, Arizona • Open for work opportunities and collaborations
         </p>
       </div>
     </section>

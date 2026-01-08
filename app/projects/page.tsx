@@ -166,7 +166,8 @@ export default function ProjectsPage() {
       title: "Peer-Faculty Interaction",
       description: "Educational platform for student-faculty communication built for CSE 360 project.",
       technologies: ["Java", "JavaFX", "SQLite"],
-      github: "https://github.com/darthvader58/Peer-Faculty-Interaction-EdTech"
+      github: "https://github.com/darthvader58/Peer-Faculty-Interaction-EdTech",
+      
     },
     {
       title: "Terrader",
@@ -179,7 +180,8 @@ export default function ProjectsPage() {
     {
       title: "Embedded Robotics",
       description: "FRDM-KL46Z autonomous robot with PID control and I2C sensor integration.",
-      technologies: ["C", "Embedded Systems", "PID Control", "I2C"]
+      technologies: ["C", "Embedded Systems", "PID Control", "I2C"],
+      previewImage: "/images/Embedded.png"
     },
     {
       title: "FPGA Projects",
