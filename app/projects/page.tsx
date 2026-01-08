@@ -19,21 +19,6 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
-      title: "Formath",
-      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      github: "https://github.com/darthvader58/biryani",
-      link: "https://formath.vercel.app",
-      hasLivePreview: true
-    },
-    {
-      title: "Metal Lab",
-      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
-      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
-      github: "https://github.com/arpan404/metal_lab",
-      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
-    },
-    {
       title: "KnockScript",
       description: "Esoteric programming language interpreter with unique syntax and semantics.",
       technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
@@ -51,11 +36,18 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
-      title: "Kavvy",
-      description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
-      technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
-      github: "https://github.com/darthvader58/kavvy",
-      link: "https://kavvy.vercel.app",
+      title: "Metal Lab",
+      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
+      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
+      github: "https://github.com/arpan404/metal_lab",
+      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
+    },
+    {
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      github: "https://github.com/darthvader58/biryani",
+      link: "https://formath.vercel.app",
       hasLivePreview: true
     },
     {
@@ -72,6 +64,14 @@ export default function ProjectsPage() {
       technologies: ["Next.js", "Tailwind CSS", "PostGreSQL", "Vercel", "Resend"],
       github: "https://github.com/darthvader58/website",
       link: "https://shashwatraj.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Kavvy",
+      description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
+      technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
+      github: "https://github.com/darthvader58/kavvy",
+      link: "https://kavvy.vercel.app",
       hasLivePreview: true
     },
     {
@@ -114,6 +114,12 @@ export default function ProjectsPage() {
       github: "https://github.com/darthvader58/Tansen"
     },
     {
+      title: "kcavo",
+      description: "Kubernetes cost analyzer and optimizer for cloud infrastructure management.",
+      technologies: ["Go", "Kubernetes", "kubectl"],
+      github: "https://github.com/darthvader58/kcavo"
+    },
+    {
       title: "Research at CoDe Lab",
       description: "Optimizing Earth Science Observations: Developing Reinforcement Learning Techniques for Autonomously Determining Priority Observations in a Dynamic Environment",
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL", "Celestrak", "NASA G5NR", "WMO Oscar"],
@@ -121,7 +127,13 @@ export default function ProjectsPage() {
       previewImage: "/images/research.png"
     },
     {
-      title: "Garud",
+      title: "Lua Interpreter",
+      description: "Lua programming language interpreter written in Go.",
+      technologies: ["Go", "Compiler Design"],
+      github: "https://github.com/darthvader58/lua-interpreter"
+    },
+    {
+      title: "Garud - Crop Disease Classifier",
       description: "Crop disease classification using deep learning. Achieved 89.23% accuracy on agricultural dataset.",
       technologies: ["Keras", "Tensorflow", "Python", "OpenCV"],
       github: "https://github.com/darthvader58/garud"
@@ -137,18 +149,6 @@ export default function ProjectsPage() {
       description: "Gravitational physics simulation with multiple body interactions and visualization.",
       technologies: ["Swift", "Metal", "Physics", "Three.js"],
       github: "https://github.com/darthvader58/NBodySimulator"
-    },
-    {
-      title: "kcavo",
-      description: "Kubernetes cost analyzer and optimizer for cloud infrastructure management.",
-      technologies: ["Go", "Kubernetes", "kubectl"],
-      github: "https://github.com/darthvader58/kcavo"
-    },
-    {
-      title: "Lua Interpreter",
-      description: "Lua programming language interpreter written in Go.",
-      technologies: ["Go", "Compiler Design"],
-      github: "https://github.com/darthvader58/lua-interpreter"
     },
     {
       title: "Quant Challenge 2025",
