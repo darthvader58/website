@@ -43,7 +43,7 @@ export default function HomePage() {
             : 'opacity-0 translate-x-8'
         }`}
       >
-        How you doin' ?!                        ~Joey Tribbiani
+        How you doin' ?! 
       </div>
       
       <div className="relative mb-8 inline-block w-full group" style={{ maxWidth: '215px' }}>
