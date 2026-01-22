@@ -36,6 +36,14 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "Terrader",
+      description: "Terrader is a web based game in the form of a crypto-trading simulator that functions with respect to a carbon footprint, carbon score and strategic gameplay; and has other interesting side-features to increase awareness among the players on how a fruitful and trending practice has an unnoticed contribution to climate change.",
+      technologies: ["React", "Python", "OpenAI GPT"],
+      github: "https://github.com/theVedanta/terrader",
+      link: "https://play-terrader.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "Metal Lab",
       description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
       technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
