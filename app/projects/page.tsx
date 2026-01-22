@@ -204,17 +204,21 @@ export default function ProjectsPage() {
 
   return (
     <section className="fade">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
         <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
           Projects
         </h1>
-        <iframe 
-          src="https://github.com/sponsors/darthvader58/button" 
-          title="Sponsor darthvader58" 
-          height="32" 
-          width="114" 
-          style={{ border: 0, borderRadius: '6px' }}
-        />
+        <a
+          href="https://github.com/sponsors/darthvader58"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-medium rounded-md transition-colors duration-200"
+        >
+          <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5zM8 14.25l-.345.666-.002-.001-.006-.003-.018-.01a7.643 7.643 0 01-.31-.17 22.075 22.075 0 01-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.08 22.08 0 01-3.744 2.584l-.018.01-.006.003h-.002L8 14.25zm0 0l.345.666a.752.752 0 01-.69 0L8 14.25z"/>
+          </svg>
+          Sponsor
+        </a>
       </div>
       <p className="text-slate-600 dark:text-slate-400 text-lg mb-12">
         A collection of my personal projects, open-source contributions, and academic work spanning web development, machine learning, embedded systems, and robotics.
