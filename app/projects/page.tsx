@@ -204,9 +204,18 @@ export default function ProjectsPage() {
 
   return (
     <section className="fade">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
-        Projects
-      </h1>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
+          Projects
+        </h1>
+        <iframe 
+          src="https://github.com/sponsors/darthvader58/button" 
+          title="Sponsor darthvader58" 
+          height="32" 
+          width="114" 
+          style={{ border: 0, borderRadius: '6px' }}
+        />
+      </div>
       <p className="text-slate-600 dark:text-slate-400 text-lg mb-12">
         A collection of my personal projects, open-source contributions, and academic work spanning web development, machine learning, embedded systems, and robotics.
       </p>

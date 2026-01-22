@@ -10,9 +10,18 @@ export default function CoffeePage() {
           </svg>
         </div>
         
-        <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl bg-gradient-to-r from-amber-200 via-orange-300 to-amber-200 bg-clip-text text-transparent">
-          Let's Connect Over Coffee
-        </h1>
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl bg-gradient-to-r from-amber-200 via-orange-300 to-amber-200 bg-clip-text text-transparent">
+            Let's Connect Over Coffee
+          </h1>
+          <iframe 
+            src="https://github.com/sponsors/darthvader58/button" 
+            title="Sponsor darthvader58" 
+            height="32" 
+            width="114" 
+            style={{ border: 0, borderRadius: '6px' }}
+          />
+        </div>
         <p className="text-slate-400 text-lg">
           I'd love to hear from you. Whether it's a project, opportunity, or just a chat about tech.
         </p>
