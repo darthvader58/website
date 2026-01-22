@@ -92,6 +92,13 @@ export default function HomePage() {
           </div>
         </div>
 
+        <a
+          href="https://github.com/sponsors/darthvader58"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-medium rounded-md transition-colors duration-200"
+        ></a>
+
         <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://open.spotify.com/show/3hOrhL4KTN4vRYUcfstmyy?si=824fd957830546dc"><SpotifyIcon /><span className="ml-2">"Write It Out"</span></a></p>
         <p className="text-slate-400 leading-relaxed mb-8">I love travelling!</p>
       </div>
