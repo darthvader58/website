@@ -23,7 +23,7 @@ export default function ProjectCard({ title, description, technologies, github, 
   // Only try to load iframe for vercel.app domains
   useEffect(() => {
     if (hasLivePreview && link) {
-      setShowIframe(true)
+      setShowIframe(link.includes('vercel.app'))
     }
   }, [hasLivePreview, link])
   

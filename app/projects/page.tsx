@@ -16,6 +16,7 @@ export default function ProjectsPage() {
       technologies: ["Typescript", "Firebase"],
       github: "https://github.com/darthvader58/numericle",
       link: "https://numericle.space",
+      previewImage: "/images/numericle.png",
       hasLivePreview: true
     },
     {
@@ -32,7 +33,7 @@ export default function ProjectsPage() {
       technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
       github: "https://github.com/darthvader58/knockscript",
       link: "https://knockscript.up.railway.app",
-      //previewImage: "/images/knockscript.png",
+      previewImage: "/images/knockscript.png",
       hasLivePreview: true
     },
     {
