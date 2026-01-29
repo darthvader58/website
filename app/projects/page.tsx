@@ -11,15 +11,6 @@ export default function ProjectsPage() {
       previewImage: "/images/WoofCarePreview.png"
     },
     {
-      title: "Numericle",
-      description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
-      technologies: ["Typescript", "Firebase"],
-      github: "https://github.com/darthvader58/numericle",
-      link: "https://numericle.space",
-      previewImage: "/images/numericle.png",
-      hasLivePreview: true
-    },
-    {
       title: "Whatrobe",
       description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
       technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
@@ -42,6 +33,15 @@ export default function ProjectsPage() {
       technologies: ["HTML", "CSS", "JavaScript"],
       github: "https://github.com/darthvader58/braindevils",
       link: "https://braindevils.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Numericle",
+      description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
+      technologies: ["Typescript", "Firebase"],
+      github: "https://github.com/darthvader58/numericle",
+      link: "https://numericle.space",
+      previewImage: "/images/numericle.png",
       hasLivePreview: true
     },
     {

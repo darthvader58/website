@@ -166,9 +166,9 @@ export default function GitHubActivity() {
               <line x1="100" y1="20" x2="100" y2="180" stroke="#334155" strokeWidth="1" />
               <line x1="20" y1="100" x2="180" y2="100" stroke="#334155" strokeWidth="1" />
               
-              {/* Data polygon - Commits: 87%, Code review: 12%, Issues: 25%, Pull requests: 18% */}
+              {/* Data polygon - Commits: 87%, Pull requests: 10%, Issues: 3%, Code review: 0% */}
               <polygon 
-                points="100,90 120,100 100,140 30,100" 
+                points="100,100 102.4,100 100,169.6 30.4,100" 
                 fill="#10b981" 
                 fillOpacity="0.3" 
                 stroke="#10b981" 
@@ -176,10 +176,10 @@ export default function GitHubActivity() {
               />
               
               {/* Data points */}
-              <circle cx="100" cy="90" r="4" fill="#10b981" />
-              <circle cx="120" cy="100" r="4" fill="#10b981" />
-              <circle cx="100" cy="140" r="4" fill="#10b981" />
-              <circle cx="30" cy="100" r="4" fill="#10b981" />
+              <circle cx="100" cy="100" r="4" fill="#10b981" />
+              <circle cx="102.4" cy="100" r="4" fill="#10b981" />
+              <circle cx="100" cy="169.6" r="4" fill="#10b981" />
+              <circle cx="30.4" cy="100" r="4" fill="#10b981" />
               
               {/* Labels - positioned outside the chart */}
               <text x="100" y="12" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="500">Code review</text>
@@ -188,9 +188,9 @@ export default function GitHubActivity() {
               <text x="12" y="95" textAnchor="end" fill="#94a3b8" fontSize="9" fontWeight="500">Commits</text>
               
               {/* Percentage labels - positioned near data points */}
-              <text x="100" y="82" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">12%</text>
-              <text x="128" y="103" textAnchor="start" fill="#e2e8f0" fontSize="10" fontWeight="bold">25%</text>
-              <text x="100" y="152" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">18%</text>
+              <text x="100" y="92" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">0%</text>
+              <text x="110" y="103" textAnchor="start" fill="#e2e8f0" fontSize="10" fontWeight="bold">3%</text>
+              <text x="100" y="182" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">10%</text>
               <text x="22" y="110" textAnchor="end" fill="#e2e8f0" fontSize="10" fontWeight="bold">87%</text>
             </svg>
           </div>
