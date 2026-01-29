@@ -103,7 +103,7 @@ export default function HomePage() {
             </svg>
             Sponsor
           </a>
-
+        <p></p>
         <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://open.spotify.com/show/3hOrhL4KTN4vRYUcfstmyy?si=824fd957830546dc"><SpotifyIcon /><span className="ml-2">"Write It Out"</span></a></p>
         <p className="text-slate-400 leading-relaxed mb-8">I love travelling!</p>
       </div>

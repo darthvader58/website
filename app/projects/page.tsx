@@ -20,7 +20,7 @@ export default function ProjectsPage() {
     },
     {
       title: "KnockScript",
-      description: "Esoteric programming language interpreter with unique syntax and semantics.",
+      description: "Esoteric programming language based on Knock Knock jokes.",
       technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
       github: "https://github.com/darthvader58/knockscript",
       link: "https://knockscript.up.railway.app",
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
     },
     {
       title: "BrainDevils",
-      description: "FMS skills assessment web application for sports training.",
+      description: "Web-app with games that enhance your fine motor skills",
       technologies: ["HTML", "CSS", "JavaScript"],
       github: "https://github.com/darthvader58/braindevils",
       link: "https://braindevils.vercel.app",
@@ -69,7 +69,7 @@ export default function ProjectsPage() {
     },
     {
       title: "WoofCare Website",
-      description: "Marketing and information website for WoofCare platform with modern design and animations.",
+      description: "Introduction website for the WoofCare app.",
       technologies: ["Astro", "TypeScript", "Tailwind CSS"],
       github: "https://github.com/darthvader58/woofCare-website",
       link: "https://woofcare-website.vercel.app",
@@ -85,7 +85,7 @@ export default function ProjectsPage() {
     },
     {
       title: "Kavvy",
-      description: "AI-powered platform matching writers with publishers using NLP and semantic analysis. PyTorch-based recommendation system.",
+      description: "Linkedin for authors - mockup only.",
       technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
       github: "https://github.com/darthvader58/kavvy",
       link: "https://kavvy.vercel.app",
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
     },
     {
       title: "Makeathon",
-      description: "Arduino-based autonomous maze solver robot for competition.",
+      description: "Arduino-based autonomous maze solving simulator and web compiler",
       technologies: ["Arduino", "C++", "Compiler Design"],
       github: "https://github.com/cabbageAdi/makeathon",
       link: "https://makeathon.vercel.app",
@@ -101,7 +101,7 @@ export default function ProjectsPage() {
     },
     {
       title: "LinkedIn Queens Puzzle",
-      description: "Solution to LinkedIn Queens puzzle using algorithmic optimization.",
+      description: "Solution to LinkedIn Queens puzzle using backtracking and algorithmic optimization.",
       technologies: ["C/C++", "Algorithms"],
       github: "https://github.com/darthvader58/linkedin_queens_solution",
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
@@ -126,7 +126,7 @@ export default function ProjectsPage() {
     // Software projects without previews
     {
       title: "Tansen",
-      description: "AI music transcription system converting audio to musical notation using deep learning models.",
+      description: "AI music transcription system converting audio to readable instrument based musical notation using deep learning models.",
       technologies: ["Flutter", "FastAPI", "PyTorch", "Huggingface", "Firebase"],
       github: "https://github.com/darthvader58/Tansen"
     },
@@ -163,7 +163,7 @@ export default function ProjectsPage() {
     },
     {
       title: "N-Body Simulator",
-      description: "Gravitational physics simulation with multiple body interactions and visualization.",
+      description: "Gravitational physics simulation with multiple body interactions and visualization using Apple Silicon's metal shaders.",
       technologies: ["Swift", "Metal", "Physics", "Three.js"],
       github: "https://github.com/darthvader58/NBodySimulator"
     },
@@ -181,28 +181,22 @@ export default function ProjectsPage() {
     },
     {
       title: "Peer-Faculty Interaction",
-      description: "Educational platform for student-faculty communication built for CSE 360 project.",
+      description: "Educational platform for student-faculty communication built for ASU's CSE 360 project.",
       technologies: ["Java", "JavaFX", "SQLite"],
       github: "https://github.com/darthvader58/Peer-Faculty-Interaction-EdTech",
       
-    },
-    {
-      title: "Terrader",
-      description: "Terrader is a web based game in the form of a crypto-trading simulator that functions with respect to a carbon footprint, carbon score and strategic gameplay; and has other interesting side-features to increase awareness among the players on how a fruitful and trending practice has an unnoticed contribution to climate change.",
-      technologies: ["React", "Python", "OpenAI GPT"],
-      github: "https://github.com/theVedanta/terrader"
     },
 
     // Hardware and embedded projects
     {
       title: "Embedded Robotics",
-      description: "FRDM-KL46Z autonomous robot with PID control and I2C sensor integration.",
+      description: "FRDM-KL46Z based autonomous robot projects involving PID, SPI, UART, I2C, PWM and PIT/TPM handler.",
       technologies: ["C", "Embedded Systems", "PID Control", "I2C"],
       previewImage: "/images/Embedded.png"
     },
     {
       title: "FPGA Projects",
-      description: "Alarm clock and audio recorder implementations on FPGA hardware.",
+      description: "Alarm clock and audio recorder implementations on FPGA chips.",
       technologies: ["Verilog", "SystemVerilog", "Vivado", "Quartus Prime"]
     },
     {
@@ -213,7 +207,7 @@ export default function ProjectsPage() {
     },
     {
       title: "Micromouse",
-      description: "Autonomous maze-solving robot using Dijkstra's algorithm and PID control.",
+      description: "Autonomous wall maze-solving robot using Dijkstra's algorithm and PID control.",
       technologies: ["Embedded C", "MIT App Inventor", "Dijkstra", "PID"],
       previewImage: "/images/micromouse.png"
     }
