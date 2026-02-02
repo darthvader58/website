@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import PhotoGallery from './components/PhotoGallery';
+import SpotifyNowPlaying from './components/SpotifyNowPlaying';
 
 const SpotifyIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +111,9 @@ export default function HomePage() {
 
       {/* Dynamic Photo Gallery */}
       <PhotoGallery />
+
+      {/* Spotify Now Playing */}
+      <SpotifyNowPlaying />
     </section>
   )
 }
