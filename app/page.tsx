@@ -48,11 +48,9 @@ export default function HomePage() {
       </div>
       
       <div className="relative mb-8 inline-block w-full group" style={{ maxWidth: '215px' }}>
-        {/* Book pages behind - stacked and slightly offset */}
         <div className="absolute left-1 top-1 w-full h-full bg-slate-700/30 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-2" style={{ transform: 'translateX(-3px)' }}></div>
         <div className="absolute left-0.5 top-0.5 w-full h-full bg-slate-600/20 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-1" style={{ transform: 'translateX(-1.5px)' }}></div>
         
-        {/* Main photo page */}
         <div className="relative bg-gradient-to-br from-slate-100 to-slate-50 p-2 shadow-2xl border-l-4 border-slate-800/20 transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
           <img 
             src="/images/Myself.png" 
@@ -60,7 +58,6 @@ export default function HomePage() {
             className="block w-full h-auto opacity-0 animate-fadeInSlow"
             style={{ animationFillMode: 'forwards' }}
           />
-          {/* Paper texture and fold effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-slate-200/20 pointer-events-none"></div>
           <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-slate-300/50 to-transparent"></div>
         </div>
@@ -109,10 +106,8 @@ export default function HomePage() {
         <p className="text-slate-400 leading-relaxed mb-8">I love travelling!</p>
       </div>
 
-      {/* Dynamic Photo Gallery */}
       <PhotoGallery />
 
-      {/* Spotify Now Playing */}
       <SpotifyNowPlaying />
     </section>
   )
