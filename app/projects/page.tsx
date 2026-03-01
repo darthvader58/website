@@ -20,11 +20,19 @@ export default function ProjectsPage() {
     },
     {
       title: "KnockScript",
-      description: "Esoteric programming language based on Knock Knock jokes.",
+      description: "Toy programming language based on Knock Knock jokes.",
       technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
       github: "https://github.com/darthvader58/knockscript",
       link: "https://knockscript.up.railway.app",
       previewImage: "/images/knockscript.png",
+      hasLivePreview: true
+    },
+    {
+      title: "KaleshScript",
+      description: "Toy programming language based on Delhi's street slang and memes.",
+      technologies: ["Go", "Compiler Design", "Next.js"],
+      github: "https://github.com/darthvader58/kaleshscript",
+      link: "https://kaleshscript.vercel.app",
       hasLivePreview: true
     },
     {
