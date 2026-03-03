@@ -74,14 +74,15 @@ export default function ProjectCard({ title, description, technologies, github, 
   }
   
   return (
-    <Link 
-      href={href || '#'} 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block group"
-    >
-      <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30">
-        <div className="mb-4 h-48 rounded-md overflow-hidden flex items-center justify-center relative">
+    <div className="block group relative h-full">
+      <Link 
+        href={href || '#'} 
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full"
+      >
+        <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30 h-full flex flex-col">
+          <div className="mb-4 h-80 rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
           {previewImage ? (
             <div className="w-full h-full relative">
               <img 
@@ -158,7 +159,7 @@ export default function ProjectCard({ title, description, technologies, github, 
           {title}
         </h3>
         
-        <div className="mb-4">
+        <div className="mb-4 flex-grow">
           <p className={`text-sm text-slate-400 ${!isExpanded && showReadMore ? 'line-clamp-2' : ''}`}>
             {description}
           </p>
@@ -175,7 +176,7 @@ export default function ProjectCard({ title, description, technologies, github, 
           )}
         </div>
         
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-2 mt-auto flex-shrink-0">
           {technologies.slice(0, 5).map((tech, i) => (
             <span key={i} className="text-xs px-2 py-1 rounded bg-purple-950/50 text-purple-300 border border-purple-900/50">
               {tech}
@@ -188,6 +189,23 @@ export default function ProjectCard({ title, description, technologies, github, 
           )}
         </div>
       </div>
-    </Link>
+      </Link>
+      
+      {/* GitHub icon button */}
+      {github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="absolute bottom-4 right-4 p-2 bg-white dark:bg-slate-900 hover:bg-purple-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:border-purple-500 dark:hover:border-purple-500 rounded-lg transition-all duration-200 hover:scale-110 z-10 shadow-sm"
+          title="View on GitHub"
+        >
+          <svg className="w-5 h-5 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+        </a>
+      )}
+    </div>
   )
 }
