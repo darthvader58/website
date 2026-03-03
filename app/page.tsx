@@ -279,62 +279,92 @@ export default function HomePage() {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            {
-              title: "WoofCare",
-              description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
-              technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
-              github: "https://github.com/Woofcare/WoofCare",
-              previewImage: "/images/WoofCarePreview.png"
-            },
-            {
-              title: "Whatrobe",
-              description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
-              technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
-              github: "https://github.com/darthvader58/whatrobe",
-              link: "https://mywhatrobe.vercel.app",
-              hasLivePreview: true
-            },
-            {
-              title: "KnockScript",
-              description: "Toy programming language based on Knock Knock jokes.",
-              technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
-              github: "https://github.com/darthvader58/knockscript",
-              link: "https://knockscript.up.railway.app",
-              previewImage: "/images/knockscript.png",
-              hasLivePreview: true
-            },
-            {
-              title: "KaleshScript",
-              description: "Toy programming language based on Delhi's street slang and memes.",
-              technologies: ["Go", "Compiler Design", "Next.js"],
-              github: "https://github.com/darthvader58/kaleshscript",
-              link: "https://kaleshscript.vercel.app",
-              hasLivePreview: true
-            },
-            {
-              title: "BrainDevils",
-              description: "Web-app with games that enhance your fine motor skills",
-              technologies: ["HTML", "CSS", "JavaScript"],
-              github: "https://github.com/darthvader58/braindevils",
-              link: "https://braindevils.vercel.app",
-              hasLivePreview: true
-            },
-            {
-              title: "Numericle",
-              description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
-              technologies: ["Typescript", "Firebase"],
-              github: "https://github.com/darthvader58/numericle",
-              link: "https://numericle.space",
-              previewImage: "/images/numericle.png",
-              hasLivePreview: true
-            }
-          ].map((project, index) => (
-            <ScrollReveal key={index} delay={index * 50}>
-              <ProjectCard {...project} />
-            </ScrollReveal>
-          ))}
+        <div className="relative">
+          {/* Horizontal scrolling container */}
+          <div className="overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
+            <div className="flex gap-6" style={{ width: 'max-content' }}>
+              {[
+                {
+                  title: "WoofCare",
+                  description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
+                  technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
+                  github: "https://github.com/Woofcare/WoofCare",
+                  previewImage: "/images/WoofCarePreview.png"
+                },
+                {
+                  title: "Whatrobe",
+                  description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
+                  technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
+                  github: "https://github.com/darthvader58/whatrobe",
+                  link: "https://mywhatrobe.vercel.app",
+                  hasLivePreview: true
+                },
+                {
+                  title: "KnockScript",
+                  description: "Toy programming language based on Knock Knock jokes.",
+                  technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
+                  github: "https://github.com/darthvader58/knockscript",
+                  link: "https://knockscript.up.railway.app",
+                  previewImage: "/images/knockscript.png",
+                  hasLivePreview: true
+                },
+                {
+                  title: "KaleshScript",
+                  description: "Toy programming language based on Delhi's street slang and memes.",
+                  technologies: ["Go", "Compiler Design", "Next.js"],
+                  github: "https://github.com/darthvader58/kaleshscript",
+                  link: "https://kaleshscript.vercel.app",
+                  hasLivePreview: true
+                },
+                {
+                  title: "BrainDevils",
+                  description: "Web-app with games that enhance your fine motor skills",
+                  technologies: ["HTML", "CSS", "JavaScript"],
+                  github: "https://github.com/darthvader58/braindevils",
+                  link: "https://braindevils.vercel.app",
+                  hasLivePreview: true
+                },
+                {
+                  title: "Numericle",
+                  description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
+                  technologies: ["Typescript", "Firebase"],
+                  github: "https://github.com/darthvader58/numericle",
+                  link: "https://numericle.space",
+                  previewImage: "/images/numericle.png",
+                  hasLivePreview: true
+                },
+                {
+                  title: "Terrader",
+                  description: "Web based game in the form of a crypto-trading simulator with carbon footprint awareness.",
+                  technologies: ["React", "Python", "OpenAI GPT"],
+                  github: "https://github.com/theVedanta/terrader",
+                  link: "https://play-terrader.vercel.app/lobby",
+                  hasLivePreview: true
+                },
+                {
+                  title: "Metal Lab",
+                  description: "Advanced physics simulation platform with GPU acceleration for educational purposes.",
+                  technologies: ["Next.js", "Three.js", "WebGPU", "Metal Shaders"],
+                  github: "https://github.com/arpan404/metal_lab",
+                  previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
+                }
+              ].map((project, index) => (
+                <ScrollReveal key={index} delay={index * 50}>
+                  <div className="w-80 flex-shrink-0">
+                    <ProjectCard {...project} />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+          
+          {/* Scroll indicator */}
+          <div className="flex justify-center mt-4 gap-2">
+            <svg className="w-5 h-5 text-slate-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+            <span className="text-xs text-slate-500">Scroll to see more</span>
+          </div>
         </div>
 
         <ScrollReveal delay={400}>

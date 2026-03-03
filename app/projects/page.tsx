@@ -39,14 +39,6 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
-      title: "BrainDevils",
-      description: "Web-app with games that enhance your fine motor skills",
-      technologies: ["HTML", "CSS", "JavaScript"],
-      github: "https://github.com/darthvader58/braindevils",
-      link: "https://braindevils.vercel.app",
-      hasLivePreview: true
-    },
-    {
       title: "Numericle",
       description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
       technologies: ["Typescript", "Firebase"],
@@ -76,6 +68,14 @@ export default function ProjectsPage() {
       technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
       github: "https://github.com/darthvader58/biryani",
       link: "https://formath.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "BrainDevils",
+      description: "Web-app with games that enhance your fine motor skills",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/darthvader58/braindevils",
+      link: "https://braindevils.vercel.app",
       hasLivePreview: true
     },
     {
