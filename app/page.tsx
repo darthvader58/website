@@ -32,7 +32,9 @@ export default function HomePage() {
   }, []);
 
   return (
-    <section className="fade">
+    <div className="fade">
+      {/* HOME SECTION */}
+      <section id="home" className="min-h-screen pb-32">
       <h1 className="mb-2 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
         <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Hi.gif" alt="Hi" className="inline-block align-middle w-12 h-12 mr-2"/> Hey, I'm Shashwat Raj
       </h1>
@@ -124,6 +126,59 @@ export default function HomePage() {
       <ScrollReveal delay={300}>
         <SpotifyNowPlaying />
       </ScrollReveal>
-    </section>
+      </section>
+
+      {/* EXPERIENCE SECTION */}
+      <section id="experience" className="min-h-screen py-32">
+        <ScrollReveal>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+            Experience
+          </h1>
+          <p className="text-slate-400 text-lg mb-16">
+            My professional journey in research, development, and robotics.
+          </p>
+        </ScrollReveal>
+        {/* Experience content will be added here */}
+      </section>
+
+      {/* PROJECTS SECTION */}
+      <section id="projects" className="min-h-screen py-32">
+        <ScrollReveal>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+            Projects
+          </h1>
+          <p className="text-slate-400 text-lg mb-16">
+            A collection of my work spanning web development, machine learning, and robotics.
+          </p>
+        </ScrollReveal>
+        {/* Projects content will be added here */}
+      </section>
+
+      {/* RESUME SECTION */}
+      <section id="resume" className="min-h-screen py-32">
+        <ScrollReveal>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+            Resume
+          </h1>
+          <p className="text-slate-400 text-lg mb-16">
+            Download my resume tailored for different roles and focus areas.
+          </p>
+        </ScrollReveal>
+        {/* Resume content will be added here */}
+      </section>
+
+      {/* COFFEE/CONTACT SECTION */}
+      <section id="coffee" className="min-h-screen py-32">
+        <ScrollReveal>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl bg-gradient-to-r from-amber-200 via-orange-300 to-amber-200 bg-clip-text text-transparent">
+            Let's Connect Over Coffee
+          </h1>
+          <p className="text-slate-400 text-lg mb-16">
+            I'd love to hear from you. Whether it's a project, opportunity, or just a chat about tech.
+          </p>
+        </ScrollReveal>
+        {/* Coffee/Contact content will be added here */}
+      </section>
+    </div>
   )
 }

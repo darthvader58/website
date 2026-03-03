@@ -7,15 +7,14 @@ import { useTheme } from './ThemeProvider'
 
 const navItems = {
   '/': { name: 'Home' },
-  '/experience': { name: 'Experience' },
-  '/projects': { name: 'Projects' },
+  '/#experience': { name: 'Experience' },
+  '/#projects': { name: 'Projects' },
   '/blog': { name: 'Blog' },
-  /*'/gcsp': { name: 'GCSP' },*/
-  '/resume': { name: 'Resume' },
+  '/#resume': { name: 'Resume' },
 }
 
 const rightNavItems = {
-  '/coffee': { name: 'Coffee' },
+  '/#coffee': { name: 'Coffee' },
 }
 
 export function Navbar() {
@@ -38,6 +37,18 @@ export function Navbar() {
     setMounted(true)
   }, [])
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (path.startsWith('/#')) {
+      e.preventDefault()
+      const sectionId = path.substring(2)
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+      setIsOpen(false)
+    }
+  }
+
   return (
     <aside className="-ml-[8px] mb-8 tracking-tight">
       <div className="lg:sticky lg:top-20">
@@ -59,6 +70,7 @@ export function Navbar() {
                   <Link
                     key={path}
                     href={path}
+                    onClick={(e) => handleNavClick(e, path)}
                     className={`transition-all hover:text-purple-400 flex align-middle relative py-1 px-2 m-1 ${
                       isActive ? 'text-purple-300 font-medium' : 'text-slate-400 dark:text-slate-400 light:text-slate-600'
                     }`}
@@ -75,6 +87,7 @@ export function Navbar() {
                   <Link
                     key={path}
                     href={path}
+                    onClick={(e) => handleNavClick(e, path)}
                     className={`transition-all hover:text-purple-400 flex align-middle relative py-1 px-2 m-1 ${
                       isActive ? 'text-purple-300 font-medium' : 'text-slate-400 dark:text-slate-400 light:text-slate-600'
                     }`}
@@ -110,7 +123,10 @@ export function Navbar() {
                 <Link
                   key={path}
                   href={path}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, path)
+                    setIsOpen(false)
+                  }}
                   className={`transition-all hover:text-purple-400 hover:bg-slate-900 flex align-middle py-2 px-3 m-1 rounded-md ${
                     isActive ? 'text-purple-300 font-medium bg-slate-900' : 'text-slate-400'
                   }`}
