@@ -114,7 +114,7 @@ export default function HomePage() {
               </svg>
               Sponsor
             </a>
-          <p></p>
+          <p className="mt-6"></p>
           <p className="text-slate-400 leading-relaxed mb-6">When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, or hosting my podcast <a className="inline-flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://open.spotify.com/show/3hOrhL4KTN4vRYUcfstmyy?si=824fd957830546dc"><SpotifyIcon /><span className="ml-2">"Write It Out"</span></a></p>
           <p className="text-slate-400 leading-relaxed mb-8">I love travelling!</p>
         </div>
@@ -341,7 +341,7 @@ export default function HomePage() {
           <div className="mt-12 text-center">
             <a
               href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-900/50"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105"
             >
               See All Projects
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -351,82 +351,6 @@ export default function HomePage() {
             <p className="text-slate-400 text-sm mt-4">
               View all {30}+ projects including ML research, embedded systems, and more
             </p>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* RESUME SECTION */}
-      <section id="resume" className="min-h-screen py-32">
-        <ScrollReveal>
-          <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
-            Resume
-          </h1>
-          <p className="text-slate-400 text-lg mb-12">
-            Download my resume tailored for different roles and focus areas.
-          </p>
-        </ScrollReveal>
-
-        <div className="grid gap-6">
-          {[
-            {
-              title: "Machine Learning / AI Focus",
-              description: "Highlights research experience, ML projects, and deep learning expertise.",
-              filename: "Final_Resume_Shashwat_Raj_ML.pdf",
-              color: "from-blue-900/40 to-purple-900/40"
-            },
-            {
-              title: "Software Development Focus",
-              description: "Emphasizes full-stack development, web applications, and software engineering skills.",
-              filename: "Final_Resume_Shashwat_Raj_Dev.pdf",
-              color: "from-green-900/40 to-emerald-900/40"
-            },
-            {
-              title: "Hardware / Embedded Systems Focus",
-              description: "Showcases embedded systems, robotics, and hardware projects.",
-              filename: "Final_Resume_Shashwat_Raj_Hardware.pdf",
-              color: "from-orange-900/40 to-red-900/40"
-            }
-          ].map((resume, index) => (
-            <ScrollReveal key={index} delay={index * 150}>
-              <div className={`border border-slate-800 rounded-lg p-8 bg-gradient-to-br ${resume.color} hover:border-purple-700/50 hover:shadow-lg hover:shadow-purple-900/20 transition-all duration-300 hover:scale-[1.02]`}>
-                <h3 className="text-2xl font-semibold text-slate-100 mb-3">{resume.title}</h3>
-                <p className="text-slate-300 mb-6">{resume.description}</p>
-                <a
-                  href={`/${resume.filename}`}
-                  download
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Download PDF
-                </a>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        <ScrollReveal delay={450}>
-          <div className="mt-12 border border-slate-800 rounded-lg p-6 bg-slate-950/30 hover:border-purple-700/50 transition-all duration-300">
-            <h3 className="text-xl font-semibold text-slate-100 mb-4">Skills Overview</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Programming Languages</h4>
-                <p className="text-slate-400 text-sm">Python, C, C++, Java, JavaScript, TypeScript, Swift, Rust, Go, Ruby</p>
-              </div>
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Frameworks & Libraries</h4>
-                <p className="text-slate-400 text-sm">React, Next.js, Flutter, PyTorch, TensorFlow, FastAPI, Node.js</p>
-              </div>
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Tools & Platforms</h4>
-                <p className="text-slate-400 text-sm">Git, Docker, Firebase, AWS, Vercel, MongoDB, PostgreSQL</p>
-              </div>
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Embedded Systems</h4>
-                <p className="text-slate-400 text-sm">Arduino, FRDM-KL46Z, I2C, PID Control, Verilog, FPGA</p>
-              </div>
-            </div>
           </div>
         </ScrollReveal>
       </section>

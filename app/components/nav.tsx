@@ -10,7 +10,7 @@ const navItems = {
   '/#experience': { name: 'Experience' },
   '/#projects': { name: 'Projects' },
   '/blog': { name: 'Blog' },
-  '/#resume': { name: 'Resume' },
+  '/resume': { name: 'Resume' },
 }
 
 const rightNavItems = {
@@ -66,7 +66,7 @@ export function Navbar() {
   }
 
   return (
-    <aside className="-ml-[8px] mb-8 tracking-tight sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm">
+    <aside className="-ml-[8px] mb-8 tracking-tight sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm pt-4">
       <div>
         <nav className="flex flex-col md:flex-row items-start relative px-0 pb-4 fade md:overflow-auto scroll-pr-6 md:relative border-b border-slate-700">
           <button
