@@ -317,11 +317,11 @@ export default function HomePage() {
                   hasLivePreview: true
                 },
                 {
-                  title: "BrainDevils",
-                  description: "Web-app with games that enhance your fine motor skills",
-                  technologies: ["HTML", "CSS", "JavaScript"],
-                  github: "https://github.com/darthvader58/braindevils",
-                  link: "https://braindevils.vercel.app",
+                  title: "Formath",
+                  description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+                  technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+                  github: "https://github.com/darthvader58/biryani",
+                  link: "https://formath.vercel.app",
                   hasLivePreview: true
                 },
                 {
@@ -333,6 +333,14 @@ export default function HomePage() {
                   previewImage: "/images/numericle.png",
                   hasLivePreview: true
                 },
+                
+                {
+                  title: "Metal Lab",
+                  description: "Advanced physics simulation platform with GPU acceleration for educational purposes.",
+                  technologies: ["Next.js", "Three.js", "WebGPU", "Metal Shaders"],
+                  github: "https://github.com/arpan404/metal_lab",
+                  previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
+                },  
                 {
                   title: "Terrader",
                   description: "Web based game in the form of a crypto-trading simulator with carbon footprint awareness.",
@@ -340,13 +348,6 @@ export default function HomePage() {
                   github: "https://github.com/theVedanta/terrader",
                   link: "https://play-terrader.vercel.app/lobby",
                   hasLivePreview: true
-                },
-                {
-                  title: "Metal Lab",
-                  description: "Advanced physics simulation platform with GPU acceleration for educational purposes.",
-                  technologies: ["Next.js", "Three.js", "WebGPU", "Metal Shaders"],
-                  github: "https://github.com/arpan404/metal_lab",
-                  previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
                 }
               ].map((project, index) => (
                 <ScrollReveal key={index} delay={index * 50}>
