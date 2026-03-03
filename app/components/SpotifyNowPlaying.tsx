@@ -64,7 +64,7 @@ const SongCard = ({ track }: { track: Track }) => (
     rel="noopener noreferrer"
     className="block group"
   >
-    <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-4 flex items-center gap-4 hover:from-slate-800 hover:to-slate-700 transition-all duration-300 border border-slate-700/50">
+    <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 rounded-2xl p-4 flex items-center gap-4 hover:from-slate-200 hover:to-slate-300 dark:hover:from-slate-800 dark:hover:to-slate-700 transition-all duration-300 border border-slate-300 dark:border-slate-700/50">
       <div className="relative">
         <img 
           src={track.albumImageUrl} 
@@ -80,25 +80,25 @@ const SongCard = ({ track }: { track: Track }) => (
         )}
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="text-slate-100 font-semibold text-lg truncate">{track.title}</h3>
-        <p className="text-slate-400 text-sm truncate">{track.artist}</p>
+        <h3 className="text-slate-900 dark:text-slate-100 font-semibold text-lg truncate">{track.title}</h3>
+        <p className="text-slate-600 dark:text-slate-400 text-sm truncate">{track.artist}</p>
       </div>
       <div className="flex items-center gap-3">
-        <span className="text-slate-400 text-sm">{formatDuration(track.duration)}</span>
-        <button className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-slate-600 transition-colors">
-          <svg className="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span className="text-slate-600 dark:text-slate-400 text-sm">{formatDuration(track.duration)}</span>
+        <button className="w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors">
+          <svg className="w-5 h-5 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
         </button>
-        <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-700 transition-colors">
-          <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+        <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+          <svg className="w-5 h-5 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 24 24">
             <circle cx="5" cy="12" r="2"/>
             <circle cx="12" cy="12" r="2"/>
             <circle cx="19" cy="12" r="2"/>
           </svg>
         </button>
-        <button className="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform shadow-lg group-hover:shadow-xl">
-          <svg className="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <button className="w-12 h-12 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center hover:scale-105 transition-transform shadow-lg group-hover:shadow-xl">
+          <svg className="w-6 h-6 text-white dark:text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
           </svg>
         </button>
@@ -166,9 +166,9 @@ export default function SpotifyNowPlaying() {
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
           <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <h2 className="text-2xl font-bold text-slate-100">Music is love!</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Music is love!</h2>
         </div>
-        <div className="text-slate-400">Loading...</div>
+        <div className="text-slate-600 dark:text-slate-400">Loading...</div>
       </div>
     );
   }
@@ -179,7 +179,7 @@ export default function SpotifyNowPlaying() {
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-          <h2 className="text-2xl font-bold text-slate-100">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
             Music is love!
             <span className="text-sm text-green-500 ml-3">● Listening to</span>
           </h2>
@@ -202,7 +202,7 @@ export default function SpotifyNowPlaying() {
     <div className="mt-12">
       <div className="flex items-center gap-2 mb-6">
         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-        <h2 className="text-2xl font-bold text-slate-100">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           spotify picks
           {nowPlaying && <span className="text-sm text-green-500 ml-3">● Now Playing</span>}
         </h2>
