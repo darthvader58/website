@@ -107,7 +107,7 @@ export default function HomePage() {
               href="https://github.com/sponsors/darthvader58"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-medium rounded-md transition-all duration-200 hover:scale-105"
+              className="sponsor-button inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-medium rounded-md transition-all duration-200 hover:scale-105"
             >
               <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5zM8 14.25l-.345.666-.002-.001-.006-.003-.018-.01a7.643 7.643 0 01-.31-.17 22.075 22.075 0 01-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.08 22.08 0 01-3.744 2.584l-.018.01-.006.003h-.002L8 14.25zm0 0l.345.666a.752.752 0 01-.69 0L8 14.25z"/>
@@ -280,8 +280,43 @@ export default function HomePage() {
         </ScrollReveal>
 
         <div className="relative">
+          {/* Left arrow */}
+          <button
+            onClick={() => {
+              const container = document.getElementById('projects-scroll-container');
+              if (container) {
+                container.scrollBy({ left: -800, behavior: 'smooth' });
+              }
+            }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+            aria-label="Scroll left"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => {
+              const container = document.getElementById('projects-scroll-container');
+              if (container) {
+                container.scrollBy({ left: 800, behavior: 'smooth' });
+              }
+            }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+            aria-label="Scroll right"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
           {/* Horizontal scrolling container */}
-          <div className="overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
+          <div 
+            id="projects-scroll-container"
+            className="overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
+          >
             <div className="flex gap-8" style={{ width: 'max-content' }}>
               {[
                 {
@@ -356,15 +391,25 @@ export default function HomePage() {
                   </div>
                 </ScrollReveal>
               ))}
+              
+              {/* See More Projects Card */}
+              <ScrollReveal delay={400}>
+                <div className="w-[375px] h-[520px] flex-shrink-0 snap-center flex items-center justify-center">
+                  <a 
+                    href="/projects"
+                    className="w-full h-[260px] block"
+                  >
+                    <div className="h-full flex flex-col items-center justify-center bg-gradient-to-br from-purple-950/50 to-slate-900/50 backdrop-blur-sm rounded-2xl border-2 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-[1.02] group">
+                      <svg className="w-12 h-12 text-purple-400 mb-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                      <h3 className="text-xl font-bold text-slate-100 mb-2">See More Projects</h3>
+                      <p className="text-slate-400 text-sm">View all 30+ projects</p>
+                    </div>
+                  </a>
+                </div>
+              </ScrollReveal>
             </div>
-          </div>
-          
-          {/* Scroll indicator */}
-          <div className="flex justify-center mt-6 gap-2">
-            <svg className="w-6 h-6 text-slate-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-            </svg>
-            <span className="text-sm text-slate-500">Swipe to explore projects</span>
           </div>
         </div>
 
@@ -379,9 +424,6 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <p className="text-slate-400 text-sm mt-4">
-              View all {30}+ projects including ML research, embedded systems, and more
-            </p>
           </div>
         </ScrollReveal>
       </section>
@@ -497,6 +539,12 @@ export default function HomePage() {
                   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
                 </svg>
                 @darthvader58
+              </a>
+              <a href="https://x.com/shash_raj_" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2 mb-2">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                @shash_raj_
               </a>
               <a href="https://linkedin.com/in/raj-shashwat" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-purple-400 transition-colors flex items-center gap-2 mb-2">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">

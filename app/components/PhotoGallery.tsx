@@ -32,34 +32,68 @@ export default function PhotoGallery() {
   }
 
   return (
-    <div className="relative w-full overflow-x-auto scrollbar-hide">
-      <div className="flex gap-4 pb-4" style={{ width: 'max-content' }}>
-        {images.map((src, index) => (
-          <div key={src} className="relative inline-block group" style={{ flexShrink: 0 }}>
-            {/* Book pages behind - stacked and slightly offset */}
-            <div className="absolute left-1 top-1 w-full h-full bg-slate-700/30 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-2" style={{ transform: 'translateX(-3px)' }}></div>
-            <div className="absolute left-0.5 top-0.5 w-full h-full bg-slate-600/20 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-1" style={{ transform: 'translateX(-1.5px)' }}></div>
-            
-            {/* Main photo page */}
-            <div className="relative bg-gradient-to-br from-purple-950 to-indigo-950 p-2 shadow-2xl border-l-4 border-purple-800/40 transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
-              <img 
-                src={src}
-                alt={`Gallery photo ${index + 1}`}
-                className="block opacity-0 animate-fadeInSlow"
-                style={{ 
-                  animationFillMode: 'forwards', 
-                  animationDelay: `${index * 0.1}s`,
-                  height: '225px',
-                  width: 'auto',
-                  objectFit: 'cover'
-                }}
-              />
-              {/* Paper texture and fold effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-900/10 to-indigo-900/20 pointer-events-none"></div>
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-purple-800/50 to-transparent"></div>
+    <div className="relative">
+      {/* Left arrow */}
+      <button
+        onClick={() => {
+          const container = document.getElementById('photo-gallery-container');
+          if (container) {
+            container.scrollBy({ left: -300, behavior: 'smooth' });
+          }
+        }}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+        aria-label="Scroll left"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      {/* Right arrow */}
+      <button
+        onClick={() => {
+          const container = document.getElementById('photo-gallery-container');
+          if (container) {
+            container.scrollBy({ left: 300, behavior: 'smooth' });
+          }
+        }}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+        aria-label="Scroll right"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <div id="photo-gallery-container" className="w-full overflow-x-auto scrollbar-hide">
+        <div className="flex gap-4 pb-4" style={{ width: 'max-content' }}>
+          {images.map((src, index) => (
+            <div key={src} className="relative inline-block group" style={{ flexShrink: 0 }}>
+              {/* Book pages behind - stacked and slightly offset */}
+              <div className="absolute left-1 top-1 w-full h-full bg-slate-700/30 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-2" style={{ transform: 'translateX(-3px)' }}></div>
+              <div className="absolute left-0.5 top-0.5 w-full h-full bg-slate-600/20 rounded-sm shadow-md transition-transform duration-500 group-hover:rotate-1" style={{ transform: 'translateX(-1.5px)' }}></div>
+              
+              {/* Main photo page */}
+              <div className="relative bg-gradient-to-br from-purple-950 to-indigo-950 p-2 shadow-2xl border-l-4 border-purple-800/40 transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                <img 
+                  src={src}
+                  alt={`Gallery photo ${index + 1}`}
+                  className="block opacity-0 animate-fadeInSlow"
+                  style={{ 
+                    animationFillMode: 'forwards', 
+                    animationDelay: `${index * 0.1}s`,
+                    height: '225px',
+                    width: 'auto',
+                    objectFit: 'cover'
+                  }}
+                />
+                {/* Paper texture and fold effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-900/10 to-indigo-900/20 pointer-events-none"></div>
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-purple-800/50 to-transparent"></div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

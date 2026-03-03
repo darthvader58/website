@@ -21,6 +21,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
+  const [activeSection, setActiveSection] = useState('/')
   
   let theme = 'dark'
   let toggleTheme = () => {}
@@ -47,6 +48,50 @@ export function Navbar() {
       }, 100)
     }
   }, [])
+
+  // Track active section on scroll
+  useEffect(() => {
+    if (pathname !== '/') return // Only track on home page
+
+    const sections = ['home', 'experience', 'projects', 'coffee']
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id
+          if (sectionId === 'home') {
+            setActiveSection('/')
+          } else {
+            setActiveSection(`/#${sectionId}`)
+          }
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => {
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          observer.unobserve(element)
+        }
+      })
+    }
+  }, [pathname])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (path.startsWith('/#')) {
@@ -81,7 +126,7 @@ export function Navbar() {
           <div className="hidden md:flex flex-row justify-between w-full items-center">
             <div className="flex flex-row space-x-0">
               {Object.entries(navItems).map(([path, { name }]) => {
-                const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path))
+                const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
                 return (
                   <Link
                     key={path}
@@ -98,7 +143,7 @@ export function Navbar() {
             </div>
             <div className="flex flex-row space-x-0 items-center">
               {Object.entries(rightNavItems).map(([path, { name }]) => {
-                const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path))
+                const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
                 return (
                   <Link
                     key={path}
@@ -134,7 +179,7 @@ export function Navbar() {
               isOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
             }`}>
             {Object.entries({...navItems, ...rightNavItems}).map(([path, { name }]) => {
-              const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path))
+              const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
               return (
                 <Link
                   key={path}

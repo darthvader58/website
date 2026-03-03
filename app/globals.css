@@ -24,10 +24,16 @@
   --sh-keyword: #f47067;
   --sh-string: #0fa295;
   color-scheme: dark;
+  --spotify-title-color: #e2e8f0;
+  --spotify-artist-color: #94a3b8;
+  --spotify-duration-color: #94a3b8;
 }
 
 html.light {
   color-scheme: light;
+  --spotify-title-color: #ffffff;
+  --spotify-artist-color: #e2e8f0;
+  --spotify-duration-color: #e2e8f0;
 }
 
 html {
@@ -143,6 +149,21 @@ html.light p {
 
 html.light a {
   color: #7c3aed !important;
+}
+
+/* Spotify component - force white text in light mode */
+html.light .spotify-card,
+html.light .spotify-card h3,
+html.light .spotify-card p,
+html.light .spotify-card span {
+  color: #ffffff !important;
+}
+
+/* Sponsor button - force white text in light mode */
+html.light a.sponsor-button,
+html.light a.sponsor-button:hover,
+html.light a.sponsor-button:visited {
+  color: #ffffff !important;
 }
 
 /* Light mode card backgrounds */
