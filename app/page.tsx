@@ -336,6 +336,23 @@ export default function HomePage() {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={400}>
+          <div className="mt-12 text-center">
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-900/50"
+            >
+              See All Projects
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <p className="text-slate-400 text-sm mt-4">
+              View all {30}+ projects including ML research, embedded systems, and more
+            </p>
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* RESUME SECTION */}
