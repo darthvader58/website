@@ -35,23 +35,39 @@ export function Navbar() {
   
   useEffect(() => {
     setMounted(true)
+    
+    // Handle scrolling to section on page load if there's a hash
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.substring(1)
+      setTimeout(() => {
+        const element = document.getElementById(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
   }, [])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (path.startsWith('/#')) {
-      e.preventDefault()
-      const sectionId = path.substring(2)
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // If we're on the home page, scroll to section
+      if (pathname === '/') {
+        e.preventDefault()
+        const sectionId = path.substring(2)
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        setIsOpen(false)
       }
-      setIsOpen(false)
+      // If we're on another page, let Next.js navigate to home page with hash
+      // The browser will automatically scroll to the section
     }
   }
 
   return (
-    <aside className="-ml-[8px] mb-8 tracking-tight">
-      <div className="lg:sticky lg:top-20">
+    <aside className="-ml-[8px] mb-8 tracking-tight sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm">
+      <div>
         <nav className="flex flex-col md:flex-row items-start relative px-0 pb-4 fade md:overflow-auto scroll-pr-6 md:relative border-b border-slate-700">
           <button
             onClick={() => setIsOpen(!isOpen)}
