@@ -82,7 +82,7 @@ export default function ProjectCard({ title, description, technologies, github, 
         className="block h-full"
       >
         <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30 h-full flex flex-col">
-          <div className="mb-4 h-48 rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
+          <div className="mb-4 h-80 rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
           {previewImage ? (
             <div className="w-full h-full relative">
               <img 
