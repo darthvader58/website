@@ -351,7 +351,7 @@ export default function HomePage() {
                 }
               ].map((project, index) => (
                 <ScrollReveal key={index} delay={index * 50}>
-                  <div className="w-80 flex-shrink-0">
+                  <div className="w-80 h-[500px] flex-shrink-0">
                     <ProjectCard {...project} />
                   </div>
                 </ScrollReveal>

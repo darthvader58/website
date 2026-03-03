@@ -74,15 +74,15 @@ export default function ProjectCard({ title, description, technologies, github, 
   }
   
   return (
-    <div className="block group relative">
+    <div className="block group relative h-full">
       <Link 
         href={href || '#'} 
         target="_blank"
         rel="noopener noreferrer"
-        className="block"
+        className="block h-full"
       >
-        <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30">
-          <div className="mb-4 h-48 rounded-md overflow-hidden flex items-center justify-center relative">
+        <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30 h-full flex flex-col">
+          <div className="mb-4 h-48 rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
           {previewImage ? (
             <div className="w-full h-full relative">
               <img 
@@ -159,7 +159,7 @@ export default function ProjectCard({ title, description, technologies, github, 
           {title}
         </h3>
         
-        <div className="mb-4">
+        <div className="mb-4 flex-grow">
           <p className={`text-sm text-slate-400 ${!isExpanded && showReadMore ? 'line-clamp-2' : ''}`}>
             {description}
           </p>
@@ -176,7 +176,7 @@ export default function ProjectCard({ title, description, technologies, github, 
           )}
         </div>
         
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-2 mt-auto flex-shrink-0">
           {technologies.slice(0, 5).map((tech, i) => (
             <span key={i} className="text-xs px-2 py-1 rounded bg-purple-950/50 text-purple-300 border border-purple-900/50">
               {tech}
