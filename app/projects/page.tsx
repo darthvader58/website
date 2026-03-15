@@ -118,6 +118,13 @@ export default function ProjectsPage() {
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
+      title: "Karobar",
+      description: "Chrome Extension - Job Applications Tracking tool for \"sophisticated\" applicants who want to log every submission.",
+      technologies: ["Typescript", "Vue", "Chrome API", "Google Sheets API"],
+      github: "https://github.com/darthvader58/karobar",
+      previewImage: "https://www.outsystems.com/Forge_CW/_image.aspx/Q8LvY--6WakOw9afDCuuGTrsWOMiLK5kOEJX7zRjPlI=/chrome-extension-connector-2023-01-04%2000-00-00-2025-08-13%2008-34-13"
+    },
+    {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
