@@ -42,7 +42,7 @@ function ContributionCard({ name, logo, repo, prLink, isPending }: ContributionP
 export default function OpenSourcePage() {
   const contributions = [
     {
-      name: "Mocha",
+      name: "MochaJS",
       logo: "https://avatars.githubusercontent.com/u/8770005?s=200&v=4",
       repo: "https://github.com/mochajs/mocha",
       prLink: undefined,
@@ -53,12 +53,12 @@ export default function OpenSourcePage() {
       logo: "https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg",
       repo: "https://github.com/tensorflow/tensorflow",
       prLink: undefined,
-      isPending: false
+      isPending: true
     },
     {
-      name: "Supermemory",
-      logo: "/Supermemory_logo.png",
-      repo: "https://github.com/supermemoryai/supermemory",
+      name: "PixiJS",
+      logo: "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/2/pixijs-pcxhaankypk9xzk3m3jnp.png/pixijs-5cvfqaao2hiu0b1zr4banc.png?_a=DATAiZAAZAA0",
+      repo: "https://github.com/pixijs/pixijs",
       prLink: undefined,
       isPending: false
     },
@@ -74,12 +74,19 @@ export default function OpenSourcePage() {
       logo: "/logo-suite-numerique.png",
       repo: "https://github.com/suitenumerique/meet",
       prLink: undefined,
-      isPending: false
+      isPending: true
     },
     {
-      name: "SGLang",
-      logo: "/sglang_logo.png",
-      repo: "https://github.com/sgl-project/sglang",
+      name: "Keras",
+      logo: "https://logo.svgcdn.com/devicon/keras-original-wordmark.png",
+      repo: "https://github.com/keras-team/keras",
+      prLink: undefined,
+      isPending: true
+    }, 
+    {
+      name: "ElectronJS",
+      logo: "https://iconlogovector.com/uploads/images/2024/04/lg-6623b70b896ab-Electron-Electronjs.webp",
+      repo: "https://github.com/electron/electron",
       prLink: undefined,
       isPending: false
     }
