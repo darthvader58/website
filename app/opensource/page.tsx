@@ -11,6 +11,11 @@ interface ContributionProps {
 function ContributionCard({ name, logo, repo, prLink, isPending }: ContributionProps) {
   return (
     <div className="group relative block border border-slate-800/50 rounded-lg p-8 hover:border-purple-700/50 transition-all duration-300 bg-white/5 dark:bg-slate-950/30 backdrop-blur-sm shadow-lg hover:shadow-xl hover:bg-white/10 dark:hover:bg-slate-950/50 h-full flex flex-col items-center justify-center gap-4">
+      {isPending && (
+        <span className="absolute top-3 right-3 text-xs px-2.5 py-1 rounded-full bg-yellow-500/10 dark:bg-yellow-950/50 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20 dark:border-yellow-900/50">
+          PR Pending
+        </span>
+      )}
       <div className="w-24 h-24 flex items-center justify-center">
         <img 
           src={logo} 
@@ -21,11 +26,6 @@ function ContributionCard({ name, logo, repo, prLink, isPending }: ContributionP
       <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 text-center group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
         {name}
       </h3>
-      {isPending && (
-        <span className="text-xs px-3 py-1 rounded-full bg-yellow-500/10 dark:bg-yellow-950/50 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20 dark:border-yellow-900/50">
-          PR Pending
-        </span>
-      )}
       <div className="flex gap-3 mt-1">
         <a
           href={repo}
