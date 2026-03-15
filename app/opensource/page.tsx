@@ -45,50 +45,57 @@ export default function OpenSourcePage() {
       name: "MochaJS",
       logo: "https://avatars.githubusercontent.com/u/8770005?s=200&v=4",
       repo: "https://github.com/mochajs/mocha",
-      prLink: undefined,
+      prLink: "https://github.com/mochajs/mocha/pull/5662",
       isPending: false
     },
     {
       name: "TensorFlow",
       logo: "https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg",
       repo: "https://github.com/tensorflow/tensorflow",
-      prLink: undefined,
+      prLink: "https://github.com/tensorflow/tensorflow/pull/108038",
       isPending: true
     },
     {
       name: "PixiJS",
       logo: "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/2/pixijs-pcxhaankypk9xzk3m3jnp.png/pixijs-5cvfqaao2hiu0b1zr4banc.png?_a=DATAiZAAZAA0",
       repo: "https://github.com/pixijs/pixijs",
-      prLink: undefined,
+      prLink: "https://github.com/pixijs/pixijs/pull/11924",
       isPending: false
     },
     {
       name: "Supabase",
       logo: "https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg",
       repo: "https://github.com/supabase/supabase",
-      prLink: undefined,
+      prLink: "https://github.com/supabase/supabase/pull/41694",
       isPending: false
     },
     {
       name: "Suite Numérique Meet",
       logo: "/logo-suite-numerique.png",
       repo: "https://github.com/suitenumerique/meet",
-      prLink: undefined,
+      prLink: "https://github.com/suitenumerique/meet/pull/965",
       isPending: true
     },
     {
       name: "Keras",
       logo: "https://logo.svgcdn.com/devicon/keras-original-wordmark.png",
       repo: "https://github.com/keras-team/keras",
-      prLink: undefined,
+      prLink: "https://github.com/keras-team/keras/pull/22237",
       isPending: true
     }, 
     {
       name: "ElectronJS",
       logo: "https://iconlogovector.com/uploads/images/2024/04/lg-6623b70b896ab-Electron-Electronjs.webp",
       repo: "https://github.com/electron/electron",
-      prLink: undefined,
+      prLink: "https://github.com/electron/electron/pull/49778",
       isPending: false
+    },
+    {
+      name: "Kubernetes",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/3840px-Kubernetes_logo_without_workmark.svg.png",
+      repo: "https://github.com/kubernetes/kubernetes",
+      prLink: "https://github.com/kubernetes/kubernetes/pull/136842",
+      isPending: true
     }
   ]
 
