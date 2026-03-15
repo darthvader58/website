@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function BlogPage() {
   const [email, setEmail] = useState('');
@@ -44,17 +45,20 @@ export default function BlogPage() {
 
   return (
     <section className="fade">
-      <div className="mb-12">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
-          Blog
-        </h1>
-        <p className="text-slate-400 text-lg">
-          Thoughts on technology, development, and everything in between.
-        </p>
-      </div>
+      <ScrollReveal>
+        <div className="mb-12">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+            Blog
+          </h1>
+          <p className="text-slate-400 text-lg">
+            Thoughts on technology, development, and everything in between.
+          </p>
+        </div>
+      </ScrollReveal>
 
       {/* Newsletter Subscription */}
-      <div className="mb-16 relative overflow-hidden rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-900/20 via-slate-900/40 to-blue-900/20 p-8">
+      <ScrollReveal delay={100}>
+        <div className="mb-16 relative overflow-hidden rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-900/20 via-slate-900/40 to-blue-900/20 p-8">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5"></div>
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
@@ -99,56 +103,60 @@ export default function BlogPage() {
             </div>
           )}
         </div>
-      </div>
+        </div>
+      </ScrollReveal>
 
       {/* Blog Posts Grid */}
       {blogPosts.length > 0 ? (
         <div className="grid gap-6">
-          {blogPosts.map((post) => (
-            <Link
-              key={post.id}
-              href={`/blog/${post.id}`}
-              className="group block"
-            >
-              <article className={`relative overflow-hidden rounded-xl border border-slate-800 bg-gradient-to-br ${post.gradient} p-6 hover:border-purple-500/50 transition-all duration-300`}>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-900/50 text-purple-300 border border-purple-700/50 w-fit">
-                    {post.category}
-                  </span>
-                  <div className="flex items-center gap-3 text-sm text-slate-400">
-                    <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
-                    <span>•</span>
-                    <span>{post.readTime}</span>
+          {blogPosts.map((post, index) => (
+            <ScrollReveal key={post.id} delay={200 + index * 100}>
+              <Link
+                href={`/blog/${post.id}`}
+                className="group block"
+              >
+                <article className={`relative overflow-hidden rounded-xl border border-slate-800 bg-gradient-to-br ${post.gradient} p-6 hover:border-purple-500/50 transition-all duration-300`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-900/50 text-purple-300 border border-purple-700/50 w-fit">
+                      {post.category}
+                    </span>
+                    <div className="flex items-center gap-3 text-sm text-slate-400">
+                      <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-100 group-hover:text-purple-400 transition-colors mb-3">
-                  {post.title}
-                </h3>
-                <p className="text-slate-300 mb-4">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center text-purple-400 group-hover:text-purple-300 transition-colors">
-                  <span className="text-sm font-medium">Read more</span>
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </article>
-            </Link>
+                  <h3 className="text-2xl font-bold text-slate-100 group-hover:text-purple-400 transition-colors mb-3">
+                    {post.title}
+                  </h3>
+                  <p className="text-slate-300 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center text-purple-400 group-hover:text-purple-300 transition-colors">
+                    <span className="text-sm font-medium">Read more</span>
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </article>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
       ) : (
-        <div className="text-center py-16">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-900/20 border border-purple-700/30 mb-6">
-            <svg className="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+        <ScrollReveal delay={200}>
+          <div className="text-center py-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-900/20 border border-purple-700/30 mb-6">
+              <svg className="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-slate-100 mb-3">No Posts Yet</h3>
+            <p className="text-slate-400 mb-6 max-w-md mx-auto">
+              I'm working on some exciting content! Subscribe to the newsletter to be the first to know when new posts are published.
+            </p>
           </div>
-          <h3 className="text-2xl font-bold text-slate-100 mb-3">No Posts Yet</h3>
-          <p className="text-slate-400 mb-6 max-w-md mx-auto">
-            I'm working on some exciting content! Subscribe to the newsletter to be the first to know when new posts are published.
-          </p>
-        </div>
+        </ScrollReveal>
       )}
     </section>
   );

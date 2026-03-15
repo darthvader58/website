@@ -1,3 +1,7 @@
+'use client';
+
+import ScrollReveal from '../components/ScrollReveal';
+
 export default function ResumePage() {
   const resumes = [
     {
@@ -22,53 +26,59 @@ export default function ResumePage() {
 
   return (
     <section className="fade">
-      <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
-        Resume
-      </h1>
-      <p className="text-slate-400 text-lg mb-12">
-        Download my resume tailored for different roles and focus areas.
-      </p>
+      <ScrollReveal>
+        <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+          Resume
+        </h1>
+        <p className="text-slate-400 text-lg mb-12">
+          Download my resume tailored for different roles and focus areas.
+        </p>
+      </ScrollReveal>
 
       <div className="grid gap-6">
         {resumes.map((resume, index) => (
-          <div key={index} className={`border border-slate-800 rounded-lg p-8 bg-gradient-to-br ${resume.color} hover:border-purple-700/50 transition-all duration-300`}>
-            <h3 className="text-2xl font-semibold text-slate-100 mb-3">{resume.title}</h3>
-            <p className="text-slate-300 mb-6">{resume.description}</p>
-            <a
-              href={`/${resume.filename}`}
-              download
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download PDF
-            </a>
-          </div>
+          <ScrollReveal key={index} delay={index * 150}>
+            <div className={`border border-slate-800 rounded-lg p-8 bg-gradient-to-br ${resume.color} hover:border-purple-700/50 hover:shadow-lg hover:shadow-purple-900/20 transition-all duration-300 hover:scale-[1.02]`}>
+              <h3 className="text-2xl font-semibold text-slate-100 mb-3">{resume.title}</h3>
+              <p className="text-slate-300 mb-6">{resume.description}</p>
+              <a
+                href={`/${resume.filename}`}
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download PDF
+              </a>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
 
-      <div className="mt-12 border border-slate-800 rounded-lg p-6 bg-slate-950/30">
-        <h3 className="text-xl font-semibold text-slate-100 mb-4">Skills Overview</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="text-purple-400 font-medium mb-2">Programming Languages</h4>
-            <p className="text-slate-400 text-sm">Python, C, C++, Java, JavaScript, TypeScript, Swift, Rust, Go, Ruby</p>
-          </div>
-          <div>
-            <h4 className="text-purple-400 font-medium mb-2">Frameworks & Libraries</h4>
-            <p className="text-slate-400 text-sm">React, Next.js, Flutter, PyTorch, TensorFlow, FastAPI, Node.js</p>
-          </div>
-          <div>
-            <h4 className="text-purple-400 font-medium mb-2">Tools & Platforms</h4>
-            <p className="text-slate-400 text-sm">Git, Docker, Firebase, AWS, Vercel, MongoDB, PostgreSQL</p>
-          </div>
-          <div>
-            <h4 className="text-purple-400 font-medium mb-2">Embedded Systems</h4>
-            <p className="text-slate-400 text-sm">Arduino, FRDM-KL46Z, I2C, PID Control, Verilog, FPGA</p>
+      <ScrollReveal delay={450}>
+        <div className="mt-12 border border-slate-800 rounded-lg p-6 bg-slate-950/30 hover:border-purple-700/50 transition-all duration-300">
+          <h3 className="text-xl font-semibold text-slate-100 mb-4">Skills Overview</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-purple-400 font-medium mb-2">Programming Languages</h4>
+              <p className="text-slate-400 text-sm">Python, C, C++, Java, JavaScript, TypeScript, Swift, Rust, Go, Ruby</p>
+            </div>
+            <div>
+              <h4 className="text-purple-400 font-medium mb-2">Frameworks & Libraries</h4>
+              <p className="text-slate-400 text-sm">React, Next.js, Flutter, PyTorch, TensorFlow, FastAPI, Node.js</p>
+            </div>
+            <div>
+              <h4 className="text-purple-400 font-medium mb-2">Tools & Platforms</h4>
+              <p className="text-slate-400 text-sm">Git, Docker, Firebase, AWS, Vercel, MongoDB, PostgreSQL</p>
+            </div>
+            <div>
+              <h4 className="text-purple-400 font-medium mb-2">Embedded Systems</h4>
+              <p className="text-slate-400 text-sm">Arduino, FRDM-KL46Z, I2C, PID Control, Verilog, FPGA</p>
+            </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

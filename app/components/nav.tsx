@@ -7,21 +7,21 @@ import { useTheme } from './ThemeProvider'
 
 const navItems = {
   '/': { name: 'Home' },
-  '/experience': { name: 'Experience' },
-  '/projects': { name: 'Projects' },
+  '/#experience': { name: 'Experience' },
+  '/#projects': { name: 'Projects' },
   '/blog': { name: 'Blog' },
-  /*'/gcsp': { name: 'GCSP' },*/
   '/resume': { name: 'Resume' },
 }
 
 const rightNavItems = {
-  '/coffee': { name: 'Coffee' },
+  '/#coffee': { name: 'Coffee' },
 }
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
+  const [activeSection, setActiveSection] = useState('/')
   
   let theme = 'dark'
   let toggleTheme = () => {}
@@ -36,11 +36,83 @@ export function Navbar() {
   
   useEffect(() => {
     setMounted(true)
+    
+    // Handle scrolling to section on page load if there's a hash
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.substring(1)
+      setTimeout(() => {
+        const element = document.getElementById(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
   }, [])
 
+  // Track active section on scroll
+  useEffect(() => {
+    if (pathname !== '/') return // Only track on home page
+
+    const sections = ['home', 'experience', 'projects', 'coffee']
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id
+          if (sectionId === 'home') {
+            setActiveSection('/')
+          } else {
+            setActiveSection(`/#${sectionId}`)
+          }
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => {
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          observer.unobserve(element)
+        }
+      })
+    }
+  }, [pathname])
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (path.startsWith('/#')) {
+      // If we're on the home page, scroll to section
+      if (pathname === '/') {
+        e.preventDefault()
+        const sectionId = path.substring(2)
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        setIsOpen(false)
+      }
+      // If we're on another page, let Next.js navigate to home page with hash
+      // The browser will automatically scroll to the section
+    }
+  }
+
   return (
-    <aside className="-ml-[8px] mb-8 tracking-tight">
-      <div className="lg:sticky lg:top-20">
+    <aside className="-ml-[8px] mb-8 tracking-tight sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm pt-4">
+      <div>
         <nav className="flex flex-col md:flex-row items-start relative px-0 pb-4 fade md:overflow-auto scroll-pr-6 md:relative border-b border-slate-700">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -54,11 +126,12 @@ export function Navbar() {
           <div className="hidden md:flex flex-row justify-between w-full items-center">
             <div className="flex flex-row space-x-0">
               {Object.entries(navItems).map(([path, { name }]) => {
-                const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path))
+                const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
                 return (
                   <Link
                     key={path}
                     href={path}
+                    onClick={(e) => handleNavClick(e, path)}
                     className={`transition-all hover:text-purple-400 flex align-middle relative py-1 px-2 m-1 ${
                       isActive ? 'text-purple-300 font-medium' : 'text-slate-400 dark:text-slate-400 light:text-slate-600'
                     }`}
@@ -70,11 +143,12 @@ export function Navbar() {
             </div>
             <div className="flex flex-row space-x-0 items-center">
               {Object.entries(rightNavItems).map(([path, { name }]) => {
-                const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path))
+                const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
                 return (
                   <Link
                     key={path}
                     href={path}
+                    onClick={(e) => handleNavClick(e, path)}
                     className={`transition-all hover:text-purple-400 flex align-middle relative py-1 px-2 m-1 ${
                       isActive ? 'text-purple-300 font-medium' : 'text-slate-400 dark:text-slate-400 light:text-slate-600'
                     }`}
@@ -105,12 +179,15 @@ export function Navbar() {
               isOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
             }`}>
             {Object.entries({...navItems, ...rightNavItems}).map(([path, { name }]) => {
-              const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path))
+              const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
               return (
                 <Link
                   key={path}
                   href={path}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, path)
+                    setIsOpen(false)
+                  }}
                   className={`transition-all hover:text-purple-400 hover:bg-slate-900 flex align-middle py-2 px-3 m-1 rounded-md ${
                     isActive ? 'text-purple-300 font-medium bg-slate-900' : 'text-slate-400'
                   }`}
