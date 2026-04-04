@@ -213,6 +213,16 @@ export default function ProjectsPage() {
       previewImage: "/images/Embedded.png"
     },
     {
+      title: "Onchip Communication",
+      description: "Onboard communication protocols and FPGA implementations of SPI, I2C, UART and CAN, in Verilog.",
+      technologies: ["Verilog", "iVerilog", "Vivado", "NEXYS A7-100T", "Digilent Arty A7-35T"],
+    },
+    {
+      title: "FPGA Implementation Mean Bean Machine",
+      description: "An FPGA implementation of the famous retro game - Dr. Robotnik’s Mean Bean Machine. Programmed on NEXYS A7100T board using AMD’s Vivado, using 5 control switches, a VGA output for game screen and 7-segment display for viewing the score.",
+      technologies: ["Verilog", "Vivado", "NEXYS A7-100T"]
+    },
+    {
       title: "FPGA Projects",
       description: "Alarm clock and audio recorder implementations on FPGA chips.",
       technologies: ["Verilog", "SystemVerilog", "Vivado", "Quartus Prime"]
