@@ -14,6 +14,13 @@ export default function ProjectsPage() {
       previewImage: "/images/WoofCarePreview.png"
     },
     {
+      title: "Asclepius",
+      description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
+      technologies: ["Python", "FastAPI", "OpenAI API", "HIPAA Compliance, NextJs"],
+      github: "https://github.com/shiv-arora/asclepius",
+      previewImage: "/images/asclepius.png"
+    },
+    {
       title: "Whatrobe",
       description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
       technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
