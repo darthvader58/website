@@ -1,5 +1,6 @@
 'use client';
 
+import { link } from 'fs';
 import ProjectCard from '../components/ProjectCard'
 import ScrollReveal from '../components/ScrollReveal'
 
@@ -55,6 +56,14 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "Twinmind-Live",
+      description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
+      technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
+      github: "https://github.com/darthvader58/twinmind",
+      link: "https://twinmind-phi.vercel.app",
+      hasLivePreview: true
+    },
+    {
       title: "Numericle",
       description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
       technologies: ["Typescript", "Firebase"],
@@ -102,6 +111,7 @@ export default function ProjectsPage() {
       link: "https://woofcare-website.vercel.app",
       hasLivePreview: true
     },
+    /*
     {
       title: "Portfolio",
       description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
@@ -110,6 +120,7 @@ export default function ProjectsPage() {
       link: "https://shashwatraj.vercel.app",
       hasLivePreview: true
     },
+    */
     {
       title: "Kavvy",
       description: "Linkedin for authors - mockup only.",
@@ -118,6 +129,7 @@ export default function ProjectsPage() {
       link: "https://kavvy.vercel.app",
       hasLivePreview: true
     },
+    /*
     {
       title: "Makeathon",
       description: "Arduino-based autonomous maze solving simulator and web compiler",
@@ -126,6 +138,7 @@ export default function ProjectsPage() {
       link: "https://makeathon.vercel.app",
       hasLivePreview: true
     },
+    */
     {
       title: "LinkedIn Queens Puzzle",
       description: "Solution to LinkedIn Queens puzzle using backtracking and algorithmic optimization.",
@@ -144,10 +157,11 @@ export default function ProjectsPage() {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
-      github: "https://github.com/darthvader58/Anagnor",
+      github: "https://github.com/Anagnor/Anagnor",
       previewImage: "/images/Anagnor.png"
     },
     // Other projects with live previews
+    /*
     {
       title: "pip --race",
       description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
@@ -156,6 +170,7 @@ export default function ProjectsPage() {
       link: "https://pip-race.vercel.app",
       hasLivePreview: true
     },
+    */
     
     // Software projects without previews
     {
@@ -195,6 +210,7 @@ export default function ProjectsPage() {
       technologies: ["Swift", "Metal", "SwiftUI"],
       github: "https://github.com/darthvader58/GameOfLife"
     },
+    /*
     {
       title: "N-Body Simulator",
       description: "Gravitational physics simulation with multiple body interactions and visualization using Apple Silicon's metal shaders.",
@@ -213,6 +229,7 @@ export default function ProjectsPage() {
       technologies: ["Python", "PyTorch", "Scikit-learn", "TFLearn", "Keras"],
       github: "https://github.com/darthvader58/ML_practice"
     },
+    */
     {
       title: "Peer-Faculty Interaction",
       description: "Educational platform for student-faculty communication built for ASU's CSE 360 project.",

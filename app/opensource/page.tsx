@@ -89,11 +89,11 @@ export default function OpenSourcePage() {
       isPending: false
     },
     {
-      name: "Suite Numérique Meet",
-      logo: "/logo-suite-numerique.png",
-      repo: "https://github.com/suitenumerique/meet",
-      prLink: "https://github.com/suitenumerique/meet/pull/965",
-      isPending: true
+      name: "Omi",
+      logo: "https://avatars.githubusercontent.com/u/162546372?s=280&v=4",
+      repo: "https://github.com/BasedHardware/omi",
+      prLink: "https://github.com/BasedHardware/omi/pull/6666",
+      isPending: false
     },
     {
       name: "Keras",
