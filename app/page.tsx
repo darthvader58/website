@@ -327,6 +327,13 @@ export default function HomePage() {
                   previewImage: "/images/WoofCarePreview.png"
                 },
                 {
+                  title: "Asclepius",
+                  description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
+                  technologies: ["Python", "FastAPI", "OpenAI API", "HIPAA Compliance, NextJs"],
+                  github: "https://github.com/shiv-arora/asclepius",
+                  previewImage: "/images/asclepius.png"
+                },
+                {
                   title: "Whatrobe",
                   description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
                   technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
@@ -344,6 +351,15 @@ export default function HomePage() {
                   hasLivePreview: true
                 },
                 {
+                  title: "Pit Wall",
+                  description: "Write strategy bots that compete in physics-accurate F1 simulations.",
+                  technologies: ["Python", "Compiler design", "Physics Engine", "FastAPI", "Docker"],
+                  github: "https://github.com/darthvader58/phi1",
+                  previewImage: "/images/pitwall.png",
+                  link: "https://pitwall.up.railways.app",
+                  hasLivePreview: true
+                },
+                {
                   title: "KaleshScript",
                   description: "Toy programming language based on Delhi's street slang and memes.",
                   technologies: ["Go", "Compiler Design", "Next.js"],
@@ -352,11 +368,11 @@ export default function HomePage() {
                   hasLivePreview: true
                 },
                 {
-                  title: "Formath",
-                  description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-                  technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-                  github: "https://github.com/darthvader58/biryani",
-                  link: "https://formath.vercel.app",
+                  title: "Twinmind-Live",
+                  description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
+                  technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
+                  github: "https://github.com/darthvader58/twinmind",
+                  link: "https://twinmind-phi.vercel.app",
                   hasLivePreview: true
                 },
                 {
@@ -368,21 +384,20 @@ export default function HomePage() {
                   previewImage: "/images/numericle.png",
                   hasLivePreview: true
                 },
-                
-                {
-                  title: "Metal Lab",
-                  description: "Advanced physics simulation platform with GPU acceleration for educational purposes.",
-                  technologies: ["Next.js", "Three.js", "WebGPU", "Metal Shaders"],
-                  github: "https://github.com/arpan404/metal_lab",
-                  previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
-                },  
                 {
                   title: "Terrader",
-                  description: "Web based game in the form of a crypto-trading simulator with carbon footprint awareness.",
+                  description: "Terrader is a web based game in the form of a crypto-trading simulator that functions with respect to a carbon footprint, carbon score and strategic gameplay; and has other interesting side-features to increase awareness among the players on how a fruitful and trending practice has an unnoticed contribution to climate change.",
                   technologies: ["React", "Python", "OpenAI GPT"],
                   github: "https://github.com/theVedanta/terrader",
                   link: "https://play-terrader.vercel.app/lobby",
                   hasLivePreview: true
+                },
+                {
+                  title: "Metal Lab",
+                  description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
+                  technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
+                  github: "https://github.com/arpan404/metal_lab",
+                  previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
                 }
               ].map((project, index) => (
                 <ScrollReveal key={index} delay={index * 50}>
