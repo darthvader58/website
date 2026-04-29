@@ -329,8 +329,8 @@ export default function HomePage() {
                 {
                   title: "Asclepius",
                   description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
-                  technologies: ["Python", "FastAPI", "OpenAI API", "HIPAA Compliance, NextJs"],
-                  github: "https://github.com/shiv-arora/asclepius",
+                  technologies: ["Pytorch", "FastAPI", "Cloud LLMs", "HIPAA Compliance", "NextJs", "Gemma 4"],
+                  github: "https://github.com/shiv-arora/hackprincetons26",
                   previewImage: "/images/asclepius.png"
                 },
                 {
@@ -382,6 +382,14 @@ export default function HomePage() {
                   github: "https://github.com/darthvader58/numericle",
                   link: "https://numericle.space",
                   previewImage: "/images/numericle.png",
+                  hasLivePreview: true
+                },
+                {
+                  title: "Formath",
+                  description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+                  technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+                  github: "https://github.com/darthvader58/biryani",
+                  link: "https://formath.vercel.app",
                   hasLivePreview: true
                 },
                 {

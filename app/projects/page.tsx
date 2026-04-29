@@ -17,8 +17,8 @@ export default function ProjectsPage() {
     {
       title: "Asclepius",
       description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
-      technologies: ["Python", "FastAPI", "OpenAI API", "HIPAA Compliance, NextJs"],
-      github: "https://github.com/shiv-arora/asclepius",
+      technologies: ["Pytorch", "FastAPI", "Cloud LLMs", "HIPAA Compliance", "NextJs", "Gemma 4"],
+      github: "https://github.com/shiv-arora/hackprincetons26",
       previewImage: "/images/asclepius.png"
     },
     {
@@ -64,6 +64,21 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      github: "https://github.com/darthvader58/biryani",
+      link: "https://formath.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Metal Lab",
+      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
+      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
+      github: "https://github.com/arpan404/metal_lab",
+      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
+    },
+    {
       title: "Numericle",
       description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
       technologies: ["Typescript", "Firebase"],
@@ -78,21 +93,6 @@ export default function ProjectsPage() {
       technologies: ["React", "Python", "OpenAI GPT"],
       github: "https://github.com/theVedanta/terrader",
       link: "https://play-terrader.vercel.app/lobby",
-      hasLivePreview: true
-    },
-    {
-      title: "Metal Lab",
-      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
-      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
-      github: "https://github.com/arpan404/metal_lab",
-      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
-    },
-    {
-      title: "Formath",
-      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      github: "https://github.com/darthvader58/biryani",
-      link: "https://formath.vercel.app",
       hasLivePreview: true
     },
     {
