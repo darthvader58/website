@@ -27,12 +27,26 @@ export function getAllBlogPosts() {
   )
 }
 
+function getTodayUtcDateString(date = new Date()) {
+  return date.toISOString().slice(0, 10)
+}
+
 export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug)
 }
 
 export function getLatestBlogPost() {
   return getAllBlogPosts()[0]
+}
+
+export function getPublishedBlogPosts() {
+  const today = getTodayUtcDateString()
+
+  return getAllBlogPosts().filter((post) => post.publishedAt <= today)
+}
+
+export function getLatestPublishedBlogPost() {
+  return getPublishedBlogPosts()[0]
 }
 
 export function formatBlogDate(

@@ -9,6 +9,10 @@ type LatestPostSummary = {
   publishedAt: string;
   readTime: string;
   slug: string;
+  newsletterStatus: 'pending' | 'processing' | 'sent' | 'partial' | 'failed' | 'skipped_no_subscribers';
+  newsletterSentAt: string | null;
+  newsletterSentCount: number;
+  newsletterFailedCount: number;
 };
 
 type NewsletterAdminClientProps = {
@@ -39,6 +43,18 @@ export default function NewsletterAdminClient({
 
       if (response.ok) {
         setStatus('success');
+        if (data.alreadySent) {
+          setMessage(
+            `Latest post was already sent${data.post?.title ? `: ${data.post.title}` : ''}.`
+          );
+          return;
+        }
+        if (data.status === 'processing' || data.status === 'pending') {
+          setMessage(
+            `Latest post processing started${data.post?.title ? `: ${data.post.title}` : ''}. Sent so far: ${data.sent}. Failed so far: ${data.failed}.`
+          );
+          return;
+        }
         setMessage(
           `Latest post sent to ${data.sent} subscribers${data.post?.title ? `: ${data.post.title}` : ''}.`
         );
@@ -110,6 +126,24 @@ export default function NewsletterAdminClient({
                 /blog/{latestPost.slug}
               </span>
             </p>
+            <p className="mt-2 text-sm text-slate-500">
+              Newsletter status:
+              <span className="ml-2 font-medium text-slate-300">
+                {latestPost.newsletterStatus === 'pending'
+                  ? 'Pending send'
+                  : latestPost.newsletterStatus}
+              </span>
+              {latestPost.newsletterSentAt ? (
+                <span className="ml-2 text-slate-500">
+                  · sent {new Date(latestPost.newsletterSentAt).toLocaleString()}
+                </span>
+              ) : null}
+            </p>
+            {latestPost.newsletterStatus !== 'pending' ? (
+              <p className="mt-2 text-sm text-slate-500">
+                Sent: {latestPost.newsletterSentCount} · Failed: {latestPost.newsletterFailedCount}
+              </p>
+            ) : null}
           </div>
         ) : (
           <div className="mb-5 rounded-xl border border-amber-700/40 bg-amber-950/20 p-4 text-amber-200">
@@ -130,7 +164,7 @@ export default function NewsletterAdminClient({
             placeholder="Enter your admin API key"
           />
           <p className="mt-1 text-xs text-slate-500">
-            Set in .env.local as NEWSLETTER_API_KEY
+            Set as `NEWSLETTER_API_KEY` in local env and in your Vercel project environment variables.
           </p>
         </div>
 
@@ -216,10 +250,11 @@ export default function NewsletterAdminClient({
       <div className="rounded-lg border border-slate-800 bg-slate-950/30 p-6">
         <h2 className="mb-4 text-xl font-semibold text-slate-100">Tips</h2>
         <ul className="space-y-2 text-sm text-slate-400">
-          <li>• “Send Latest Blog Post” pulls the newest post directly from your blog source files.</li>
+          <li>• “Send Latest Blog Post” pulls the newest post directly from your production blog source and records the send in the database.</li>
+          <li>• The deployed app now supports an automated cron-based sweep for newly published unsent posts. Set `CRON_SECRET` in Vercel so the cron route stays private.</li>
           <li>• The latest-post email uses an editorial Substack-style layout with the post title, subtitle, excerpt, headings, and CTA.</li>
           <li>• “Custom Broadcast” is still there if you want a one-off email that is not tied to a blog post.</li>
-          <li>• Active subscribers are read from the Vercel Postgres `subscribers` table.</li>
+          <li>• Subscribers and newsletter send history are stored in Postgres/Neon tables used by the deployed app.</li>
           <li>• Check the Resend dashboard for delivery status and failures.</li>
         </ul>
       </div>

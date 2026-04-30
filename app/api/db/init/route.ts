@@ -1,27 +1,28 @@
-import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
+import { ensureNewsletterTables } from '@/app/lib/newsletter';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    // Create subscribers table
-    await sql`
-      CREATE TABLE IF NOT EXISTS subscribers (
-        id SERIAL PRIMARY KEY,
-        email VARCHAR(255) UNIQUE NOT NULL,
-        subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        confirmed BOOLEAN DEFAULT true,
-        active BOOLEAN DEFAULT true
-      );
-    `;
+    const adminApiKey = process.env.NEWSLETTER_API_KEY;
+    const authHeader = request.headers.get('authorization');
 
-    // Create index on email for faster lookups
-    await sql`
-      CREATE INDEX IF NOT EXISTS idx_subscribers_email ON subscribers(email);
-    `;
+    if (!adminApiKey) {
+      return NextResponse.json({
+        error: 'NEWSLETTER_API_KEY is not configured'
+      }, { status: 500 });
+    }
+
+    if (authHeader !== `Bearer ${adminApiKey}`) {
+      return NextResponse.json({
+        error: 'Unauthorized'
+      }, { status: 401 });
+    }
+
+    await ensureNewsletterTables();
 
     return NextResponse.json({
       success: true,
-      message: 'Database initialized successfully'
+      message: 'Newsletter tables initialized successfully'
     });
   } catch (error: any) {
     return NextResponse.json({

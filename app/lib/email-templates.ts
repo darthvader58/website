@@ -67,7 +67,7 @@ function getPostUrl(post: BlogPost) {
   return `${SITE_URL}/blog/${post.slug}`
 }
 
-function getLatestPostEmailSubject(post: BlogPost) {
+function getBlogPostEmailSubject(post: BlogPost) {
   return `${post.issueLabel}: ${post.title}`
 }
 
@@ -254,7 +254,7 @@ export function generateNewsletterEmail(title: string, content: string, postUrl?
   `;
 }
 
-export function generateLatestPostNewsletterEmail(post: BlogPost): string {
+export function generateBlogPostNewsletterEmail(post: BlogPost): string {
   const postUrl = getPostUrl(post)
   const publishedLabel = formatBlogDate(post.publishedAt)
   const previewText = `${post.subtitle} ${post.excerpt}`.trim()
@@ -263,7 +263,7 @@ export function generateLatestPostNewsletterEmail(post: BlogPost): string {
   const quote = getPostQuote(post)
   const leadParagraph = paragraphs[0] ?? post.excerpt
   const supportingParagraph = paragraphs[1] ?? 'Fresh off the site: a new post with sharp opinions, field notes, and a mildly unreasonable amount of curiosity.'
-  const emailSubject = getLatestPostEmailSubject(post)
+  const emailSubject = getBlogPostEmailSubject(post)
 
   return `
 <!DOCTYPE html>
@@ -437,7 +437,7 @@ export function generateLatestPostNewsletterEmail(post: BlogPost): string {
   `;
 }
 
-export function generateLatestPostNewsletterText(post: BlogPost): string {
+export function generateBlogPostNewsletterText(post: BlogPost): string {
   const postUrl = getPostUrl(post)
   const publishedLabel = formatBlogDate(post.publishedAt)
   const headings = getPostHeadings(post).slice(0, 3)
@@ -447,7 +447,7 @@ export function generateLatestPostNewsletterText(post: BlogPost): string {
   const supportingParagraph = paragraphs[1] ?? ''
 
   return [
-    `${getLatestPostEmailSubject(post)}`,
+    `${getBlogPostEmailSubject(post)}`,
     '',
     post.subtitle,
     '',
