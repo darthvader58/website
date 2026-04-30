@@ -10,7 +10,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
   readTime: '8 min read',
   publishedAt: '2026-04-30',
   issueLabel: 'Issue No. 001',
-  imageDirectory: '001',
+  imageDirectory: 'blog1',
   blocks: [
     {
       type: 'html',
@@ -49,7 +49,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
     },
     {
       type: 'image',
-      fileName: 'mechanisticintepretability.png',
+      fileName: 'mechanisticinterpretability.png',
       alt: 'Blog illustration placed after the first safety paragraph and before the technical interpretability section.',
     },
     {
@@ -146,13 +146,12 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
         <hr />
         <h3>References</h3>
         <ol>
-          <li id="reference-1"><a href="https://cdn.openai.com/papers/gpt-4.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">OpenAI, "GPT-4 Technical Report."</a></li>
-          <li id="reference-2"><a href="https://openai.com/index/gpt-4-research/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">OpenAI, "GPT-4."</a></li>
-          <li id="reference-3"><a href="https://www.anthropic.com/research/mapping-mind-language-model?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Anthropic, "Mapping the Mind of a Large Language Model."</a></li>
-          <li id="reference-4"><a href="https://www.anthropic.com/research/tracing-thoughts-language-model?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Anthropic, "Tracing the thoughts of a large language model."</a></li>
-          <li id="reference-5"><a href="https://arxiv.org/abs/2209.11895?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Olsson et al., "In-context Learning and Induction Heads."</a></li>
-          <li id="reference-6"><a href="https://transformer-circuits.pub/2022/toy_model/index.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Elhage et al., "Toy Models of Superposition."</a></li>
-          <li id="reference-7"><a href="https://arxiv.org/abs/2501.08313?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">MiniMax, "MiniMax-01: Scaling Foundation Models with Lightning Attention."</a></li>
+          <li id="reference-2"><a href="https://openai.com/index/gpt-4-research" target="_blank" rel="noopener noreferrer">OpenAI, "GPT-4."</a></li>
+          <li id="reference-3"><a href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank" rel="noopener noreferrer">Anthropic, "Mapping the Mind of a Large Language Model."</a></li>
+          <li id="reference-4"><a href="https://www.anthropic.com/research/tracing-thoughts-language-model" target="_blank" rel="noopener noreferrer">Anthropic, "Tracing the thoughts of a large language model."</a></li>
+          <li id="reference-5"><a href="https://arxiv.org/abs/2209.11895" target="_blank" rel="noopener noreferrer">Olsson et al., "In-context Learning and Induction Heads."</a></li>
+          <li id="reference-6"><a href="https://transformer-circuits.pub/2022/toy_model/index.html" target="_blank" rel="noopener noreferrer">Elhage et al., "Toy Models of Superposition."</a></li>
+          <li id="reference-7"><a href="https://arxiv.org/abs/2501.08313" target="_blank" rel="noopener noreferrer">MiniMax, "MiniMax-01: Scaling Foundation Models with Lightning Attention."</a></li>
         </ol>
       `,
     },
