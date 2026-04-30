@@ -315,3 +315,231 @@ html.light ::-webkit-scrollbar-thumb:hover {
 .animate-fadeInSlow {
   animation: fadeIn 1.5s ease-in-out;
 }
+
+.blog-prose {
+  color: #cbd5e1;
+}
+
+.blog-prose > * + * {
+  margin-top: 1.85rem;
+}
+
+.blog-prose h2,
+.blog-prose h3 {
+  color: #f8fafc;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.blog-prose h2 {
+  margin-top: 3.5rem;
+  font-size: clamp(1.75rem, 1.6rem + 0.9vw, 2.35rem);
+  line-height: 1.12;
+}
+
+.blog-prose h3 {
+  margin-top: 2.75rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.blog-prose p,
+.blog-prose li {
+  font-size: 1.1rem;
+  line-height: 1.95;
+}
+
+.blog-prose p {
+  color: #cbd5e1;
+}
+
+.blog-prose p + p {
+  margin-top: 1.45rem;
+}
+
+.blog-prose h2 + p,
+.blog-prose h3 + p {
+  margin-top: 1.2rem;
+}
+
+.blog-prose p + h2,
+.blog-prose ul + h2,
+.blog-prose blockquote + h2,
+.blog-prose figure + h2 {
+  margin-top: 3.5rem;
+}
+
+.blog-prose p + ul,
+.blog-prose ul + p,
+.blog-prose p + blockquote,
+.blog-prose blockquote + p,
+.blog-prose figure + p {
+  margin-top: 1.8rem;
+}
+
+.blog-prose .lead {
+  color: #e2e8f0;
+  font-size: clamp(1.25rem, 1.12rem + 0.55vw, 1.55rem);
+  line-height: 1.8;
+}
+
+.blog-dropcap::first-letter {
+  float: left;
+  margin-right: 0.5rem;
+  margin-top: 0.35rem;
+  color: #f8fafc;
+  font-size: 4.25rem;
+  line-height: 0.8;
+  font-weight: 700;
+}
+
+.blog-prose strong {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.blog-prose em {
+  color: #e2e8f0;
+}
+
+.blog-prose a {
+  color: #d8b4fe;
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 180, 254, 0.4);
+  text-underline-offset: 0.2em;
+}
+
+.blog-prose a:hover {
+  color: #f0abfc;
+  text-decoration-color: rgba(240, 171, 252, 0.75);
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin: 1.75rem 0;
+  padding-left: 1.35rem;
+}
+
+.blog-prose li + li {
+  margin-top: 0.75rem;
+}
+
+.blog-prose .blog-questions {
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-prose .blog-questions li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.blog-prose .blog-questions li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #c084fc, #7c3aed);
+  box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.14);
+}
+
+.blog-prose blockquote {
+  position: relative;
+  margin: 2.75rem 0;
+  border: 1px solid rgba(192, 132, 252, 0.22);
+  border-left: 4px solid rgba(192, 132, 252, 0.55);
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.38));
+  padding: 1.4rem 1.5rem 1.35rem 3.6rem;
+}
+
+.blog-prose blockquote::before {
+  content: '“';
+  position: absolute;
+  left: 1rem;
+  top: -0.2rem;
+  color: rgba(216, 180, 254, 0.75);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.blog-prose blockquote::after {
+  content: '”';
+  position: absolute;
+  right: 1.1rem;
+  bottom: -1.9rem;
+  color: rgba(216, 180, 254, 0.22);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 4.6rem;
+  line-height: 1;
+}
+
+.blog-prose blockquote p {
+  color: #f8fafc;
+  font-size: 1.22rem;
+  line-height: 1.75;
+}
+
+.blog-prose blockquote p + p {
+  margin-top: 0.75rem;
+}
+
+.blog-prose sup {
+  margin-left: 0.15rem;
+  font-size: 0.75em;
+}
+
+.blog-prose hr {
+  margin: 3rem 0 2.5rem;
+  border: 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.blog-caption {
+  line-height: 1.6;
+}
+
+html.light .blog-prose,
+html.light .blog-prose p,
+html.light .blog-caption {
+  color: #334155 !important;
+}
+
+html.light .blog-prose h2,
+html.light .blog-prose h3,
+html.light .blog-prose strong,
+html.light .blog-prose blockquote p,
+html.light .blog-dropcap::first-letter {
+  color: #0f172a !important;
+}
+
+html.light .blog-prose em {
+  color: #1e293b !important;
+}
+
+html.light .blog-prose a {
+  color: #7c3aed !important;
+  text-decoration-color: rgba(124, 58, 237, 0.35) !important;
+}
+
+html.light .blog-prose a:hover {
+  color: #6d28d9 !important;
+  text-decoration-color: rgba(109, 40, 217, 0.55) !important;
+}
+
+html.light .blog-prose blockquote {
+  background: linear-gradient(135deg, rgba(250, 245, 255, 0.94), rgba(243, 232, 255, 0.72)) !important;
+  border-left-color: rgba(124, 58, 237, 0.35) !important;
+}
+
+html.light .blog-prose blockquote::before {
+  color: rgba(124, 58, 237, 0.55) !important;
+}
+
+html.light .blog-prose blockquote::after {
+  color: rgba(124, 58, 237, 0.18) !important;
+}
