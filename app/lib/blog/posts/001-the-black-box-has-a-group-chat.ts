@@ -44,7 +44,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
     },
     {
       type: 'image',
-      fileName: '01-after-safety.png',
+      fileName: 'fe4d42c004bf43efda0f5921adfedd2f8f42e417-2200x2140.webp',
       alt: 'Blog illustration placed after the first paragraph in the safety section.',
     },
     {
@@ -67,7 +67,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
     },
     {
       type: 'image',
-      fileName: '02-before-hackprinceton.png',
+      fileName: 'hackprinceton.png',
       alt: 'Blog illustration placed before the HackPrinceton section.',
     },
     {
@@ -91,7 +91,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
     },
     {
       type: 'image',
-      fileName: '03-after-questions.png',
+      fileName: 'ChatGPTGenerated.png',
       alt: 'Main blog illustration placed after the questions list.',
     },
     {
