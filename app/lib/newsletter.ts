@@ -802,11 +802,11 @@ export async function sendCustomNewsletter({
 
 export async function sendBlogPostNewsletter(
   post: BlogPost,
-  options?: { force?: boolean }
+  options?: { force?: boolean; subjectOverride?: string }
 ): Promise<SendResult> {
   await ensureNewsletterTables()
 
-  const subject = getBlogPostEmailSubject(post)
+  const subject = options?.subjectOverride?.trim() || getBlogPostEmailSubject(post)
 
   if (options?.force) {
     await resetBroadcast(post, subject)
@@ -863,7 +863,10 @@ export async function sendBlogPostNewsletter(
   }
 }
 
-export async function sendLatestBlogPostNewsletter(options?: { force?: boolean }) {
+export async function sendLatestBlogPostNewsletter(options?: {
+  force?: boolean
+  subjectOverride?: string
+}) {
   const latestPost = getLatestPublishedBlogPost()
 
   if (!latestPost) {
@@ -875,7 +878,7 @@ export async function sendLatestBlogPostNewsletter(options?: { force?: boolean }
   return sendBlogPostNewsletter(latestPost, options)
 }
 
-export async function sendLatestBlogPostTestEmail(toEmail: string) {
+export async function sendLatestBlogPostTestEmail(toEmail: string, subjectOverride?: string) {
   const latestPost = getLatestPublishedBlogPost()
 
   if (!latestPost) {
@@ -884,7 +887,7 @@ export async function sendLatestBlogPostTestEmail(toEmail: string) {
     }
   }
 
-  const subject = getBlogPostEmailSubject(latestPost)
+  const subject = subjectOverride?.trim() || getBlogPostEmailSubject(latestPost)
   const html = generateBlogPostNewsletterEmail(latestPost)
   const text = generateBlogPostNewsletterText(latestPost)
   const resend = getResendClient()

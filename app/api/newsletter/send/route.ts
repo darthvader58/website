@@ -7,7 +7,7 @@ import {
 
 export async function POST(request: Request) {
   try {
-    const { title, content, postUrl, apiKey, mode, force, toEmail } = await request.json();
+    const { title, content, postUrl, apiKey, mode, force, toEmail, subjectOverride } = await request.json();
 
     const ADMIN_API_KEY = process.env.NEWSLETTER_API_KEY;
 
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
         );
       }
 
-      const result = await sendLatestBlogPostTestEmail(toEmail);
+      const result = await sendLatestBlogPostTestEmail(toEmail, subjectOverride);
 
       if (result.status === 'no_post') {
         return NextResponse.json(
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     const sendLatestPost = mode === 'latest-post' || (!title && !content);
 
     if (sendLatestPost) {
-      const result = await sendLatestBlogPostNewsletter({ force });
+      const result = await sendLatestBlogPostNewsletter({ force, subjectOverride });
 
       if (result.status === 'no_post') {
         return NextResponse.json(
