@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { formatBlogDate, getBlogPost } from '@/app/lib/blog';
-import { getBlogImageMap } from '@/app/lib/blog-images';
+import { getBlogImagePath } from '@/app/lib/blog/images';
 
 type BlogPostPageProps = {
   params: {
@@ -41,8 +41,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
-
-  const imageMap = getBlogImageMap(post.imageFolder);
 
   return (
     <section className="fade pb-20">
@@ -89,7 +87,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   );
                 }
 
-                const imageSrc = imageMap[block.slot];
+                const imageSrc = getBlogImagePath(post.imageDirectory, block.fileName);
 
                 if (!imageSrc) {
                   return null;
@@ -97,7 +95,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
                 return (
                   <figure
-                    key={`${post.slug}-${block.slot}`}
+                    key={`${post.slug}-${block.fileName}`}
                     className="blog-figure my-14 overflow-hidden rounded-[28px] border border-slate-800 bg-slate-900/70 p-4 sm:p-6"
                   >
                     <img
