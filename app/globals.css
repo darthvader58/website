@@ -499,50 +499,82 @@ html.light ::-webkit-scrollbar-thumb:hover {
   border-top: 1px solid rgba(148, 163, 184, 0.24);
 }
 
+.blog-figure {
+  margin: 3rem 0;
+}
+
+.blog-figure-frame {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 1rem;
+  background: transparent;
+}
+
+.blog-figure-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
 .blog-caption {
-  margin-top: 0.85rem;
+  width: 100%;
+  max-width: min(100%, 36rem);
+  margin: 0.65rem auto 0;
   text-align: center;
-  font-size: 0.82rem;
-  line-height: 1.65;
+  font-size: 0.76rem;
+  line-height: 1.6;
   font-style: italic;
-  letter-spacing: 0.01em;
-  color: rgba(148, 163, 184, 0.82);
+  letter-spacing: 0;
+  color: rgba(148, 163, 184, 0.64);
 }
 
 .blog-caption a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: rgba(148, 163, 184, 0.45);
+  text-decoration-color: rgba(148, 163, 184, 0.28);
   text-underline-offset: 0.18em;
 }
 
 .blog-caption a:hover {
   color: #cbd5e1;
-  text-decoration-color: rgba(203, 213, 225, 0.75);
+  text-decoration-color: rgba(203, 213, 225, 0.46);
 }
 
 .blog-caption .caption-source {
-  white-space: nowrap;
+  margin-right: 0.22rem;
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.54);
 }
 
 html.light .blog-caption {
-  line-height: 1.6;
-  color: rgba(51, 65, 85, 0.8) !important;
+  color: rgba(100, 116, 139, 0.88) !important;
+}
+
+html.light .blog-figure-frame {
+  border-color: rgba(148, 163, 184, 0.22);
 }
 
 html.light .blog-caption a {
   color: inherit !important;
-  text-decoration-color: rgba(71, 85, 105, 0.45) !important;
+  text-decoration-color: rgba(100, 116, 139, 0.24) !important;
 }
 
 html.light .blog-caption a:hover {
-  color: #1e293b !important;
-  text-decoration-color: rgba(30, 41, 59, 0.65) !important;
+  color: #334155 !important;
+  text-decoration-color: rgba(51, 65, 85, 0.38) !important;
+}
+
+html.light .blog-caption .caption-source {
+  color: rgba(100, 116, 139, 0.62) !important;
 }
 
 html.light .blog-prose,
-html.light .blog-prose p,
-html.light .blog-caption {
+html.light .blog-prose p {
   color: #334155 !important;
 }
 

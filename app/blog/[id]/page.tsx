@@ -104,15 +104,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 }
 
                 return (
-                  <figure
-                    key={`${post.slug}-${block.fileName}`}
-                    className="blog-figure my-14 overflow-hidden rounded-[28px] border border-slate-800 bg-slate-900/70 p-4 sm:p-6"
-                  >
-                    <img
-                      src={imageSrc}
-                      alt={block.alt}
-                      className="w-full rounded-[22px] border border-slate-700/60 bg-[#2C2624]"
-                    />
+                  <figure key={`${post.slug}-${block.fileName}`} className="blog-figure">
+                    <div className="blog-figure-frame">
+                      <img
+                        src={imageSrc}
+                        alt={block.alt}
+                        className="blog-figure-image"
+                      />
+                    </div>
                     {block.captionHtml ? (
                       <figcaption
                         className="blog-caption"
