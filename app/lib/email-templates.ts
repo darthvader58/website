@@ -407,16 +407,16 @@ export function generateBlogPostNewsletterEmail(post: BlogPost): string {
             <td style="padding: 32px 32px 0 32px;">
               <table cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="border-radius: 999px; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);">
-                    <a href="${postUrl}" style="display: inline-block; padding: 16px 28px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; font-weight: 700; color: #ffffff; text-decoration: none;">
+                  <td style="border-radius: 12px; background-color: #1f8f3a;">
+                    <a href="${postUrl}" style="display: inline-block; padding: 15px 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #ffffff; text-decoration: none;">
                       Read the full post
                     </a>
                   </td>
                 </tr>
               </table>
-              <p style="margin: 18px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.7; color: #6b7280;">
-                Or copy this into your browser like a civilized internet archaeologist:<br>
-                <a href="${postUrl}" style="color: #7c3aed; text-decoration: none;">${postUrl}</a>
+              <p style="margin: 16px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.7; color: #6b7280;">
+                Prefer reading in the browser?
+                <a href="${postUrl}" style="color: #1f2937; text-decoration: underline; text-underline-offset: 2px;">Open the web version</a>.
               </p>
             </td>
           </tr>
