@@ -1,79 +1,27 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { sql } from '@vercel/postgres';
-import { generateNewsletterEmail } from '@/app/lib/email-templates';
+import {
+  generateLatestPostNewsletterEmail,
+  generateLatestPostNewsletterText,
+  generateNewsletterEmail,
+} from '@/app/lib/email-templates';
+import { getLatestBlogPost } from '@/app/lib/blog';
 
-// Legacy function - now uses imported template
-function generateEmailHTML(title: string, content: string, postUrl?: string) {
-  return generateNewsletterEmail(title, content, postUrl);
+function stripHtml(value: string) {
+  return value.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-// Keep old function for backwards compatibility
-function _generateEmailHTML_old(title: string, content: string, postUrl?: string) {
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title}</title>
-</head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0f172a;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #0f172a;">
-    <tr>
-      <td align="center" style="padding: 40px 20px;">
-        <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 16px; border: 1px solid #334155; overflow: hidden;">
-          <!-- Header -->
-          <tr>
-            <td style="background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%); padding: 30px; text-align: center;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: bold;">Shashwat Raj</h1>
-              <p style="margin: 10px 0 0 0; color: #e9d5ff; font-size: 14px;">Blog Newsletter</p>
-            </td>
-          </tr>
-          
-          <!-- Content -->
-          <tr>
-            <td style="padding: 40px 30px;">
-              <h2 style="margin: 0 0 20px 0; color: #e2e8f0; font-size: 24px; font-weight: bold;">${title}</h2>
-              <div style="color: #cbd5e1; font-size: 16px; line-height: 1.6;">
-                ${content}
-              </div>
-              ${postUrl ? `
-              <table cellpadding="0" cellspacing="0" style="margin-top: 30px;">
-                <tr>
-                  <td style="background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%); border-radius: 8px; padding: 14px 28px;">
-                    <a href="${postUrl}" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 16px; display: inline-block;">Read Full Post →</a>
-                  </td>
-                </tr>
-              </table>
-              ` : ''}
-            </td>
-          </tr>
-          
-          <!-- Footer -->
-          <tr>
-            <td style="background-color: #1e293b; padding: 30px; text-align: center; border-top: 1px solid #334155;">
-              <p style="margin: 0 0 10px 0; color: #94a3b8; font-size: 14px;">
-                You're receiving this because you subscribed to Shashwat Raj's newsletter.
-              </p>
-              <p style="margin: 0; color: #64748b; font-size: 12px;">
-                <a href="https://shashwatraj.com" style="color: #a855f7; text-decoration: none;">Visit Website</a> • 
-                <a href="https://github.com/darthvader58" style="color: #a855f7; text-decoration: none;">GitHub</a>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>
-  `;
+function getCustomEmailText(title: string, content: string, postUrl?: string) {
+  return [title, '', stripHtml(content), postUrl ? `Read more: ${postUrl}` : '']
+    .filter(Boolean)
+    .join('\n');
 }
 
 export async function POST(request: Request) {
   try {
-    const { title, content, postUrl, apiKey } = await request.json();
+    const { title, content, postUrl, apiKey, mode } = await request.json();
+    const resendApiKey = process.env.RESEND_API_KEY;
 
     // Simple API key protection
     const ADMIN_API_KEY = process.env.NEWSLETTER_API_KEY || 'your-secret-key';
@@ -85,11 +33,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate input
-    if (!title || !content) {
+    if (!resendApiKey) {
       return NextResponse.json(
-        { error: 'Title and content are required' },
-        { status: 400 }
+        { error: 'RESEND_API_KEY is not configured' },
+        { status: 500 }
       );
     }
 
@@ -107,27 +54,100 @@ export async function POST(request: Request) {
       );
     }
 
-    // Generate email HTML
-    const emailHTML = generateEmailHTML(title, content, postUrl);
+    const sendLatestPost = mode === 'latest-post' || (!title && !content);
+
+    let subject = title;
+    let emailHTML = '';
+    let emailText = '';
+    let latestPostSummary:
+      | {
+          slug: string;
+          title: string;
+        }
+      | undefined;
+
+    if (sendLatestPost) {
+      const latestPost = getLatestBlogPost();
+
+      if (!latestPost) {
+        return NextResponse.json(
+          { error: 'No blog posts found to send' },
+          { status: 400 }
+        );
+      }
+
+      subject = `${latestPost.issueLabel}: ${latestPost.title}`;
+      emailHTML = generateLatestPostNewsletterEmail(latestPost);
+      emailText = generateLatestPostNewsletterText(latestPost);
+      latestPostSummary = {
+        slug: latestPost.slug,
+        title: latestPost.title,
+      };
+    } else {
+      if (!title || !content) {
+        return NextResponse.json(
+          { error: 'Title and content are required for a custom newsletter' },
+          { status: 400 }
+        );
+      }
+
+      emailHTML = generateNewsletterEmail(title, content, postUrl);
+      emailText = getCustomEmailText(title, content, postUrl);
+    }
 
     // Send emails using Resend
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const emailResults = [];
-    const errors = [];
+    const resend = new Resend(resendApiKey);
+    const emailResults: Array<{
+      email: string;
+      success: true;
+      id: string | undefined;
+    }> = [];
+    const errors: Array<{
+      email: string | undefined;
+      error: string;
+    }> = [];
+    const BATCH_SIZE = 10;
 
-    for (const subscriber of subscribers) {
-      try {
-        const emailResult = await resend.emails.send({
-          from: 'Shashwat Raj <newsletter@shashwatraj.com>',
-          to: subscriber.email,
-          subject: title,
-          html: emailHTML,
+    for (let index = 0; index < subscribers.length; index += BATCH_SIZE) {
+      const batch = subscribers.slice(index, index + BATCH_SIZE);
+      const batchResults = await Promise.allSettled(
+        batch.map(async (subscriber) => {
+          const emailResult = await resend.emails.send({
+            from: 'Shashwat Raj <newsletter@shashwatraj.com>',
+            to: subscriber.email,
+            subject,
+            html: emailHTML,
+            text: emailText,
+          });
+
+          return {
+            email: subscriber.email,
+            id: emailResult.data?.id,
+          };
+        })
+      );
+
+      batchResults.forEach((batchResult, batchIndex) => {
+        const email = batch[batchIndex]?.email;
+
+        if (batchResult.status === 'fulfilled') {
+          emailResults.push({
+            email: batchResult.value.email,
+            success: true,
+            id: batchResult.value.id,
+          });
+          return;
+        }
+
+        console.error(`Failed to send to ${email}:`, batchResult.reason);
+        errors.push({
+          email,
+          error:
+            batchResult.reason instanceof Error
+              ? batchResult.reason.message
+              : 'Unknown email send error',
         });
-        emailResults.push({ email: subscriber.email, success: true, id: emailResult.data?.id });
-      } catch (error: any) {
-        console.error(`Failed to send to ${subscriber.email}:`, error);
-        errors.push({ email: subscriber.email, error: error.message });
-      }
+      });
     }
 
     return NextResponse.json({
@@ -136,7 +156,8 @@ export async function POST(request: Request) {
       subscriberCount: subscribers.length,
       sent: emailResults.length,
       failed: errors.length,
-      errors: errors.length > 0 ? errors : undefined
+      errors: errors.length > 0 ? errors : undefined,
+      post: latestPostSummary,
     });
 
   } catch (error) {

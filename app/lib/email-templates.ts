@@ -1,3 +1,76 @@
+import { formatBlogDate, type BlogPost } from '@/app/lib/blog'
+
+const SITE_URL = 'https://shashwatraj.com'
+
+function decodeHtmlEntities(value: string) {
+  return value
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+}
+
+function stripHtml(value: string) {
+  return decodeHtmlEntities(value.replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function extractTagText(html: string, tagName: string) {
+  const pattern = new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)<\\/${tagName}>`, 'gi')
+  const matches = [...html.matchAll(pattern)]
+
+  return matches
+    .map((match) => stripHtml(match[1] ?? ''))
+    .filter(Boolean)
+}
+
+function getPostParagraphs(post: BlogPost) {
+  return post.blocks.flatMap((block) => {
+    if (block.type !== 'html') {
+      return []
+    }
+
+    return extractTagText(block.html, 'p')
+  })
+}
+
+function getPostHeadings(post: BlogPost) {
+  return post.blocks.flatMap((block) => {
+    if (block.type !== 'html') {
+      return []
+    }
+
+    return [...extractTagText(block.html, 'h2'), ...extractTagText(block.html, 'h3')]
+  })
+}
+
+function getPostQuote(post: BlogPost) {
+  const quotes: string[] = []
+
+  for (const block of post.blocks) {
+    if (block.type !== 'html') {
+      continue
+    }
+
+    quotes.push(...extractTagText(block.html, 'blockquote'))
+  }
+
+  const punchyQuote = quotes.find((quote) => quote.length >= 40 && quote.length <= 180)
+
+  return punchyQuote ?? quotes[0] ?? null
+}
+
+function getPostUrl(post: BlogPost) {
+  return `${SITE_URL}/blog/${post.slug}`
+}
+
+function getLatestPostEmailSubject(post: BlogPost) {
+  return `${post.issueLabel}: ${post.title}`
+}
+
 // Substack-style email templates
 
 export function generateWelcomeEmail(): string {
@@ -179,4 +252,221 @@ export function generateNewsletterEmail(title: string, content: string, postUrl?
 </body>
 </html>
   `;
+}
+
+export function generateLatestPostNewsletterEmail(post: BlogPost): string {
+  const postUrl = getPostUrl(post)
+  const publishedLabel = formatBlogDate(post.publishedAt)
+  const previewText = `${post.subtitle} ${post.excerpt}`.trim()
+  const paragraphs = getPostParagraphs(post)
+  const headings = getPostHeadings(post).slice(0, 3)
+  const quote = getPostQuote(post)
+  const leadParagraph = paragraphs[0] ?? post.excerpt
+  const supportingParagraph = paragraphs[1] ?? 'Fresh off the site: a new post with sharp opinions, field notes, and a mildly unreasonable amount of curiosity.'
+  const emailSubject = getLatestPostEmailSubject(post)
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${emailSubject}</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f7f1ea; color: #171717; font-family: Georgia, 'Times New Roman', serif;">
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">
+    ${previewText}
+  </div>
+  <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(180deg, #f7f1ea 0%, #f5efe7 100%);">
+    <tr>
+      <td align="center" style="padding: 32px 16px;">
+        <table width="620" cellpadding="0" cellspacing="0" style="max-width: 620px; background-color: #fffdf8; border: 1px solid #e7ddd1; border-radius: 24px; overflow: hidden; box-shadow: 0 16px 48px rgba(46, 16, 101, 0.08);">
+          <tr>
+            <td style="padding: 20px 24px; background: linear-gradient(135deg, #231942 0%, #5e2b97 55%, #ff6b6b 100%);">
+              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #fef3c7;">
+                ${post.issueLabel}
+              </p>
+              <p style="margin: 10px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; color: #f5e9ff;">
+                Fresh off the blog: professional thoughts, mildly unhinged side quests, and one new post worth opening in a proper tab.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 36px 32px 8px 32px;">
+              <p style="margin: 0 0 14px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #8b5cf6;">
+                Shashwat Raj
+              </p>
+              <h1 style="margin: 0; font-size: 38px; line-height: 1.08; letter-spacing: -0.04em; color: #171717;">
+                ${post.title}
+              </h1>
+              <p style="margin: 16px 0 0 0; font-size: 20px; line-height: 1.6; color: #4b5563;">
+                ${post.subtitle}
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 20px 32px 0 32px;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding: 0 16px 0 0;">
+                    <span style="display: inline-block; padding: 8px 14px; border-radius: 999px; background-color: #f3e8ff; color: #6d28d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-weight: 600;">
+                      ${post.category}
+                    </span>
+                  </td>
+                  <td style="padding: 0 16px 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #6b7280;">
+                    ${publishedLabel}
+                  </td>
+                  <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #6b7280;">
+                    ${post.readTime}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 28px 32px 0 32px;">
+              <p style="margin: 0; font-size: 19px; line-height: 1.8; color: #1f2937;">
+                ${leadParagraph}
+              </p>
+              <p style="margin: 22px 0 0 0; font-size: 18px; line-height: 1.8; color: #374151;">
+                ${supportingParagraph}
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 28px 32px 0 32px;">
+              <div style="padding: 24px; background-color: #fff7ed; border: 1px solid #fed7aa; border-radius: 20px;">
+                <p style="margin: 0 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c2410c;">
+                  Why This One Is Worth Your Click
+                </p>
+                <p style="margin: 0; font-size: 18px; line-height: 1.8; color: #431407;">
+                  ${post.excerpt}
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          ${headings.length > 0 ? `
+          <tr>
+            <td style="padding: 28px 32px 0 32px;">
+              <p style="margin: 0 0 14px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #7c3aed;">
+                Inside This Post
+              </p>
+              <ul style="margin: 0; padding-left: 22px; color: #1f2937;">
+                ${headings
+                  .map(
+                    (heading) => `
+                  <li style="margin: 0 0 12px 0; font-size: 18px; line-height: 1.6;">
+                    ${heading}
+                  </li>
+                `
+                  )
+                  .join('')}
+              </ul>
+            </td>
+          </tr>
+          ` : ''}
+
+          ${quote ? `
+          <tr>
+            <td style="padding: 28px 32px 0 32px;">
+              <div style="padding: 24px 24px 24px 28px; border-left: 4px solid #8b5cf6; background-color: #faf5ff; border-radius: 0 18px 18px 0;">
+                <p style="margin: 0 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #7c3aed;">
+                  A Line From The Post
+                </p>
+                <p style="margin: 0; font-size: 21px; line-height: 1.7; color: #3b0764;">
+                  "${quote}"
+                </p>
+              </div>
+            </td>
+          </tr>
+          ` : ''}
+
+          <tr>
+            <td style="padding: 32px 32px 0 32px;">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="border-radius: 999px; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);">
+                    <a href="${postUrl}" style="display: inline-block; padding: 16px 28px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; font-weight: 700; color: #ffffff; text-decoration: none;">
+                      Read the full post
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin: 18px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.7; color: #6b7280;">
+                Or copy this into your browser like a civilized internet archaeologist:<br>
+                <a href="${postUrl}" style="color: #7c3aed; text-decoration: none;">${postUrl}</a>
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 32px;">
+              <p style="margin: 0; font-size: 18px; line-height: 1.8; color: #1f2937;">
+                Thanks for reading,<br>
+                <strong>Shash</strong>
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 24px 32px 32px 32px; border-top: 1px solid #ece4d8; background-color: #fffaf3;">
+              <p style="margin: 0 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; color: #6b7280;">
+                You're receiving this because you subscribed to Shashwat Raj's newsletter.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; color: #6b7280;">
+                <a href="${SITE_URL}" style="color: #6b7280; text-decoration: none;">Website</a> ·
+                <a href="${SITE_URL}/blog" style="color: #6b7280; text-decoration: none;">Blog</a> ·
+                <a href="https://github.com/darthvader58" style="color: #6b7280; text-decoration: none;">GitHub</a>
+              </p>
+              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px;">
+                <a href="${SITE_URL}/unsubscribe" style="color: #6b7280; text-decoration: underline;">Unsubscribe</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `;
+}
+
+export function generateLatestPostNewsletterText(post: BlogPost): string {
+  const postUrl = getPostUrl(post)
+  const publishedLabel = formatBlogDate(post.publishedAt)
+  const headings = getPostHeadings(post).slice(0, 3)
+  const quote = getPostQuote(post)
+  const paragraphs = getPostParagraphs(post)
+  const leadParagraph = paragraphs[0] ?? post.excerpt
+  const supportingParagraph = paragraphs[1] ?? ''
+
+  return [
+    `${getLatestPostEmailSubject(post)}`,
+    '',
+    post.subtitle,
+    '',
+    `${post.category} · ${publishedLabel} · ${post.readTime}`,
+    '',
+    leadParagraph,
+    supportingParagraph,
+    '',
+    `Why this one is worth your click: ${post.excerpt}`,
+    '',
+    ...(headings.length > 0
+      ? ['Inside this post:', ...headings.map((heading) => `- ${heading}`), '']
+      : []),
+    ...(quote ? [`A line from the post: "${quote}"`, ''] : []),
+    `Read the full post: ${postUrl}`,
+    '',
+    'Thanks for reading,',
+    'Shash',
+  ]
+    .filter(Boolean)
+    .join('\n')
 }

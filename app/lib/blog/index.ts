@@ -31,6 +31,10 @@ export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug)
 }
 
+export function getLatestBlogPost() {
+  return getAllBlogPosts()[0]
+}
+
 export function formatBlogDate(
   dateString: string,
   variant: 'long' | 'short' = 'long'
