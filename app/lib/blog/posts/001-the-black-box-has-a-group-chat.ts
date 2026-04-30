@@ -36,29 +36,45 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
       `,
     },
     {
+      type: 'image',
+      fileName: 'carfeatures.png',
+      alt: 'Blog illustration placed after the introduction and before the safety section.',
+    },
+    {
       type: 'html',
       html: `
         <h2>Safety needs more than vibes</h2>
-        <p>Researchers at Anthropic and in the broader transformer-circuits community have shown that models appear to contain internal "features" and "circuits" associated with concepts and behaviors. Anthropic's work on Claude Sonnet, for example, identified millions of interpretable features inside a production-grade language model, while earlier transformer-circuits work studied mechanisms like induction heads, which help models recognize and continue patterns from context.<sup><a href="#reference-1">1</a></sup></p>
+        <p>Researchers at Anthropic and in the broader transformer-circuits community have shown that models appear to contain internal "features" and "circuits" associated with concepts and behaviors. Anthropic's work on Claude Sonnet, for example, identified millions of interpretable features inside a production-grade language model, while earlier transformer-circuits work studied mechanisms like induction heads, which help models recognize and continue patterns from context.<sup><a href="#reference-3">3</a>, <a href="#reference-5">5</a></sup></p>
+      `,
+    },
+    {
+      type: 'image',
+      fileName: 'mechanisticintepretability.png',
+      alt: 'Blog illustration placed after the first safety paragraph and before the technical interpretability section.',
+    },
+    {
+      type: 'html',
+      html: `
+        <p>To make this less mystical, an LLM like GPT, Claude, or MiniMax is basically a giant learned function that turns text into tokens, tokens into vectors, and vectors into a long chain of internal transformations. GPT-4, for example, is described by OpenAI as a Transformer-style model trained to predict the next token in a document; so at the lowest level, the model is not "thinking in English" first, it is updating high-dimensional numerical representations that make the next word, symbol, or code fragment more or less likely.<sup><a href="#reference-1">1</a>, <a href="#reference-2">2</a></sup> Inside those layers, attention heads move information between positions in the context, MLP layers transform and store abstract features, and residual streams carry information forward through the network. This is why mechanistic interpretability cares about things like "features," "circuits," and "induction heads": an induction head, for example, is a specific kind of attention behavior that can help a model recognize a repeated pattern and continue it, like seeing "A B ... A" and predicting "B."<sup><a href="#reference-5">5</a></sup> Claude is especially relevant here because Anthropic has shown that millions of human-interpretable features can be identified inside Claude 3 Sonnet, including features connected to concepts, behaviors, and safety-relevant topics.<sup><a href="#reference-3">3</a></sup> MiniMax makes the picture even more interesting because MiniMax-Text-01 uses a hybrid architecture combining Lightning Attention, Softmax Attention, and Mixture-of-Experts routing, with 456 billion total parameters and 45.9 billion activated per token.<sup><a href="#reference-7">7</a></sup> So when a model gives a safe-looking answer, there is a lot hidden under the rug: which attention heads routed information, which features activated, whether the model used a stable safety-related circuit, whether sensitive information survived in an internal representation, and whether the final answer reflects faithful reasoning or just a polished post-hoc explanation. Mechanistic interpretability is the attempt to reverse-engineer that middle zone between prompt and output. It asks not just "what did the model say?" but "what internal mechanism made it say that?" That is why it matters for AI safety: if GPT, Claude, MiniMax, and the next wave of frontier models are going to sit inside real workflows, we need to understand the machinery that converts prompts into behavior.</p>
       `,
     },
     {
       type: 'image',
       fileName: 'fe4d42c004bf43efda0f5921adfedd2f8f42e417-2200x2140.webp',
-      alt: 'Blog illustration placed after the first paragraph in the safety section.',
+      alt: 'Blog illustration placed after the technical interpretability paragraph in the safety section.',
     },
     {
       type: 'html',
       html: `
         <p>That is genuinely cool because it suggests that models are not just mystical autocomplete fog machines. There are internal structures we can begin to map.</p>
         <p>But it is also terrifyingly funny because the map is not clean.</p>
-        <p>One neuron does not necessarily mean one concept. A neuron can be involved in multiple things, and one concept can be spread across many neurons. This is where words like <em>polysemanticity</em> and <em>superposition</em> enter the chat. In normal English, it means the model is packing concepts into its internal space like an ASU student trying to fit clothes, books, snacks, laundry, and emotional instability into one backpack before class.</p>
+        <p>One neuron does not necessarily mean one concept. A neuron can be involved in multiple things, and one concept can be spread across many neurons. This is where words like <em>polysemanticity</em> and <em>superposition</em> enter the chat. In normal English, it means the model is packing concepts into its internal space like an ASU student trying to fit clothes, books, snacks, laundry, and emotional instability into one backpack before class.<sup><a href="#reference-6">6</a></sup></p>
         <p>This is where AI safety gets interesting.</p>
         <p>A model refusing a harmful request is not enough. I want to know <em>why</em> it refused.</p>
         <p>Did it understand the safety boundary?</p>
         <p>Or did it just see danger-shaped words and press the "polite refusal" button?</p>
         <p>Those are very different. One is closer to actual safety. The other is a bouncer checking outfits instead of IDs.</p>
-        <p>That difference matters because AI systems can look safe on the outside while being fragile on the inside. They can pass a test because the prompt looked familiar. They can explain themselves in a way that sounds reasonable but does not reflect what actually happened internally. Anthropic's circuit-tracing work has already shown that the mechanism behind a model's behavior is not always obvious from the polished explanation it gives you afterward.<sup><a href="#reference-2">2</a></sup></p>
+        <p>That difference matters because AI systems can look safe on the outside while being fragile on the inside. They can pass a test because the prompt looked familiar. They can explain themselves in a way that sounds reasonable but does not reflect what actually happened internally. Anthropic's circuit-tracing work has already shown that the mechanism behind a model's behavior is not always obvious from the polished explanation it gives you afterward.<sup><a href="#reference-4">4</a></sup></p>
         <p>This is why I keep coming back to the same thought:</p>
         <blockquote>
           <p>Behavior is not enough. We need receipts from the black box.</p>
@@ -130,8 +146,13 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
         <hr />
         <h3>References</h3>
         <ol>
-          <li id="reference-1"><a href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank" rel="noopener noreferrer">Anthropic, "Mapping the Mind of a Large Language Model."</a></li>
-          <li id="reference-2"><a href="https://www.anthropic.com/research/tracing-thoughts-language-model" target="_blank" rel="noopener noreferrer">Anthropic, "Tracing the thoughts of a large language model."</a></li>
+          <li id="reference-1"><a href="https://cdn.openai.com/papers/gpt-4.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">OpenAI, "GPT-4 Technical Report."</a></li>
+          <li id="reference-2"><a href="https://openai.com/index/gpt-4-research/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">OpenAI, "GPT-4."</a></li>
+          <li id="reference-3"><a href="https://www.anthropic.com/research/mapping-mind-language-model?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Anthropic, "Mapping the Mind of a Large Language Model."</a></li>
+          <li id="reference-4"><a href="https://www.anthropic.com/research/tracing-thoughts-language-model?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Anthropic, "Tracing the thoughts of a large language model."</a></li>
+          <li id="reference-5"><a href="https://arxiv.org/abs/2209.11895?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Olsson et al., "In-context Learning and Induction Heads."</a></li>
+          <li id="reference-6"><a href="https://transformer-circuits.pub/2022/toy_model/index.html?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Elhage et al., "Toy Models of Superposition."</a></li>
+          <li id="reference-7"><a href="https://arxiv.org/abs/2501.08313?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">MiniMax, "MiniMax-01: Scaling Foundation Models with Lightning Attention."</a></li>
         </ol>
       `,
     },
