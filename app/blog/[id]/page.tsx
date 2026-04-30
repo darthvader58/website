@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { formatBlogDate, getBlogPost } from '@/app/lib/blog';
+import { formatBlogDate, getPublishedBlogPosts } from '@/app/lib/blog';
 import { getBlogImagePath } from '@/app/lib/blog/images';
 
 type BlogPostPageProps = {
@@ -10,10 +10,20 @@ type BlogPostPageProps = {
   };
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamicParams = false;
+
+function getPublishedBlogPost(id: string) {
+  return getPublishedBlogPosts().find((post) => post.slug === id);
+}
+
+export function generateStaticParams() {
+  return getPublishedBlogPosts().map((post) => ({
+    id: post.slug,
+  }));
+}
 
 export function generateMetadata({ params }: BlogPostPageProps): Metadata {
-  const post = getBlogPost(params.id);
+  const post = getPublishedBlogPost(params.id);
 
   if (!post) {
     return {};
@@ -36,7 +46,7 @@ export function generateMetadata({ params }: BlogPostPageProps): Metadata {
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getBlogPost(params.id);
+  const post = getPublishedBlogPost(params.id);
 
   if (!post) {
     notFound();

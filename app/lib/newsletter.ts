@@ -386,11 +386,6 @@ async function seedDeliveriesForPost(postSlug: string) {
       CURRENT_TIMESTAMP
     FROM subscribers
     WHERE subscribers.active = true
-      AND NOT EXISTS (
-        SELECT 1
-        FROM newsletter_deliveries
-        WHERE post_slug = ${postSlug}
-      )
     ON CONFLICT (post_slug, subscriber_email) DO NOTHING
   `
 }
