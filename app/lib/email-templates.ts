@@ -1,6 +1,8 @@
 import { formatBlogDate, type BlogPost } from '@/app/lib/blog'
 
 const SITE_URL = 'https://shashwatraj.com'
+const AUTHOR_NAME = 'Shashwat Raj'
+const AUTHOR_AVATAR_URL = `${SITE_URL}/images/Myself.png`
 
 function decodeHtmlEntities(value: string) {
   return value
@@ -67,8 +69,8 @@ function getPostUrl(post: BlogPost) {
   return `${SITE_URL}/blog/${post.slug}`
 }
 
-function getBlogPostEmailSubject(post: BlogPost) {
-  return `${post.issueLabel}: ${post.title}`
+export function getBlogPostEmailSubject(post: BlogPost) {
+  return `New on the blog: ${post.title}`
 }
 
 // Substack-style email templates
@@ -282,25 +284,12 @@ export function generateBlogPostNewsletterEmail(post: BlogPost): string {
       <td align="center" style="padding: 32px 16px;">
         <table width="620" cellpadding="0" cellspacing="0" style="max-width: 620px; background-color: #fffdf8; border: 1px solid #e7ddd1; border-radius: 24px; overflow: hidden; box-shadow: 0 16px 48px rgba(46, 16, 101, 0.08);">
           <tr>
-            <td style="padding: 20px 24px; background: linear-gradient(135deg, #231942 0%, #5e2b97 55%, #ff6b6b 100%);">
-              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #fef3c7;">
-                ${post.issueLabel}
-              </p>
-              <p style="margin: 10px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; color: #f5e9ff;">
-                Fresh off the blog: professional thoughts, mildly unhinged side quests, and one new post worth opening in a proper tab.
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding: 36px 32px 8px 32px;">
-              <p style="margin: 0 0 14px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #8b5cf6;">
-                Shashwat Raj
-              </p>
-              <h1 style="margin: 0; font-size: 38px; line-height: 1.08; letter-spacing: -0.04em; color: #171717;">
+            <td style="padding: 24px 32px 8px 32px;">
+              <div style="height: 1px; background-color: #ddd6ce; margin-bottom: 28px;"></div>
+              <h1 style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 42px; font-weight: 800; line-height: 1.04; letter-spacing: -0.05em; color: #202124;">
                 ${post.title}
               </h1>
-              <p style="margin: 16px 0 0 0; font-size: 20px; line-height: 1.6; color: #4b5563;">
+              <p style="margin: 18px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 22px; line-height: 1.55; color: #6b7280;">
                 ${post.subtitle}
               </p>
             </td>
@@ -308,6 +297,34 @@ export function generateBlogPostNewsletterEmail(post: BlogPost): string {
 
           <tr>
             <td style="padding: 20px 32px 0 32px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td valign="middle">
+                    <p style="margin: 0;">
+                      <span style="display: inline-block; padding: 4px 8px; background-color: #ffe08a; color: #202124; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;">
+                        ${AUTHOR_NAME}
+                      </span>
+                    </p>
+                    <p style="margin: 14px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #7b7b7b;">
+                      ${publishedLabel} · ${post.readTime}
+                    </p>
+                  </td>
+                  <td align="right" valign="middle" style="width: 88px;">
+                    <img
+                      src="${AUTHOR_AVATAR_URL}"
+                      alt="${AUTHOR_NAME}"
+                      width="72"
+                      height="72"
+                      style="display: block; width: 72px; height: 72px; border-radius: 999px; object-fit: cover;"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 22px 32px 0 32px;">
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="padding: 0 16px 0 0;">

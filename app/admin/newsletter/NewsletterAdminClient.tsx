@@ -13,6 +13,8 @@ type LatestPostSummary = {
   newsletterSentAt: string | null;
   newsletterSentCount: number;
   newsletterFailedCount: number;
+  newsletterPreviewSubject: string;
+  newsletterPreviewHtml: string;
 };
 
 type NewsletterAdminClientProps = {
@@ -25,6 +27,7 @@ export default function NewsletterAdminClient({
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [postUrl, setPostUrl] = useState('');
+  const [testEmail, setTestEmail] = useState('rajayshashwat@gmail.com');
   const [apiKey, setApiKey] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
@@ -97,6 +100,33 @@ export default function NewsletterAdminClient({
     }
   };
 
+  const handleSendTest = async () => {
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/newsletter/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiKey, mode: 'latest-post-test', toEmail: testEmail }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        setMessage(
+          `Test email sent to ${data.toEmail}${data.post?.title ? `: ${data.post.title}` : ''}.`
+        );
+      } else {
+        setStatus('error');
+        setMessage(data.error || 'Failed to send test email');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('An error occurred while sending test email');
+    }
+  };
+
   return (
     <section className="fade max-w-4xl">
       <h1 className="mb-8 text-4xl font-bold tracking-tight text-slate-100">
@@ -151,6 +181,39 @@ export default function NewsletterAdminClient({
           </div>
         )}
 
+        {latestPost ? (
+          <div className="mb-5 rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Email Preview
+                </p>
+                <p className="mt-2 text-sm text-slate-400">
+                  Subject:
+                  <span className="ml-2 font-medium text-slate-200">
+                    {latestPost.newsletterPreviewSubject}
+                  </span>
+                </p>
+              </div>
+              <a
+                href={`/blog/${latestPost.slug}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-medium text-purple-300 transition-colors hover:text-purple-200"
+              >
+                Open post
+              </a>
+            </div>
+            <div className="overflow-hidden rounded-xl border border-slate-800 bg-white">
+              <iframe
+                title="Latest newsletter preview"
+                srcDoc={latestPost.newsletterPreviewHtml}
+                className="h-[900px] w-full"
+              />
+            </div>
+          </div>
+        ) : null}
+
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-300">
             Admin API Key
@@ -167,6 +230,28 @@ export default function NewsletterAdminClient({
             Set as `NEWSLETTER_API_KEY` in local env and in your Vercel project environment variables.
           </p>
         </div>
+
+        <div className="mt-4">
+          <label className="mb-2 block text-sm font-medium text-slate-300">
+            Test Email Recipient
+          </label>
+          <input
+            type="email"
+            value={testEmail}
+            onChange={(e) => setTestEmail(e.target.value)}
+            className="w-full rounded-lg border border-slate-700 bg-slate-900/50 px-4 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="rajayshashwat@gmail.com"
+          />
+        </div>
+
+        <button
+          type="button"
+          onClick={handleSendTest}
+          disabled={status === 'loading' || !apiKey || !latestPost || !testEmail}
+          className="mt-5 w-full rounded-lg border border-slate-700 bg-slate-900 px-6 py-3 font-medium text-slate-100 transition-colors hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-900/60 disabled:text-slate-500"
+        >
+          {status === 'loading' ? 'Sending...' : 'Send Test Email to Me'}
+        </button>
 
         <button
           type="button"

@@ -1,4 +1,8 @@
 import { formatBlogDate, getLatestPublishedBlogPost } from '@/app/lib/blog';
+import {
+  generateBlogPostNewsletterEmail,
+  getBlogPostEmailSubject,
+} from '@/app/lib/email-templates';
 import { getNewsletterBroadcast } from '@/app/lib/newsletter';
 import NewsletterAdminClient from './NewsletterAdminClient';
 
@@ -8,6 +12,12 @@ export default async function NewsletterAdminPage() {
   const latestPost = getLatestPublishedBlogPost();
   const latestPostBroadcast = latestPost
     ? await getNewsletterBroadcast(latestPost.slug)
+    : null;
+  const latestPostPreviewHtml = latestPost
+    ? generateBlogPostNewsletterEmail(latestPost)
+    : null;
+  const latestPostPreviewSubject = latestPost
+    ? getBlogPostEmailSubject(latestPost)
     : null;
 
   return (
@@ -25,6 +35,8 @@ export default async function NewsletterAdminPage() {
               newsletterSentAt: latestPostBroadcast?.sent_at ?? null,
               newsletterSentCount: latestPostBroadcast?.sent_count ?? 0,
               newsletterFailedCount: latestPostBroadcast?.failed_count ?? 0,
+              newsletterPreviewSubject: latestPostPreviewSubject ?? '',
+              newsletterPreviewHtml: latestPostPreviewHtml ?? '',
             }
           : null
       }

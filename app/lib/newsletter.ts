@@ -7,6 +7,7 @@ import {
 } from '@/app/lib/blog'
 import {
   generateBlogPostNewsletterEmail,
+  getBlogPostEmailSubject,
   generateBlogPostNewsletterText,
   generateNewsletterEmail,
 } from '@/app/lib/email-templates'
@@ -94,10 +95,6 @@ function getResendClient() {
   }
 
   return new Resend(process.env.RESEND_API_KEY)
-}
-
-function getBlogPostSubject(post: BlogPost) {
-  return `${post.issueLabel}: ${post.title}`
 }
 
 function stripHtml(value: string) {
@@ -809,7 +806,7 @@ export async function sendBlogPostNewsletter(
 ): Promise<SendResult> {
   await ensureNewsletterTables()
 
-  const subject = getBlogPostSubject(post)
+  const subject = getBlogPostEmailSubject(post)
 
   if (options?.force) {
     await resetBroadcast(post, subject)
@@ -876,6 +873,41 @@ export async function sendLatestBlogPostNewsletter(options?: { force?: boolean }
   }
 
   return sendBlogPostNewsletter(latestPost, options)
+}
+
+export async function sendLatestBlogPostTestEmail(toEmail: string) {
+  const latestPost = getLatestPublishedBlogPost()
+
+  if (!latestPost) {
+    return {
+      status: 'no_post' as const,
+    }
+  }
+
+  const subject = getBlogPostEmailSubject(latestPost)
+  const html = generateBlogPostNewsletterEmail(latestPost)
+  const text = generateBlogPostNewsletterText(latestPost)
+  const resend = getResendClient()
+
+  const emailId = await sendSingleEmailWithResend({
+    resend,
+    to: toEmail,
+    subject,
+    html,
+    text,
+    tags: [
+      { name: 'source', value: 'blog-newsletter-test' },
+      { name: 'post_slug', value: latestPost.slug },
+    ],
+  })
+
+  return {
+    status: 'sent' as const,
+    post: latestPost,
+    subject,
+    toEmail,
+    emailId,
+  }
 }
 
 export async function sendPendingBlogPostNewsletters() {

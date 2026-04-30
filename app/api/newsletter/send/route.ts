@@ -2,11 +2,12 @@ import { NextResponse } from 'next/server';
 import {
   sendCustomNewsletter,
   sendLatestBlogPostNewsletter,
+  sendLatestBlogPostTestEmail,
 } from '@/app/lib/newsletter';
 
 export async function POST(request: Request) {
   try {
-    const { title, content, postUrl, apiKey, mode, force } = await request.json();
+    const { title, content, postUrl, apiKey, mode, force, toEmail } = await request.json();
 
     const ADMIN_API_KEY = process.env.NEWSLETTER_API_KEY;
 
@@ -22,6 +23,36 @@ export async function POST(request: Request) {
         { error: 'Unauthorized' },
         { status: 401 }
       );
+    }
+
+    if (mode === 'latest-post-test') {
+      if (!toEmail) {
+        return NextResponse.json(
+          { error: 'Test email address is required' },
+          { status: 400 }
+        );
+      }
+
+      const result = await sendLatestBlogPostTestEmail(toEmail);
+
+      if (result.status === 'no_post') {
+        return NextResponse.json(
+          { error: 'No blog posts found to send' },
+          { status: 400 }
+        );
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: `Test email sent to ${result.toEmail}`,
+        toEmail: result.toEmail,
+        emailId: result.emailId,
+        subject: result.subject,
+        post: {
+          slug: result.post.slug,
+          title: result.post.title,
+        },
+      });
     }
 
     const sendLatestPost = mode === 'latest-post' || (!title && !content);
