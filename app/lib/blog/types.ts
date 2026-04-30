@@ -8,6 +8,7 @@ export type BlogPostBlock =
       fileName: string
       alt: string
       caption?: string
+      captionHtml?: string
     }
 
 export type BlogPost = {

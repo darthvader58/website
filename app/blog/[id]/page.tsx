@@ -113,10 +113,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                       alt={block.alt}
                       className="w-full rounded-[22px] border border-slate-700/60 bg-[#2C2624]"
                     />
-                    {block.caption ? (
-                      <figcaption className="blog-caption mt-4 text-center text-sm text-slate-400">
-                        {block.caption}
-                      </figcaption>
+                    {block.captionHtml ? (
+                      <figcaption
+                        className="blog-caption"
+                        dangerouslySetInnerHTML={{ __html: block.captionHtml }}
+                      />
+                    ) : block.caption ? (
+                      <figcaption className="blog-caption">{block.caption}</figcaption>
                     ) : null}
                   </figure>
                 );

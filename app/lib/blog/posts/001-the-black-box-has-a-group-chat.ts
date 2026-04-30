@@ -39,6 +39,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
       type: 'image',
       fileName: 'carfeatures.png',
       alt: 'Blog illustration placed after the introduction and before the safety section.',
+      captionHtml: `Source: Mechanistic interpretability of large language models with applications to the financial services industry. (n.d.). https://arxiv.org/html/2407.11215v1`,
     },
     {
       type: 'html',
@@ -51,6 +52,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
       type: 'image',
       fileName: 'mechanisticinterpretability.png',
       alt: 'Blog illustration placed after the first safety paragraph and before the technical interpretability section.',
+      captionHtml: `Source: [Literature Review] How do Large Language Models Understand Relevance? A Mechanistic   Interpretability Perspective. (n.d.). https://www.themoonlight.io/en/review/how-do-large-language-models-understand-relevance-a-mechanistic-interpretability-perspective`,
     },
     {
       type: 'html',
@@ -62,6 +64,7 @@ export const theBlackBoxHasAGroupChatPost: BlogPost = {
       type: 'image',
       fileName: 'fe4d42c004bf43efda0f5921adfedd2f8f42e417-2200x2140.webp',
       alt: 'Blog illustration placed after the technical interpretability paragraph in the safety section.',
+      captionHtml: `Source: Anthropic, "Mapping the Mind of a Large Language Model." (n.d.). https://www.anthropic.com/research/mapping-mind-language-model`,
     },
     {
       type: 'html',

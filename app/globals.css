@@ -500,7 +500,44 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 .blog-caption {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: rgba(148, 163, 184, 0.82);
+}
+
+.blog-caption a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(148, 163, 184, 0.45);
+  text-underline-offset: 0.18em;
+}
+
+.blog-caption a:hover {
+  color: #cbd5e1;
+  text-decoration-color: rgba(203, 213, 225, 0.75);
+}
+
+.blog-caption .caption-source {
+  white-space: nowrap;
+}
+
+html.light .blog-caption {
   line-height: 1.6;
+  color: rgba(51, 65, 85, 0.8) !important;
+}
+
+html.light .blog-caption a {
+  color: inherit !important;
+  text-decoration-color: rgba(71, 85, 105, 0.45) !important;
+}
+
+html.light .blog-caption a:hover {
+  color: #1e293b !important;
+  text-decoration-color: rgba(30, 41, 59, 0.65) !important;
 }
 
 html.light .blog-prose,
