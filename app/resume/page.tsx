@@ -6,7 +6,7 @@ export default function ResumePage() {
   const resume = {
     title: "Resume",
     description: "Download my current resume as a PDF.",
-    filename: "Generic_resume.pdf",
+    filename: "Final_Shash_Gen_resume.pdf",
     color: "from-blue-900/40 to-slate-900/40"
   };
 
