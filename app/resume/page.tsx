@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 
 export default function ResumePage() {
@@ -8,6 +9,15 @@ export default function ResumePage() {
     description: "Download my current resume as a PDF.",
     filename: "Final_Shash_Gen_resume.pdf",
     color: "from-blue-900/40 to-slate-900/40"
+  };
+  const resumePath = `/${resume.filename}`;
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+  const openPreview = () => {
+    setIsPreviewOpen(true);
+    window.setTimeout(() => {
+      document.getElementById('resume-preview')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
   };
 
   return (
@@ -26,19 +36,56 @@ export default function ResumePage() {
           <div className={`border border-slate-800 rounded-lg p-8 bg-gradient-to-br ${resume.color} hover:border-purple-700/50 hover:shadow-lg hover:shadow-purple-900/20 transition-all duration-300 hover:scale-[1.02]`}>
             <h3 className="text-2xl font-semibold text-slate-100 mb-3">{resume.title}</h3>
             <p className="text-slate-300 mb-6">{resume.description}</p>
-            <a
-              href={`/${resume.filename}`}
-              download
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download PDF
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={openPreview}
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-500/70 px-5 py-3 text-sm font-medium text-slate-200 transition-all duration-200 hover:border-purple-400 hover:text-purple-200"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Preview
+              </button>
+              <a
+                href={resumePath}
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download PDF
+              </a>
+            </div>
           </div>
         </ScrollReveal>
       </div>
+
+      {isPreviewOpen && (
+        <ScrollReveal delay={100}>
+          <div id="resume-preview" className="mt-12 scroll-mt-24">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <h3 className="text-xl font-semibold text-slate-100">Preview</h3>
+              <button
+                type="button"
+                onClick={() => setIsPreviewOpen(false)}
+                className="rounded-lg border border-slate-600/70 px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:border-purple-400 hover:text-purple-200"
+              >
+                Close
+              </button>
+            </div>
+            <div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-950/40">
+              <iframe
+                title="Resume PDF preview"
+                src={resumePath}
+                className="h-[72vh] min-h-[620px] w-full bg-slate-950"
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+      )}
 
       <ScrollReveal delay={300}>
         <div className="mt-12 border border-slate-800 rounded-lg p-6 bg-slate-950/30 hover:border-purple-700/50 transition-all duration-300">
