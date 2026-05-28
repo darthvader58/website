@@ -202,7 +202,7 @@ export default function HomePage() {
                 technologies: ["Python", "MySQL", "Pandas"]
               }
             ].map((exp, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
+              <ScrollReveal key={index} delay={index * 50}>
                 <div className="relative pl-8 md:pl-20 group">
                   <div className="absolute left-0 md:left-8 top-2 w-3 h-3 -translate-x-[5px] rounded-full bg-purple-500 ring-4 ring-slate-950 group-hover:ring-purple-900/30 group-hover:scale-125 transition-all duration-300"></div>
                   
@@ -408,7 +408,7 @@ export default function HomePage() {
                   previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
                 }
               ].map((project, index) => (
-                <ScrollReveal key={index} delay={index * 50}>
+                <ScrollReveal key={index} delay={index * 25}>
                   <div className="w-[750px] h-[520px] flex-shrink-0 snap-center">
                     <ProjectCard {...project} />
                   </div>
@@ -436,19 +436,17 @@ export default function HomePage() {
           </div>
         </div>
 
-        <ScrollReveal delay={400}>
-          <div className="mt-12 text-center">
-            <a
-              href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105"
-            >
-              See All Projects
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
-        </ScrollReveal>
+        <div className="mt-12 text-center">
+          <a
+            href="/projects"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105"
+          >
+            See All Projects
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
       </section>
 
       {/* COFFEE/CONTACT SECTION */}
