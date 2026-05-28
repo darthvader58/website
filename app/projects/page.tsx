@@ -1,16 +1,50 @@
 'use client';
 
-import { link } from 'fs';
 import ProjectCard from '../components/ProjectCard'
 import ScrollReveal from '../components/ScrollReveal'
 
+type ProjectField =
+  | 'Machine Learning'
+  | 'Robotics'
+  | 'Full-Stack'
+  | 'Compilers'
+  | 'Games'
+  | 'Hardware Design Synthesis'
+  | 'Libraries and Tools'
+  | 'Physics'
+  | 'Research'
+
+type Project = {
+  title: string
+  description: string
+  technologies: string[]
+  field: ProjectField
+  github?: string
+  link?: string
+  hasLivePreview?: boolean
+  previewImage?: string
+}
+
+const projectFields: ProjectField[] = [
+  'Machine Learning',
+  'Robotics',
+  'Full-Stack',
+  'Compilers',
+  'Games',
+  'Hardware Design Synthesis',
+  'Libraries and Tools',
+  'Physics',
+  'Research',
+]
+
 export default function ProjectsPage() {
-  const projects = [
+  const projects: Project[] = [
     // Top projects with custom previews
     {
       title: "WoofCare",
       description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
       technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
+      field: 'Full-Stack',
       github: "https://github.com/Woofcare/WoofCare",
       previewImage: "/images/WoofCarePreview.png"
     },
@@ -18,6 +52,7 @@ export default function ProjectsPage() {
       title: "Asclepius",
       description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
       technologies: ["Pytorch", "FastAPI", "Cloud LLMs", "HIPAA Compliance", "NextJs", "Gemma 4"],
+      field: 'Machine Learning',
       github: "https://github.com/shiv-arora/hackprincetons26",
       previewImage: "/images/asclepius.png"
     },
@@ -25,6 +60,7 @@ export default function ProjectsPage() {
       title: "Whatrobe",
       description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
       technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
+      field: 'Machine Learning',
       github: "https://github.com/darthvader58/whatrobe",
       link: "https://mywhatrobe.vercel.app",
       hasLivePreview: true
@@ -33,6 +69,7 @@ export default function ProjectsPage() {
       title: "KnockScript",
       description: "Toy programming language based on Knock Knock jokes.",
       technologies: ["Ruby", "Compiler Design", "HTML/CSS", "Puma"],
+      field: 'Compilers',
       github: "https://github.com/darthvader58/knockscript",
       link: "https://knockscript.up.railway.app",
       previewImage: "/images/knockscript.png",
@@ -42,6 +79,7 @@ export default function ProjectsPage() {
       title: "Pit Wall",
       description: "Write strategy bots that compete in physics-accurate F1 simulations.",
       technologies: ["Python", "Compiler design", "Physics Engine", "FastAPI", "Docker"],
+      field: 'Physics',
       github: "https://github.com/darthvader58/phi1",
       previewImage: "/images/pitwall.png",
       link: "https://pitwall.up.railways.app",
@@ -51,6 +89,7 @@ export default function ProjectsPage() {
       title: "KaleshScript",
       description: "Toy programming language based on Delhi's street slang and memes.",
       technologies: ["Go", "Compiler Design", "Next.js"],
+      field: 'Compilers',
       github: "https://github.com/darthvader58/kaleshscript",
       link: "https://kaleshscript.vercel.app",
       hasLivePreview: true
@@ -59,6 +98,7 @@ export default function ProjectsPage() {
       title: "Twinmind-Live",
       description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
       technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
+      field: 'Full-Stack',
       github: "https://github.com/darthvader58/twinmind",
       link: "https://twinmind-phi.vercel.app",
       hasLivePreview: true
@@ -67,6 +107,7 @@ export default function ProjectsPage() {
       title: "Formath",
       description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
       technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      field: 'Full-Stack',
       github: "https://github.com/darthvader58/biryani",
       link: "https://formath.vercel.app",
       hasLivePreview: true
@@ -75,6 +116,7 @@ export default function ProjectsPage() {
       title: "Metal Lab",
       description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
       technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
+      field: 'Physics',
       github: "https://github.com/arpan404/metal_lab",
       previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
@@ -82,6 +124,7 @@ export default function ProjectsPage() {
       title: "Numericle",
       description: "Daily puzzle game. Wordle but for guessing math sequences and patterns",
       technologies: ["Typescript", "Firebase"],
+      field: 'Games',
       github: "https://github.com/darthvader58/numericle",
       link: "https://numericle.space",
       previewImage: "/images/numericle.png",
@@ -91,6 +134,7 @@ export default function ProjectsPage() {
       title: "Terrader",
       description: "Terrader is a web based game in the form of a crypto-trading simulator that functions with respect to a carbon footprint, carbon score and strategic gameplay; and has other interesting side-features to increase awareness among the players on how a fruitful and trending practice has an unnoticed contribution to climate change.",
       technologies: ["React", "Python", "OpenAI GPT"],
+      field: 'Games',
       github: "https://github.com/theVedanta/terrader",
       link: "https://play-terrader.vercel.app/lobby",
       hasLivePreview: true
@@ -99,6 +143,7 @@ export default function ProjectsPage() {
       title: "BrainDevils",
       description: "Web-app with games that enhance your fine motor skills",
       technologies: ["HTML", "CSS", "JavaScript"],
+      field: 'Games',
       github: "https://github.com/darthvader58/braindevils",
       link: "https://braindevils.vercel.app",
       hasLivePreview: true
@@ -107,6 +152,7 @@ export default function ProjectsPage() {
       title: "WoofCare Website",
       description: "Introduction website for the WoofCare app.",
       technologies: ["Astro", "TypeScript", "Tailwind CSS"],
+      field: 'Full-Stack',
       github: "https://github.com/darthvader58/woofCare-website",
       link: "https://woofcare-website.vercel.app",
       hasLivePreview: true
@@ -125,6 +171,7 @@ export default function ProjectsPage() {
       title: "Kavvy",
       description: "Linkedin for authors - mockup only.",
       technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
+      field: 'Machine Learning',
       github: "https://github.com/darthvader58/kavvy",
       link: "https://kavvy.vercel.app",
       hasLivePreview: true
@@ -143,6 +190,7 @@ export default function ProjectsPage() {
       title: "LinkedIn Queens Puzzle",
       description: "Solution to LinkedIn Queens puzzle using backtracking and algorithmic optimization.",
       technologies: ["C/C++", "Algorithms"],
+      field: 'Games',
       github: "https://github.com/darthvader58/linkedin_queens_solution",
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
@@ -150,6 +198,7 @@ export default function ProjectsPage() {
       title: "Karobar",
       description: "Chrome Extension - Job Applications Tracking tool for \"sophisticated\" applicants who want to log every submission.",
       technologies: ["Typescript", "Vue", "Chrome API", "Google Sheets API"],
+      field: 'Libraries and Tools',
       github: "https://github.com/darthvader58/karobar",
       previewImage: "https://www.outsystems.com/Forge_CW/_image.aspx/Q8LvY--6WakOw9afDCuuGTrsWOMiLK5kOEJX7zRjPlI=/chrome-extension-connector-2023-01-04%2000-00-00-2025-08-13%2008-34-13"
     },
@@ -157,6 +206,7 @@ export default function ProjectsPage() {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
+      field: 'Machine Learning',
       github: "https://github.com/Anagnor/Anagnor",
       previewImage: "/images/Anagnor.png"
     },
@@ -177,18 +227,21 @@ export default function ProjectsPage() {
       title: "Tansen",
       description: "AI music transcription system converting audio to readable instrument based musical notation using deep learning models.",
       technologies: ["Flutter", "FastAPI", "PyTorch", "Huggingface", "Firebase"],
+      field: 'Machine Learning',
       github: "https://github.com/darthvader58/Tansen"
     },
     {
       title: "kcavo",
       description: "Kubernetes cost analyzer and optimizer for cloud infrastructure management.",
       technologies: ["Go", "Kubernetes", "kubectl"],
+      field: 'Libraries and Tools',
       github: "https://github.com/darthvader58/kcavo"
     },
     {
       title: "Research at CoDe Lab",
       description: "Optimizing Earth Science Observations: Developing Reinforcement Learning Techniques for Autonomously Determining Priority Observations in a Dynamic Environment",
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL", "Celestrak", "NASA G5NR", "WMO Oscar"],
+      field: 'Research',
       github: "https://github.com/darthvader58/Code-Lab_RL_PriorityObs",
       previewImage: "/images/research.png"
     },
@@ -196,18 +249,21 @@ export default function ProjectsPage() {
       title: "Lua Interpreter",
       description: "Lua programming language interpreter written in Go.",
       technologies: ["Go", "Compiler Design"],
+      field: 'Compilers',
       github: "https://github.com/darthvader58/lua-interpreter"
     },
     {
       title: "Garud - Crop Disease Classifier",
       description: "Crop disease classification using deep learning. Achieved 89.23% accuracy on agricultural dataset.",
       technologies: ["Keras", "Tensorflow", "Python", "OpenCV"],
+      field: 'Machine Learning',
       github: "https://github.com/darthvader58/garud"
     },
     {
       title: "GameOfLife",
       description: "Conway's Game of Life implementation on toroidal plane with iOS native interface.",
       technologies: ["Swift", "Metal", "SwiftUI"],
+      field: 'Games',
       github: "https://github.com/darthvader58/GameOfLife"
     },
     /*
@@ -234,6 +290,7 @@ export default function ProjectsPage() {
       title: "Peer-Faculty Interaction",
       description: "Educational platform for student-faculty communication built for ASU's CSE 360 project.",
       technologies: ["Java", "JavaFX", "SQLite"],
+      field: 'Full-Stack',
       github: "https://github.com/darthvader58/Peer-Faculty-Interaction-EdTech",
       
     },
@@ -243,36 +300,49 @@ export default function ProjectsPage() {
       title: "Embedded Robotics",
       description: "FRDM-KL46Z based autonomous robot projects involving PID, SPI, UART, I2C, PWM and PIT/TPM handler.",
       technologies: ["C", "Embedded Systems", "PID Control", "I2C"],
+      field: 'Robotics',
       previewImage: "/images/Embedded.png"
     },
     {
       title: "Onchip Communication",
       description: "Onboard communication protocols and FPGA implementations of SPI, I2C, UART and CAN, in Verilog.",
       technologies: ["Verilog", "iVerilog", "Vivado", "NEXYS A7-100T", "Digilent Arty A7-35T"],
+      field: 'Hardware Design Synthesis',
     },
     {
       title: "FPGA Implementation Mean Bean Machine",
       description: "An FPGA implementation of the famous retro game - Dr. Robotnik’s Mean Bean Machine. Programmed on NEXYS A7100T board using AMD’s Vivado, using 5 control switches, a VGA output for game screen and 7-segment display for viewing the score.",
-      technologies: ["Verilog", "Vivado", "NEXYS A7-100T"]
+      technologies: ["Verilog", "Vivado", "NEXYS A7-100T"],
+      field: 'Hardware Design Synthesis',
     },
     {
       title: "FPGA Projects",
       description: "Alarm clock and audio recorder implementations on FPGA chips.",
-      technologies: ["Verilog", "SystemVerilog", "Vivado", "Quartus Prime"]
+      technologies: ["Verilog", "SystemVerilog", "Vivado", "Quartus Prime"],
+      field: 'Hardware Design Synthesis',
     },
     {
       title: "Coconut CubeSat",
       description: "CubeSat satellite project for NASA CSLI Launch 2024. Flight software development.",
       technologies: ["Linux", "KiCad", "CUDA", "ROS", "Gazebo"],
+      field: 'Robotics',
       previewImage: "https://www.bluecanyontech.com/wp-content/uploads/spacecraft-model-12u.png"
     },
     {
       title: "Micromouse",
       description: "Autonomous wall maze-solving robot using Dijkstra's algorithm and PID control.",
       technologies: ["Embedded C", "MIT App Inventor", "Dijkstra", "PID"],
+      field: 'Robotics',
       previewImage: "/images/micromouse.png"
     }
   ]
+
+  const projectSections = projectFields
+    .map((field) => ({
+      field,
+      projects: projects.filter((project) => project.field === field),
+    }))
+    .filter((section) => section.projects.length > 0)
 
   return (
     <section className="fade">
@@ -309,11 +379,30 @@ export default function ProjectsPage() {
         </p>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
-          <ScrollReveal key={index} delay={index * 50}>
-            <ProjectCard {...project} />
-          </ScrollReveal>
+      <div className="space-y-16">
+        {projectSections.map((section) => (
+          <section key={section.field} aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
+            <div className="mb-6 flex items-end justify-between gap-4 border-b border-slate-800/80 pb-3">
+              <div>
+                <h2
+                  id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
+                  className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100"
+                >
+                  {section.field}
+                </h2>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                  {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {section.projects.map((project, index) => (
+                <ScrollReveal key={project.title} delay={index * 25}>
+                  <ProjectCard {...project} />
+                </ScrollReveal>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </section>
