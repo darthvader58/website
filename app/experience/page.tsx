@@ -79,7 +79,7 @@ export default function ExperiencePage() {
 
         <div className="space-y-12">
           {experiences.map((exp, index) => (
-            <ScrollReveal key={index} delay={index * 100}>
+            <ScrollReveal key={index} delay={index * 50}>
               <div className="relative pl-8 md:pl-20 group">
                 {/* Timeline dot */}
                 <div className="absolute left-0 md:left-8 top-2 w-3 h-3 -translate-x-[5px] rounded-full bg-purple-500 ring-4 ring-slate-950 group-hover:ring-purple-900/30 group-hover:scale-125 transition-all duration-300"></div>
