@@ -29,7 +29,7 @@ const SongCard = ({ track, index }: { track: Track; index: number }) => (
     rel="noopener noreferrer"
     className="block group spotify-card"
   >
-    <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 dark:from-slate-900 dark:to-slate-800 rounded-2xl p-4 flex items-center gap-4 hover:from-slate-700 hover:to-slate-800 dark:hover:from-slate-800 dark:hover:to-slate-700 transition-all duration-300 border-2 border-slate-700 dark:border-slate-700/50 shadow-md hover:shadow-lg">
+    <div className="relative rounded-2xl border-2 border-slate-300 bg-white/90 p-4 flex items-center gap-4 shadow-md transition-all duration-300 hover:border-purple-300 hover:bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 dark:border-slate-700/50 dark:hover:from-slate-800 dark:hover:to-slate-700 hover:shadow-lg">
       <div className="relative">
         <img 
           src={track.albumImageUrl} 
@@ -41,11 +41,11 @@ const SongCard = ({ track, index }: { track: Track; index: number }) => (
         </div>
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-semibold text-lg truncate">{track.title}</h3>
-        <p className="text-sm truncate opacity-80">{track.artist}</p>
+        <h3 className="font-semibold text-lg truncate text-slate-900 dark:text-slate-100">{track.title}</h3>
+        <p className="text-sm truncate text-slate-600 dark:text-slate-300">{track.artist}</p>
       </div>
       <div className="flex items-center gap-3">
-        <span className="text-sm font-medium opacity-80">{formatDuration(track.duration)}</span>
+        <span className="text-sm font-medium text-slate-600 dark:text-slate-300">{formatDuration(track.duration)}</span>
         <button className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors shadow-sm">
           <svg className="w-5 h-5 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
