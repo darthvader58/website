@@ -379,14 +379,14 @@ export default function ProjectsPage() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <label htmlFor="project-search" className="relative flex-1">
               <span className="sr-only">Search projects</span>
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" aria-hidden="true" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-600 dark:text-slate-500" aria-hidden="true" />
               <input
                 id="project-search"
                 type="search"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Search projects, technologies, or fields"
-                className="w-full rounded-lg border border-slate-700/80 bg-slate-950/30 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-500 focus:border-purple-500 dark:text-slate-100"
+                className="w-full rounded-lg border border-slate-300 bg-white/95 py-3 pl-12 pr-4 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-500 focus:border-purple-500 dark:border-slate-700/80 dark:bg-slate-950/30 dark:text-slate-100"
               />
             </label>
             <button
@@ -448,28 +448,30 @@ export default function ProjectsPage() {
       {projectSections.length > 0 ? (
         <div className="space-y-16">
           {projectSections.map((section) => (
-            <section key={section.field} aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
-              <div className="mb-6 flex items-end justify-between gap-4 border-b border-slate-800/80 pb-3">
-                <div>
-                  <h2
-                    id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
-                    className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100"
-                  >
-                    {section.field}
-                  </h2>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                    {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
-                  </p>
+            <ScrollReveal key={section.field}>
+              <section aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
+                <div className="mb-6 flex items-end justify-between gap-4 border-b border-slate-800/80 pb-3">
+                  <div>
+                    <h2
+                      id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
+                      className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100"
+                    >
+                      {section.field}
+                    </h2>
+                    <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                      {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {section.projects.map((project, index) => (
-                  <ScrollReveal key={project.title} delay={index * 25}>
-                    <ProjectCard {...project} />
-                  </ScrollReveal>
-                ))}
-              </div>
-            </section>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {section.projects.map((project) => (
+                    <div key={project.title}>
+                      <ProjectCard {...project} />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </ScrollReveal>
           ))}
         </div>
       ) : (
