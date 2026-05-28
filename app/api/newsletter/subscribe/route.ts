@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { sql } from '@vercel/postgres';
 import { generateWelcomeEmail } from '@/app/lib/email-templates';
+import { ensureNewsletterTables } from '@/app/lib/newsletter';
 
 // Email validation
 function isValidEmail(email: string): boolean {
@@ -12,6 +13,7 @@ function isValidEmail(email: string): boolean {
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
+    await ensureNewsletterTables();
 
     // Validate email
     if (!email || !isValidEmail(email)) {
@@ -63,6 +65,10 @@ export async function POST(request: Request) {
         subject: 'Welcome to Shashwat\'s Newsletter',
         html: generateWelcomeEmail(),
       });
+
+      if (result.error) {
+        throw new Error(result.error.message);
+      }
       
       console.log('Welcome email sent successfully:', result);
       
@@ -76,11 +82,11 @@ export async function POST(request: Request) {
       console.error('Failed to send welcome email:', emailError);
       
       return NextResponse.json({
-        success: false,
-        message: 'Failed to send welcome email',
+        success: true,
+        message: 'Successfully subscribed, but the welcome email could not be sent.',
         error: emailError.message,
         emailSent: false
-      }, { status: 500 });
+      });
     }
 
   } catch (error) {

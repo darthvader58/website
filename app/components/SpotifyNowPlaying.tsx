@@ -14,42 +14,7 @@ interface Track {
   albumImageUrl: string;
   songUrl: string;
   duration: number;
-  isPlaying?: boolean;
-  progress?: number;
 }
-
-// Hardcoded fallback tracks
-const FALLBACK_TRACKS: Track[] = [
-  {
-    title: "Self Love",
-    artist: "Metro Boomin",
-    albumImageUrl: "https://i.ytimg.com/vi/_3t6Qk2AsVE/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGDcgZSgxMA8=&rs=AOn4CLCFMOQtjTHCArvXV8sbKK-Ou3cOCA",
-    songUrl: "https://open.spotify.com/track/0AAMnNeIc6CdnfNU85GwCH?si=001644ec2d4b4855",
-    duration: 213000,
-    isPlaying: true,
-  },
-  {
-    title: "One More Light",
-    artist: "Linkin Park",
-    albumImageUrl: "https://upload.wikimedia.org/wikipedia/en/b/b2/Linkin_Park%2C_One_More_Light%2C_album_art_final.jpeg",
-    songUrl: "https://open.spotify.com/track/3xXBsjrbG1xQIm1xv1cKOt?si=abc4b71d4b6c4b1c",
-    duration: 255000,
-  },
-  {
-    title: "Pink Skies",
-    artist: "Zach Bryan",
-    albumImageUrl: "https://upload.wikimedia.org/wikipedia/en/5/5d/Zach_Bryan_-_Pink_Skies.png",
-    songUrl: "https://open.spotify.com/track/4ZJ4vzLQekI0WntDbanNC7?si=bab214d63fca4319",
-    duration: 198000,
-  },
-  {
-    title: "Stitches",
-    artist: "Shawn Mendes",
-    albumImageUrl: "https://i.scdn.co/image/ab67616d0000b273ea3ef7697cfd5705b8f47521",
-    songUrl: "https://open.spotify.com/track/5jsw9uXEGuKyJzs0boZ1bT?si=9e636d7370de4424",
-    duration: 207000,
-  },
-];
 
 const formatDuration = (ms: number) => {
   const minutes = Math.floor(ms / 60000);
@@ -57,7 +22,7 @@ const formatDuration = (ms: number) => {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 };
 
-const SongCard = ({ track }: { track: Track }) => (
+const SongCard = ({ track, index }: { track: Track; index: number }) => (
   <a 
     href={track.songUrl} 
     target="_blank" 
@@ -71,13 +36,9 @@ const SongCard = ({ track }: { track: Track }) => (
           alt={`${track.title} album cover`}
           className="w-16 h-16 rounded-lg shadow-lg"
         />
-        {track.isPlaying && (
-          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center animate-pulse shadow-lg">
-            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-        )}
+        <div className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1 bg-green-500 rounded-full flex items-center justify-center shadow-lg text-[10px] font-semibold text-white">
+          #{index + 1}
+        </div>
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="font-semibold text-lg truncate">{track.title}</h3>
@@ -111,53 +72,39 @@ const SongCard = ({ track }: { track: Track }) => (
 );
 
 export default function SpotifyNowPlaying() {
-  const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
-  const [recentTracks, setRecentTracks] = useState<Track[]>([]);
+  const [topTracks, setTopTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
-  const [useHardcoded, setUseHardcoded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [timeRangeLabel, setTimeRangeLabel] = useState('Last 4 weeks');
 
   useEffect(() => {
     const fetchSpotifyData = async () => {
       try {
-        // Fetch now playing
-        const nowPlayingRes = await fetch('/api/spotify/now-playing');
-        const nowPlayingData = await nowPlayingRes.json();
-        
-        if (nowPlayingData.isPlaying) {
-          setNowPlaying({
-            title: nowPlayingData.title,
-            artist: nowPlayingData.artist,
-            albumImageUrl: nowPlayingData.albumImageUrl,
-            songUrl: nowPlayingData.songUrl,
-            duration: nowPlayingData.duration,
-            isPlaying: true,
-            progress: nowPlayingData.progress,
-          });
+        const topTracksRes = await fetch('/api/spotify/top-tracks', {
+          cache: 'no-store',
+        });
+        const topTracksData = await topTracksRes.json();
+
+        if (!topTracksRes.ok) {
+          throw new Error(topTracksData.error || 'Unable to load Spotify top tracks right now.');
         }
 
-        // Fetch recently played
-        const recentRes = await fetch('/api/spotify/recently-played');
-        const recentData = await recentRes.json();
-        
-        // If no data from API, use hardcoded
-        if (!nowPlayingData.isPlaying && (!recentData.tracks || recentData.tracks.length === 0)) {
-          setUseHardcoded(true);
-        } else {
-          setRecentTracks(recentData.tracks || []);
-        }
-        
+        setTopTracks(topTracksData.tracks || []);
+        setTimeRangeLabel(topTracksData.label || 'Last 4 weeks');
+        setError(null);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching Spotify data:', error);
-        setUseHardcoded(true);
+        setTopTracks([]);
+        setError('Spotify top tracks are unavailable right now.');
         setLoading(false);
       }
     };
 
     fetchSpotifyData();
     
-    // Refresh every 30 seconds
-    const interval = setInterval(fetchSpotifyData, 30000);
+    // Top tracks update more slowly than playback state.
+    const interval = setInterval(fetchSpotifyData, 15 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -166,51 +113,43 @@ export default function SpotifyNowPlaying() {
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
           <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Music is love!</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Current top tracks</h2>
         </div>
         <div className="text-slate-600 dark:text-slate-400">Loading...</div>
       </div>
     );
   }
 
-  // Use hardcoded tracks if API is not connected
-  if (useHardcoded) {
+  if (error || topTracks.length === 0) {
     return (
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-slate-500 rounded-full"></div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-            Music is love!
-            <span className="text-sm text-green-500 ml-3">● Listening to</span>
+            Current top tracks
           </h2>
         </div>
-        
-        <div className="space-y-4">
-          {FALLBACK_TRACKS.map((track, index) => (
-            <SongCard key={index} track={track} />
-          ))}
+
+        <div className="rounded-2xl border border-slate-800 bg-slate-950/30 p-5 text-slate-400">
+          {error || 'Spotify top tracks are unavailable right now.'}
         </div>
       </div>
     );
   }
-
-  const displayTracks = nowPlaying 
-    ? [nowPlaying, ...recentTracks.slice(0, 2)]
-    : recentTracks.slice(0, 3);
 
   return (
     <div className="mt-12">
       <div className="flex items-center gap-2 mb-6">
         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-          spotify picks
-          {nowPlaying && <span className="text-sm text-green-500 ml-3">● Now Playing</span>}
+          Current top tracks
+          <span className="text-sm text-green-500 ml-3">● {timeRangeLabel}</span>
         </h2>
       </div>
       
       <div className="space-y-4">
-        {displayTracks.map((track, index) => (
-          <SongCard key={index} track={track} />
+        {topTracks.map((track, index) => (
+          <SongCard key={track.songUrl} track={track} index={index} />
         ))}
       </div>
     </div>

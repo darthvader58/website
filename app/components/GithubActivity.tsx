@@ -6,12 +6,32 @@ import { useTheme } from './ThemeProvider'
 interface GitHubEvent {
   id: string
   type: string
-  repo: {
-    name: string
+  repo?: {
+    name?: string
     url: string
   }
-  created_at: string
-  payload: any
+  created_at?: string
+  payload?: any
+}
+
+type GroupedGitHubEvent = GitHubEvent & { totalCommits?: number }
+
+function hasRepoName<T extends GitHubEvent>(event: T): event is T & { repo: { name: string; url: string } } {
+  return typeof event.repo?.name === 'string' && event.repo.name.length > 0
+}
+
+function getRepoName(event: GitHubEvent) {
+  const fullName = event.repo?.name
+
+  if (!fullName) {
+    return 'GitHub'
+  }
+
+  return fullName.split('/').pop() || fullName
+}
+
+function getRepoUrl(event: GitHubEvent) {
+  return hasRepoName(event) ? `https://github.com/${event.repo.name}` : `https://github.com/darthvader58`
 }
 
 export default function GitHubActivity() {
@@ -31,10 +51,20 @@ export default function GitHubActivity() {
     fetch(`https://api.github.com/users/${username}/events/public`)
       .then(res => res.json())
       .then(data => {
+        if (!Array.isArray(data)) {
+          setEvents([])
+          setLoading(false)
+          return
+        }
+
         // Group consecutive push events to the same repo
-        const groupedEvents: (GitHubEvent & { totalCommits?: number })[] = []
+        const groupedEvents: GroupedGitHubEvent[] = []
         
         data.forEach((event: GitHubEvent) => {
+          if (!event?.id || !event?.type) {
+            return
+          }
+
           const lastEvent = groupedEvents[groupedEvents.length - 1]
           
           // If this is a push event to the same repo as the last event, merge them
@@ -42,6 +72,8 @@ export default function GitHubActivity() {
             lastEvent &&
             event.type === 'PushEvent' &&
             lastEvent.type === 'PushEvent' &&
+            hasRepoName(event) &&
+            hasRepoName(lastEvent) &&
             event.repo.name === lastEvent.repo.name
           ) {
             const commits = event.payload?.size || event.payload?.commits?.length || 1
@@ -92,29 +124,37 @@ export default function GitHubActivity() {
     }
   }
 
-  const getEventDescription = (event: GitHubEvent & { totalCommits?: number }) => {
-    const repoName = event.repo.name.split('/')[1]
+  const getEventDescription = (event: GroupedGitHubEvent) => {
+    const repoName = getRepoName(event)
     switch (event.type) {
       case 'PushEvent':
         const commits = event.totalCommits || event.payload?.size || event.payload?.commits?.length || 1
         return `Pushed ${commits} commit${commits !== 1 ? 's' : ''} to ${repoName}`
       case 'CreateEvent':
-        return `Created ${event.payload.ref_type} in ${repoName}`
+        return `Created ${event.payload?.ref_type || 'something'} in ${repoName}`
       case 'WatchEvent':
         return `Starred ${repoName}`
       case 'ForkEvent':
         return `Forked ${repoName}`
       case 'PullRequestEvent':
-        return `${event.payload.action} pull request in ${repoName}`
+        return `${event.payload?.action || 'Updated'} pull request in ${repoName}`
       case 'IssuesEvent':
-        return `${event.payload.action} issue in ${repoName}`
+        return `${event.payload?.action || 'Updated'} issue in ${repoName}`
       default:
         return `Activity in ${repoName}`
     }
   }
 
-  const getTimeAgo = (date: string) => {
+  const getTimeAgo = (date?: string) => {
+    if (!date) {
+      return 'Recently'
+    }
+
     const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000)
+
+    if (!Number.isFinite(seconds)) {
+      return 'Recently'
+    }
     
     if (seconds < 60) return `${seconds}s ago`
     if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`
@@ -261,7 +301,7 @@ export default function GitHubActivity() {
           {events.slice(0, 5).map(event => (
             <a
               key={event.id}
-              href={`https://github.com/${event.repo.name}`}
+              href={getRepoUrl(event)}
               target="_blank"
               rel="noopener noreferrer"
               className="block group"

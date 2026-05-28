@@ -1,5 +1,6 @@
 'use client';
 
+import { link } from 'fs';
 import ProjectCard from '../components/ProjectCard'
 import ScrollReveal from '../components/ScrollReveal'
 
@@ -12,6 +13,13 @@ export default function ProjectsPage() {
       technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
       github: "https://github.com/Woofcare/WoofCare",
       previewImage: "/images/WoofCarePreview.png"
+    },
+    {
+      title: "Asclepius",
+      description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
+      technologies: ["Pytorch", "FastAPI", "Cloud LLMs", "HIPAA Compliance", "NextJs", "Gemma 4"],
+      github: "https://github.com/shiv-arora/hackprincetons26",
+      previewImage: "/images/asclepius.png"
     },
     {
       title: "Whatrobe",
@@ -31,12 +39,44 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
+      title: "Pit Wall",
+      description: "Write strategy bots that compete in physics-accurate F1 simulations.",
+      technologies: ["Python", "Compiler design", "Physics Engine", "FastAPI", "Docker"],
+      github: "https://github.com/darthvader58/phi1",
+      previewImage: "/images/pitwall.png",
+      link: "https://pitwall.up.railways.app",
+      hasLivePreview: true
+    },
+    {
       title: "KaleshScript",
       description: "Toy programming language based on Delhi's street slang and memes.",
       technologies: ["Go", "Compiler Design", "Next.js"],
       github: "https://github.com/darthvader58/kaleshscript",
       link: "https://kaleshscript.vercel.app",
       hasLivePreview: true
+    },
+    {
+      title: "Twinmind-Live",
+      description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
+      technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
+      github: "https://github.com/darthvader58/twinmind",
+      link: "https://twinmind-phi.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Formath",
+      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
+      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
+      github: "https://github.com/darthvader58/biryani",
+      link: "https://formath.vercel.app",
+      hasLivePreview: true
+    },
+    {
+      title: "Metal Lab",
+      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
+      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
+      github: "https://github.com/arpan404/metal_lab",
+      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
     },
     {
       title: "Numericle",
@@ -56,21 +96,6 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
-      title: "Metal Lab",
-      description: "Advanced physics simulation platform with GPU acceleration. Interactive experiments for educational purposes.",
-      technologies: ["Next.js", "Three.js", "WebGPU", "Cannon.js", "Metal Shaders", "xAI", "ElevenLabs"],
-      github: "https://github.com/arpan404/metal_lab",
-      previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
-    },
-    {
-      title: "Formath",
-      description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
-      technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      github: "https://github.com/darthvader58/biryani",
-      link: "https://formath.vercel.app",
-      hasLivePreview: true
-    },
-    {
       title: "BrainDevils",
       description: "Web-app with games that enhance your fine motor skills",
       technologies: ["HTML", "CSS", "JavaScript"],
@@ -86,6 +111,7 @@ export default function ProjectsPage() {
       link: "https://woofcare-website.vercel.app",
       hasLivePreview: true
     },
+    /*
     {
       title: "Portfolio",
       description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
@@ -94,6 +120,7 @@ export default function ProjectsPage() {
       link: "https://shashwatraj.vercel.app",
       hasLivePreview: true
     },
+    */
     {
       title: "Kavvy",
       description: "Linkedin for authors - mockup only.",
@@ -102,6 +129,7 @@ export default function ProjectsPage() {
       link: "https://kavvy.vercel.app",
       hasLivePreview: true
     },
+    /*
     {
       title: "Makeathon",
       description: "Arduino-based autonomous maze solving simulator and web compiler",
@@ -110,6 +138,7 @@ export default function ProjectsPage() {
       link: "https://makeathon.vercel.app",
       hasLivePreview: true
     },
+    */
     {
       title: "LinkedIn Queens Puzzle",
       description: "Solution to LinkedIn Queens puzzle using backtracking and algorithmic optimization.",
@@ -118,13 +147,21 @@ export default function ProjectsPage() {
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
+      title: "Karobar",
+      description: "Chrome Extension - Job Applications Tracking tool for \"sophisticated\" applicants who want to log every submission.",
+      technologies: ["Typescript", "Vue", "Chrome API", "Google Sheets API"],
+      github: "https://github.com/darthvader58/karobar",
+      previewImage: "https://www.outsystems.com/Forge_CW/_image.aspx/Q8LvY--6WakOw9afDCuuGTrsWOMiLK5kOEJX7zRjPlI=/chrome-extension-connector-2023-01-04%2000-00-00-2025-08-13%2008-34-13"
+    },
+    {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
-      github: "https://github.com/darthvader58/Anagnor",
+      github: "https://github.com/Anagnor/Anagnor",
       previewImage: "/images/Anagnor.png"
     },
     // Other projects with live previews
+    /*
     {
       title: "pip --race",
       description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
@@ -133,6 +170,7 @@ export default function ProjectsPage() {
       link: "https://pip-race.vercel.app",
       hasLivePreview: true
     },
+    */
     
     // Software projects without previews
     {
@@ -172,6 +210,7 @@ export default function ProjectsPage() {
       technologies: ["Swift", "Metal", "SwiftUI"],
       github: "https://github.com/darthvader58/GameOfLife"
     },
+    /*
     {
       title: "N-Body Simulator",
       description: "Gravitational physics simulation with multiple body interactions and visualization using Apple Silicon's metal shaders.",
@@ -190,6 +229,7 @@ export default function ProjectsPage() {
       technologies: ["Python", "PyTorch", "Scikit-learn", "TFLearn", "Keras"],
       github: "https://github.com/darthvader58/ML_practice"
     },
+    */
     {
       title: "Peer-Faculty Interaction",
       description: "Educational platform for student-faculty communication built for ASU's CSE 360 project.",
@@ -204,6 +244,16 @@ export default function ProjectsPage() {
       description: "FRDM-KL46Z based autonomous robot projects involving PID, SPI, UART, I2C, PWM and PIT/TPM handler.",
       technologies: ["C", "Embedded Systems", "PID Control", "I2C"],
       previewImage: "/images/Embedded.png"
+    },
+    {
+      title: "Onchip Communication",
+      description: "Onboard communication protocols and FPGA implementations of SPI, I2C, UART and CAN, in Verilog.",
+      technologies: ["Verilog", "iVerilog", "Vivado", "NEXYS A7-100T", "Digilent Arty A7-35T"],
+    },
+    {
+      title: "FPGA Implementation Mean Bean Machine",
+      description: "An FPGA implementation of the famous retro game - Dr. Robotnik’s Mean Bean Machine. Programmed on NEXYS A7100T board using AMD’s Vivado, using 5 control switches, a VGA output for game screen and 7-segment display for viewing the score.",
+      technologies: ["Verilog", "Vivado", "NEXYS A7-100T"]
     },
     {
       title: "FPGA Projects",
