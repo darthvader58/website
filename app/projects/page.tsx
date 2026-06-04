@@ -15,6 +15,7 @@ type ProjectField =
   | 'Libraries and Tools'
   | 'Physics'
   | 'Research'
+  | 'AI Agents and LLMs'
 
 type Project = {
   title: string
@@ -37,7 +38,8 @@ const projectFields: ProjectField[] = [
   'Libraries and Tools',
   'Physics',
   'Research',
-]
+  'AI Agents and LLMs'
+] 
 
 export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -52,13 +54,14 @@ export default function ProjectsPage() {
       technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
       field: 'Full-Stack',
       github: "https://github.com/Woofcare/WoofCare",
-      previewImage: "/images/WoofCarePreview.png"
+      previewImage: "/images/WoofCarePreview.png", 
+      link: "https://woofcare-website.vercel.app"
     },
     {
       title: "Asclepius",
       description: "A privacy proxy between clinical trial staff and Cloud AI models, it strips PHI, protects billion-dollar drug IP, and preserves the fast workflow people actually want.",
       technologies: ["Pytorch", "FastAPI", "Cloud LLMs", "HIPAA Compliance", "NextJs", "Gemma 4"],
-      field: 'Machine Learning',
+      field: 'AI Agents and LLMs',
       github: "https://github.com/shiv-arora/hackprincetons26",
       previewImage: "/images/asclepius.png"
     },
@@ -66,7 +69,7 @@ export default function ProjectsPage() {
       title: "Whatrobe",
       description: "AI fashion recommendation system analyzing style preferences and suggesting outfits.",
       technologies: ["Next.js", "MongoDB", "Anthropic API", "OpenCV"],
-      field: 'Machine Learning',
+      field: 'AI Agents and LLMs',
       github: "https://github.com/darthvader58/whatrobe",
       link: "https://mywhatrobe.vercel.app",
       hasLivePreview: true
@@ -104,7 +107,7 @@ export default function ProjectsPage() {
       title: "Twinmind-Live",
       description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
       technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
-      field: 'Full-Stack',
+      field: 'AI Agents and LLMs',
       github: "https://github.com/darthvader58/twinmind",
       link: "https://twinmind-phi.vercel.app",
       hasLivePreview: true
@@ -113,7 +116,7 @@ export default function ProjectsPage() {
       title: "Formath",
       description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
       technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
-      field: 'Full-Stack',
+      field: 'AI Agents and LLMs',
       github: "https://github.com/darthvader58/biryani",
       link: "https://formath.vercel.app",
       hasLivePreview: true
@@ -155,43 +158,14 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
-      title: "WoofCare Website",
-      description: "Introduction website for the WoofCare app.",
-      technologies: ["Astro", "TypeScript", "Tailwind CSS"],
-      field: 'Full-Stack',
-      github: "https://github.com/darthvader58/woofCare-website",
-      link: "https://woofcare-website.vercel.app",
-      hasLivePreview: true
-    },
-    /*
-    {
-      title: "Portfolio",
-      description: "Portfolio website built with Next.js featuring interactive circuit background and dark mode.",
-      technologies: ["Next.js", "Tailwind CSS", "PostGreSQL", "Vercel", "Resend"],
-      github: "https://github.com/darthvader58/website",
-      link: "https://shashwatraj.vercel.app",
-      hasLivePreview: true
-    },
-    */
-    {
       title: "Kavvy",
       description: "Linkedin for authors - mockup only.",
       technologies: ["spaCy", "Python", "PyTorch", "React", "TypeScript"],
-      field: 'Machine Learning',
+      field: 'Full-Stack',
       github: "https://github.com/darthvader58/kavvy",
       link: "https://kavvy.vercel.app",
       hasLivePreview: true
     },
-    /*
-    {
-      title: "Makeathon",
-      description: "Arduino-based autonomous maze solving simulator and web compiler",
-      technologies: ["Arduino", "C++", "Compiler Design"],
-      github: "https://github.com/cabbageAdi/makeathon",
-      link: "https://makeathon.vercel.app",
-      hasLivePreview: true
-    },
-    */
     {
       title: "LinkedIn Queens Puzzle",
       description: "Solution to LinkedIn Queens puzzle using backtracking and algorithmic optimization.",
@@ -217,23 +191,22 @@ export default function ProjectsPage() {
       previewImage: "/images/Anagnor.png"
     },
     // Other projects with live previews
-    /*
     {
       title: "pip --race",
       description: "F1 race strategy optimization system using machine learning. Real-time analysis with Redis caching and ONNX model deployment.",
       technologies: ["Express", "React", "Python", "Rust", "Redis", "Docker", "ONNX"],
       github: "https://github.com/darthvader58/pip--race",
       link: "https://pip-race.vercel.app",
-      hasLivePreview: true
+      hasLivePreview: true,
+      field: 'Libraries and Tools'
     },
-    */
     
     // Software projects without previews
     {
       title: "Tansen",
       description: "AI music transcription system converting audio to readable instrument based musical notation using deep learning models.",
       technologies: ["Flutter", "FastAPI", "PyTorch", "Huggingface", "Firebase"],
-      field: 'Machine Learning',
+      field: 'Full-Stack',
       github: "https://github.com/darthvader58/Tansen"
     },
     {
@@ -269,7 +242,7 @@ export default function ProjectsPage() {
       title: "GameOfLife",
       description: "Conway's Game of Life implementation on toroidal plane with iOS native interface.",
       technologies: ["Swift", "Metal", "SwiftUI"],
-      field: 'Games',
+      field: 'Physics',
       github: "https://github.com/darthvader58/GameOfLife"
     },
     /*
@@ -322,24 +295,17 @@ export default function ProjectsPage() {
       field: 'Hardware Design Synthesis',
     },
     {
-      title: "FPGA Projects",
-      description: "Alarm clock and audio recorder implementations on FPGA chips.",
-      technologies: ["Verilog", "SystemVerilog", "Vivado", "Quartus Prime"],
-      field: 'Hardware Design Synthesis',
-    },
-    {
-      title: "Coconut CubeSat",
-      description: "CubeSat satellite project for NASA CSLI Launch 2024. Flight software development.",
-      technologies: ["Linux", "KiCad", "CUDA", "ROS", "Gazebo"],
-      field: 'Robotics',
-      previewImage: "https://www.bluecanyontech.com/wp-content/uploads/spacecraft-model-12u.png"
-    },
-    {
       title: "Micromouse",
       description: "Autonomous wall maze-solving robot using Dijkstra's algorithm and PID control.",
       technologies: ["Embedded C", "MIT App Inventor", "Dijkstra", "PID"],
       field: 'Robotics',
       previewImage: "/images/micromouse.png"
+    },
+    {
+      title: "Battlebots",
+      description: "Combat robots (15-60kg) arena friendly weapons for battlebot matches.",
+      technologies: ["Mechanical Design", "Electrical Systems", "Physics", "CAD"],
+      field: 'Robotics',
     }
   ]
 
