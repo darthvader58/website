@@ -6,16 +6,16 @@ import ProjectCard from '../components/ProjectCard'
 import ScrollReveal from '../components/ScrollReveal'
 
 type ProjectField =
-  | 'Machine Learning'
-  | 'Robotics'
-  | 'Full-Stack'
-  | 'Compilers'
-  | 'Games'
-  | 'Hardware Design Synthesis'
-  | 'Libraries and Tools'
+  | 'AI Agents and LLMs'
   | 'Physics'
   | 'Research'
-  | 'AI Agents and LLMs'
+  | 'Compilers' 
+  | 'Games'
+  | 'Full-Stack'
+  | 'Hardware Design Synthesis'
+  | 'Robotics'
+  | 'Machine Learning'
+  | 'Libraries and Tools'
 
 type Project = {
   title: string
@@ -29,16 +29,16 @@ type Project = {
 }
 
 const projectFields: ProjectField[] = [
-  'Machine Learning',
-  'Robotics',
-  'Full-Stack',
-  'Compilers',
-  'Games',
-  'Hardware Design Synthesis',
-  'Libraries and Tools',
-  'Physics',
-  'Research',
-  'AI Agents and LLMs'
+   'AI Agents and LLMs',
+   'Physics',
+   'Research',
+   'Compilers' ,
+   'Games',
+   'Full-Stack',
+   'Hardware Design Synthesis',
+   'Robotics',
+   'Machine Learning',
+   'Libraries and Tools'
 ] 
 
 export default function ProjectsPage() {
