@@ -237,14 +237,16 @@ export default function ProjectsPage() {
       description: "Crop disease classification using deep learning. Achieved 89.23% accuracy on agricultural dataset.",
       technologies: ["Keras", "Tensorflow", "Python", "OpenCV"],
       field: 'Machine Learning',
-      github: "https://github.com/darthvader58/garud"
+      github: "https://github.com/darthvader58/garud",
+      previewImage: "/images/garud.png"
     },
     {
       title: "GameOfLife",
       description: "Conway's Game of Life implementation on toroidal plane with iOS native interface.",
       technologies: ["Swift", "Metal", "SwiftUI"],
       field: 'Physics',
-      github: "https://github.com/darthvader58/GameOfLife"
+      github: "https://github.com/darthvader58/GameOfLife",
+      previewImage: "/images/toroidal-plane-3d.png"
     },
     /*
     {
@@ -272,7 +274,7 @@ export default function ProjectsPage() {
       technologies: ["Java", "JavaFX", "SQLite"],
       field: 'Full-Stack',
       github: "https://github.com/darthvader58/Peer-Faculty-Interaction-EdTech",
-      
+      previewImage: "/images/ed.png"
     },
 
     // Hardware and embedded projects
