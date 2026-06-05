@@ -214,7 +214,8 @@ export default function ProjectsPage() {
       description: "Kubernetes cost analyzer and optimizer for cloud infrastructure management.",
       technologies: ["Go", "Kubernetes", "kubectl"],
       field: 'Libraries and Tools',
-      github: "https://github.com/darthvader58/kcavo"
+      github: "https://github.com/darthvader58/kcavo",
+      previewImage: "/images/kcavo.png"
     },
     {
       title: "Research at CoDe Lab",
@@ -306,6 +307,7 @@ export default function ProjectsPage() {
       description: "Combat robots (15-60kg) arena friendly weapons for battlebot matches.",
       technologies: ["Mechanical Design", "Electrical Systems", "Physics", "CAD"],
       field: 'Robotics',
+      previewImage: "/images/battlebots.png"
     }
   ]
 
