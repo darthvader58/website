@@ -187,7 +187,7 @@ export default function ProjectsPage() {
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
       field: 'Machine Learning',
-      github: "https://github.com/Anagnor/Anagnor",
+      github: "https://github.com/darthvader58/Anagnor",
       previewImage: "/images/Anagnor.png"
     },
     // Other projects with live previews
