@@ -54,8 +54,8 @@ export default function ProjectsPage() {
       technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
       field: 'Full-Stack',
       github: "https://github.com/Woofcare/WoofCare",
-      previewImage: "/images/WoofCarePreview.png", 
-      link: "https://woofcare-website.vercel.app"
+      link: "https://woofcare-solutions.org",
+      hasLivePreview: true
     },
     {
       title: "Asclepius",
@@ -128,6 +128,15 @@ export default function ProjectsPage() {
       field: 'Physics',
       github: "https://github.com/arpan404/metal_lab",
       previewImage: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/956/281/datas/original.png"
+    },
+    {
+      title: "Langtour",
+      description: "A language learning story mode game which teaches you how to tackle daily life scenarios",
+      technologies: ['LLM', 'DeepGram', 'TypeScript', 'Three.Js', 'Supermemory'],
+      field: 'Games', 
+      github: "https://github.com/darthvader58/langtour",
+      link: "https://lanctor-production.up.railway.app",
+      previewImage: "/images/Langtour.png"
     },
     {
       title: "Numericle",
