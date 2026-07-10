@@ -42,35 +42,34 @@ export default function BlogNewsletterSignup() {
   return (
     <div
       id="newsletter"
-      className="relative mt-12 overflow-hidden rounded-[28px] border border-slate-800 bg-gradient-to-br from-slate-950/80 via-slate-950/60 to-purple-950/30 p-8"
+      className="blog-newsletter mt-14 border-y border-slate-800 px-4 py-12 sm:px-8 sm:py-14"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(192,132,252,0.18),transparent_40%)]" />
-      <div className="relative z-10">
-        <div className="mb-4 flex items-center gap-3">
-          <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="mx-auto max-w-xl text-center">
+        <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 text-purple-300">
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-slate-500">Stay in the loop</p>
-            <h2 className="text-2xl font-bold text-slate-100">Subscribe to the newsletter</h2>
-          </div>
         </div>
-        <p className="mb-6 max-w-2xl text-slate-300">
-          New posts, personal updates, and occasional technical chaos delivered to your inbox. Unsubscribe whenever you want.
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-300">Stay in the loop</p>
+        <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
+          Thoughtful writing, delivered.
+        </h2>
+        <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-slate-400 sm:text-lg">
+          New essays, personal updates, and occasional technical chaos—sent directly to your inbox.
         </p>
-        <form onSubmit={handleSubscribe} className="flex flex-col gap-3 sm:flex-row">
+        <form onSubmit={handleSubscribe} className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
-            className="flex-1 rounded-xl border border-slate-700 bg-slate-900/60 px-4 py-3 text-slate-100 placeholder-slate-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="blog-newsletter-input min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-950/40 px-4 py-3 text-slate-100 placeholder-slate-500 outline-none transition focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
           />
           <button
             type="submit"
             disabled={subscribeStatus === 'loading'}
-            className="flex items-center justify-center gap-2 rounded-xl bg-purple-600 px-6 py-3 font-medium text-white transition-colors hover:bg-purple-700 disabled:cursor-not-allowed disabled:bg-purple-800"
+            className="flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {subscribeStatus === 'loading' ? (
               <>
@@ -86,7 +85,7 @@ export default function BlogNewsletterSignup() {
           </button>
         </form>
         {message && (
-          <div className={`mt-4 rounded-xl p-3 ${subscribeStatus === 'success' ? 'border border-green-700/50 bg-green-900/30 text-green-300' : 'border border-red-700/50 bg-red-900/30 text-red-300'}`}>
+          <div className={`mt-4 text-sm ${subscribeStatus === 'success' ? 'text-green-400' : 'text-red-400'}`}>
             {message}
           </div>
         )}

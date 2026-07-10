@@ -692,3 +692,22 @@ html.light .blog-prose blockquote::before {
 html.light .blog-prose blockquote::after {
   content: none;
 }
+
+html.light .blog-newsletter {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .blog-newsletter > div > div:first-child {
+  border-color: #cbd5e1 !important;
+  background: #ffffff;
+}
+
+html.light .blog-newsletter-input {
+  border-color: #cbd5e1 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+html.light .blog-newsletter-input::placeholder {
+  color: #94a3b8;
+}
