@@ -54,7 +54,7 @@ export default function ProjectsPage() {
       technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
       field: 'Full-Stack',
       github: "https://github.com/Woofcare/WoofCare",
-      link: "https://woofcare-solutions.org",
+      link: "https://woofcare-website.vercel.app",
       hasLivePreview: true
     },
     {
