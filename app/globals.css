@@ -147,8 +147,18 @@ html.light p {
   color: #334155 !important;
 }
 
-html.light a {
+html.light [class*="hover:text-purple"]:hover,
+html.light .group:hover [class*="group-hover:text-purple"] {
   color: #7c3aed !important;
+}
+
+html.light a[class*="hover:text-purple"]:hover p {
+  color: #7c3aed !important;
+}
+
+html.light [class*="bg-purple-600"][class*="text-white"],
+html.light [class*="bg-purple-600"][class*="text-white"]:hover {
+  color: #ffffff !important;
 }
 
 /* Spotify component - readable text on light cards */
@@ -234,31 +244,6 @@ html.light .hover\:bg-purple-700:hover {
 
 html.light .text-white {
   color: #ffffff !important;
-}
-
-/* Light mode gradient backgrounds for resume cards */
-html.light .from-blue-900\/40 {
-  --tw-gradient-from: rgba(219, 234, 254, 0.6) !important;
-}
-
-html.light .to-purple-900\/40 {
-  --tw-gradient-to: rgba(243, 232, 255, 0.6) !important;
-}
-
-html.light .from-green-900\/40 {
-  --tw-gradient-from: rgba(220, 252, 231, 0.6) !important;
-}
-
-html.light .to-emerald-900\/40 {
-  --tw-gradient-to: rgba(209, 250, 229, 0.6) !important;
-}
-
-html.light .from-orange-900\/40 {
-  --tw-gradient-from: rgba(254, 243, 199, 0.6) !important;
-}
-
-html.light .to-red-900\/40 {
-  --tw-gradient-to: rgba(254, 226, 226, 0.6) !important;
 }
 
 ::-webkit-scrollbar {

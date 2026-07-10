@@ -7,8 +7,7 @@ export default function ResumePage() {
   const resume = {
     title: "Resume",
     description: "Download my current resume as a PDF.",
-    filename: "Final_Shash_Gen_resume.pdf",
-    color: "from-blue-900/40 to-slate-900/40"
+    filename: "Final_Shash_Gen_resume.pdf"
   };
   const resumePath = `/${resume.filename}`;
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -33,7 +32,8 @@ export default function ResumePage() {
 
       <div className="grid gap-6">
         <ScrollReveal>
-          <div className={`border border-slate-800 rounded-lg p-8 bg-gradient-to-br ${resume.color} hover:border-purple-700/50 hover:shadow-lg hover:shadow-purple-900/20 transition-all duration-300 hover:scale-[1.02]`}>
+          <div className="relative overflow-hidden rounded-xl border border-slate-700/80 bg-slate-950/30 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-purple-500/60 light:border-slate-300 light:bg-white/70">
+            <div className="absolute inset-y-0 left-0 w-px bg-purple-400/70" />
             <h3 className="text-2xl font-semibold text-slate-100 mb-3">{resume.title}</h3>
             <p className="text-slate-300 mb-6">{resume.description}</p>
             <div className="flex flex-wrap items-center gap-3">

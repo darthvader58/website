@@ -52,7 +52,7 @@ export default function BlogNewsletterSignup() {
         </div>
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-300">Stay in the loop</p>
         <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
-          Thoughtful writing, delivered.
+          Tech and Life Banter, Delivered.
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-slate-400 sm:text-lg">
           New essays, personal updates, and occasional technical chaos—sent directly to your inbox.

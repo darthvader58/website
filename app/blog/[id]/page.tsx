@@ -126,7 +126,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          <div className="mt-10 rounded-[28px] border border-slate-800 bg-gradient-to-br from-slate-950/75 via-slate-950/60 to-purple-950/30 p-8 sm:p-10">
+          <div className="mt-12 border-y border-slate-700/80 py-9 light:border-slate-300 sm:py-10">
             <p className="text-sm uppercase tracking-[0.22em] text-slate-500">Next issue</p>
             <h2 className="mt-3 text-2xl font-bold text-slate-100">More personal, more technical, probably still slightly unhinged.</h2>
             <p className="mt-4 max-w-2xl text-slate-300">
