@@ -324,7 +324,8 @@ export default function HomePage() {
                   description: "Social network connecting dog owners, shelters, and veterinarians across India. Real-time chat and location-based services.",
                   technologies: ["Flutter", "Firebase", "Python", "Google Maps API"],
                   github: "https://github.com/Woofcare/WoofCare",
-                  previewImage: "/images/WoofCarePreview.png"
+                  link: "https://woofcare-website.vercel.app",
+                  hasLivePreview: true
                 },
                 {
                   title: "Asclepius",
