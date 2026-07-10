@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { formatBlogDate, getPublishedBlogPosts } from '@/app/lib/blog';
 import { getBlogImagePath } from '@/app/lib/blog/images';
+import BlogCodeCopyButtons from '../BlogCodeCopyButtons';
 
 type BlogPostPageProps = {
   params: {
@@ -123,6 +124,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </figure>
                 );
               })}
+              <BlogCodeCopyButtons />
             </div>
           </div>
 

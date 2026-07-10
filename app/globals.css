@@ -407,6 +407,66 @@ html.light ::-webkit-scrollbar-thumb:hover {
   color: #e2e8f0;
 }
 
+.blog-prose code {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.45rem;
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.12rem 0.35rem;
+  color: #f8fafc;
+  font-size: 0.92em;
+}
+
+.blog-prose pre {
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 1rem;
+  background: rgba(2, 6, 23, 0.88);
+  padding: 1.1rem 3.45rem 1.1rem 1.1rem;
+}
+
+.blog-prose pre code {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.blog-code-copy {
+  position: absolute;
+  top: 0.72rem;
+  right: 0.72rem;
+  z-index: 1;
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  border-radius: 0.6rem;
+  background: rgba(15, 23, 42, 0.92);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.blog-code-copy:hover {
+  border-color: rgba(216, 180, 254, 0.58);
+  background: rgba(30, 41, 59, 0.96);
+  color: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.blog-code-copy:focus-visible {
+  outline: 2px solid rgba(216, 180, 254, 0.85);
+  outline-offset: 2px;
+}
+
 .blog-prose a {
   color: #d8b4fe;
   text-decoration: underline;
@@ -593,6 +653,34 @@ html.light .blog-dropcap::first-letter {
 
 html.light .blog-prose em {
   color: #1e293b !important;
+}
+
+html.light .blog-prose code {
+  border-color: rgba(100, 116, 139, 0.24) !important;
+  background: rgba(241, 245, 249, 0.92) !important;
+  color: #0f172a !important;
+}
+
+html.light .blog-prose pre {
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  background: rgba(248, 250, 252, 0.94) !important;
+}
+
+html.light .blog-prose pre code {
+  background: transparent !important;
+  color: #0f172a !important;
+}
+
+html.light .blog-code-copy {
+  border-color: rgba(100, 116, 139, 0.24);
+  background: rgba(255, 255, 255, 0.94);
+  color: #475569;
+}
+
+html.light .blog-code-copy:hover {
+  border-color: rgba(126, 34, 206, 0.38);
+  background: #ffffff;
+  color: #581c87;
 }
 
 html.light .blog-prose a {
