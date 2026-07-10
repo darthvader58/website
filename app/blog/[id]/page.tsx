@@ -55,38 +55,36 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <section className="fade pb-20">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-3xl">
         <Link
           href="/blog"
-          className="mb-10 inline-flex items-center text-purple-400 transition-colors hover:text-purple-300"
+          className="mb-10 inline-flex items-center text-sm text-slate-400 transition-colors hover:text-purple-300 sm:mb-14"
         >
           <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to Blog
+          Back to all blogs
         </Link>
 
         <article>
-          <header className="mb-12 rounded-[32px] border border-slate-800 bg-slate-950/45 p-8 sm:p-10">
-            <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-slate-400">
-              <span className="inline-flex items-center rounded-full border border-purple-700/40 bg-purple-950/30 px-3 py-1 font-medium text-purple-300">
-                {post.issueLabel}
-              </span>
-              <span>{post.category}</span>
-              <span>•</span>
+          <header className="mb-12 border-b border-slate-800 pb-10 sm:mb-16 sm:pb-14">
+            <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+              <span className="text-purple-300">{post.category}</span>
+              <span>·</span>
               <time>{formatBlogDate(post.publishedAt)}</time>
-              <span>•</span>
+              <span>·</span>
               <span>{post.readTime}</span>
             </div>
-            <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
+            <h1 className="font-serif text-4xl font-bold leading-[1.08] tracking-[-0.035em] text-slate-100 sm:text-6xl">
               {post.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-xl leading-8 text-slate-300">
+            <p className="mt-6 text-xl leading-8 text-slate-300 sm:text-2xl sm:leading-9">
               {post.subtitle}
             </p>
+            <p className="mt-7 text-sm text-slate-500">By Shashwat Raj · {post.issueLabel}</p>
           </header>
 
-          <div className="rounded-[32px] border border-slate-800 bg-slate-950/45 p-6 sm:p-10">
+          <div>
             <div className="blog-prose">
               {post.blocks.map((block, index) => {
                 if (block.type === 'html') {

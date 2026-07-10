@@ -323,6 +323,8 @@ html.light ::-webkit-scrollbar-thumb:hover {
 
 .blog-prose {
   color: #cbd5e1;
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-size: 1.18rem;
 }
 
 .blog-prose > * + * {
@@ -333,7 +335,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
 .blog-prose h3 {
   color: #f8fafc;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.035em;
 }
 
 .blog-prose h2 {
@@ -350,8 +352,8 @@ html.light ::-webkit-scrollbar-thumb:hover {
 
 .blog-prose p,
 .blog-prose li {
-  font-size: 1.1rem;
-  line-height: 1.95;
+  font-size: clamp(1.08rem, 1.02rem + 0.28vw, 1.22rem);
+  line-height: 1.78;
 }
 
 .blog-prose p {
@@ -359,7 +361,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 .blog-prose p + p {
-  margin-top: 1.45rem;
+  margin-top: 1.6rem;
 }
 
 .blog-prose h2 + p,
@@ -512,45 +514,30 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 .blog-prose blockquote {
-  position: relative;
-  margin: 2.75rem 0;
-  border: 1px solid rgba(192, 132, 252, 0.22);
-  border-left: 4px solid rgba(192, 132, 252, 0.55);
-  border-radius: 1.5rem;
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.38));
-  padding: 1.4rem 1.5rem 1.35rem 3.6rem;
+  margin: 3rem 0;
+  border-left: 4px solid #a855f7;
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: rgba(30, 41, 59, 0.52);
+  padding: 1.5rem 1.75rem;
 }
 
 .blog-prose blockquote::before {
-  content: '“';
-  position: absolute;
-  left: 1rem;
-  top: -0.2rem;
-  color: rgba(216, 180, 254, 0.75);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 5rem;
-  line-height: 1;
+  content: none;
 }
 
 .blog-prose blockquote::after {
-  content: '”';
-  position: absolute;
-  right: 1.1rem;
-  bottom: -1.9rem;
-  color: rgba(216, 180, 254, 0.22);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 4.6rem;
-  line-height: 1;
+  content: none;
 }
 
 .blog-prose blockquote p {
-  color: #f8fafc;
-  font-size: 1.22rem;
-  line-height: 1.75;
+  color: #f1f5f9;
+  font-size: clamp(1.18rem, 1.08rem + 0.45vw, 1.42rem);
+  font-style: italic;
+  line-height: 1.65;
 }
 
 .blog-prose blockquote p + p {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
 .blog-prose sup {
@@ -694,14 +681,14 @@ html.light .blog-prose a:hover {
 }
 
 html.light .blog-prose blockquote {
-  background: linear-gradient(135deg, rgba(250, 245, 255, 0.94), rgba(243, 232, 255, 0.72)) !important;
-  border-left-color: rgba(124, 58, 237, 0.35) !important;
+  border-left-color: #7c3aed !important;
+  background: rgba(245, 243, 255, 0.78) !important;
 }
 
 html.light .blog-prose blockquote::before {
-  color: rgba(124, 58, 237, 0.55) !important;
+  content: none;
 }
 
 html.light .blog-prose blockquote::after {
-  color: rgba(124, 58, 237, 0.18) !important;
+  content: none;
 }
