@@ -34,6 +34,16 @@ function CoffeeIcon() {
   )
 }
 
+function SubstackIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 5.5h16" />
+      <path d="M4 9h16" />
+      <path d="M6 12.5h12V21l-6-3.5L6 21v-8.5z" />
+    </svg>
+  )
+}
+
 export default function Footer() {
   return (
     <footer className="mb-16">
@@ -54,6 +64,12 @@ export default function Footer() {
           <a className="flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://linkedin.com/in/raj-shashwat">
             <LinkedInIcon />
             <p className="ml-2 h-7">linkedin</p>
+          </a>
+        </li>
+        <li>
+          <a className="flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://substack.com/@shash58">
+            <SubstackIcon />
+            <p className="ml-2 h-7">Substack</p>
           </a>
         </li>
         <li>

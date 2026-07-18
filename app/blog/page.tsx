@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ScrollReveal from '../components/ScrollReveal';
 import { formatBlogDate, getAllBlogPosts } from '../lib/blog';
 import BlogNewsletterSignup from './BlogNewsletterSignup';
 
@@ -7,43 +6,52 @@ export default function BlogPage() {
   const blogPosts = getAllBlogPosts();
 
   return (
-    <section className="fade pb-16">
-      <div className="mx-auto max-w-3xl">
-        {blogPosts.map((post, index) => (
-          <ScrollReveal key={post.slug} delay={index * 80}>
-            <Link href={`/blog/${post.slug}`} className="group block">
-              <article className="border-b border-slate-800 py-9 transition-colors sm:py-11">
-                <div className="mb-4 flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-slate-500">
-                  <span className="text-purple-300">{post.issueLabel}</span>
-                  <span>·</span>
-                  <span>{post.category}</span>
-                  <span>·</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h2 className="font-serif text-3xl font-bold leading-[1.14] tracking-[-0.025em] text-slate-100 transition-colors group-hover:text-purple-300 sm:text-[2.5rem]">
-                  {post.title}
-                </h2>
-                <p className="mt-3 text-lg leading-8 text-slate-300 sm:text-xl">
-                  {post.subtitle}
-                </p>
-                <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
-                  {post.excerpt}
-                </p>
-                <div className="mt-5 flex items-center justify-between text-sm">
-                  <time className="text-slate-500">{formatBlogDate(post.publishedAt)}</time>
-                  <span className="font-medium text-purple-300 transition-transform group-hover:translate-x-1">Read essay →</span>
-                </div>
-              </article>
-            </Link>
-          </ScrollReveal>
+    <section className="pb-16">
+      <div className="mx-auto mb-6 flex max-w-5xl flex-col gap-3 rounded-xl border border-purple-500/20 bg-purple-950/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-slate-100">More writing on Substack</p>
+          <p className="mt-1 text-sm text-slate-400">Follow along for new essays and updates.</p>
+        </div>
+        <a
+          href="https://substack.com/@shash58"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex shrink-0 items-center text-sm font-semibold text-purple-300 transition-colors hover:text-purple-200"
+        >
+          Visit my Substack <span aria-hidden="true" className="ml-1">↗</span>
+        </a>
+      </div>
+
+      <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {blogPosts.map((post) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="group block h-full">
+            <article className="flex h-full flex-col rounded-xl border border-slate-800 bg-slate-950/30 p-5 transition-colors hover:border-purple-500/50 sm:p-6">
+              <div className="mb-3 flex flex-wrap items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-slate-500">
+                <span className="text-purple-300">{post.issueLabel}</span>
+                <span>·</span>
+                <span>{post.category}</span>
+              </div>
+              <h2 className="font-serif text-2xl font-bold leading-[1.16] tracking-[-0.025em] text-slate-100 transition-colors group-hover:text-purple-300 lg:text-[1.65rem]">
+                {post.title}
+              </h2>
+              <p className="mt-3 line-clamp-2 text-base leading-6 text-slate-300">
+                {post.subtitle}
+              </p>
+              <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-400">
+                {post.excerpt}
+              </p>
+              <div className="mt-auto flex items-center justify-between gap-3 pt-5 text-xs">
+                <time className="text-slate-500">{formatBlogDate(post.publishedAt)}</time>
+                <span className="whitespace-nowrap font-medium text-purple-300">{post.readTime} · Read →</span>
+              </div>
+            </article>
+          </Link>
         ))}
       </div>
 
-      <ScrollReveal delay={180}>
-        <div className="mx-auto max-w-3xl">
-          <BlogNewsletterSignup />
-        </div>
-      </ScrollReveal>
+      <div className="mx-auto max-w-3xl">
+        <BlogNewsletterSignup />
+      </div>
     </section>
   );
 }
