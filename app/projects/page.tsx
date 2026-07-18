@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Search, SlidersHorizontal } from 'lucide-react'
 import ProjectCard from '../components/ProjectCard'
-import ScrollReveal from '../components/ScrollReveal'
 
 type ProjectField =
   | 'AI Agents and LLMs'
@@ -343,8 +342,8 @@ export default function ProjectsPage() {
     .filter((section) => section.projects.length > 0)
 
   return (
-    <section className="fade">
-      <ScrollReveal>
+    <section>
+      <div>
         <div className="mb-8">
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
             Projects
@@ -422,35 +421,33 @@ export default function ProjectsPage() {
             Sponsor
           </a>
         </div>
-      </ScrollReveal>
+      </div>
 
       {projectSections.length > 0 ? (
         <div className="space-y-16">
           {projectSections.map((section) => (
-            <ScrollReveal key={section.field}>
-              <section aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
-                <div className="mb-6 flex items-end justify-between gap-4 border-b border-slate-800/80 pb-3">
-                  <div>
-                    <h2
-                      id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
-                      className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100"
-                    >
-                      {section.field}
-                    </h2>
-                    <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                      {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
-                    </p>
+            <section key={section.field} aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
+              <div className="mb-6 flex items-end justify-between gap-4 border-b border-slate-800/80 pb-3">
+                <div>
+                  <h2
+                    id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
+                    className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100"
+                  >
+                    {section.field}
+                  </h2>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                    {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {section.projects.map((project) => (
+                  <div key={project.title}>
+                    <ProjectCard {...project} />
                   </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {section.projects.map((project) => (
-                    <div key={project.title}>
-                      <ProjectCard {...project} />
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </ScrollReveal>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       ) : (
