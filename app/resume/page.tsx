@@ -77,11 +77,24 @@ export default function ResumePage() {
               </button>
             </div>
             <div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-950/40">
-              <iframe
-                title="Resume PDF preview"
-                src={resumePath}
-                className="h-[72vh] min-h-[620px] w-full bg-slate-950"
+              <img
+                src="/resume-preview.png"
+                alt="Preview of Shashwat Raj's resume"
+                width={1224}
+                height={1584}
+                className="h-auto w-full bg-white"
               />
+              <div className="border-t border-slate-800 px-4 py-3 text-center text-sm text-slate-400">
+                Need a closer look?{' '}
+                <a
+                  href={resumePath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-purple-300 hover:text-purple-200"
+                >
+                  Open the full PDF
+                </a>
+              </div>
             </div>
           </div>
         </ScrollReveal>
