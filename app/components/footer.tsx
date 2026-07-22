@@ -44,10 +44,20 @@ function SubstackIcon() {
   )
 }
 
+function RssIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="5" cy="19" r="1" fill="currentColor" stroke="none" />
+      <path d="M4 11a9 9 0 0 1 9 9" />
+      <path d="M4 4a16 16 0 0 1 16 16" />
+    </svg>
+  )
+}
+
 export default function Footer() {
   return (
     <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-slate-400 md:flex-row md:space-x-4 md:space-y-0">
+      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-slate-400 md:flex-row md:flex-wrap md:gap-x-4 md:space-x-0 md:space-y-0">
         <li>
           <a className="flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://github.com/darthvader58">
             <GitHubIcon />
@@ -70,6 +80,12 @@ export default function Footer() {
           <a className="flex items-center transition-all hover:text-purple-400" rel="noopener noreferrer" target="_blank" href="https://substack.com/@shash58">
             <SubstackIcon />
             <p className="ml-2 h-7">Substack</p>
+          </a>
+        </li>
+        <li>
+          <a className="flex items-center transition-all hover:text-purple-400" href="/rss.xml">
+            <RssIcon />
+            <p className="ml-2 h-7">RSS</p>
           </a>
         </li>
         <li>
