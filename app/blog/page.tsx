@@ -22,20 +22,12 @@ export default function BlogPage() {
             </a>
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <a
-            href="#newsletter"
-            className="inline-flex shrink-0 items-center rounded-lg bg-purple-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
-          >
-            Subscribe by email
-          </a>
-          <a
-            href="/rss.xml"
-            className="inline-flex shrink-0 items-center rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-300 transition-colors hover:border-purple-400 hover:text-purple-200"
-          >
-            RSS feed
-          </a>
-        </div>
+        <a
+          href="#newsletter"
+          className="inline-flex shrink-0 items-center rounded-lg bg-purple-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
+        >
+          Subscribe by email
+        </a>
       </div>
 
       <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
