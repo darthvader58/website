@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   icons: {
     icon: '/assets/favicon.ico',
   },
+  alternates: {
+    types: {
+      'application/rss+xml': 'https://shashwatraj.com/rss.xml',
+    },
+  },
   openGraph: {
     title: 'Shash is me',
     description: 'Computer Engineering & Math student at Arizona State University',

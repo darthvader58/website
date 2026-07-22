@@ -35,6 +35,9 @@ export function generateMetadata({ params }: BlogPostPageProps): Metadata {
     description: post.excerpt,
     alternates: {
       canonical: `https://shashwatraj.com/blog/${post.slug}`,
+      types: {
+        'application/rss+xml': 'https://shashwatraj.com/rss.xml',
+      },
     },
     openGraph: {
       title: post.title,
