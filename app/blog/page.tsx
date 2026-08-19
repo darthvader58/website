@@ -7,10 +7,13 @@ export default function BlogPage() {
 
   return (
     <section className="pb-16">
-      <div className="mx-auto mb-6 flex max-w-5xl flex-col gap-3 rounded-xl border border-purple-500/20 bg-purple-950/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto mb-6 flex max-w-5xl flex-col gap-4 rounded-xl border border-slate-800 bg-slate-950/30 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6">
         <div>
+          <p className="mb-2 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-purple-300">
+            Newsletter
+          </p>
           <p className="text-sm font-semibold text-slate-100">Get new essays by email</p>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm leading-6 text-slate-400">
             The newsletter is the best way to follow along. I also publish on{' '}
             <a
               href="https://substack.com/@shash58"
