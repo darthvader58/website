@@ -28,6 +28,7 @@ export default function ExperiencePage() {
       description: "Managed/Led a team of 5 developers developing a full-stack online platform for college admission counseling startup, to automate features like scholarship finder and personal story-building. Increased UX Research success by 150%.",
       technologies: ["Next.js", "Supabase", "LLM"]
     },
+    /*
     {
       title: "Applied AI and Cryptography Intern",
       company: "Scientific Analysis Group (SAG), DRDO",
@@ -36,6 +37,7 @@ export default function ExperiencePage() {
       description: "Worked under Dr. Shantanu and Dr. Girish in the ML & Cryptography Lab on a distinguisher model using ensemble learning, involving RNN, LSTM and Encoder-based Transformer model-architecture to classify random text and encrypted text in AES in CBC mode, achieving 74% precision.",
       technologies: ["Python", "spaCy", "PyTorch", "RNN", "Transformers", "LSTMs"]
     },
+    */
     {
       title: "Team Member",
       company: "Invincibles Robotics",

@@ -72,7 +72,7 @@ export default function HomePage() {
       <ScrollReveal delay={200}>
         <div className="prose prose-invert max-w-none">
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
-            I'm a junior at Arizona State University majoring in Computer Systems Engineering and Math, with a passion for building innovative solutions at the intersection of hardware and software. 
+            I'm a senior at Arizona State University double majoring in Computer Systems Engineering and Math, with a passion for building innovative solutions at the intersection of hardware and software. 
           </p>
 
           <p className="text-slate-400 leading-relaxed mb-6">
@@ -169,6 +169,7 @@ export default function HomePage() {
                 description: "Managed/Led a team of 5 developers developing a full-stack online platform for college admission counseling startup, to automate features like scholarship finder and personal story-building. Increased UX Research success by 150%.",
                 technologies: ["Next.js", "Supabase", "LLM"]
               },
+              /*
               {
                 title: "Applied AI and Cryptography Intern",
                 company: "Scientific Analysis Group (SAG), DRDO",
@@ -177,6 +178,7 @@ export default function HomePage() {
                 description: "Worked under Dr. Shantanu and Dr. Girish in the ML & Cryptography Lab on a distinguisher model using ensemble learning, involving RNN, LSTM and Encoder-based Transformer model-architecture to classify random text and encrypted text in AES in CBC mode, achieving 74% precision.",
                 technologies: ["Python", "spaCy", "PyTorch", "RNN", "Transformers", "LSTMs"]
               },
+              */
               {
                 title: "Team Member",
                 company: "Invincibles Robotics",
@@ -366,14 +368,6 @@ export default function HomePage() {
                   technologies: ["Go", "Compiler Design", "Next.js"],
                   github: "https://github.com/darthvader58/kaleshscript",
                   link: "https://kaleshscript.vercel.app",
-                  hasLivePreview: true
-                },
-                {
-                  title: "Twinmind-Live",
-                  description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
-                  technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
-                  github: "https://github.com/darthvader58/twinmind",
-                  link: "https://twinmind-phi.vercel.app",
                   hasLivePreview: true
                 },
                 {

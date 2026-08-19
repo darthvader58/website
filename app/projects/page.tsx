@@ -103,15 +103,6 @@ export default function ProjectsPage() {
       hasLivePreview: true
     },
     {
-      title: "Twinmind-Live",
-      description: "TwinMind-Live is a single-page web app that listens to your microphone, streams a rolling transcript, and surfaces three fresh, context-aware suggestions every ~30 seconds while you talk",
-      technologies: ["Next", "Zustand", "Edge Runtime", "SSE Webstreams", "Groq"],
-      field: 'AI Agents and LLMs',
-      github: "https://github.com/darthvader58/twinmind",
-      link: "https://twinmind-phi.vercel.app",
-      hasLivePreview: true
-    },
-    {
       title: "Formath",
       description: "Mathematical solution analyzer with step-by-step explanations. Built for hackathon.",
       technologies: ["React", "Node.js", "Express", "CockroachDB", "AWS"],
@@ -183,14 +174,6 @@ export default function ProjectsPage() {
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
-      title: "Karobar",
-      description: "Chrome Extension - Job Applications Tracking tool for \"sophisticated\" applicants who want to log every submission.",
-      technologies: ["Typescript", "Vue", "Chrome API", "Google Sheets API"],
-      field: 'Libraries and Tools',
-      github: "https://github.com/darthvader58/karobar",
-      previewImage: "https://www.outsystems.com/Forge_CW/_image.aspx/Q8LvY--6WakOw9afDCuuGTrsWOMiLK5kOEJX7zRjPlI=/chrome-extension-connector-2023-01-04%2000-00-00-2025-08-13%2008-34-13"
-    },
-    {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
@@ -258,12 +241,6 @@ export default function ProjectsPage() {
     },
     /*
     {
-      title: "N-Body Simulator",
-      description: "Gravitational physics simulation with multiple body interactions and visualization using Apple Silicon's metal shaders.",
-      technologies: ["Swift", "Metal", "Physics", "Three.js"],
-      github: "https://github.com/darthvader58/NBodySimulator"
-    },
-    {
       title: "Quant Challenge 2025",
       description: "Quantitative finance modeling and algorithmic trading strategies.",
       technologies: ["Python", "PyTorch", "Pandas", "NumPy", "Scikit-Learn"],
@@ -292,12 +269,6 @@ export default function ProjectsPage() {
       technologies: ["C", "Embedded Systems", "PID Control", "I2C"],
       field: 'Robotics',
       previewImage: "/images/Embedded.png"
-    },
-    {
-      title: "Onchip Communication",
-      description: "Onboard communication protocols and FPGA implementations of SPI, I2C, UART and CAN, in Verilog.",
-      technologies: ["Verilog", "iVerilog", "Vivado", "NEXYS A7-100T", "Digilent Arty A7-35T"],
-      field: 'Hardware Design Synthesis',
     },
     {
       title: "FPGA Implementation Mean Bean Machine",
