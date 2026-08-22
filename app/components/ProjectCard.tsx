@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import AnimationGallery, { type AnimationGalleryItem } from './AnimationGallery'
 
 interface ProjectCardProps {
   title: string
@@ -12,9 +13,10 @@ interface ProjectCardProps {
   hasLivePreview?: boolean
   customPreview?: 'queens-crown' | string
   previewImage?: string
+  animationGallery?: AnimationGalleryItem[]
 }
 
-export default function ProjectCard({ title, description, technologies, github, link, hasLivePreview, customPreview, previewImage }: ProjectCardProps) {
+export default function ProjectCard({ title, description, technologies, github, link, hasLivePreview, customPreview, previewImage, animationGallery }: ProjectCardProps) {
   const href = hasLivePreview ? link : github || '#'
   const [showIframe, setShowIframe] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
@@ -83,7 +85,9 @@ export default function ProjectCard({ title, description, technologies, github, 
       >
         <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30 h-full flex flex-col">
           <div className="mb-4 h-80 rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
-          {previewImage ? (
+          {animationGallery?.length ? (
+            <AnimationGallery items={animationGallery} title={title} />
+          ) : previewImage ? (
             <div className="w-full h-full relative">
               <img 
                 src={previewImage}

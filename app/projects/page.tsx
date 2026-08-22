@@ -4,6 +4,28 @@ import { useState } from 'react'
 import { Search, SlidersHorizontal } from 'lucide-react'
 import ProjectCard from '../components/ProjectCard'
 
+const mlAnimationGallery = [
+  { src: '/ml-animations/linreg_descent.gif', label: 'Linear regression gradient descent' },
+  { src: '/ml-animations/lasso_l1_geometry.gif', label: 'Lasso and L1 geometry' },
+  { src: '/ml-animations/knn_vote.gif', label: 'K-nearest neighbors voting' },
+  { src: '/ml-animations/svm_margin.gif', label: 'Support vector machine margin' },
+  { src: '/ml-animations/lda_qda_boundary.gif', label: 'LDA and QDA decision boundaries' },
+  { src: '/ml-animations/forest_variance.gif', label: 'Random forest variance reduction' },
+  { src: '/ml-animations/boosting_residuals.gif', label: 'Gradient boosting residuals' },
+  { src: '/ml-animations/kmeans_lloyd.gif', label: 'K-means with Lloyd\'s algorithm' },
+  { src: '/ml-animations/meanshift_ascent.gif', label: 'Mean shift density ascent' },
+  { src: '/ml-animations/dbscan_reachability.gif', label: 'DBSCAN density reachability' },
+  { src: '/ml-animations/gmm_em.gif', label: 'Gaussian mixture expectation-maximization' },
+  { src: '/ml-animations/crp_seating.gif', label: 'Dirichlet process mixture' },
+  { src: '/ml-animations/backprop_chain.gif', label: 'Backpropagation and the chain rule' },
+  { src: '/ml-animations/conv2d_slide.gif', label: '2D convolution and weight sharing' },
+  { src: '/ml-animations/autoencoder_pca.gif', label: 'Autoencoder and PCA subspaces' },
+  { src: '/ml-animations/bptt_vanishing.gif', label: 'Backpropagation through time' },
+  { src: '/ml-animations/attention_scaling.gif', label: 'Scaled dot-product attention' },
+  { src: '/ml-animations/mf_factorization.gif', label: 'Matrix factorization bottleneck' },
+  { src: '/ml-animations/mf_learning.gif', label: 'Matrix factorization learning' },
+]
+
 type ProjectField =
   | 'AI Agents and LLMs'
   | 'Physics'
@@ -25,6 +47,7 @@ type Project = {
   link?: string
   hasLivePreview?: boolean
   previewImage?: string
+  animationGallery?: Array<{ src: string; label: string }>
 }
 
 const projectFields: ProjectField[] = [
@@ -174,6 +197,14 @@ export default function ProjectsPage() {
       previewImage: "https://media.licdn.com/dms/image/v2/D4D12AQFk-R2ExSs9kA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1733755511762?e=2147483647&v=beta&t=B8_G41xkH-b8Upz-YM7gE9fwBsf7UIv6ulCm_iG3HUA"
     },
     {
+      title: "Machine Learning from Scratch",
+      description: "From-scratch NumPy implementations of foundational machine learning models, with mathematical walkthroughs, real datasets, gradient checks, and reproducible animations.",
+      technologies: ["Python", "NumPy", "Jupyter", "Matplotlib", "Manim"],
+      field: 'Machine Learning',
+      github: "https://github.com/darthvader58/Machine_Learning_From_Scratch",
+      animationGallery: mlAnimationGallery
+    },
+    {
       title: "Anagnor",
       description: "Landslide detection system using computer vision and satellite imagery analysis.",
       technologies: ["Python", "Pytorch", "GISTEMP 4.0 Data", "NetCDF4"],
@@ -300,6 +331,7 @@ export default function ProjectsPage() {
       project.description,
       project.field,
       ...project.technologies,
+      ...(project.animationGallery?.map((animation) => animation.label) ?? []),
     ].join(' ').toLowerCase()
 
     return matchesField && (!normalizedQuery || searchableText.includes(normalizedQuery))
