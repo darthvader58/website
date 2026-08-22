@@ -32,7 +32,7 @@ export default function AnimationGallery({ items, title }: AnimationGalleryProps
 
   return (
     <div
-      className="relative h-full w-full overflow-hidden bg-[#0b0b0e]"
+      className="animation-gallery relative h-full w-full overflow-hidden"
       aria-label={`${title} animation gallery`}
       aria-roledescription="carousel"
       role="region"
@@ -67,11 +67,11 @@ export default function AnimationGallery({ items, title }: AnimationGalleryProps
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-11 items-center justify-between gap-4 border-t border-white/10 bg-slate-950/95 px-4 py-2.5 shadow-[0_-8px_24px_rgba(0,0,0,0.55)] backdrop-blur-md">
-        <p className="truncate text-sm font-semibold text-white drop-shadow-md" aria-live="polite">
+      <div className="animation-gallery-caption pointer-events-none absolute inset-x-0 bottom-0 flex min-h-11 items-center justify-between gap-4 border-t px-4 py-2.5 backdrop-blur-md">
+        <p className="animation-gallery-label truncate text-sm font-semibold" aria-live="polite">
           {items[activeIndex]?.label}
         </p>
-        <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-2 py-1 text-[10px] font-medium tabular-nums text-slate-100">
+        <span className="animation-gallery-counter shrink-0 rounded-full border px-2 py-1 text-[10px] font-medium tabular-nums">
           {activeIndex + 1} / {items.length}
         </span>
       </div>
@@ -83,7 +83,7 @@ export default function AnimationGallery({ items, title }: AnimationGalleryProps
           scrollToSlide(activeIndex - 1)
         }}
         disabled={activeIndex === 0}
-        className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/15 bg-black/65 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-purple-600 disabled:pointer-events-none disabled:opacity-30"
+        className="animation-gallery-nav absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border p-2 shadow-lg backdrop-blur-sm transition disabled:pointer-events-none disabled:opacity-30"
         aria-label="Previous animation"
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -98,7 +98,7 @@ export default function AnimationGallery({ items, title }: AnimationGalleryProps
           scrollToSlide(activeIndex + 1)
         }}
         disabled={activeIndex === items.length - 1}
-        className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/15 bg-black/65 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-purple-600 disabled:pointer-events-none disabled:opacity-30"
+        className="animation-gallery-nav absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border p-2 shadow-lg backdrop-blur-sm transition disabled:pointer-events-none disabled:opacity-30"
         aria-label="Next animation"
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">

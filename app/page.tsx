@@ -290,7 +290,7 @@ export default function HomePage() {
                 container.scrollBy({ left: -800, behavior: 'smooth' });
               }
             }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+            className="project-carousel-nav absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border p-3 shadow-lg transition-all duration-200 hover:scale-110"
             aria-label="Scroll left"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,7 +306,7 @@ export default function HomePage() {
                 container.scrollBy({ left: 800, behavior: 'smooth' });
               }
             }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-slate-900/80 hover:bg-slate-800 text-slate-300 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+            className="project-carousel-nav absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full border p-3 shadow-lg transition-all duration-200 hover:scale-110"
             aria-label="Scroll right"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

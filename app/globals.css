@@ -13,6 +13,95 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+.animation-gallery {
+  background: #0b0b0e;
+}
+
+.animation-gallery-caption {
+  background: rgba(2, 6, 23, 0.96);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.55);
+}
+
+.animation-gallery-label {
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+}
+
+.animation-gallery-counter {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f1f5f9;
+}
+
+.animation-gallery-nav {
+  background: rgba(0, 0, 0, 0.65);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.animation-gallery-nav:hover {
+  background: #9333ea;
+  border-color: #a855f7;
+}
+
+html.light .animation-gallery {
+  background: #f8fafc;
+}
+
+html.light .animation-gallery-caption {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: #cbd5e1;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.14);
+}
+
+html.light .animation-gallery-label {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+html.light .animation-gallery-counter {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+html.light .animation-gallery-nav {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #cbd5e1;
+  color: #334155;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+}
+
+html.light .animation-gallery-nav:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #ffffff;
+}
+
+.project-carousel-nav {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+}
+
+.project-carousel-nav:hover {
+  background: #1e293b;
+}
+
+html.light .project-carousel-nav {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #cbd5e1;
+  color: #475569;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+}
+
+html.light .project-carousel-nav:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #ffffff;
+}
+
 ::selection {
   background-color: #a855f7;
   color: #ffffff;
