@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTheme } from './ThemeProvider'
+import { useGithubHeatmap } from '../lib/useGithubHeatmap'
+
+const HEAT_OPACITY = [0.08, 0.28, 0.5, 0.72, 1]
 
 interface GitHubEvent {
   id: string
@@ -38,14 +40,7 @@ export default function GitHubActivity() {
   const [events, setEvents] = useState<GitHubEvent[]>([])
   const [loading, setLoading] = useState(true)
   const username = 'darthvader58'
-  
-  let theme = 'dark'
-  try {
-    const themeContext = useTheme()
-    theme = themeContext.theme
-  } catch (e) {
-    // ThemeProvider not available yet
-  }
+  const heatmap = useGithubHeatmap(username)
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}/events/public`)
@@ -167,8 +162,8 @@ export default function GitHubActivity() {
       <div className="space-y-3">
         {[...Array(5)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-4 bg-slate-800 rounded w-3/4 mb-2"></div>
-            <div className="h-3 bg-slate-800 rounded w-1/2"></div>
+            <div className="h-4 bg-[var(--chip)] rounded w-3/4 mb-2"></div>
+            <div className="h-3 bg-[var(--chip)] rounded w-1/2"></div>
           </div>
         ))}
       </div>
@@ -177,115 +172,82 @@ export default function GitHubActivity() {
 
   // Language data based on your GitHub profile
   const languages = [
-    { name: 'Python', percentage: 28.5, color: '#3572A5' },
-    { name: 'TypeScript', percentage: 18.2, color: '#3178c6' },
-    { name: 'JavaScript', percentage: 15.8, color: '#f1e05a' },
-    { name: 'C', percentage: 12.4, color: '#555555' },
-    { name: 'Java', percentage: 8.6, color: '#b07219' },
-    { name: 'Swift', percentage: 6.3, color: '#F05138' },
-    { name: 'Rust', percentage: 4.2, color: '#dea584' },
-    { name: 'Go', percentage: 3.1, color: '#00ADD8' },
-    { name: 'Ruby', percentage: 2.9, color: '#701516' }
+    { name: 'Python', percentage: 28.5 },
+    { name: 'TypeScript', percentage: 18.2 },
+    { name: 'JavaScript', percentage: 15.8 },
+    { name: 'C', percentage: 12.4 },
+    { name: 'Java', percentage: 8.6 },
+    { name: 'Swift', percentage: 6.3 },
+    { name: 'Rust', percentage: 4.2 },
+    { name: 'Go', percentage: 3.1 },
+    { name: 'Ruby', percentage: 2.9 }
   ]
 
   return (
     <div className="space-y-6">
-      {/* Activity Overview - Radar Chart Style */}
+      {/* Contribution Graph - native heatmap grid */}
       <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-slate-100">Activity Overview</h3>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3">
-          <div className="flex items-center justify-center h-40 relative">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              {/* Grid circles */}
-              <circle cx="100" cy="100" r="80" fill="none" stroke="#1e293b" strokeWidth="1" />
-              <circle cx="100" cy="100" r="60" fill="none" stroke="#1e293b" strokeWidth="1" />
-              <circle cx="100" cy="100" r="40" fill="none" stroke="#1e293b" strokeWidth="1" />
-              <circle cx="100" cy="100" r="20" fill="none" stroke="#1e293b" strokeWidth="1" />
-              
-              {/* Axes */}
-              <line x1="100" y1="20" x2="100" y2="180" stroke="#334155" strokeWidth="1" />
-              <line x1="20" y1="100" x2="180" y2="100" stroke="#334155" strokeWidth="1" />
-              
-              {/* Data polygon - Commits: 87%, Pull requests: 10%, Issues: 3%, Code review: 0% */}
-              <polygon 
-                points="100,100 102.4,100 100,169.6 30.4,100" 
-                fill="#10b981" 
-                fillOpacity="0.3" 
-                stroke="#10b981" 
-                strokeWidth="2"
-              />
-              
-              {/* Data points */}
-              <circle cx="100" cy="100" r="4" fill="#10b981" />
-              <circle cx="102.4" cy="100" r="4" fill="#10b981" />
-              <circle cx="100" cy="169.6" r="4" fill="#10b981" />
-              <circle cx="30.4" cy="100" r="4" fill="#10b981" />
-              
-              {/* Labels - positioned outside the chart */}
-              <text x="100" y="12" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="500">Code review</text>
-              <text x="188" y="103" textAnchor="start" fill="#94a3b8" fontSize="9" fontWeight="500">Issues</text>
-              <text x="100" y="198" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="500">Pull requests</text>
-              <text x="12" y="95" textAnchor="end" fill="#94a3b8" fontSize="9" fontWeight="500">Commits</text>
-              
-              {/* Percentage labels - positioned near data points */}
-              <text x="100" y="92" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">0%</text>
-              <text x="110" y="103" textAnchor="start" fill="#e2e8f0" fontSize="10" fontWeight="bold">3%</text>
-              <text x="100" y="182" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">10%</text>
-              <text x="22" y="110" textAnchor="end" fill="#e2e8f0" fontSize="10" fontWeight="bold">87%</text>
-            </svg>
-          </div>
+        <h3 className="text-sm font-semibold text-[var(--fg)]">Contributions</h3>
+        <div className="overflow-x-auto rounded-lg border border-[var(--line)] bg-[var(--chip)] p-3 pb-2">
+          {heatmap.loading ? (
+            <div className="h-[104px] animate-pulse rounded bg-[var(--line)]" />
+          ) : !heatmap.live ? (
+            <p className="py-6 text-center text-xs text-[var(--soft)]">Contributions are unavailable right now.</p>
+          ) : (
+            <div className="min-w-[640px]">
+              <div
+                className="relative mb-1.5 h-[13px] font-mono text-[10px] text-[var(--soft)]"
+                style={{ display: 'grid', gridTemplateColumns: `repeat(${heatmap.columns}, 10px)`, gap: '3px' }}
+              >
+                {heatmap.monthLabels.map((m) => (
+                  <span key={m.column} className="whitespace-nowrap" style={{ gridColumnStart: m.column + 1 }}>
+                    {m.label}
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${heatmap.columns}, 10px)`, gap: '3px' }}>
+                {heatmap.cells.map((cell) => (
+                  <span
+                    key={cell.date}
+                    title={cell.date}
+                    className="size-[10px] rounded-[2px] bg-[var(--fg)] transition-transform duration-150 hover:scale-125"
+                    style={{ opacity: HEAT_OPACITY[cell.level] }}
+                  />
+                ))}
+              </div>
+
+              <div className="mt-2.5 flex items-center justify-between font-mono text-[11px] text-[var(--muted)]">
+                <span>{heatmap.total.toLocaleString()} contributions in the last year</span>
+                <span className="flex items-center gap-1.5">
+                  Less
+                  {HEAT_OPACITY.map((o) => (
+                    <span key={o} className="size-[10px] rounded-[2px] bg-[var(--fg)]" style={{ opacity: o }} />
+                  ))}
+                  More
+                </span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Contribution Graph - Scrollable */}
+      {/* Language Stats - Monochrome, glitch-textured bars */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-slate-100">Contributions</h3>
-          <span className="text-xs text-slate-500">Last 365 days</span>
-        </div>
-        <div 
-          className="rounded-lg border border-slate-800 bg-slate-900 p-3 overflow-x-auto"
-          ref={(el) => {
-            if (el) {
-              // Scroll to show the most recent contributions (right side)
-              el.scrollLeft = el.scrollWidth - el.clientWidth
-            }
-          }}
-        >
-          <div className="min-w-[900px]">
-            <img 
-              src={`https://ghchart.rshah.org/${username}`}
-              alt="GitHub Contribution Chart"
-              className="w-full"
-              style={theme === 'light' ? { 
-                filter: 'brightness(0.9) contrast(1.1)',
-                mixBlendMode: 'normal'
-              } : { 
-                filter: 'invert(1) hue-rotate(180deg)',
-                mixBlendMode: 'screen'
-              }}
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Language Stats - Custom */}
-      <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-slate-100">Top Languages</h3>
-        <div className="rounded-lg border border-slate-800 bg-slate-900/50 p-3 space-y-2">
+        <h3 className="text-glitch text-sm font-semibold uppercase tracking-widest text-[var(--fg)]">Top Languages</h3>
+        <div className="rounded-lg border border-[var(--line)] bg-[var(--chip)] p-3 space-y-2.5">
           {languages.slice(0, 8).map((lang) => (
             <div key={lang.name}>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-slate-300">{lang.name}</span>
-                <span className="text-slate-400">{lang.percentage}%</span>
+              <div className="mb-1 flex justify-between font-mono text-xs">
+                <span className="text-[var(--muted)]">{lang.name}</span>
+                <span className="text-[var(--soft)]">{lang.percentage.toString().padStart(4, '0')}%</span>
               </div>
-              <div className="w-full bg-slate-800 rounded-full h-1.5">
-                <div 
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--line)]">
+                <div
                   className="h-1.5 rounded-full transition-all duration-500"
-                  style={{ 
+                  style={{
                     width: `${lang.percentage}%`,
-                    backgroundColor: lang.color
+                    backgroundImage: 'repeating-linear-gradient(45deg, var(--fg) 0, var(--fg) 2px, transparent 2px, transparent 4px)',
                   }}
                 />
               </div>
@@ -296,7 +258,7 @@ export default function GitHubActivity() {
 
       {/* Recent Activity */}
       <div className="space-y-4">
-        <h3 className="text-sm font-semibold text-slate-100">Recent Activity</h3>
+        <h3 className="text-sm font-semibold text-[var(--fg)]">Recent Activity</h3>
         <div className="space-y-3">
           {events.slice(0, 5).map(event => (
             <a
@@ -306,15 +268,15 @@ export default function GitHubActivity() {
               rel="noopener noreferrer"
               className="block group"
             >
-              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-900/50 transition-colors">
+              <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-[var(--hover)] transition-colors">
                 <div className="text-purple-400 mt-0.5">
                   {getEventIcon(event.type)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-slate-300 group-hover:text-slate-100 transition-colors line-clamp-2">
+                  <p className="text-sm text-[var(--muted)] group-hover:text-[var(--fg)] transition-colors line-clamp-2">
                     {getEventDescription(event)}
                   </p>
-                  <p className="text-xs text-slate-500 mt-1">
+                  <p className="text-xs text-[var(--soft)] mt-1">
                     {getTimeAgo(event.created_at)}
                   </p>
                 </div>
