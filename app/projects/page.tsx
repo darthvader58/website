@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Search, SlidersHorizontal } from 'lucide-react'
 import ProjectCard from '../components/ProjectCard'
+import { Shell, SectionHeader } from '../components/Shell'
 
 const mlAnimationGallery = [
   { src: '/ml-animations/linreg_descent.gif', label: 'Linear regression gradient descent' },
@@ -345,14 +346,10 @@ export default function ProjectsPage() {
     .filter((section) => section.projects.length > 0)
 
   return (
-    <section>
-      <div>
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
-            Projects
-          </h1>
-        </div>
-        <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
+    <div>
+      <SectionHeader title="Projects" />
+      <Shell className="px-6 py-6 sm:px-8">
+        <p className="mb-8 text-[14px] leading-relaxed text-[var(--muted)]">
           A collection of my personal projects, open-source contributions, and academic work spanning web development, machine learning, embedded systems, and robotics.
         </p>
 
@@ -360,14 +357,14 @@ export default function ProjectsPage() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <label htmlFor="project-search" className="relative flex-1">
               <span className="sr-only">Search projects</span>
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-600 dark:text-slate-500" aria-hidden="true" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--soft)]" aria-hidden="true" />
               <input
                 id="project-search"
                 type="search"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Search projects, technologies, or fields"
-                className="w-full rounded-lg border border-slate-300 bg-white/95 py-3 pl-12 pr-4 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-500 focus:border-purple-500 dark:border-slate-700/80 dark:bg-slate-950/30 dark:text-slate-100"
+                className="w-full rounded-lg border border-[var(--line)] bg-[var(--card)] py-3 pl-12 pr-4 text-sm text-[var(--fg)] outline-none transition-colors placeholder:text-[var(--soft)] focus:border-purple-500"
               />
             </label>
             <button
@@ -375,7 +372,7 @@ export default function ProjectsPage() {
               onClick={() => setShowFieldFilters((isOpen) => !isOpen)}
               aria-expanded={showFieldFilters}
               aria-controls="project-field-filters"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700/80 bg-slate-950/30 px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:border-purple-500 hover:text-purple-300"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--card)] px-4 py-3 text-sm font-medium text-[var(--muted)] transition-colors hover:border-[var(--soft)] hover:text-[var(--fg)]"
             >
               <SlidersHorizontal className="h-5 w-5" aria-hidden="true" />
               <span>{activeField === 'All' ? 'Fields' : activeField}</span>
@@ -392,7 +389,7 @@ export default function ProjectsPage() {
                   className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                     activeField === field
                       ? 'border-purple-500 bg-purple-600 text-white'
-                      : 'border-slate-700/80 bg-slate-950/30 text-slate-400 hover:border-purple-500 hover:text-purple-300'
+                      : 'border-[var(--line)] bg-[var(--card)] text-[var(--muted)] hover:border-[var(--soft)] hover:text-[var(--fg)]'
                   }`}
                 >
                   {field}
@@ -405,7 +402,7 @@ export default function ProjectsPage() {
         <div className="mb-12 flex items-center gap-3">
           <a
             href="/opensource"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-md transition-all duration-200 hover:scale-105"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--line)] bg-[var(--card)] text-[var(--muted)] text-sm font-medium transition-all duration-200 hover:border-[var(--soft)] hover:text-[var(--fg)]"
           >
             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
@@ -416,7 +413,7 @@ export default function ProjectsPage() {
             href="https://github.com/sponsors/darthvader58"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-medium rounded-md transition-all duration-200 hover:scale-105"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--line)] bg-[var(--card)] text-[var(--muted)] text-sm font-medium transition-all duration-200 hover:border-[var(--soft)] hover:text-[var(--fg)]"
           >
             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
               <path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5zM8 14.25l-.345.666-.002-.001-.006-.003-.018-.01a7.643 7.643 0 01-.31-.17 22.075 22.075 0 01-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.08 22.08 0 01-3.744 2.584l-.018.01-.006.003h-.002L8 14.25zm0 0l.345.666a.752.752 0 01-.69 0L8 14.25z"/>
@@ -424,40 +421,40 @@ export default function ProjectsPage() {
             Sponsor
           </a>
         </div>
-      </div>
 
-      {projectSections.length > 0 ? (
-        <div className="space-y-16">
-          {projectSections.map((section) => (
-            <section key={section.field} aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
-              <div className="mb-6 flex items-end justify-between gap-4 border-b border-slate-800/80 pb-3">
-                <div>
-                  <h2
-                    id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
-                    className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100"
-                  >
-                    {section.field}
-                  </h2>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                    {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
-                  </p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {section.projects.map((project) => (
-                  <div key={project.title}>
-                    <ProjectCard {...project} />
+        {projectSections.length > 0 ? (
+          <div className="space-y-16">
+            {projectSections.map((section) => (
+              <section key={section.field} aria-labelledby={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}>
+                <div className="mb-6 flex items-end justify-between gap-4 border-b border-[var(--line)] pb-3">
+                  <div>
+                    <h2
+                      id={`${section.field.toLowerCase().replace(/\s+/g, '-')}-projects`}
+                      className="font-serif text-2xl tracking-tight text-[var(--fg)]"
+                    >
+                      {section.field}
+                    </h2>
+                    <p className="mt-1 text-sm text-[var(--soft)]">
+                      {section.projects.length} {section.projects.length === 1 ? 'project' : 'projects'}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-      ) : (
-        <div className="rounded-lg border border-slate-800 bg-slate-950/30 p-8 text-center text-slate-400">
-          No projects match your search.
-        </div>
-      )}
-    </section>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {section.projects.map((project) => (
+                    <div key={project.title}>
+                      <ProjectCard {...project} />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-[var(--line)] bg-[var(--card)] p-8 text-center text-[var(--muted)]">
+            No projects match your search.
+          </div>
+        )}
+      </Shell>
+    </div>
   )
 }
