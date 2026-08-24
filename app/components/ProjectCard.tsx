@@ -83,8 +83,8 @@ export default function ProjectCard({ title, description, technologies, github, 
         rel="noopener noreferrer"
         className="block h-full"
       >
-        <div className="border border-slate-800 rounded-lg p-6 hover:border-purple-700/50 transition-all duration-300 bg-slate-950/30 h-full flex flex-col">
-          <div className="mb-4 h-80 rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
+        <div className="border border-[var(--line)] rounded-lg p-6 hover:border-[var(--soft)] transition-all duration-300 bg-[var(--card)] h-full flex flex-col">
+          <div className="mb-4 aspect-square w-full rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
           {animationGallery?.length ? (
             <AnimationGallery items={animationGallery} title={title} />
           ) : previewImage ? (
@@ -113,18 +113,18 @@ export default function ProjectCard({ title, description, technologies, github, 
               </div>
             </div>
           ) : hasLivePreview && link ? (
-            <div className="w-full h-full bg-gradient-to-br from-purple-900/40 to-blue-900/40 flex items-center justify-center relative overflow-hidden">
+            <div className="w-full h-full bg-[var(--chip)] flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-4 left-4 w-16 h-16 border-2 border-purple-400 rounded-full animate-pulse" />
-                <div className="absolute bottom-8 right-8 w-12 h-12 border-2 border-blue-400 rounded-lg animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-purple-300 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute bottom-8 right-8 w-12 h-12 border-2 border-purple-300 rounded-lg animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
               </div>
               <div className="text-center relative z-10">
-                <svg className="w-12 h-12 mx-auto mb-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-12 h-12 mx-auto mb-3 text-[var(--muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
-                <p className="text-sm font-medium text-purple-300 mb-1">Live Site</p>
-                <p className="text-xs text-slate-400">Click to visit →</p>
+                <p className="text-sm font-medium text-[var(--fg)] mb-1">Live Site</p>
+                <p className="text-xs text-[var(--soft)]">Click to visit →</p>
               </div>
               <div className="absolute top-2 right-2 bg-green-600/90 text-white text-xs px-2 py-1 rounded flex items-center gap-1">
                 <span className="w-1.5 h-1.5 bg-green-300 rounded-full animate-pulse" />
@@ -132,16 +132,16 @@ export default function ProjectCard({ title, description, technologies, github, 
               </div>
             </div>
           ) : github ? (
-            <div className="w-full h-full bg-gradient-to-br from-slate-900/50 to-slate-800/50 flex items-center justify-center">
+            <div className="w-full h-full bg-[var(--chip)] flex items-center justify-center">
               <div className="text-center">
-                <svg className="w-6 h-6 mx-auto mb-2 text-slate-400" viewBox="0 0 16 16" fill="currentColor">
+                <svg className="w-6 h-6 mx-auto mb-2 text-[var(--muted)]" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
                 </svg>
-                <p className="text-xs text-slate-400 mt-1">{title}</p>
+                <p className="text-xs text-[var(--soft)] mt-1">{title}</p>
               </div>
             </div>
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-purple-950/30 to-slate-900/30 flex items-center justify-center relative overflow-hidden">
+            <div className="w-full h-full bg-[var(--chip)] flex items-center justify-center relative overflow-hidden">
               <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 200 100">
                 <path d="M 10 50 L 50 50" stroke="#a855f7" strokeWidth="2" fill="none" />
                 <path d="M 50 30 L 50 70" stroke="#a855f7" strokeWidth="2" fill="none" />
@@ -149,22 +149,22 @@ export default function ProjectCard({ title, description, technologies, github, 
                 <circle cx="10" cy="50" r="3" fill="#a855f7" />
                 <circle cx="50" cy="50" r="4" fill="#a855f7" />
                 <circle cx="90" cy="50" r="3" fill="#a855f7" />
-                <path d="M 110 50 L 150 50" stroke="#8b5cf6" strokeWidth="2" fill="none" />
-                <path d="M 150 30 L 150 70" stroke="#8b5cf6" strokeWidth="2" fill="none" />
-                <circle cx="110" cy="50" r="3" fill="#8b5cf6" />
-                <circle cx="150" cy="50" r="4" fill="#8b5cf6" />
+                <path d="M 110 50 L 150 50" stroke="#c084fc" strokeWidth="2" fill="none" />
+                <path d="M 150 30 L 150 70" stroke="#c084fc" strokeWidth="2" fill="none" />
+                <circle cx="110" cy="50" r="3" fill="#c084fc" />
+                <circle cx="150" cy="50" r="4" fill="#c084fc" />
               </svg>
-              <p className="text-xs text-slate-400 relative z-10">{title}</p>
+              <p className="text-xs text-[var(--soft)] relative z-10">{title}</p>
             </div>
           )}
         </div>
         
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors mb-2">
+        <h3 className="text-lg font-semibold text-[var(--fg)] group-hover:text-purple-400 transition-colors mb-2">
           {title}
         </h3>
-        
+
         <div className="mb-4 flex-grow">
-          <p className={`text-sm text-slate-400 ${!isExpanded && showReadMore ? 'line-clamp-2' : ''}`}>
+          <p className={`text-sm text-[var(--muted)] ${!isExpanded && showReadMore ? 'line-clamp-2' : ''}`}>
             {description}
           </p>
           {showReadMore && (
@@ -173,28 +173,28 @@ export default function ProjectCard({ title, description, technologies, github, 
                 e.preventDefault()
                 setIsExpanded(!isExpanded)
               }}
-              className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 mt-1 transition-colors"
+              className="text-xs text-purple-400 hover:text-purple-300 mt-1 transition-colors"
             >
               {isExpanded ? 'Read less' : 'Read more'}
             </button>
           )}
         </div>
-        
+
         <div className="flex flex-wrap gap-2 mt-auto flex-shrink-0">
           {technologies.slice(0, 5).map((tech, i) => (
-            <span key={i} className="text-xs px-2 py-1 rounded bg-purple-950/50 text-purple-300 border border-purple-900/50">
+            <span key={i} className="text-xs px-2 py-1 rounded bg-[var(--chip)] text-[var(--muted)] border border-[var(--line)]">
               {tech}
             </span>
           ))}
           {technologies.length > 5 && (
-            <span className="text-xs px-2 py-1 rounded bg-slate-900/50 text-slate-400">
+            <span className="text-xs px-2 py-1 rounded bg-[var(--chip)] text-[var(--soft)]">
               +{technologies.length - 5} more
             </span>
           )}
         </div>
       </div>
       </Link>
-      
+
       {/* GitHub icon button */}
       {github && (
         <a
@@ -202,10 +202,10 @@ export default function ProjectCard({ title, description, technologies, github, 
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="absolute bottom-4 right-4 p-2 bg-white dark:bg-slate-900 hover:bg-purple-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:border-purple-500 dark:hover:border-purple-500 rounded-lg transition-all duration-200 hover:scale-110 z-10 shadow-sm"
+          className="absolute bottom-4 right-4 p-2 bg-[var(--card)] hover:bg-[var(--chip)] border border-[var(--line)] hover:border-[var(--soft)] rounded-lg transition-all duration-200 hover:scale-110 z-10 shadow-sm"
           title="View on GitHub"
         >
-          <svg className="w-5 h-5 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" viewBox="0 0 16 16" fill="currentColor">
+          <svg className="w-5 h-5 text-[var(--muted)] hover:text-[var(--fg)] transition-colors" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
           </svg>
         </a>

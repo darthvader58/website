@@ -2,11 +2,20 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { Instrument_Serif } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import OnekoCat from './components/OnekoCat'
 import CircuitBackground from './components/CircuitBackground'
 import { ThemeProvider } from './components/ThemeProvider'
 import SiteShell from './components/SiteShell'
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
+})
 
 export const metadata: Metadata = {
   title: 'Shash is me',
@@ -41,10 +50,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
-      <body className="antialiased text-slate-100">
+    <html lang="en" className={cx(GeistSans.variable, GeistMono.variable, instrumentSerif.variable)}>
+      <body className="font-sans antialiased text-[var(--fg)]">
         <ThemeProvider>
           <CircuitBackground />
+          <OnekoCat />
           <SiteShell>{children}</SiteShell>
           <Analytics />
           <SpeedInsights />

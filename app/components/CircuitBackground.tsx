@@ -42,14 +42,23 @@ const edgeKey = (a: CircuitPoint, b: CircuitPoint) => {
 
 const pointKey = (point: CircuitPoint) => `${point.x},${point.y}`
 
+const FG_RGB = {
+  dark: { r: 245, g: 245, b: 244 },
+  light: { r: 24, g: 24, b: 27 },
+}
+
+// How close the cursor has to be (px) before a trace/pad starts to glimmer through.
+const INFLUENCE_RADIUS = 160
+const MAX_ALPHA = 0.22
+
 export default function CircuitBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const mouseRef = useRef({ x: 0, y: 0 })
+  const mouseRef = useRef({ x: -9999, y: -9999 })
   const tracesRef = useRef<CircuitTrace[]>([])
   const padsRef = useRef<CircuitPad[]>([])
   const blocksRef = useRef<CircuitBlock[]>([])
 
-  let theme = 'dark'
+  let theme: 'dark' | 'light' = 'dark'
   try {
     const themeContext = useTheme()
     theme = themeContext.theme
@@ -109,6 +118,14 @@ export default function CircuitBackground() {
       }
 
       return minDistance
+    }
+
+    const distanceToBlock = (mouseX: number, mouseY: number, block: CircuitBlock): number => {
+      const clampedX = Math.min(Math.max(mouseX, block.x), block.x + block.width)
+      const clampedY = Math.min(Math.max(mouseY, block.y), block.y + block.height)
+      const dx = mouseX - clampedX
+      const dy = mouseY - clampedY
+      return Math.sqrt(dx * dx + dy * dy)
     }
 
     const resizeCanvas = () => {
@@ -481,29 +498,21 @@ export default function CircuitBackground() {
     }
 
     const drawCircuit = () => {
-      const isLight = theme === 'light'
-      ctx.fillStyle = isLight ? '#f8fafc' : '#000000'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       const mouse = mouseRef.current
-      const influenceRadius = 145
-
-      const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 120)
-      if (isLight) {
-        gradient.addColorStop(0, 'rgba(139, 92, 246, 0.08)')
-        gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.03)')
-        gradient.addColorStop(1, 'rgba(139, 92, 246, 0)')
-      } else {
-        gradient.addColorStop(0, 'rgba(139, 92, 246, 0.15)')
-        gradient.addColorStop(0.5, 'rgba(139, 92, 246, 0.05)')
-        gradient.addColorStop(1, 'rgba(139, 92, 246, 0)')
-      }
-      ctx.fillStyle = gradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      const rgb = FG_RGB[theme]
 
       blocksRef.current.forEach(block => {
-        ctx.fillStyle = isLight ? 'rgba(215, 220, 232, 0.22)' : 'rgba(36, 32, 48, 0.4)'
-        ctx.strokeStyle = isLight ? 'rgba(188, 194, 208, 0.45)' : 'rgba(64, 56, 82, 0.5)'
+        const distance = distanceToBlock(mouse.x, mouse.y, block)
+        if (distance >= INFLUENCE_RADIUS) return
+
+        const intensity = Math.pow(1 - distance / INFLUENCE_RADIUS, 2.4)
+        const alpha = intensity * MAX_ALPHA * 0.7
+        if (alpha < 0.008) return
+
+        ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha * 0.5})`
+        ctx.strokeStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`
         ctx.lineWidth = 1
         ctx.fillRect(block.x, block.y, block.width, block.height)
         ctx.strokeRect(block.x, block.y, block.width, block.height)
@@ -511,25 +520,11 @@ export default function CircuitBackground() {
 
       tracesRef.current.forEach(trace => {
         const distance = distanceToTrace(mouse.x, mouse.y, trace)
-        let intensity = 0
+        if (distance >= INFLUENCE_RADIUS) return
 
-        if (distance < influenceRadius) {
-          intensity = 1 - distance / influenceRadius
-          intensity = Math.pow(intensity, 2.5)
-        }
-
-        const baseR = isLight ? 192 : 28
-        const baseG = isLight ? 188 : 24
-        const baseB = isLight ? 202 : 40
-
-        const brightR = isLight ? 120 : 160
-        const brightG = isLight ? 84 : 120
-        const brightB = isLight ? 182 : 220
-
-        const r = Math.round(baseR + (brightR - baseR) * intensity)
-        const g = Math.round(baseG + (brightG - baseG) * intensity)
-        const b = Math.round(baseB + (brightB - baseB) * intensity)
-        const alpha = (0.32 + intensity * 0.68) * (isLight ? 0.5 : 0.56)
+        const intensity = Math.pow(1 - distance / INFLUENCE_RADIUS, 2.4)
+        const alpha = intensity * MAX_ALPHA
+        if (alpha < 0.008) return
 
         ctx.beginPath()
         ctx.moveTo(trace.points[0].x, trace.points[0].y)
@@ -537,12 +532,12 @@ export default function CircuitBackground() {
           ctx.lineTo(trace.points[i].x, trace.points[i].y)
         }
 
-        if (intensity > 0.18) {
-          ctx.shadowBlur = 8 + 8 * intensity
-          ctx.shadowColor = `rgba(${brightR}, ${brightG}, ${brightB}, ${0.18 + intensity * 0.62})`
+        if (intensity > 0.35) {
+          ctx.shadowBlur = 4 * intensity
+          ctx.shadowColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha * 0.6})`
         }
 
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`
+        ctx.strokeStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`
         ctx.lineWidth = trace.width
         ctx.lineJoin = 'round'
         ctx.lineCap = 'round'
@@ -554,38 +549,19 @@ export default function CircuitBackground() {
         const dx = pad.x - mouse.x
         const dy = pad.y - mouse.y
         const distance = Math.sqrt(dx * dx + dy * dy)
-        let intensity = 0
+        if (distance >= INFLUENCE_RADIUS) return
 
-        if (distance < influenceRadius) {
-          intensity = 1 - distance / influenceRadius
-          intensity = Math.pow(intensity, 2.5)
-        }
-
-        const baseR = isLight ? 198 : 34
-        const baseG = isLight ? 194 : 30
-        const baseB = isLight ? 208 : 46
-
-        const brightR = isLight ? 126 : 170
-        const brightG = isLight ? 92 : 130
-        const brightB = isLight ? 190 : 230
-
-        const r = Math.round(baseR + (brightR - baseR) * intensity)
-        const g = Math.round(baseG + (brightG - baseG) * intensity)
-        const b = Math.round(baseB + (brightB - baseB) * intensity)
-        const alpha = (0.36 + intensity * 0.64) * (isLight ? 0.54 : 0.62)
-
-        if (intensity > 0.12) {
-          ctx.shadowBlur = 8 + 7 * intensity
-          ctx.shadowColor = `rgba(${brightR}, ${brightG}, ${brightB}, ${0.18 + intensity * 0.52})`
-        }
+        const intensity = Math.pow(1 - distance / INFLUENCE_RADIUS, 2.4)
+        const alpha = intensity * MAX_ALPHA * 1.3
+        if (alpha < 0.008) return
 
         if (pad.type === 'circle') {
           ctx.beginPath()
           ctx.arc(pad.x, pad.y, pad.size / 2, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`
+          ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`
           ctx.fill()
         } else {
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.88})`
+          ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha * 0.88})`
           ctx.fillRect(
             pad.x - pad.size / 2,
             pad.y - pad.size / 2,
@@ -593,8 +569,6 @@ export default function CircuitBackground() {
             pad.size
           )
         }
-
-        ctx.shadowBlur = 0
       })
     }
 
@@ -611,14 +585,20 @@ export default function CircuitBackground() {
       }
     }
 
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -9999, y: -9999 }
+    }
+
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
     window.addEventListener('mousemove', handleMouseMove)
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave)
     animate()
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
       window.removeEventListener('mousemove', handleMouseMove)
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave)
       cancelAnimationFrame(animationId)
     }
   }, [theme])
@@ -626,8 +606,7 @@ export default function CircuitBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
-      style={{ background: theme === 'light' ? '#f8fafc' : '#000000' }}
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
     />
   )
 }

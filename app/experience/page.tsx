@@ -1,6 +1,7 @@
 'use client';
 
 import ScrollReveal from '../components/ScrollReveal';
+import { Shell, SectionHeader } from '../components/Shell';
 
 export default function ExperiencePage() {
   const experiences = [
@@ -65,63 +66,39 @@ export default function ExperiencePage() {
   ]
 
   return (
-    <section className="fade">
-      <ScrollReveal>
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl">
-          Experience
-        </h1>
-        <p className="text-slate-400 text-lg mb-16">
-          My professional journey in research, development, and robotics.
-        </p>
-      </ScrollReveal>
+    <div className="fade">
+      <SectionHeader title="Experience" />
+      <Shell className="px-6 py-6 sm:px-8">
+        <ScrollReveal>
+          <p className="mb-2 text-[14px] text-[var(--muted)]">
+            My professional journey in research, development, and robotics.
+          </p>
+        </ScrollReveal>
+      </Shell>
 
-      <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-purple-700 to-transparent"></div>
-
-        <div className="space-y-12">
-          {experiences.map((exp, index) => (
-            <ScrollReveal key={index} delay={index * 50}>
-              <div className="relative pl-8 md:pl-20 group">
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-8 top-2 w-3 h-3 -translate-x-[5px] rounded-full bg-purple-500 ring-4 ring-slate-950 group-hover:ring-purple-900/30 group-hover:scale-125 transition-all duration-300"></div>
-                
-                <div className="border-l-2 border-transparent hover:border-purple-700/50 pl-6 transition-all duration-300">
-                  <div className="mb-3">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
-                      <div>
-                        <h3 className="text-xl font-semibold text-slate-100 group-hover:text-purple-400 transition-colors">
-                          {exp.title}
-                        </h3>
-                        <p className="text-purple-400 font-medium">{exp.company}</p>
-                      </div>
-                      <div className="text-slate-400 text-sm md:text-right">
-                        <p className="font-medium">{exp.period}</p>
-                        <p className="text-slate-500">{exp.location}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <p className="text-slate-300 leading-relaxed mb-4">
-                    {exp.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, i) => (
-                      <span 
-                        key={i} 
-                        className="text-xs px-3 py-1 rounded-full bg-purple-950/30 text-purple-300 border border-purple-900/30 hover:border-purple-700/50 hover:bg-purple-950/50 transition-all duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+      <Shell>
+        {experiences.map((exp, index) => (
+          <ScrollReveal key={index} delay={index * 40}>
+            <div className={`px-6 py-6 transition-colors duration-200 hover:bg-[var(--hover)] sm:px-8 ${index > 0 ? 'border-t border-[var(--line)]' : ''}`}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h3 className="text-[15.5px] font-semibold text-[var(--fg)]">
+                  {exp.title} <span className="text-[var(--soft)]">·</span> <span className="text-[var(--muted)]">{exp.company}</span>
+                </h3>
+                <span className="font-mono text-[11px] text-[var(--soft)]">{exp.period}</span>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
+              <p className="mt-0.5 font-mono text-[11px] text-[var(--soft)]">{exp.location}</p>
+              <p className="mt-2 text-[13.5px] leading-relaxed text-[var(--muted)]">{exp.description}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {exp.technologies.map((tech, i) => (
+                  <span key={i} className="rounded-md border border-[var(--line)] bg-[var(--chip)] px-2.5 py-1 font-mono text-[11px] text-[var(--muted)]">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        ))}
+      </Shell>
+    </div>
   )
 }

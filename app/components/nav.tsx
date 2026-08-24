@@ -3,29 +3,26 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { Search, Sun, Moon, Menu, X } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
+import { Shell } from './Shell'
+import { usePalette } from './PaletteContext'
 
-const navItems = {
-  '/': { name: 'Home' },
-  '/#experience': { name: 'Experience' },
-  '/#projects': { name: 'Projects' },
-  '/blog': { name: 'Blog' },
-  '/resume': { name: 'Resume' },
-}
-
-const rightNavItems = {
-  '/#coffee': { name: 'Coffee' },
-}
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'Experience', path: '/experience' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Blog', path: '/blog' },
+  { label: 'Resume', path: '/resume' },
+]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const [mounted, setMounted] = useState(false)
-  const [activeSection, setActiveSection] = useState('/')
-  
-  let theme = 'dark'
+  const { setOpen: setPaletteOpen } = usePalette()
+
+  let theme: 'dark' | 'light' = 'dark'
   let toggleTheme = () => {}
-  
   try {
     const themeContext = useTheme()
     theme = themeContext.theme
@@ -33,172 +30,92 @@ export function Navbar() {
   } catch (e) {
     // ThemeProvider not available yet
   }
-  
+
   useEffect(() => {
-    setMounted(true)
-    
-    // Handle scrolling to section on page load if there's a hash
     if (typeof window !== 'undefined' && window.location.hash) {
       const hash = window.location.hash.substring(1)
       setTimeout(() => {
-        const element = document.getElementById(hash)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 100)
     }
   }, [])
 
-  // Track active section on scroll
-  useEffect(() => {
-    if (pathname !== '/') return // Only track on home page
-
-    const sections = ['home', 'experience', 'projects', 'coffee']
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0
-    }
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id
-          if (sectionId === 'home') {
-            setActiveSection('/')
-          } else {
-            setActiveSection(`/#${sectionId}`)
-          }
-        }
-      })
-    }
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-    sections.forEach((sectionId) => {
-      const element = document.getElementById(sectionId)
-      if (element) {
-        observer.observe(element)
-      }
-    })
-
-    return () => {
-      sections.forEach((sectionId) => {
-        const element = document.getElementById(sectionId)
-        if (element) {
-          observer.unobserve(element)
-        }
-      })
-    }
-  }, [pathname])
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    if (path.startsWith('/#')) {
-      // If we're on the home page, scroll to section
-      if (pathname === '/') {
-        e.preventDefault()
-        const sectionId = path.substring(2)
-        const element = document.getElementById(sectionId)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-        setIsOpen(false)
-      }
-      // If we're on another page, let Next.js navigate to home page with hash
-      // The browser will automatically scroll to the section
-    }
-  }
+  const isActive = (path: string) => (path === '/' ? pathname === '/' : pathname === path || pathname?.startsWith(`${path}/`))
 
   return (
-    <aside className="-ml-[8px] mb-8 tracking-tight sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm pt-4">
-      <div>
-        <nav className="flex flex-col md:flex-row items-start relative px-0 pb-4 fade md:overflow-auto scroll-pr-6 md:relative border-b border-slate-700">
+    <header className="sticky top-0 z-40 border-b border-[var(--line)] bg-[var(--bg)]/85 backdrop-blur-md">
+      <Shell className="flex items-center justify-between border-x-0 px-6 py-3 sm:px-8">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center transition-opacity hover:opacity-80">
+          <img src="/assets/favicon.ico" alt="Shashwat Raj" className="size-8 rounded-md" />
+        </Link>
+
+        <nav className="hidden items-center gap-5 text-[13px] text-[var(--muted)] sm:flex">
+          {navLinks.map(({ label, path }) => {
+            const active = isActive(path)
+            return (
+              <Link
+                key={path}
+                href={path}
+                className={`group relative transition-colors hover:text-[var(--fg)] ${active ? 'font-semibold text-[var(--fg)]' : ''}`}
+              >
+                {label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 group-hover:origin-left group-hover:scale-x-100 ${active ? 'origin-left scale-x-100' : ''}`}
+                />
+              </Link>
+            )
+          })}
+
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden flex flex-col justify-center items-center p-2 m-1 focus:outline-none"
+            type="button"
+            onClick={() => setPaletteOpen(true)}
+            aria-label="Search command palette"
+            className="grid size-7 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] transition-all duration-300 hover:text-[var(--fg)]"
           >
-            <span className={`block w-6 h-0.5 bg-purple-400 transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-purple-400 mt-1 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-purple-400 mt-1 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            <Search className="size-3.5" />
           </button>
 
-          <div className="hidden md:flex flex-row justify-between w-full items-center">
-            <div className="flex flex-row space-x-0">
-              {Object.entries(navItems).map(([path, { name }]) => {
-                const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
-                return (
-                  <Link
-                    key={path}
-                    href={path}
-                    onClick={(e) => handleNavClick(e, path)}
-                    className={`transition-all hover:text-purple-400 flex align-middle relative py-1 px-2 m-1 ${
-                      isActive ? 'text-purple-300 font-medium' : 'text-slate-400 dark:text-slate-400 light:text-slate-600'
-                    }`}
-                  >
-                    {name}
-                  </Link>
-                )
-              })}
-            </div>
-            <div className="flex flex-row space-x-0 items-center">
-              {Object.entries(rightNavItems).map(([path, { name }]) => {
-                const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
-                return (
-                  <Link
-                    key={path}
-                    href={path}
-                    onClick={(e) => handleNavClick(e, path)}
-                    className={`transition-all hover:text-purple-400 flex align-middle relative py-1 px-2 m-1 ${
-                      isActive ? 'text-purple-300 font-medium' : 'text-slate-400 dark:text-slate-400 light:text-slate-600'
-                    }`}
-                  >
-                    {name}
-                  </Link>
-                )
-              })}
-              <button
-                onClick={toggleTheme}
-                className="ml-2 p-2 rounded-lg hover:bg-slate-800 dark:hover:bg-slate-800 light:hover:bg-slate-200 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <svg className="w-5 h-5 text-slate-200" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-slate-700" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-
-          <div className={`md:hidden flex flex-col w-full space-y-1 transition-all duration-300 overflow-hidden ${
-              isOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
-            }`}>
-            {Object.entries({...navItems, ...rightNavItems}).map(([path, { name }]) => {
-              const isActive = pathname === '/' ? activeSection === path : (pathname === path || (path !== '/' && pathname?.startsWith(path)))
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  onClick={(e) => {
-                    handleNavClick(e, path)
-                    setIsOpen(false)
-                  }}
-                  className={`transition-all hover:text-purple-400 hover:bg-slate-900 flex align-middle py-2 px-3 m-1 rounded-md ${
-                    isActive ? 'text-purple-300 font-medium bg-slate-900' : 'text-slate-400'
-                  }`}
-                >
-                  {name}
-                </Link>
-              )
-            })}
-          </div>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="grid size-7 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] transition-all duration-300 hover:rotate-45 hover:text-[var(--fg)]"
+          >
+            {theme === 'dark' ? <Sun className="size-3.5" /> : <Moon className="size-3.5" />}
+          </button>
         </nav>
+
+        <div className="flex items-center gap-3 sm:hidden">
+          <button type="button" onClick={() => setPaletteOpen(true)} aria-label="Search command palette" className="grid size-8 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] hover:text-[var(--fg)]">
+            <Search className="size-4" />
+          </button>
+          <button type="button" onClick={toggleTheme} aria-label="Toggle theme" className="grid size-8 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] hover:text-[var(--fg)]">
+            {theme === 'dark' ? <Sun className="size-4" /> : <Moon className="size-4" />}
+          </button>
+          <button type="button" onClick={() => setIsOpen((o) => !o)} aria-label="Toggle mobile menu" className="grid size-8 place-items-center rounded-full border border-[var(--line)] text-[var(--muted)] hover:text-[var(--fg)]">
+            {isOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
+        </div>
+      </Shell>
+
+      <div className={`overflow-hidden border-b border-[var(--line)] bg-[var(--bg)] transition-all duration-300 sm:hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="flex flex-col gap-4 px-6 py-6 font-serif text-lg">
+          {navLinks.map(({ label, path }) => {
+            const active = isActive(path)
+            return (
+              <Link
+                key={path}
+                href={path}
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center gap-2 border-b border-dashed border-[var(--line)]/50 pb-2.5 transition-colors ${active ? 'font-semibold text-[var(--fg)]' : 'text-[var(--muted)]'}`}
+              >
+                <span className={`size-1.5 rounded-full bg-[var(--fg)] ${active ? 'opacity-100' : 'opacity-0'}`} />
+                {label}
+              </Link>
+            )
+          })}
+        </div>
       </div>
-    </aside>
+    </header>
   )
 }

@@ -29,37 +29,37 @@ const SongCard = ({ track, index }: { track: Track; index: number }) => (
     rel="noopener noreferrer"
     className="block group spotify-card"
   >
-    <div className="relative rounded-2xl border-2 border-slate-300 bg-white/90 p-4 flex items-center gap-4 shadow-md transition-all duration-300 hover:border-purple-300 hover:bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 dark:border-slate-700/50 dark:hover:from-slate-800 dark:hover:to-slate-700 hover:shadow-lg">
+    <div className="relative rounded-2xl border border-[var(--line)] bg-[var(--card)] p-4 flex items-center gap-4 shadow-sm transition-all duration-300 hover:border-[var(--soft)] hover:shadow-md">
       <div className="relative">
-        <img 
-          src={track.albumImageUrl} 
+        <img
+          src={track.albumImageUrl}
           alt={`${track.title} album cover`}
           className="w-16 h-16 rounded-lg shadow-lg"
         />
-        <div className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1 bg-green-500 rounded-full flex items-center justify-center shadow-lg text-[10px] font-semibold text-white">
+        <div className="absolute -bottom-1 -right-1 min-w-6 h-6 px-1 bg-purple-500 rounded-full flex items-center justify-center shadow-lg text-[10px] font-semibold text-white">
           #{index + 1}
         </div>
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-semibold text-lg truncate text-slate-900 dark:text-slate-100">{track.title}</h3>
-        <p className="text-sm truncate text-slate-600 dark:text-slate-300">{track.artist}</p>
+        <h3 className="font-semibold text-lg truncate text-[var(--fg)]">{track.title}</h3>
+        <p className="text-sm truncate text-[var(--muted)]">{track.artist}</p>
       </div>
       <div className="flex items-center gap-3">
-        <span className="text-sm font-medium text-slate-600 dark:text-slate-300">{formatDuration(track.duration)}</span>
-        <button className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors shadow-sm">
-          <svg className="w-5 h-5 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span className="text-sm font-medium text-[var(--muted)]">{formatDuration(track.duration)}</span>
+        <button className="w-10 h-10 rounded-full bg-[var(--chip)] flex items-center justify-center hover:bg-[var(--hover)] transition-colors shadow-sm">
+          <svg className="w-5 h-5 text-[var(--muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
         </button>
-        <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-          <svg className="w-5 h-5 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+        <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[var(--hover)] transition-colors">
+          <svg className="w-5 h-5 text-[var(--soft)]" fill="currentColor" viewBox="0 0 24 24">
             <circle cx="5" cy="12" r="2"/>
             <circle cx="12" cy="12" r="2"/>
             <circle cx="19" cy="12" r="2"/>
           </svg>
         </button>
-        <button className="w-12 h-12 rounded-full bg-purple-600 dark:bg-white flex items-center justify-center hover:scale-105 hover:bg-purple-700 dark:hover:bg-slate-100 transition-all shadow-lg group-hover:shadow-xl">
-          <svg className="w-6 h-6 text-white dark:text-slate-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <button className="w-12 h-12 rounded-full bg-[var(--fg)] flex items-center justify-center hover:scale-105 transition-all shadow-lg group-hover:shadow-xl">
+          <svg className="w-6 h-6 text-[var(--bg)] ml-1" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
           </svg>
         </button>
@@ -112,10 +112,10 @@ export default function SpotifyNowPlaying() {
     return (
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Current top tracks</h2>
+          <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+          <h2 className="font-serif text-2xl text-[var(--fg)]">Current top tracks</h2>
         </div>
-        <div className="text-slate-600 dark:text-slate-400">Loading...</div>
+        <div className="text-[var(--muted)]">Loading...</div>
       </div>
     );
   }
@@ -124,13 +124,13 @@ export default function SpotifyNowPlaying() {
     return (
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-3 h-3 bg-slate-500 rounded-full"></div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+          <div className="w-3 h-3 bg-[var(--soft)] rounded-full"></div>
+          <h2 className="font-serif text-2xl text-[var(--fg)]">
             Current top tracks
           </h2>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-950/30 p-5 text-slate-400">
+        <div className="rounded-2xl border border-[var(--line)] bg-[var(--card)] p-5 text-[var(--muted)]">
           {error || 'Spotify top tracks are unavailable right now.'}
         </div>
       </div>
@@ -140,10 +140,10 @@ export default function SpotifyNowPlaying() {
   return (
     <div className="mt-12">
       <div className="flex items-center gap-2 mb-6">
-        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+        <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+        <h2 className="font-serif text-2xl text-[var(--fg)]">
           Current top tracks
-          <span className="text-sm text-green-500 ml-3">● {timeRangeLabel}</span>
+          <span className="text-sm text-purple-500 ml-3">● {timeRangeLabel}</span>
         </h2>
       </div>
       
