@@ -627,9 +627,9 @@ export default function HomePage() {
       <About />
       <Experience />
       <Projects />
+      <Writing />
       <Skills />
       <GithubSection />
-      <Writing />
       <Contact />
     </div>
   );
