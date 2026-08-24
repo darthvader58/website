@@ -30,12 +30,12 @@ type ProjectField =
   | 'AI Agents and LLMs'
   | 'Physics'
   | 'Research'
+  | 'Machine Learning'
   | 'Compilers' 
   | 'Games'
   | 'Full-Stack'
   | 'Hardware Design Synthesis'
   | 'Robotics'
-  | 'Machine Learning'
   | 'Libraries and Tools'
 
 type Project = {
@@ -54,12 +54,12 @@ const projectFields: ProjectField[] = [
    'AI Agents and LLMs',
    'Physics',
    'Research',
+   'Machine Learning',
    'Compilers' ,
    'Games',
    'Full-Stack',
    'Hardware Design Synthesis',
    'Robotics',
-   'Machine Learning',
    'Libraries and Tools'
 ] 
 
