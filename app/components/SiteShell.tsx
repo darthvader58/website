@@ -21,7 +21,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         <SideIndex />
 
         <main className="relative z-10">
-          {isBlog ? <div className="mx-auto max-w-[1120px] px-5 py-8 sm:px-8 sm:py-12">{children}</div> : children}
+          {isBlog ? <div className="mx-auto max-w-[880px] px-5 py-8 sm:px-8 sm:py-12">{children}</div> : children}
         </main>
 
         <Footer />
