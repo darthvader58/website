@@ -110,6 +110,11 @@ body {
   color: var(--fg);
 }
 
+/* oneko cursor cat: invert to a black cat in light mode; stays white in dark mode */
+html.light #oneko {
+  filter: invert(1);
+}
+
 .font-serif {
   font-family: var(--font-instrument-serif), Georgia, 'Times New Roman', serif;
 }
