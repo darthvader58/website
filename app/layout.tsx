@@ -6,6 +6,7 @@ import { Instrument_Serif } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import OnekoCat from './components/OnekoCat'
+import CircuitBackground from './components/CircuitBackground'
 import { ThemeProvider } from './components/ThemeProvider'
 import SiteShell from './components/SiteShell'
 
@@ -52,6 +53,7 @@ export default function RootLayout({
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable, instrumentSerif.variable)}>
       <body className="font-sans antialiased text-[var(--fg)]">
         <ThemeProvider>
+          <CircuitBackground />
           <OnekoCat />
           <SiteShell>{children}</SiteShell>
           <Analytics />
