@@ -61,7 +61,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/blog"
-          className="mb-10 inline-flex items-center text-sm text-slate-400 transition-colors hover:text-purple-300 sm:mb-14"
+          className="mb-10 inline-flex items-center text-sm text-[var(--muted)] transition-colors hover:text-purple-400 sm:mb-14"
         >
           <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -70,21 +70,21 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </Link>
 
         <article>
-          <header className="mb-12 border-b border-slate-800 pb-10 sm:mb-16 sm:pb-14">
-            <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-              <span className="text-purple-300">{post.category}</span>
+          <header className="mb-12 border-b border-[var(--line)] pb-10 sm:mb-16 sm:pb-14">
+            <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--soft)]">
+              <span className="text-purple-400">{post.category}</span>
               <span>·</span>
               <time>{formatBlogDate(post.publishedAt)}</time>
               <span>·</span>
               <span>{post.readTime}</span>
             </div>
-            <h1 className="font-serif text-4xl font-bold leading-[1.08] tracking-[-0.035em] text-slate-100 sm:text-6xl">
+            <h1 className="font-serif text-4xl leading-[1.08] tracking-[-0.035em] text-[var(--fg)] sm:text-6xl">
               {post.title}
             </h1>
-            <p className="mt-6 text-xl leading-8 text-slate-300 sm:text-2xl sm:leading-9">
+            <p className="mt-6 text-xl leading-8 text-[var(--muted)] sm:text-2xl sm:leading-9">
               {post.subtitle}
             </p>
-            <p className="mt-7 text-sm text-slate-500">By Shashwat Raj · {post.issueLabel}</p>
+            <p className="mt-7 text-sm text-[var(--soft)]">By Shashwat Raj · {post.issueLabel}</p>
           </header>
 
           <div>
@@ -129,10 +129,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          <div className="mt-12 border-y border-slate-700/80 py-9 light:border-slate-300 sm:py-10">
-            <p className="text-sm uppercase tracking-[0.22em] text-slate-500">Next issue</p>
-            <h2 className="mt-3 text-2xl font-bold text-slate-100">More personal, more technical, probably still slightly unhinged.</h2>
-            <p className="mt-4 max-w-2xl text-slate-300">
+          <div className="mt-12 border-y border-[var(--line)] py-9 sm:py-10">
+            <p className="text-sm uppercase tracking-[0.22em] text-[var(--soft)]">Next issue</p>
+            <h2 className="mt-3 text-2xl font-bold text-[var(--fg)]">More personal, more technical, probably still slightly unhinged.</h2>
+            <p className="mt-4 max-w-2xl text-[var(--muted)]">
               If you want the next post without visiting this web page each time, subscribe and I&apos;ll send it directly.
             </p>
             <Link
