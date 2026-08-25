@@ -14,6 +14,7 @@ import { useViewCount } from './lib/useViewCount';
 import { getPublishedBlogPosts, formatBlogDate } from './lib/blog';
 
 const HEADLINE_TITLES = [
+  'Namaste! Bonjour! Hello There!',
   'Computer Systems & Math @ ASU',
   'ML Researcher, CoDe Lab',
   'Founder, WoofCare',
