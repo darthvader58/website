@@ -172,7 +172,7 @@ export default function Footer() {
       <div className="w-full border-t border-[var(--line)]">
         <Shell className="border-x-0 border-b-0 px-6 py-8 text-center sm:px-8">
           <p className="text-[14.5px] text-[var(--muted)]">
-            Designed &amp; Developed by <span className="font-semibold text-[var(--fg)]">Shashwat Raj</span>
+            Made with &lt;3 by <span className="font-semibold text-[var(--fg)]">Shashwat Raj</span>
           </p>
           <p className="mt-1.5 font-mono text-[12px] text-[var(--soft)]">© {new Date().getFullYear()} All rights reserved.</p>
           <p className="mt-2.5 flex items-center justify-center gap-2 font-mono text-[12px] text-[var(--soft)]">
