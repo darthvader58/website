@@ -39,7 +39,7 @@ export default function CoffeePage() {
                   href="https://venmo.com/u/shash58"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-lg border border-amber-400/60 bg-amber-500/10 px-6 py-3 font-semibold text-amber-300 transition-colors duration-200 hover:border-amber-300 hover:bg-amber-500/20 hover:text-amber-200"
+                  className="inline-flex items-center rounded-lg bg-amber-500 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-amber-600"
                 >
                   Buy Me a Coffee
                 </a>
