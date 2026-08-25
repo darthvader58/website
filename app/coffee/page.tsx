@@ -16,6 +16,17 @@ export default function CoffeePage() {
             <p className="mt-3 text-lg text-[var(--muted)]">
               I&apos;d love to hear from you. Whether it&apos;s a project, opportunity, or just a chat about tech.
             </p>
+            <a
+              href="https://calendly.com/rajayshashwat/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-purple-500 px-5 py-2.5 text-sm font-semibold text-purple-500 transition-colors duration-200 hover:bg-purple-500 hover:text-white"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              Chat
+            </a>
           </div>
         </ScrollReveal>
 
