@@ -14,7 +14,7 @@ function ContributionCard({ name, logo, repo, prLink, isPending }: ContributionP
   return (
     <div className="group relative block border border-[var(--line)] rounded-lg p-8 hover:border-[var(--soft)] transition-all duration-300 bg-[var(--card)] shadow-lg hover:shadow-xl h-full flex flex-col items-center justify-center gap-4">
       {isPending && (
-        <span className="absolute top-3 right-3 text-xs px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        <span className="absolute top-3 right-3 text-xs px-2.5 py-1 rounded-full border border-amber-500 text-amber-500">
           PR Pending
         </span>
       )}
@@ -46,7 +46,7 @@ function ContributionCard({ name, logo, repo, prLink, isPending }: ContributionP
             href={prLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs px-3 py-1.5 rounded-md bg-purple-600/15 hover:bg-purple-600/25 text-purple-400 hover:text-purple-300 border border-purple-700/30 transition-colors flex items-center gap-1.5"
+            className="text-xs px-3 py-1.5 rounded-md border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white transition-colors flex items-center gap-1.5"
             onClick={e => e.stopPropagation()}
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,11 +128,9 @@ export default function OpenSourcePage() {
           Contributing to the open source community and helping build better tools for everyone.
         </p>
 
-        <div className="mb-8 p-4 rounded-lg bg-sky-500/10 border border-sky-500/20">
-          <p className="text-sm text-sky-300">
-            <span className="font-semibold">Note:</span> Some of these contributions have pending pull requests awaiting review and approval from the maintainers.
-          </p>
-        </div>
+        <p className="mb-8 text-sm text-[var(--muted)]">
+          <span className="font-semibold text-[var(--fg)]">Note:</span> Some of these contributions have pending pull requests awaiting review and approval from the maintainers.
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {contributions.map((contribution, index) => (
