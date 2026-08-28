@@ -42,7 +42,7 @@ export default function BlogNewsletterSignup() {
   return (
     <div
       id="newsletter"
-      className="blog-newsletter mt-14 border-y border-[var(--line)] px-4 py-12 sm:px-8 sm:py-14"
+      className="blog-newsletter mt-10 rounded-xl border border-[var(--line)] bg-[var(--card)] px-4 py-10 sm:px-8 sm:py-12"
     >
       <div className="mx-auto max-w-xl text-center">
         <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] text-purple-400">
@@ -50,11 +50,11 @@ export default function BlogNewsletterSignup() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </div>
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400">Stay in the loop</p>
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-purple-400">Stay in the loop</p>
         <h2 className="mt-3 font-serif text-3xl tracking-tight text-[var(--fg)] sm:text-4xl">
           Tech and Life Banter, Delivered.
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-[var(--muted)] sm:text-lg">
+        <p className="mx-auto mt-4 max-w-lg text-[14px] leading-relaxed text-[var(--muted)]">
           New essays, personal updates, and occasional technical chaos—sent directly to your inbox.
         </p>
         <form onSubmit={handleSubscribe} className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row">
@@ -69,7 +69,7 @@ export default function BlogNewsletterSignup() {
           <button
             type="submit"
             disabled={subscribeStatus === 'loading'}
-            className="flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex items-center justify-center gap-2 rounded-lg bg-[var(--fg)] px-6 py-3 font-semibold text-[var(--bg)] transition-transform duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {subscribeStatus === 'loading' ? (
               <>
