@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { Instrument_Serif } from 'next/font/google'
+import { Instrument_Serif, Work_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import OnekoCat from './components/OnekoCat'
@@ -15,6 +14,12 @@ const instrumentSerif = Instrument_Serif({
   weight: '400',
   style: ['normal', 'italic'],
   variable: '--font-instrument-serif',
+})
+
+const workSans = Work_Sans({
+  subsets: ['latin'],
+  variable: '--font-work-sans',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -50,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={cx(GeistSans.variable, GeistMono.variable, instrumentSerif.variable)}>
+    <html lang="en" className={cx(workSans.variable, GeistMono.variable, instrumentSerif.variable)}>
       <body className="font-sans antialiased text-[var(--fg)]">
         <ThemeProvider>
           <CircuitBackground />

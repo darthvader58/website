@@ -108,6 +108,7 @@ html {
 body {
   background-color: var(--bg);
   color: var(--fg);
+  font-family: var(--font-work-sans), 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* oneko cursor cat: invert to a black cat in light mode; stays white in dark mode */
@@ -179,37 +180,38 @@ html.light #oneko {
 
 .blog-prose {
   color: var(--muted);
-  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
-  font-size: 1.18rem;
+  font-family: var(--font-work-sans), 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
 }
 
 .blog-prose > * + * {
-  margin-top: 1.85rem;
+  margin-top: 1.4rem;
 }
 
 .blog-prose h2,
 .blog-prose h3 {
   color: var(--fg);
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-family: var(--font-instrument-serif), Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .blog-prose h2 {
-  margin-top: 3.5rem;
-  font-size: clamp(1.75rem, 1.6rem + 0.9vw, 2.35rem);
-  line-height: 1.12;
+  margin-top: 2.75rem;
+  font-size: clamp(1.5rem, 1.44rem + 0.3vw, 1.75rem);
+  line-height: 1.2;
 }
 
 .blog-prose h3 {
-  margin-top: 2.75rem;
-  font-size: 1.3rem;
-  line-height: 1.2;
+  margin-top: 2.25rem;
+  font-size: 1.25rem;
+  line-height: 1.25;
 }
 
 .blog-prose p,
 .blog-prose li {
-  font-size: clamp(1.08rem, 1.02rem + 0.28vw, 1.22rem);
-  line-height: 1.78;
+  font-size: clamp(0.95rem, 0.93rem + 0.1vw, 1rem);
+  line-height: 1.75;
 }
 
 .blog-prose p {
@@ -217,7 +219,7 @@ html.light #oneko {
 }
 
 .blog-prose p + p {
-  margin-top: 1.6rem;
+  margin-top: 1.25rem;
 }
 
 .blog-prose h2 + p,
@@ -229,7 +231,7 @@ html.light #oneko {
 .blog-prose ul + h2,
 .blog-prose blockquote + h2,
 .blog-prose figure + h2 {
-  margin-top: 3.5rem;
+  margin-top: 2.75rem;
 }
 
 .blog-prose p + ul,
@@ -237,13 +239,13 @@ html.light #oneko {
 .blog-prose p + blockquote,
 .blog-prose blockquote + p,
 .blog-prose figure + p {
-  margin-top: 1.8rem;
+  margin-top: 1.4rem;
 }
 
 .blog-prose .lead {
   color: var(--fg);
-  font-size: clamp(1.25rem, 1.12rem + 0.55vw, 1.55rem);
-  line-height: 1.8;
+  font-size: clamp(1.02rem, 1rem + 0.18vw, 1.12rem);
+  line-height: 1.7;
 }
 
 .blog-dropcap::first-letter {
@@ -251,9 +253,10 @@ html.light #oneko {
   margin-right: 0.5rem;
   margin-top: 0.35rem;
   color: var(--fg);
-  font-size: 4.25rem;
+  font-family: var(--font-instrument-serif), Georgia, 'Times New Roman', serif;
+  font-size: 3.5rem;
   line-height: 0.8;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .blog-prose strong {
@@ -271,6 +274,7 @@ html.light #oneko {
   background: var(--chip);
   padding: 0.12rem 0.35rem;
   color: var(--fg);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   font-size: 0.92em;
 }
 
@@ -278,9 +282,9 @@ html.light #oneko {
   position: relative;
   overflow-x: auto;
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   background: var(--card);
-  padding: 1.1rem 3.45rem 1.1rem 1.1rem;
+  padding: 1rem 3.25rem 1rem 1rem;
 }
 
 .blog-prose pre code {
@@ -290,8 +294,8 @@ html.light #oneko {
   background: transparent;
   padding: 0;
   color: var(--fg);
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.875rem;
+  line-height: 1.65;
   white-space: pre;
 }
 
@@ -314,37 +318,37 @@ html.light #oneko {
 }
 
 .blog-code-copy:hover {
-  border-color: rgba(16, 185, 129, 0.5);
+  border-color: rgba(168, 85, 247, 0.55);
   background: var(--hover);
   color: var(--fg);
   transform: translateY(-1px);
 }
 
 .blog-code-copy:focus-visible {
-  outline: 2px solid rgba(16, 185, 129, 0.7);
+  outline: 2px solid rgba(168, 85, 247, 0.75);
   outline-offset: 2px;
 }
 
 .blog-prose a {
   color: #c084fc;
   text-decoration: underline;
-  text-decoration-color: rgba(52, 211, 153, 0.4);
+  text-decoration-color: rgba(168, 85, 247, 0.45);
   text-underline-offset: 0.2em;
 }
 
 .blog-prose a:hover {
   color: #d8b4fe;
-  text-decoration-color: rgba(110, 231, 183, 0.75);
+  text-decoration-color: rgba(192, 132, 252, 0.8);
 }
 
 .blog-prose ul,
 .blog-prose ol {
-  margin: 1.75rem 0;
+  margin: 1.4rem 0;
   padding-left: 1.35rem;
 }
 
 .blog-prose li + li {
-  margin-top: 0.75rem;
+  margin-top: 0.6rem;
 }
 
 .blog-prose .blog-questions {
@@ -366,15 +370,15 @@ html.light #oneko {
   height: 0.55rem;
   border-radius: 9999px;
   background: linear-gradient(135deg, #d8b4fe, #9333ea);
-  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.14);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.14);
 }
 
 .blog-prose blockquote {
-  margin: 3rem 0;
+  margin: 2.25rem 0;
   border-left: 4px solid #a855f7;
   border-radius: 0 0.75rem 0.75rem 0;
   background: var(--chip);
-  padding: 1.5rem 1.75rem;
+  padding: 1.25rem 1.5rem;
 }
 
 .blog-prose blockquote::before {
@@ -387,9 +391,10 @@ html.light #oneko {
 
 .blog-prose blockquote p {
   color: var(--fg);
-  font-size: clamp(1.18rem, 1.08rem + 0.45vw, 1.42rem);
+  font-family: var(--font-instrument-serif), Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
   font-style: italic;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .blog-prose blockquote p + p {
@@ -402,19 +407,19 @@ html.light #oneko {
 }
 
 .blog-prose hr {
-  margin: 3rem 0 2.5rem;
+  margin: 2.25rem 0 2rem;
   border: 0;
   border-top: 1px solid var(--line);
 }
 
 .blog-figure {
-  margin: 3rem 0;
+  margin: 2.25rem 0;
 }
 
 .blog-figure-frame {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   background: transparent;
 }
 
@@ -465,7 +470,7 @@ html.light #oneko {
 
 .blog-newsletter-input {
   border-color: var(--line);
-  background: var(--card);
+  background: var(--chip);
   color: var(--fg);
 }
 
