@@ -3,8 +3,137 @@
 import ScrollReveal from '../components/ScrollReveal';
 import { Shell, SectionHeader } from '../components/Shell';
 
+const academicRoles = [
+  {
+    title: "ASU 101 Section Leader",
+    organization: "Arizona State University",
+    period: "Fall 2024"
+  },
+  {
+    title: "Grader · FSE 100",
+    organization: "Arizona State University",
+    period: "Fall 2025"
+  },
+  {
+    title: "Grader · FSE 301",
+    organization: "Arizona State University",
+    period: "Fall 2025 - Present"
+  },
+  {
+    title: "Engineering Futures Mentor",
+    organization: "Arizona State University",
+    period: "Fall 2025 - Spring 2026"
+  }
+];
+
+const leadershipRoles = [
+  {
+    title: "Vice President",
+    organization: "HackerDevils"
+  },
+  {
+    title: "Grand Challenges Scholar",
+    organization: "Grand Challenges Scholars Program"
+  },
+  {
+    title: "Member",
+    organization: "DevilQuant"
+  },
+  {
+    title: "Founder",
+    organization: "WoofCare"
+  },
+  {
+    title: "Startup Founder",
+    organization: "Venture Devils · INDU"
+  },
+  {
+    title: "Startup Founder",
+    organization: "Venture Devils · Kavvy",
+    status: "Pivoted"
+  },
+  {
+    title: "Director of Technology",
+    organization: "ACM Chapter at ASU",
+    period: "Spring 2025",
+    status: "Former"
+  },
+  {
+    title: "Member",
+    organization: "Combat Ready Robotics",
+    period: "Fall 2023 - Spring 2024",
+    status: "Former"
+  },
+  {
+    title: "Electrical Subsystems Engineer",
+    organization: "Sun Devil Satellite Laboratory",
+    period: "Fall 2023",
+    status: "Former"
+  },
+  {
+    title: "Project Leader",
+    organization: "EPICS · WoofCare",
+    period: "Fall 2024 - Fall 2025",
+    status: "Former"
+  },
+  {
+    title: "Prototyping Lead",
+    organization: "EPICS · Spain Beach Cleanup",
+    period: "Spring 2025",
+    status: "Former"
+  },
+  {
+    title: "Prototyping Lead",
+    organization: "EPICS · Vietnam Acid Rainwater Monitor",
+    period: "Spring 2024",
+    status: "Former"
+  }
+];
+
+type Role = {
+  title: string;
+  organization: string;
+  period?: string;
+  status?: string;
+};
+
+function RoleSection({ title, roles }: { title: string; roles: Role[] }) {
+  return (
+    <Shell>
+      <div className="border-b border-[var(--line)] px-6 py-3 sm:px-8">
+        <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--soft)]">
+          {title}
+        </h2>
+      </div>
+      {roles.map((role, index) => (
+        <ScrollReveal key={`${role.title}-${role.organization}`} delay={index * 30}>
+          <div className={`flex flex-col gap-1 px-6 py-4 transition-colors duration-200 hover:bg-[var(--hover)] sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:px-8 ${index > 0 ? 'border-t border-[var(--line)]' : ''}`}>
+            <p className="text-[14px] font-medium text-[var(--fg)]">
+              {role.title} <span className="text-[var(--soft)]">·</span>{' '}
+              <span className="font-normal text-[var(--muted)]">{role.organization}</span>
+            </p>
+            {(role.period || role.status) && (
+              <span className="shrink-0 font-mono text-[11px] text-[var(--soft)]">
+                {[role.period, role.status].filter(Boolean).join(' · ')}
+              </span>
+            )}
+          </div>
+        </ScrollReveal>
+      ))}
+    </Shell>
+  );
+}
+
 export default function ExperiencePage() {
   const experiences = [
+    {
+      title: "Independent Researcher",
+      company: "TBD",
+      period: "August 2026 - Present",
+      location: "Tempe, Arizona",
+      description: "Designing and formally verifying an FPGA-resident hardware safety monitor for LLM/MCP-controlled systems. The monitor sits between a soft processor and physical actuators to enforce hard output ceilings, interlocks, and rate limits even if the host software or firmware is compromised. Evaluating adversarial-command rejection, formal correctness, latency, and Artix-7 resource cost on a Nexys A7-100T.",
+      technologies: ["Verilog", "SystemVerilog", "FPGA", "SymbiYosys", "Vivado", "MCP", "Hardware Security", "Formal Verification"]
+    },
     {
       title: "Founder and CEO",
       company: "WoofCare Solutions Pvt. Ltd.",
@@ -71,12 +200,17 @@ export default function ExperiencePage() {
       <Shell className="px-6 py-6 sm:px-8">
         <ScrollReveal>
           <p className="mb-2 text-[14px] text-[var(--muted)]">
-            My professional journey in research, development, and robotics.
+            My professional, academic, and leadership journey across research, development, robotics, and entrepreneurship.
           </p>
         </ScrollReveal>
       </Shell>
 
       <Shell>
+        <div className="border-b border-[var(--line)] px-6 py-3 sm:px-8">
+          <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--soft)]">
+            Professional Experience
+          </h2>
+        </div>
         {experiences.map((exp, index) => (
           <ScrollReveal key={index} delay={index * 40}>
             <div className={`px-6 py-6 transition-colors duration-200 hover:bg-[var(--hover)] sm:px-8 ${index > 0 ? 'border-t border-[var(--line)]' : ''}`}>
@@ -99,6 +233,9 @@ export default function ExperiencePage() {
           </ScrollReveal>
         ))}
       </Shell>
+
+      <RoleSection title="Club Leadership & Programs" roles={leadershipRoles} />
+      <RoleSection title="Academic Roles" roles={academicRoles} />
     </div>
   )
 }
