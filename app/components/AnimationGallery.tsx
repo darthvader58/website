@@ -55,14 +55,19 @@ export default function AnimationGallery({ items, title }: AnimationGalleryProps
             aria-label={`${index + 1} of ${items.length}: ${item.label}`}
             aria-roledescription="slide"
           >
-            <img
-              src={item.src}
-              alt={`${item.label} animation`}
-              className="h-full w-full select-none object-contain"
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-            />
+            {index === activeIndex ? (
+              <img
+                key={item.src}
+                src={item.src}
+                alt={`${item.label} animation`}
+                className="h-full w-full select-none object-contain"
+                loading="eager"
+                decoding="async"
+                draggable={false}
+              />
+            ) : (
+              <div className="h-full w-full bg-[var(--chip)]" aria-hidden="true" />
+            )}
           </div>
         ))}
       </div>

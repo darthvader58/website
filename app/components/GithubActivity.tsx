@@ -43,7 +43,7 @@ export default function GitHubActivity() {
   const heatmap = useGithubHeatmap(username)
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${username}/events/public`)
+    fetch(`/api/github/events?username=${username}`)
       .then(res => res.json())
       .then(data => {
         if (!Array.isArray(data)) {
