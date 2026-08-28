@@ -72,22 +72,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       />
 
       <Shell className="px-6 py-8 sm:px-8 sm:py-10">
-        <article>
-          <header className="mb-10 border-b border-[var(--line)] pb-9 sm:mb-12 sm:pb-11">
-            <div className="mb-5 flex flex-wrap items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--soft)]">
+        <article className="mx-auto max-w-[620px]">
+          <header className="mb-8 border-b border-[var(--line)] pb-7 sm:mb-10 sm:pb-9">
+            <div className="mb-4 flex flex-wrap items-center gap-2 font-mono text-[9px] font-semibold uppercase tracking-wider text-[var(--soft)]">
               <span className="text-purple-400">{post.category}</span>
               <span>·</span>
               <time>{formatBlogDate(post.publishedAt)}</time>
               <span>·</span>
               <span>{post.readTime}</span>
             </div>
-            <h1 className="font-serif text-4xl leading-[1.08] tracking-tight text-[var(--fg)] sm:text-5xl">
+            <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-[var(--fg)] sm:text-4xl">
               {post.title}
             </h1>
-            <p className="mt-5 text-lg leading-8 text-[var(--muted)] sm:text-xl">
+            <p className="mt-4 text-base leading-7 text-[var(--muted)] sm:text-lg">
               {post.subtitle}
             </p>
-            <p className="mt-6 font-mono text-[11px] text-[var(--soft)]">By Shashwat Raj · {post.issueLabel}</p>
+            <p className="mt-5 font-mono text-[10px] text-[var(--soft)]">By Shashwat Raj · {post.issueLabel}</p>
           </header>
 
           <div>
@@ -132,15 +132,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          <div className="mt-12 rounded-xl border border-[var(--line)] bg-[var(--card)] p-6 sm:p-7">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[var(--soft)]">Next issue</p>
-            <h2 className="mt-3 font-serif text-2xl leading-snug text-[var(--fg)]">More personal, more technical, probably still slightly unhinged.</h2>
-            <p className="mt-4 max-w-2xl text-[14px] leading-relaxed text-[var(--muted)]">
+          <div className="mt-10 rounded-xl border border-[var(--line)] bg-[var(--card)] p-5 sm:p-6">
+            <p className="font-mono text-[9px] font-semibold uppercase tracking-widest text-[var(--soft)]">Next issue</p>
+            <h2 className="mt-2.5 font-serif text-xl leading-snug text-[var(--fg)]">More personal, more technical, probably still slightly unhinged.</h2>
+            <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-[var(--muted)]">
               If you want the next post without visiting this web page each time, subscribe and I&apos;ll send it directly.
             </p>
             <Link
               href="/blog#newsletter"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[var(--fg)] px-5 py-2.5 text-sm font-semibold text-[var(--bg)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[var(--fg)] px-4 py-2 text-[13px] font-semibold text-[var(--bg)] transition-transform duration-200 hover:-translate-y-0.5"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
