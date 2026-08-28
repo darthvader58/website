@@ -80,9 +80,7 @@ export default function SpotifyNowPlaying() {
   useEffect(() => {
     const fetchSpotifyData = async () => {
       try {
-        const topTracksRes = await fetch('/api/spotify/top-tracks', {
-          cache: 'no-store',
-        });
+        const topTracksRes = await fetch('/api/spotify/top-tracks');
         const topTracksData = await topTracksRes.json();
 
         if (!topTracksRes.ok) {

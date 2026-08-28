@@ -35,7 +35,14 @@ export async function GET(request: NextRequest) {
       throw new Error('No contribution cells found')
     }
 
-    return NextResponse.json({ cells, total })
+    return NextResponse.json(
+      { cells, total },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      },
+    )
   } catch (error) {
     return NextResponse.json({ error: 'Failed to load contributions' }, { status: 502 })
   }

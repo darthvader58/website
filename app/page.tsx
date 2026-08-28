@@ -9,6 +9,7 @@ import SpotifyNowPlaying from './components/SpotifyNowPlaying';
 import ScrollReveal from './components/ScrollReveal';
 import ProjectCard from './components/ProjectCard';
 import GithubActivity from './components/GithubActivity';
+import DeferredMount from './components/DeferredMount';
 import { usePalette } from './components/PaletteContext';
 import { useViewCount } from './lib/useViewCount';
 import { getPublishedBlogPosts, formatBlogDate } from './lib/blog';
@@ -377,7 +378,17 @@ function About() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <SpotifyNowPlaying />
+          <DeferredMount
+            className="min-h-[180px]"
+            fallback={
+              <div className="mt-12" aria-hidden="true">
+                <div className="mb-6 h-8 w-56 animate-pulse rounded bg-[var(--chip)]" />
+                <div className="h-24 animate-pulse rounded-2xl border border-[var(--line)] bg-[var(--card)]" />
+              </div>
+            }
+          >
+            <SpotifyNowPlaying />
+          </DeferredMount>
         </ScrollReveal>
       </Shell>
     </div>
@@ -569,7 +580,17 @@ function GithubSection() {
         }
       />
       <Shell className="px-6 py-6 sm:px-8">
-        <GithubActivity />
+        <DeferredMount
+          className="min-h-[320px]"
+          fallback={
+            <div className="space-y-4" aria-hidden="true">
+              <div className="h-28 animate-pulse rounded-lg bg-[var(--chip)]" />
+              <div className="h-40 animate-pulse rounded-lg bg-[var(--chip)]" />
+            </div>
+          }
+        >
+          <GithubActivity />
+        </DeferredMount>
       </Shell>
     </div>
   );
