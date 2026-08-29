@@ -320,7 +320,8 @@ function Hero() {
 function About() {
   const paragraphs = [
     "I'm a senior at Arizona State University double majoring in Computer Systems Engineering and Math, with a passion for building innovative solutions at the intersection of hardware and software.",
-    "I'm passionate about robotics, machine learning, and software development. Currently, I'm working as a Machine Learning Developer and Researcher at the Collective Design (CoDe) lab at ASU, where I'm developing Reinforcement Learning techniques to optimize Earth science missions for autonomous priority observations in space.",
+    "One thing I've always admired about Linus Torvalds is his practical kind of laziness: if a task is tedious and repetitive, build something so you never have to do it the same way again. That instinct is behind almost everything I build, I care less about a project looking impressive and more about whether it actually removes some friction for someone. I've been drawn to tinkering and building for as long as I can remember, and what keeps me at it is less raw talent and more stubbornness. I'll stay on a problem long after it stops being fun, because I'd rather push through and finish something than leave it half-built. That same restlessness shapes how much I want to build and how far I want to take it.",
+    "When I'm not coding or researching, you can find me playing the flute, working on Battlebots, boxing, creating digital art, hosting my podcast \"Write It Out\", or writing on my blog. I'm big into sports too, basketball, cricket, and football, and on the PS5 I'm usually deep into FIFA, Assassin's Creed, or a co-op run of Split Fiction or Spider-Man 2. I love travelling as well!",
   ];
 
   const snapshot = [
@@ -342,30 +343,6 @@ function About() {
             <p>{para}</p>
           </div>
         ))}
-        <div className="flex gap-2 text-[14.5px] leading-relaxed text-[var(--muted)]">
-          <span className="font-mono text-[var(--soft)]">•</span>
-          <p>
-            I&apos;m also the Founder &amp; CEO of <span className="font-medium text-[var(--fg)]">WoofCare Solutions</span>, a
-            mobile app connecting dog lovers and care services to improve the lives of stray dogs in India. This project is
-            funded by EPICS (Engineering Projects In Community Service) at ASU and partners with over 60+ NGOs.
-          </p>
-        </div>
-        <div className="flex gap-2 text-[14.5px] leading-relaxed text-[var(--muted)]">
-          <span className="font-mono text-[var(--soft)]">•</span>
-          <p>
-            When I&apos;m not coding or researching, you can find me playing the flute, working on Battlebots, boxing,
-            creating digital art, or hosting my podcast{' '}
-            <a
-              href="https://open.spotify.com/show/3hOrhL4KTN4vRYUcfstmyy?si=824fd957830546dc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[var(--fg)] underline decoration-[var(--line)] underline-offset-2 hover:text-purple-400"
-            >
-              &ldquo;Write It Out&rdquo;
-            </a>
-            . I love travelling!
-          </p>
-        </div>
 
         <div className="mt-6 rounded-xl border border-[var(--line)] bg-[var(--card)] p-5">
           <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-widest text-[var(--fg)]">
