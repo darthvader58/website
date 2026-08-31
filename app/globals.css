@@ -80,6 +80,16 @@
   --card: #101010;
   --chip: #161616;
 
+  /* GitHub chart purples — dark: deep violet ramps up to light lilac */
+  --heat-0: rgba(168, 85, 247, 0.10);
+  --heat-1: #4c1d95;
+  --heat-2: #7e22ce;
+  --heat-3: #a855f7;
+  --heat-4: #d8b4fe;
+  --lang-bar: #a855f7;
+  --lang-bar-alt: #6b21a8;
+  --lang-track: rgba(168, 85, 247, 0.12);
+
   --spotify-title-color: var(--fg);
   --spotify-artist-color: var(--muted);
   --spotify-duration-color: var(--muted);
@@ -96,6 +106,16 @@ html.light {
   --hover: rgba(0, 0, 0, 0.04);
   --card: #ffffff;
   --chip: #f4f4f5;
+
+  /* GitHub chart purples — light: pale lilac ramps down to deep violet */
+  --heat-0: rgba(168, 85, 247, 0.12);
+  --heat-1: #e9d5ff;
+  --heat-2: #c084fc;
+  --heat-3: #9333ea;
+  --heat-4: #6b21a8;
+  --lang-bar: #9333ea;
+  --lang-bar-alt: #d8b4fe;
+  --lang-track: rgba(147, 51, 234, 0.14);
 }
 
 html {
