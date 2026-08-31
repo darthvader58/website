@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useGithubHeatmap } from '../lib/useGithubHeatmap'
 
-const HEAT_OPACITY = [0.08, 0.28, 0.5, 0.72, 1]
+const HEAT_LEVELS = ['var(--heat-0)', 'var(--heat-1)', 'var(--heat-2)', 'var(--heat-3)', 'var(--heat-4)']
 
 interface GitHubEvent {
   id: string
@@ -211,8 +211,8 @@ export default function GitHubActivity() {
                   <span
                     key={cell.date}
                     title={cell.date}
-                    className="size-[10px] rounded-[2px] bg-[var(--fg)] transition-transform duration-150 hover:scale-125"
-                    style={{ opacity: HEAT_OPACITY[cell.level] }}
+                    className="size-[10px] rounded-[2px] transition-transform duration-150 hover:scale-125"
+                    style={{ backgroundColor: HEAT_LEVELS[cell.level] }}
                   />
                 ))}
               </div>
@@ -221,8 +221,8 @@ export default function GitHubActivity() {
                 <span>{heatmap.total.toLocaleString()} contributions in the last year</span>
                 <span className="flex items-center gap-1.5">
                   Less
-                  {HEAT_OPACITY.map((o) => (
-                    <span key={o} className="size-[10px] rounded-[2px] bg-[var(--fg)]" style={{ opacity: o }} />
+                  {HEAT_LEVELS.map((color) => (
+                    <span key={color} className="size-[10px] rounded-[2px]" style={{ backgroundColor: color }} />
                   ))}
                   More
                 </span>
@@ -232,7 +232,7 @@ export default function GitHubActivity() {
         </div>
       </div>
 
-      {/* Language Stats - Monochrome, glitch-textured bars */}
+      {/* Language Stats - purple, glitch-textured bars */}
       <div className="space-y-3">
         <h3 className="text-glitch text-sm font-semibold uppercase tracking-widest text-[var(--fg)]">Top Languages</h3>
         <div className="rounded-lg border border-[var(--line)] bg-[var(--chip)] p-3 space-y-2.5">
@@ -242,12 +242,12 @@ export default function GitHubActivity() {
                 <span className="text-[var(--muted)]">{lang.name}</span>
                 <span className="text-[var(--soft)]">{lang.percentage.toString().padStart(4, '0')}%</span>
               </div>
-              <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--line)]">
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--lang-track)]">
                 <div
                   className="h-1.5 rounded-full transition-all duration-500"
                   style={{
                     width: `${lang.percentage}%`,
-                    backgroundImage: 'repeating-linear-gradient(45deg, var(--fg) 0, var(--fg) 2px, transparent 2px, transparent 4px)',
+                    backgroundImage: 'repeating-linear-gradient(45deg, var(--lang-bar) 0, var(--lang-bar) 2px, var(--lang-bar-alt) 2px, var(--lang-bar-alt) 4px)',
                   }}
                 />
               </div>
