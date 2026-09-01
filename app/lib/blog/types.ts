@@ -16,6 +16,8 @@ export type BlogPost = {
   title: string
   subtitle: string
   excerpt: string
+  author?: string
+  tags?: string[]
   category: string
   readTime: string
   publishedAt: string
