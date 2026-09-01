@@ -34,6 +34,8 @@ export function generateMetadata({ params }: BlogPostPageProps): Metadata {
   return {
     title: `${post.title} | Shashwat Raj`,
     description: post.excerpt,
+    authors: post.author ? [{ name: post.author }] : undefined,
+    keywords: post.tags,
     alternates: {
       canonical: `https://shashwatraj.com/blog/${post.slug}`,
       types: {
