@@ -12,6 +12,12 @@ import {
   generateNewsletterEmail,
 } from '@/app/lib/email-templates'
 
+// @vercel/postgres reads POSTGRES_URL, while current Neon integrations expose
+// the pooled connection as DATABASE_URL. Preserve POSTGRES_URL when supplied.
+if (!process.env.POSTGRES_URL && process.env.DATABASE_URL) {
+  process.env.POSTGRES_URL = process.env.DATABASE_URL
+}
+
 const FROM_EMAIL = 'Shashwat Raj <newsletter@shashwatraj.com>'
 const RESEND_BATCH_SIZE = 100
 
