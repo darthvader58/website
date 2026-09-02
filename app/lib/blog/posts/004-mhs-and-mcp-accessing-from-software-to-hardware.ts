@@ -33,6 +33,19 @@ export const mhsAndMcpAccessingFromSoftwareToHardwarePost: BlogPost = {
           <li>An <strong>MCP client</strong> connects an AI application to those servers.</li>
           <li>The model can then discover and use available tools, resources, and prompts.</li>
         </ul>
+      `,
+    },
+    // Technical reference figure. Keep future meme placements with the surrounding humor beats.
+    {
+      type: 'image',
+      fileName: 'mcp-host-client-server-architecture.svg',
+      alt: 'MCP architecture diagram showing an application host managing three clients, each connected to a server for local files, a database, or remote APIs.',
+      captionHtml:
+        'MCP’s host–client–server architecture connects AI applications to local and remote capabilities. Adapted from the <a href="https://modelcontextprotocol.io/specification/2026-07-28/architecture" target="_blank" rel="noopener noreferrer">Model Context Protocol specification</a>.',
+    },
+    {
+      type: 'html',
+      html: `
         <p>You can think of MCP as a universal adapter between an AI application and the systems around it. It is not exactly a USB-C port for intelligence, but it is close enough for a Tuesday afternoon explanation.</p>
         <p>The important idea is that the model should not need to understand every company’s internal API from scratch. It should be able to interact with a consistent interface. Instead of teaching the assistant 50 completely different dialects, we give it a common grammar.</p>
         <p>That is useful because context is often the difference between a confident answer and a useful answer. An assistant that only sees your current prompt may give you something plausible, but an assistant that can inspect the relevant code, documentation, issue history, database records, and team discussions has a better chance of giving you something that actually fits.</p>
@@ -64,6 +77,19 @@ export const mhsAndMcpAccessingFromSoftwareToHardwarePost: BlogPost = {
         <p>The cleanest way I understand the relationship is this: <strong>MCP connects the agent to software, data, and digital tools, while MHS connects the agent to devices and physical processes.</strong></p>
         <p>MHS can use MCP, along with command-line interfaces and code files, to control and orchestrate multiple devices.</p>
         <p>So an agent might read an experimental protocol from a document, inspect the current state of several instruments, adjust a device, observe the result through a camera or sensor, update the next step, and save the successful process as a deterministic script.</p>
+      `,
+    },
+    // Research workflow figure. The following laser anecdote and dialogue remain available for memes.
+    {
+      type: 'image',
+      fileName: 'mhs-lab-automation-workflow.png',
+      alt: 'A scientist gives an experiment to Claude, which coordinates a liquid handler, robotic arm, and microplate reader through MHS and adjusts the workflow using measured results.',
+      captionHtml:
+        'A closed-loop laboratory workflow in which Claude orchestrates multiple instruments through MHS. Source: <a href="https://www.anthropic.com/news/model-hardware-standard-research-preview" target="_blank" rel="noopener noreferrer">Anthropic’s Model Hardware Standard research preview</a>.',
+    },
+    {
+      type: 'html',
+      html: `
         <p>That last step is especially interesting. Anthropic describes Claude exploring a laser setup, observing how adjustments changed the laser beam, and eventually packaging what it learned into a script that could repeat the alignment without requiring the model to reason through every tiny step again.</p>
         <p>This is a useful division of labor. The agent explores, the script repeats, and the human supervises. The hardware does not need a language model narrating every millisecond of a procedure. Once the correct sequence is known, normal code can execute it faster and more predictably.</p>
         <blockquote>
@@ -92,6 +118,16 @@ export const mhsAndMcpAccessingFromSoftwareToHardwarePost: BlogPost = {
         <p>This is why safety cannot just mean “the agent has a list of forbidden commands.” A safe hardware system also needs state awareness, physical limits, sensor validation, emergency stops, permission boundaries, human escalation, reversible actions where possible, and clear logs of what happened and why.</p>
         <p>The word “write” sounds harmless in an API. In the real world, “write” might mean “move a robot,” “increase pressure,” “open a valve,” or “change the conditions of a biological experiment.”</p>
         <p>The interface can be simple. The consequences are not.</p>
+      `,
+    },
+    {
+      type: 'image',
+      fileName: 'meme-lab-insurance.webp',
+      alt: 'Two-button meme in which an MHS engineer nervously chooses between letting an AI agent control a laser and keeping the lab insured.',
+    },
+    {
+      type: 'html',
+      html: `
 
         <h2>What happens when MCP meets MHS?</h2>
         <p>Imagine an agent with access to a research paper through an MCP server, an internal experiment plan, historical results in a database, a microscope through MHS, a robotic liquid handler through MHS, a sensor stream from another device, and a code environment for writing repeatable procedures.</p>

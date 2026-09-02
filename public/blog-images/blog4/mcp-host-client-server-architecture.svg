@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">MCP host, client, and server architecture</title>
+  <desc id="description">An application host manages three MCP clients. Each client has a one-to-one connection with a server exposing files and Git, a database, or external APIs.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#7e22ce" />
+    </marker>
+    <style>
+      .label { font-family: sans-serif; fill: #18181b; }
+      .eyebrow { font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+      .heading { font-size: 30px; font-weight: 700; }
+      .body { font-size: 22px; font-weight: 600; }
+      .small { font-size: 18px; fill: #52525b; }
+      .connection { fill: none; stroke: #7e22ce; stroke-width: 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#ffffff" />
+
+  <text x="600" y="53" text-anchor="middle" class="label heading">MCP host–client–server architecture</text>
+
+  <rect x="70" y="82" width="1060" height="220" rx="22" fill="#faf5ff" stroke="#7e22ce" stroke-width="3" />
+  <text x="105" y="122" class="label eyebrow" fill="#7e22ce">APPLICATION HOST PROCESS</text>
+  <rect x="420" y="139" width="360" height="58" rx="14" fill="#7e22ce" />
+  <text x="600" y="177" text-anchor="middle" class="label body" fill="#ffffff">Host application</text>
+
+  <path d="M600 197 V220 H255 V239" fill="none" stroke="#a855f7" stroke-width="3" />
+  <path d="M600 197 V239" fill="none" stroke="#a855f7" stroke-width="3" />
+  <path d="M600 220 H945 V239" fill="none" stroke="#a855f7" stroke-width="3" />
+
+  <rect x="130" y="239" width="250" height="44" rx="12" fill="#ffffff" stroke="#a855f7" stroke-width="2" />
+  <rect x="475" y="239" width="250" height="44" rx="12" fill="#ffffff" stroke="#a855f7" stroke-width="2" />
+  <rect x="820" y="239" width="250" height="44" rx="12" fill="#ffffff" stroke="#a855f7" stroke-width="2" />
+  <text x="255" y="268" text-anchor="middle" class="label body">MCP client 1</text>
+  <text x="600" y="268" text-anchor="middle" class="label body">MCP client 2</text>
+  <text x="945" y="268" text-anchor="middle" class="label body">MCP client 3</text>
+
+  <path d="M255 283 V377" class="connection" />
+  <path d="M600 283 V377" class="connection" />
+  <path d="M945 283 V377" class="connection" />
+  <text x="600" y="341" text-anchor="middle" class="label small">One client maintains one stateful session with one server</text>
+
+  <rect x="70" y="388" width="710" height="294" rx="22" fill="#fafafa" stroke="#d4d4d8" stroke-width="3" />
+  <text x="105" y="429" class="label eyebrow" fill="#52525b">LOCAL MACHINE</text>
+  <rect x="130" y="458" width="250" height="84" rx="14" fill="#ffffff" stroke="#7e22ce" stroke-width="3" />
+  <rect x="475" y="458" width="250" height="84" rx="14" fill="#ffffff" stroke="#7e22ce" stroke-width="3" />
+  <text x="255" y="490" text-anchor="middle" class="label body">MCP server 1</text>
+  <text x="255" y="520" text-anchor="middle" class="label small">Files &amp; Git</text>
+  <text x="600" y="490" text-anchor="middle" class="label body">MCP server 2</text>
+  <text x="600" y="520" text-anchor="middle" class="label small">Database</text>
+
+  <path d="M255 542 V584" class="connection" />
+  <path d="M600 542 V584" class="connection" />
+  <rect x="130" y="596" width="250" height="54" rx="27" fill="#f4f4f5" stroke="#a1a1aa" stroke-width="2" />
+  <rect x="475" y="596" width="250" height="54" rx="27" fill="#f4f4f5" stroke="#a1a1aa" stroke-width="2" />
+  <text x="255" y="630" text-anchor="middle" class="label small">Local resource A</text>
+  <text x="600" y="630" text-anchor="middle" class="label small">Local resource B</text>
+
+  <rect x="820" y="388" width="310" height="294" rx="22" fill="#fafafa" stroke="#d4d4d8" stroke-width="3" />
+  <text x="855" y="429" class="label eyebrow" fill="#52525b">INTERNET</text>
+  <rect x="850" y="458" width="250" height="84" rx="14" fill="#ffffff" stroke="#7e22ce" stroke-width="3" />
+  <text x="975" y="490" text-anchor="middle" class="label body">MCP server 3</text>
+  <text x="975" y="520" text-anchor="middle" class="label small">External APIs</text>
+  <path d="M975 542 V584" class="connection" />
+  <rect x="850" y="596" width="250" height="54" rx="27" fill="#f4f4f5" stroke="#a1a1aa" stroke-width="2" />
+  <text x="975" y="630" text-anchor="middle" class="label small">Remote resource C</text>
+
+  <text x="600" y="725" text-anchor="middle" class="label small">Adapted from the Model Context Protocol specification · 2026-07-28</text>
+</svg>
