@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { formatBlogDate, getPublishedBlogPosts } from '@/app/lib/blog';
 import { getBlogImagePath } from '@/app/lib/blog/images';
+import { getBlogNarrationParts, getBlogNarrationVersion } from '@/app/lib/blog/narration';
 import { Shell, SectionHeader } from '@/app/components/Shell';
 import BlogCodeCopyButtons from '../BlogCodeCopyButtons';
+import BlogNarrationPlayer from '../BlogNarrationPlayer';
 
 type BlogPostPageProps = {
   params: {
@@ -59,6 +61,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const narrationParts = getBlogNarrationParts(post);
+
   return (
     <div className="fade">
       <SectionHeader
@@ -90,6 +94,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               {post.subtitle}
             </p>
             <p className="mt-5 font-mono text-[10px] text-[var(--soft)]">By Shashwat Raj · {post.issueLabel}</p>
+            <BlogNarrationPlayer
+              key={post.slug}
+              slug={post.slug}
+              partLengths={narrationParts.map((part) => part.length)}
+              version={getBlogNarrationVersion(post)}
+            />
           </header>
 
           <div>
