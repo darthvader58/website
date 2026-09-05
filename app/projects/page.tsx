@@ -35,7 +35,7 @@ type ProjectField =
   | 'Compilers' 
   | 'Games'
   | 'Full-Stack'
-  | 'Hardware Design Synthesis'
+  | 'Hardware'
   | 'Robotics'
   | 'Libraries and Tools'
 
@@ -59,7 +59,7 @@ const projectFields: ProjectField[] = [
    'Compilers' ,
    'Games',
    'Full-Stack',
-   'Hardware Design Synthesis',
+   'Hardware',
    'Robotics',
    'Libraries and Tools'
 ] 
@@ -150,7 +150,7 @@ export default function ProjectsPage() {
       field: 'Games', 
       github: "https://github.com/darthvader58/langtour",
       link: "https://lanctor-production.up.railway.app",
-      previewImage: "/images/Langtour.png"
+      previewImage: "/images/langtour.png"
     },
     {
       title: "Numericle",
@@ -306,7 +306,7 @@ export default function ProjectsPage() {
       title: "FPGA Implementation Mean Bean Machine",
       description: "An FPGA implementation of the famous retro game - Dr. Robotnik’s Mean Bean Machine. Programmed on NEXYS A7100T board using AMD’s Vivado, using 5 control switches, a VGA output for game screen and 7-segment display for viewing the score.",
       technologies: ["Verilog", "Vivado", "NEXYS A7-100T"],
-      field: 'Hardware Design Synthesis',
+      field: 'Hardware',
     },
     {
       title: "Micromouse",

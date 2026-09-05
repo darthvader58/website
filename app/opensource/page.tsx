@@ -99,7 +99,7 @@ export default function OpenSourcePage() {
     },
     {
       name: "Keras",
-      logo: "https://logo.svgcdn.com/devicon/keras-original-wordmark.png",
+      logo: "https://s3.amazonaws.com/keras.io/img/keras-logo-2018-large-1200.png",
       repo: "https://github.com/keras-team/keras",
       prLink: "https://github.com/keras-team/keras/pull/22237",
       isPending: true
