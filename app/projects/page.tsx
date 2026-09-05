@@ -296,6 +296,13 @@ export default function ProjectsPage() {
 
     // Hardware and embedded projects
     {
+      title: "mcs51-mcp",
+      description: "MCP server for the 8051 microcontroller development loop, enabling AI coding agents to detect the toolchain, compile and flash firmware, inspect pinouts, and communicate with boards over serial.",
+      technologies: ["Rust", "Model Context Protocol", "8051", "SDCC", "UART"],
+      field: 'Hardware',
+      github: "https://github.com/darthvader58/mcp8051"
+    },
+    {
       title: "Embedded Robotics",
       description: "FRDM-KL46Z based autonomous robot projects involving PID, SPI, UART, I2C, PWM and PIT/TPM handler.",
       technologies: ["C", "Embedded Systems", "PID Control", "I2C"],
