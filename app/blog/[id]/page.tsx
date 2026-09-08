@@ -123,11 +123,27 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 return (
                   <figure key={`${post.slug}-${block.fileName}`} className="blog-figure">
                     <div className="blog-figure-frame">
-                      <img
-                        src={imageSrc}
-                        alt={block.alt}
-                        className="blog-figure-image"
-                      />
+                      {block.expandable ? (
+                        <a
+                          href={imageSrc}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="blog-figure-link"
+                          aria-label={`Open ${block.alt} at full size`}
+                        >
+                          <img
+                            src={imageSrc}
+                            alt={block.alt}
+                            className="blog-figure-image"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          src={imageSrc}
+                          alt={block.alt}
+                          className="blog-figure-image"
+                        />
+                      )}
                     </div>
                     {block.captionHtml ? (
                       <figcaption

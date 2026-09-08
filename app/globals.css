@@ -450,6 +450,11 @@ html.light #oneko {
   background: transparent;
 }
 
+.blog-figure-link {
+  display: block;
+  cursor: zoom-in;
+}
+
 .blog-caption {
   width: 100%;
   max-width: min(100%, 36rem);
