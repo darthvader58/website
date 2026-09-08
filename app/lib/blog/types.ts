@@ -9,6 +9,7 @@ export type BlogPostBlock =
       alt: string
       caption?: string
       captionHtml?: string
+      expandable?: boolean
     }
 
 export type BlogPost = {
