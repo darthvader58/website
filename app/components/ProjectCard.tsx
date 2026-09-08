@@ -16,16 +16,17 @@ interface ProjectCardProps {
   animationGallery?: AnimationGalleryItem[]
 }
 
+const EMBEDDABLE_HOSTS = ['vercel.app', 'up.railway.app', 'numericle.space', 'lang.tours']
+
 export default function ProjectCard({ title, description, technologies, github, link, hasLivePreview, customPreview, previewImage, animationGallery }: ProjectCardProps) {
   const href = hasLivePreview ? link : github || '#'
   const [showIframe, setShowIframe] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
   const [showReadMore, setShowReadMore] = useState(false)
   
-  // Only try to load iframe for vercel.app domains
   useEffect(() => {
     if (hasLivePreview && link) {
-      setShowIframe(link.includes('vercel.app'))
+      setShowIframe(EMBEDDABLE_HOSTS.some(h => link.includes(h)))
     }
   }, [hasLivePreview, link])
   
@@ -87,17 +88,6 @@ export default function ProjectCard({ title, description, technologies, github, 
           <div className="mb-4 aspect-square w-full rounded-md overflow-hidden flex items-center justify-center relative flex-shrink-0">
           {animationGallery?.length ? (
             <AnimationGallery items={animationGallery} title={title} />
-          ) : previewImage ? (
-            <div className="w-full h-full relative">
-              <img 
-                src={previewImage}
-                alt={`${title} preview`}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-            </div>
-          ) : customPreview ? (
-            renderCustomPreview()
           ) : hasLivePreview && link && showIframe ? (
             <div className="w-full h-full relative">
               <iframe 
@@ -112,6 +102,17 @@ export default function ProjectCard({ title, description, technologies, github, 
                 Live
               </div>
             </div>
+          ) : previewImage ? (
+            <div className="w-full h-full relative">
+              <img
+                src={previewImage}
+                alt={`${title} preview`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            </div>
+          ) : customPreview ? (
+            renderCustomPreview()
           ) : hasLivePreview && link ? (
             <div className="w-full h-full bg-[var(--chip)] flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-10">

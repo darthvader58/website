@@ -9,7 +9,7 @@ module.exports = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "frame-src 'self' https://*.vercel.app https://*.railway.app https://shashwatraj.com",
+            value: "frame-src 'self' https://*.vercel.app https://*.railway.app https://numericle.space https://lang.tours https://shashwatraj.com",
           },
         ],
       },

@@ -113,9 +113,7 @@ export default function ProjectsPage() {
       technologies: ["Python", "Compiler design", "Physics Engine", "FastAPI", "Docker"],
       field: 'Physics',
       github: "https://github.com/darthvader58/phi1",
-      previewImage: "/images/pitwall.png",
-      link: "https://pitwall.up.railways.app",
-      hasLivePreview: true
+      previewImage: "/images/pitwall.png"
     },
     {
       title: "KaleshScript",
@@ -149,8 +147,9 @@ export default function ProjectsPage() {
       technologies: ['LLM', 'DeepGram', 'TypeScript', 'Three.Js', 'Supermemory'],
       field: 'Games', 
       github: "https://github.com/darthvader58/langtour",
-      link: "https://lanctor-production.up.railway.app",
-      previewImage: "/images/langtour.png"
+      link: "https://lang.tours",
+      previewImage: "/images/langtour.png",
+      hasLivePreview: true
     },
     {
       title: "Numericle",

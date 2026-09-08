@@ -119,9 +119,7 @@ const projects = [
     description: "Write strategy bots that compete in physics-accurate F1 simulations.",
     technologies: ["Python", "Compiler design", "Physics Engine", "FastAPI", "Docker"],
     github: "https://github.com/darthvader58/phi1",
-    previewImage: "/images/pitwall.png",
-    link: "https://pitwall.up.railways.app",
-    hasLivePreview: true
+    previewImage: "/images/pitwall.png"
   },
   {
     title: "KaleshScript",
