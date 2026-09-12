@@ -127,11 +127,11 @@ function RoleSection({ title, roles }: { title: string; roles: Role[] }) {
 export default function ExperiencePage() {
   const experiences = [
     {
-      title: "Independent Researcher",
-      company: "TBD",
+      title: "Researcher, AI Hardware Security & Formal Verification",
+      company: "ASU Center for Semiconductor Microelectronics (ACME)",
       period: "August 2026 - Present",
       location: "Tempe, Arizona",
-      description: "Designing and formally verifying an FPGA-resident hardware safety monitor for LLM/MCP-controlled systems. The monitor sits between a soft processor and physical actuators to enforce hard output ceilings, interlocks, and rate limits even if the host software or firmware is compromised. Evaluating adversarial-command rejection, formal correctness, latency, and Artix-7 resource cost on a Nexys A7-100T.",
+      description: "Designing and formally verifying an FPGA-resident hardware safety monitor for LLM/MCP-controlled systems. The monitor sits between a soft processor and physical actuators to enforce hard output ceilings, interlocks, and rate limits even if the host software or firmware is compromised. Evaluating adversarial-command rejection, formal correctness, latency, and Artix-7 resource cost on a Nexys A7-100T. Mentored by Prof. Krishnendu Chakrabarty at ASU in ACME lab.",
       technologies: ["Verilog", "SystemVerilog", "FPGA", "SymbiYosys", "Vivado", "MCP", "Hardware Security", "Formal Verification"]
     },
     {
