@@ -3,6 +3,7 @@ import { theTransformerMomentAndQuantumsSearchForArchitecturePost } from './002-
 import { k8sIsntThatHardToUnderstandPost } from './003-k8s-isnt-that-hard-to-understand'
 import { mhsAndMcpAccessingFromSoftwareToHardwarePost } from './004-mhs-and-mcp-accessing-from-software-to-hardware'
 import { astraNomicallyClosePost } from './005-astra-nomically-close'
+import { lessTalkingMoreDoingPost } from './006-less-talking-more-doing'
 
 // Add each new blog post file here and give it a matching folder in public/blog-images/<post-number>.
 export const blogPosts = [
@@ -11,4 +12,5 @@ export const blogPosts = [
   k8sIsntThatHardToUnderstandPost,
   mhsAndMcpAccessingFromSoftwareToHardwarePost,
   astraNomicallyClosePost,
+  lessTalkingMoreDoingPost,
 ]
