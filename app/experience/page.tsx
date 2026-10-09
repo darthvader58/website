@@ -158,14 +158,6 @@ export default function ExperiencePage() {
       description: "Developing Reinforcement Learning techniques to optimize Earth science missions to autonomously determine priority observations in space, under the mentorship of Dr. Paul Grogan of SCAI Faculty at ASU. Co-authoring a review paper discussing relation between OSSEs & Mission Engineering. Trained DQN and QRDQN models using Pytorch, GeoPandas, TAT-C, Seaborn on NASA's Geos5 dataset, achieving 67% precision and 87% recall resp. Receiving total $4600 through FURI and GCSP Research funding.",
       technologies: ["Python", "PyTorch", "GeoPandas", "TAT-C", "RL", "Celestrak", "NASA G5NR", "WMO Oscar"]
     },
-    {
-      title: "Product Development Manager",
-      company: "MentorU",
-      period: "July 2025 - August 2025",
-      location: "Los Angeles, California",
-      description: "Managed/Led a team of 5 developers developing a full-stack online platform for college admission counseling startup, to automate features like scholarship finder and personal story-building. Increased UX Research success by 150%.",
-      technologies: ["Next.js", "Supabase", "LLM"]
-    },
     /*
     {
       title: "Applied AI and Cryptography Intern",
