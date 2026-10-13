@@ -14,6 +14,7 @@ const navLinks = [
   { label: 'Projects', path: '/projects' },
   { label: 'Blog', path: '/blog' },
   { label: 'Resume', path: '/resume' },
+  { label: 'coffee', path: '/coffee' },
 ]
 
 export function Navbar() {

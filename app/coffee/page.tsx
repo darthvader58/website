@@ -17,7 +17,7 @@ export default function CoffeePage() {
               I&apos;d love to hear from you. Whether it&apos;s a project, opportunity, or just a chat about tech.
             </p>
             <a
-              href="https://calendly.com/rajayshashwat/30min"
+              href="https://calendly.com/shashwatraj/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 rounded-full border border-purple-500 px-5 py-2.5 text-sm font-semibold text-purple-500 transition-colors duration-200 hover:bg-purple-500 hover:text-white"
